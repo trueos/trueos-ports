@@ -2,8 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	snmp4
+<<<<<<< HEAD
 PORTVERSION=	4.3.9
 PORTREVISION=	0
+=======
+PORTVERSION=	4.3.2
+>>>>>>> upstream1/master
 CATEGORIES=	net-mgmt python
 MASTER_SITES=	CHEESESHOP \
 		SF/pysnmp/pysnmp/${PORTVERSION}
@@ -19,6 +23,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyasn1>=0.2.3:devel/py-pyasn1 \
 		${PYTHON_PKGNAMEPREFIX}pycryptodome>=3.4.7:security/py-pycryptodome \
 		${PYTHON_PKGNAMEPREFIX}pysmi>=0.0.7:net-mgmt/py-pysmi
 
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
 USES=		python
 USE_PYTHON=	distutils autoplist
 
@@ -30,6 +36,7 @@ DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
+<<<<<<< HEAD
 BASEDOCS=	CHANGES.txt README.md TODO.txt THANKS.txt
 
 post-install-DOCS-on:
@@ -39,6 +46,13 @@ post-install-DOCS-on:
 
 post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+=======
+post-install:
+	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC}/docs/source/docs && \
+	    ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+>>>>>>> upstream1/master
 	(cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
 
 .include <bsd.port.mk>

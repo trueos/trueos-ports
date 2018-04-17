@@ -343,6 +343,11 @@ MASTER_SITE_GENTOO+= \
 	ftp://gentoo.inode.at/source/%SUBDIR%/
 .endif
 
+# Keep this before USE_GITHUB
+.if !empty(MASTER_SITES:M*/github.com/*/archive/*)
+DEV_WARNING+=	"MASTER_SITES contains ${MASTER_SITES:M*/github.com/*/archive/*}, please use USE_GITHUB instead."
+.endif
+
 .if !defined(IGNORE_MASTER_SITE_GITHUB)
 #
 # In order to use GitHub your port must define USE_GITHUB and the following
@@ -838,20 +843,6 @@ MASTER_SITE_MOZILLA+= \
 MASTER_SITE_MOZILLA_ADDONS+= \
 	https://addons.cdn.mozilla.net/user-media/%SUBDIR%/ \
 	http://kyoto-mz-dl.sinet.ad.jp/pub/mozilla.org/%SUBDIR%/
-.endif
-
-.if !defined(IGNORE_MASTER_SITE_MPLAYERHQ)
-MASTER_SITE_MPLAYERHQ+= \
-	http://www.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	https://www1.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	http://www2.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	http://www3.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	http://www4.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	http://www5.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	ftp://ftp.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	ftp://ftp1.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	ftp://ftp4.mplayerhq.hu/MPlayer/%SUBDIR%/ \
-	ftp://ftp5.mplayerhq.hu/MPlayer/%SUBDIR%/
 .endif
 
 .if !defined(IGNORE_MASTER_SITE_MYSQL)

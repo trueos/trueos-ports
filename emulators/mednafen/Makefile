@@ -1,7 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	mednafen
+<<<<<<< HEAD
 PORTVERSION=	1.21.0
+=======
+PORTVERSION=	0.9.45.1
+>>>>>>> upstream1/master
 PORTREVISION=	2
 PORTEPOCH=	1
 DISTNAME=	mednafen-${PORTVERSION}-UNSTABLE
