@@ -1,28 +1,7 @@
-<<<<<<< HEAD
---- fbreader/src/database/booksdb/BooksDB.cpp.orig	2018-02-22 12:25:43 UTC
-+++ fbreader/src/database/booksdb/BooksDB.cpp
-@@ -145,7 +145,7 @@ shared_ptr<Book> BooksDB::loadBook(const std::string &
- 
-=======
-BooksDB.cpp:148:10: error: no viable conversion from returned value of type 'bool' to function return type 'shared_ptr<Book>'
-                return false;
-                       ^~~~~
-/wrkdirs/usr/ports/deskutils/fbreader/work/FBReader-0.99.6-freebsdport/fbreader/../zlibrary/core/include/shared_ptr.h:57:3: note: candidate constructor not viable: no known conversion from 'bool' to 'Book *' for 1st argument
-                shared_ptr(T *t);
-                ^
-/wrkdirs/usr/ports/deskutils/fbreader/work/FBReader-0.99.6-freebsdport/fbreader/../zlibrary/core/include/shared_ptr.h:58:3: note: candidate constructor not viable: no known conversion from 'bool' to 'const shared_ptr<Book> &' for 1st argument
-                shared_ptr(const shared_ptr<T> &t);
-                ^
-/wrkdirs/usr/ports/deskutils/fbreader/work/FBReader-0.99.6-freebsdport/fbreader/../zlibrary/core/include/shared_ptr.h:59:3: note: candidate constructor not viable: no known conversion from 'bool' to 'const weak_ptr<Book> &' for 1st argument
-                shared_ptr(const weak_ptr<T> &t);
-                ^
-1 error generated.
-
 --- fbreader/src/database/booksdb/BooksDB.cpp.orig	2014-01-11 12:45:25 UTC
 +++ fbreader/src/database/booksdb/BooksDB.cpp
 @@ -145,7 +145,7 @@ shared_ptr<Book> BooksDB::loadBook(const std::string &
 
->>>>>>> upstream1/master
  	myFindFileId->setFileName(fileName);
  	if (!myFindFileId->run()) {
 -		return false;

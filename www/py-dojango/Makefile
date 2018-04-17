@@ -3,10 +3,6 @@
 
 PORTNAME=	dojango
 PORTVERSION=	0.5.9
-<<<<<<< HEAD
-PORTREVISION=	4
-=======
->>>>>>> upstream1/master
 CATEGORIES=	www python java
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -24,11 +20,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	william-gr
 GH_PROJECT=	dojango
 GH_TAGNAME=	87507e5
-<<<<<<< HEAD
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django110>0:www/py-django110
-=======
->>>>>>> upstream1/master
+RUN_DEPENDS=    ${PYTHON_PKGNAMEPREFIX}django18>=1.6:www/py-django18@${FLAVOR}
 
 OPTIONS_DEFINE=		JAVA
 
