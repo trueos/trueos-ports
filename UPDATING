@@ -5,6 +5,79 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20180518:
+  AFFECTS: users of sysutils/ansible*
+  AUTHOR: lifanov@FreeBSD.org
+
+  Ansible ports are now flavored. Package names for Ansible changed
+  to include python version. Poudriere and package users don't need
+  to do anything.
+
+  To rename an installed package to match the new naming scheme,
+  for example, for ansible24, run:
+
+   # pkg set -n ansible24:py27-ansible24
+  
+20180514:
+  AFFECTS: users of www/gitlab
+  AUTHOR: mfechner@FreeBSD.org
+
+  Gitlab-pages support was removed as new version does not compile.
+  If you require gitlab-pages do not update to version 10.7.3 till it is
+  fixed upstream.
+  You can find the bug report here:
+  https://gitlab.com/gitlab-org/gitlab-pages/issues/143
+
+20180513:
+  AFFECTS: users of net/xrdp
+  AUTHOR: meta@FreeBSD.org
+
+  net/xrdp has been updated from 0.6.2 to 0.9.6. There are significant
+  changes between these versions. You should consider backing up your
+  configuration files such as xrdp.ini and sesman.ini, and then migrate
+  configuration files by hand.
+
+  Regarding km-*.ini, don't use the old files. They can be safely replaced
+  with new ones.
+
+20180507:
+  AFFECTS: users of math/suitesparse who build it locally
+  AUTHOR: yuri@FreeBSD.org
+
+  The suitesparse needs to be uninstalled before math/suitesparse can be
+  correctly built. This is true for the version 5.2.0 and prior versions.
+
+20180505:
+  AFFECTS: users of www/gitea
+  AUTHOR: stb@lassitu.de
+
+  The www/gitea port no longer requires shell/bash.  If you want to
+  stop using bash and deinstall the package, make sure to set the
+  configuration in etc/gitea/conf/app.ini, section [repository],
+  SCRIPT_TYPE to "sh".  See app.ini.sample for an example.
+
+20180501:
+  AFFECTS: users of www/node
+  AUTHOR: bhughes@FreeBSD.org
+
+  The www/node port has been udpated to Node.js v10.0.0, the latest
+  upstream release. This is a major release, including many significant
+  changes. Users are encouraged to read the release announcements before
+  upgrading:
+
+  https://nodejs.org/en/blog/release/v10.0.0/
+
+  In particular, Node.js now depends on OpenSSL 1.1.0h, so the
+  BUNDLED_SSL option is enabled by default. Users can disable this
+  option when using security/openssl-devel as their default SSL library.
+
+20180430:
+  AFFECTS: users of news/nntp
+  AUTHOR: dinoex@FreeBSD.org
+
+  The option INETD was removed. If you used inetd, please change the path
+  in /etc/inetd.conf from /usr/local/sbin/nntpd to /usr/local/libexec/nntpd.
+
 20180428:
   AFFECTS: users of security/libressl
   AUTHOR: brnrd@FreeBSD.org

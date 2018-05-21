@@ -22,6 +22,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}chardet>0:textproc/py-chardet@${FLAVOR} \
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:devel/py-pytest@${FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-mock>0:devel/py-pytest-mock@${FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytest-timeout>0:devel/py-pytest-timeout@${FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}async_generator>0:devel/py-async_generator@${FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}gunicorn>0:www/py-gunicorn@${FLAVOR}
 
 USES=		python:3.4+

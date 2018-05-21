@@ -52,9 +52,6 @@ V4L_CMAKE_OFF=		-DWITH_LibV4L2:BOOL=FALSE
 
 XINE_RUN_DEPENDS=	xine:multimedia/xine
  
-# Lock at 17.12.3 until multimedia/mlt is at version 6.6.0
-KDE_APPLICATIONS_VERSION=	17.12.3
-
 post-patch:
 	@${REINPLACE_CMD} -e '/^update_xdg_mimetypes/ d' \
 		-e '/SharedMimeInfo/ d' \

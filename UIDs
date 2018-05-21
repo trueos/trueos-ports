@@ -176,7 +176,7 @@ _hfm:*:227:227::0:0:hfm daemon:/nonexistent:/usr/sbin/nologin
 osrm:*:228:228::0:0:osrm:/nonexistent:/usr/sbin/nologin
 # free: 229
 carbon:*:230:230::0:0:osrm:/nonexistent:/usr/sbin/nologin
-# free: 231
+foundationdb:*:231:231::0:0:foundationdb:/nonexistent:/usr/sbin/nologin
 # free: 232
 # free: 233
 kafka:*:234:234::0:0:Apache Kafka user:/nonexistent:/usr/sbin/nologin
@@ -763,7 +763,7 @@ foreman_proxy:*:812:812::0:0:Foreman Smart Proxy:/usr/local/share/foreman-proxy:
 puppet:*:814:814::0:0:Puppet Daemon:/nonexistent:/usr/sbin/nologin
 uchiwa:*:815:815::0:0:Uchiwa Dashboard:/nonexistent:/usr/sbin/nologin
 # free: 816
-btsync:*:817:817::0:0:BitTorrent Sync Daemon:/nonexistent:/usr/sbin/nologin
+rslsync:*:817:817::0:0:Resilio Sync Daemon:/nonexistent:/usr/sbin/nologin
 jenkins:*:818:818::0:0:Jenkins CI:/usr/local/jenkins:/bin/sh
 rundeck:*:819:819::0:0:Rundeck:/usr/local/rundeck:/bin/sh
 openacs:*:820:820::0:0:OpenACS Daemon User:/nonexistent:/usr/sbin/nologin
@@ -832,7 +832,7 @@ archiva:*:871:871::0:0:Apache Archiva Daemon:/nonexistent:/usr/sbin/nologin
 # free: 883
 # free: 884
 # free: 885
-# free: 886
+miniflux:*:886:886::0:0:Miniflux:/nonexistent:/usr/sbin/nologin
 pdagent:*:887:887::0:0:PagerDuty Agent:/nonexistent:/usr/sbin/nologin
 vuls:*:888:888::0:0:VULnerability Scanner:/var/db/vuls:/usr/sbin/nologin
 mattermost:*:889:889::0:0:Mattermost:/usr/local/www/mattermost:/usr/sbin/nologin

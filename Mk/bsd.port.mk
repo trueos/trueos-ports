@@ -1106,15 +1106,13 @@ CXX_FOR_BUILD:=	${HOSTCXX}
 .endif
 CONFIGURE_ENV+= HOSTCC="${HOSTCC}" HOSTCXX="${HOSTCXX}" CC_FOR_BUILD="${CC_FOR_BUILD}" CXX_FOR_BUILD="${CXX_FOR_BUILD}"
 
-CC=		${XCC}
-CXX=	${XCXX}
-CFLAGS+=	--sysroot=${CROSS_SYSROOT} -isystem ${CROSS_SYSROOT}/usr/include
-CXXFLAGS+=	--sysroot=${CROSS_SYSROOT} -isystem ${CROSS_SYSROOT}/usr/include -isystem ${CROSS_SYSROOT}/usr/include/c++/v1 -nostdinc++
-CPPFLAGS+=	--sysroot=${CROSS_SYSROOT} -isystem ${CROSS_SYSROOT}/usr/include
-LDFLAGS+=	--sysroot=${CROSS_SYSROOT}
+CC=		${XCC} --sysroot=${CROSS_SYSROOT}
+CXX=		${XCXX} --sysroot=${CROSS_SYSROOT}
+CPP=		${XCPP} --sysroot=${CROSS_SYSROOT}
 .for _tool in AS AR LD NM OBJCOPY RANLIB SIZE STRINGS
 ${_tool}=	${CROSS_BINUTILS_PREFIX}${tool:tl}
 .endfor
+LD+=		--sysroot=${CROSS_SYSROOT}
 STRIP_CMD=	${CROSS_BINUTILS_PREFIX}strip
 # only bmake support the below
 STRIPBIN=	${STRIP_CMD}
@@ -1152,6 +1150,10 @@ MAINTAINER?=	ports@FreeBSD.org
 .if !defined(ARCH)
 ARCH!=	${UNAME} -p
 .endif
+HOSTARCH:=	${ARCH}
+.if defined(CROSS_TOOLCHAIN)
+ARCH=	${CROSS_TOOLCHAIN:C,-.*$,,}
+.endif
 _EXPORTED_VARS+=	ARCH
 
 # Get the operating system type
@@ -1181,7 +1183,7 @@ OSVERSION!=	${AWK} '/^\#define[[:blank:]]__FreeBSD_version/ {print $$3}' < ${SRC
 .endif
 _EXPORTED_VARS+=	OSVERSION
 
-.if (${OPSYS} == FreeBSD && (${OSVERSION} < 1003000 || (${OSVERSION} >= 1100000 && ${OSVERSION} < 1101001))) || \
+.if (${OPSYS} == FreeBSD && (${OSVERSION} < 1004000 || (${OSVERSION} >= 1100000 && ${OSVERSION} < 1101001))) || \
     (${OPSYS} == DragonFly && ${DFLYVERSION} < 400400)
 _UNSUPPORTED_SYSTEM_MESSAGE=	Ports Collection support for your ${OPSYS} version has ended, and no ports\
 								are guaranteed to build on this system. Please upgrade to a supported release.
@@ -1350,8 +1352,12 @@ _SUF2=	,${PORTEPOCH}
 PKGVERSION=	${PORTVERSION:C/[-_,]/./g}${_SUF1}${_SUF2}
 PKGNAME=	${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}-${PKGVERSION}
 DISTVERSIONFULL=	${DISTVERSIONPREFIX}${DISTVERSION:C/:(.)/\1/g}${DISTVERSIONSUFFIX}
-.if defined(USE_GITHUB) && empty(MASTER_SITES:MGHC) && empty(DISTNAME) && empty(USE_GITHUB:Mnodefault)
+.if defined(USE_GITHUB) && empty(MASTER_SITES:MGHC) && empty(USE_GITHUB:Mnodefault)
+.  if empty(DISTNAME)
 _GITHUB_MUST_SET_DISTNAME=		yes
+.  else
+DEV_WARNING+=	"You are using USE_GITHUB and DISTNAME is set which is wrong.  Set GH_ACCOUNT/GH_PROJECT/GH_TAGNAME correctly and remove WRKSRC entirely."
+.  endif
 .else
 DISTNAME?=	${PORTNAME}-${DISTVERSIONFULL}
 .endif
@@ -1780,18 +1786,10 @@ INSTALL_TARGET:=	${INSTALL_TARGET:S/^install-strip$/install/g}
 
 # XXX PIE support to be added here
 MAKE_ENV+=	NO_PIE=yes
-# We prefer to pass MK_*=no but it was only supported after a certain
-# revision.  Passing WITHOUT_* may conflict with a make.conf or src.conf's
-# WITH_* value.  Note that ports *do* pull in src.conf.
-.if ${OSVERSION} >= 1003503
 # We will control debug files.  Don't let builds that use /usr/share/mk
 # split out debug symbols since the plist won't know to expect it.
 MAKE_ENV+=	MK_DEBUG_FILES=no
 MAKE_ENV+=	MK_KERNEL_SYMBOLS=no
-.else
-MAKE_ENV+=	WITHOUT_DEBUG_FILES=yes
-MAKE_ENV+=	WITHOUT_KERNEL_SYMBOLS=yes
-.endif
 
 CONFIGURE_SHELL?=	${SH}
 MAKE_SHELL?=	${SH}
@@ -1839,7 +1837,7 @@ PLIST_SUB+=	LIB32DIR=${LIB32DIR}
 PKG_ORIGIN=		ports-mgmt/pkg-devel
 .endif
 
-.if !defined(PKG_DEPENDS) && !defined(CLEAN_FETCH_ENV)
+.if !defined(PKG_DEPENDS) && !defined(CLEAN_FETCH_ENV) && !exists(/usr/sbin/pkg-static)
 PKG_DEPENDS+=	${LOCALBASE}/sbin/pkg:${PKG_ORIGIN}
 .endif
 
@@ -2061,7 +2059,6 @@ MAKEFILE?=		Makefile
 MAKE_CMD?=		${BSDMAKE}
 MAKE_ENV+=		PREFIX=${PREFIX} \
 			LOCALBASE=${LOCALBASE} \
-			LIBDIR="${LIBDIR}" \
 			CC="${CC}" CFLAGS="${CFLAGS}" \
 			CPP="${CPP}" CPPFLAGS="${CPPFLAGS}" \
 			LDFLAGS="${LDFLAGS}" LIBS="${LIBS}" \
@@ -2639,7 +2636,7 @@ PKGLATESTFILE=		${PKGLATESTREPOSITORY}/${PKGBASE}${PKG_SUFX}
 
 CONFIGURE_SCRIPT?=	configure
 CONFIGURE_CMD?=		./${CONFIGURE_SCRIPT}
-CONFIGURE_TARGET?=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
+CONFIGURE_TARGET?=	${HOSTARCH}-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_TARGET:=	${CONFIGURE_TARGET:S/--build=//}
 CONFIGURE_LOG?=		config.log
 
@@ -4531,22 +4528,13 @@ generate-plist: ${WRKDIR}
 	@${ECHO_CMD} "@postunexec ${LINUXBASE}/sbin/ldconfig" >> ${TMPPLIST}
 .endif
 .else
-.if defined(USE_LDCONFIG)
+.if defined(USE_LDCONFIG) || defined(USE_LDCONFIG32)
 .if !defined(INSTALL_AS_USER)
-	@${ECHO_CMD} "@postexec ${LDCONFIG} -m ${USE_LDCONFIG}" >> ${TMPPLIST}
-	@${ECHO_CMD} "@postunexec ${LDCONFIG} -R" >> ${TMPPLIST}
+	@${ECHO_CMD} "@postexec /usr/sbin/service ldconfig restart > /dev/null" >> ${TMPPLIST}
+	@${ECHO_CMD} "@postunexec /usr/sbin/service ldconfig restart > /dev/null" >> ${TMPPLIST}
 .else
-	@${ECHO_CMD} "@postexec ${LDCONFIG} -m ${USE_LDCONFIG} || ${TRUE}" >> ${TMPPLIST}
-	@${ECHO_CMD} "@postunexec ${LDCONFIG} -R || ${TRUE}" >> ${TMPPLIST}
-.endif
-.endif
-.if defined(USE_LDCONFIG32)
-.if !defined(INSTALL_AS_USER)
-	@${ECHO_CMD} "@postexec ${LDCONFIG} -32 -m ${USE_LDCONFIG32}" >> ${TMPPLIST}
-	@${ECHO_CMD} "@postunexec ${LDCONFIG} -32 -R" >> ${TMPPLIST}
-.else
-	@${ECHO_CMD} "@postexec ${LDCONFIG} -32 -m ${USE_LDCONFIG32} || ${TRUE}" >> ${TMPPLIST}
-	@${ECHO_CMD} "@postunexec ${LDCONFIG} -32 -R || ${TRUE}" >> ${TMPPLIST}
+	@${ECHO_CMD} "@postexec /usr/sbin/service ldconfig restart > /dev/null || ${TRUE}" >> ${TMPPLIST}
+	@${ECHO_CMD} "@postunexec /usr/sbin/service ldconfig restart > /dev/null || ${TRUE}" >> ${TMPPLIST}
 .endif
 .endif
 .endif
@@ -4607,13 +4595,13 @@ add-plist-post:
 .if !target(install-rc-script)
 .if defined(USE_RC_SUBR)
 install-rc-script:
-	@${ECHO_MSG} "===> Staging rc.d startup script(s)"
-	@for i in ${USE_RC_SUBR}; do \
-		_prefix=${PREFIX}; \
-		[ "${PREFIX}" = "/usr" ] && _prefix="" ; \
-		${INSTALL_SCRIPT} ${WRKDIR}/$${i} ${STAGEDIR}$${_prefix}/etc/rc.d/$${i%.sh}; \
-		${ECHO_CMD} "$${_prefix}/etc/rc.d/$${i%.sh}" >> ${TMPPLIST}; \
-	done
+	@${ECHO_MSG} "===> Skipping rc.d startup script(s)"
+#	@for i in ${USE_RC_SUBR}; do \
+#		_prefix=${PREFIX}; \
+#		[ "${PREFIX}" = "/usr" ] && _prefix="" ; \
+#		${INSTALL_SCRIPT} ${WRKDIR}/$${i} ${STAGEDIR}$${_prefix}/etc/rc.d/$${i%.sh}; \
+#		${ECHO_CMD} "$${_prefix}/etc/rc.d/$${i%.sh}" >> ${TMPPLIST}; \
+#	done
 .endif
 .endif
 

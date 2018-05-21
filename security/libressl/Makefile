@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libressl
-PORTVERSION=	2.7.2
+PORTVERSION=	2.7.3
 CATEGORIES=	security devel
 MASTER_SITES=	OPENBSD/LibreSSL
 
@@ -26,10 +26,11 @@ CONFLICTS_INSTALL=	libressl-devel-[0-9]* \
 NC_CONFIGURE_ENABLE=	nc
 
 GNU_CONFIGURE=	yes
-USES=		autoreconf cpe libtool pathfix pkgconfig
+USES=		cpe libtool pathfix pkgconfig
 USE_LDCONFIG=	yes
 OPTIONS_SUB=	yes
 CFLAGS+=	-fpic -DPIC -Wl,-rpath,${PREFIX}/lib -Wl,--as-needed
+LDFLAGS+=	-pthread
 
 INSTALL_TARGET=	install-strip
 TEST_TARGET=	check

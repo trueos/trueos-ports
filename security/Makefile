@@ -186,6 +186,7 @@
     SUBDIR += gnutls
     SUBDIR += go-cve-dictionary
     SUBDIR += go.crypto
+    SUBDIR += gopass
     SUBDIR += goptlib
     SUBDIR += gorilla
     SUBDIR += govpn
@@ -474,6 +475,7 @@
     SUBDIR += openvpn-admin
     SUBDIR += openvpn-auth-ldap
     SUBDIR += openvpn-auth-radius
+    SUBDIR += openvpn-auth-script
     SUBDIR += openvpn-devel
     SUBDIR += openvpn-mbedtls
     SUBDIR += ophcrack
@@ -529,6 +531,7 @@
     SUBDIR += p5-Authen-TypeKey
     SUBDIR += p5-Business-PayPal-EWP
     SUBDIR += p5-Bytes-Random-Secure
+    SUBDIR += p5-Bytes-Random-Secure-Tiny
     SUBDIR += p5-CACertOrg-CA
     SUBDIR += p5-CSP
     SUBDIR += p5-Cisco-Hash
@@ -597,6 +600,7 @@
     SUBDIR += p5-Crypt-Passwd-XS
     SUBDIR += p5-Crypt-PasswdMD5
     SUBDIR += p5-Crypt-Password-Util
+    SUBDIR += p5-Crypt-Perl
     SUBDIR += p5-Crypt-Primes
     SUBDIR += p5-Crypt-RC4
     SUBDIR += p5-Crypt-RC5
@@ -636,6 +640,7 @@
     SUBDIR += p5-Crypt-UnixCrypt
     SUBDIR += p5-Crypt-UnixCrypt_XS
     SUBDIR += p5-Crypt-X509
+    SUBDIR += p5-Crypt-X509-CRL
     SUBDIR += p5-Crypt-XTEA
     SUBDIR += p5-Crypt-xDBM_File
     SUBDIR += p5-CryptX
@@ -864,7 +869,6 @@
     SUBDIR += plasma5-ksshaskpass
     SUBDIR += plasma5-kwallet-pam
     SUBDIR += please
-    SUBDIR += polarssl13
     SUBDIR += poly1305aes
     SUBDIR += portsentry
     SUBDIR += ppars
@@ -930,6 +934,8 @@
     SUBDIR += py-fchksum
     SUBDIR += py-first-server
     SUBDIR += py-flask-httpauth
+    SUBDIR += py-flask-kerberos
+    SUBDIR += py-flask-saml
     SUBDIR += py-gixy
     SUBDIR += py-gnupg
     SUBDIR += py-gnutls
@@ -997,8 +1003,10 @@
     SUBDIR += py-python-registry
     SUBDIR += py-python-social-auth
     SUBDIR += py-python3-openid
+    SUBDIR += py-pywinrm
     SUBDIR += py-rekall
     SUBDIR += py-rekall-core
+    SUBDIR += py-requests-credssp
     SUBDIR += py-requests-kerberos
     SUBDIR += py-rsa
     SUBDIR += py-safe
@@ -1100,7 +1108,6 @@
     SUBDIR += rubygem-gpgr
     SUBDIR += rubygem-gssapi
     SUBDIR += rubygem-hkdf
-    SUBDIR += rubygem-jugyo-twitter_oauth
     SUBDIR += rubygem-metasploit-aggregator
     SUBDIR += rubygem-metasploit-concern
     SUBDIR += rubygem-metasploit-credential

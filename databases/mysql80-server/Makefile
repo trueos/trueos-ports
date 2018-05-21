@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME?=		mysql
-PORTVERSION=		8.0.2
-PORTREVISION?=		3
-DISTVERSIONSUFFIX?=	-dmr
+PORTVERSION=		8.0.11
+PORTREVISION?=		0
 CATEGORIES=		databases ipv6
 MASTER_SITES=		MYSQL/MySQL-8.0
 PKGNAMESUFFIX?=		80-server
@@ -14,9 +13,6 @@ MAINTAINER=		mmokhi@FreeBSD.org
 COMMENT?=		Multithreaded SQL database (server)
 
 LICENSE=		GPLv2
-
-BROKEN_SSL=	openssl-devel
-BROKEN_SSL_REASON_openssl-devel=	member access into incomplete type 'DH' (aka 'dh_st')
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}${DISTVERSIONSUFFIX}
 
@@ -31,7 +27,10 @@ MY_SECDIR=	/var/db/mysql_secure
 MY_TMPDIR=	/var/db/mysql_tmpdir
 
 LIB_DEPENDS+=	libevent.so:devel/libevent \
-		liblz4.so:archivers/liblz4
+		libicutu.so:devel/icu \
+		liblz4.so:archivers/liblz4 \
+		libre2.so:devel/re2 \
+		libprotobuf.so:devel/protobuf
 
 CMAKE_BUILD_TYPE=	Release
 CFLAGS+=		-fPIC
@@ -61,6 +60,9 @@ CMAKE_ARGS+=	-DINSTALL_LAYOUT=FREEBSD \
 		-DWITH_LIBEVENT=system \
 		-DWITH_LZ4=system \
 		-DWITH_ZLIB=system \
+		-DWITH_ICU=system \
+		-DWITH_RE2=system \
+		-DWITH_PROTOBUF=system \
 		-DINSTALL_MYSQLTESTDIR=0
 
 SHEBANG_FILES=	scripts/*.pl* scripts/*.sh
@@ -139,10 +141,6 @@ FEDERATED_SUB_LIST_OFF+=	FEDER=""
 .endif
 
 .include <bsd.port.options.mk>
-
-.if !defined(CLIENT_ONLY) && ${OPSYS} == FreeBSD && ${OSVERSION} < 1003506
-BROKEN=		no __cxa_thread_atexit() support in FreeBSD libc < 10.4
-.endif
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
 SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""

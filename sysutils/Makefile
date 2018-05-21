@@ -6,6 +6,10 @@
     SUBDIR += 3dm
     SUBDIR += 44bsd-more
     SUBDIR += 915resolution
+    SUBDIR += DTraceToolkit
+    SUBDIR += LPRng
+    SUBDIR += LPRngTool
+    SUBDIR += UEFITool
     SUBDIR += abck
     SUBDIR += abduco
     SUBDIR += abgx360
@@ -82,7 +86,11 @@
     SUBDIR += baloo-widgets
     SUBDIR += baloo-widgets-kde4
     SUBDIR += bamf
-    SUBDIR += bareos-bat
+    SUBDIR += bareos16-bat
+    SUBDIR += bareos16-client
+    SUBDIR += bareos16-client-static
+    SUBDIR += bareos16-server
+    SUBDIR += bareos16-traymonitor
     SUBDIR += bareos-client
     SUBDIR += bareos-client-static
     SUBDIR += bareos-docs
@@ -267,7 +275,6 @@
     SUBDIR += dt
     SUBDIR += dtc
     SUBDIR += dtpstree
-    SUBDIR += DTraceToolkit
     SUBDIR += du2ps
     SUBDIR += duff
     SUBDIR += dunst
@@ -282,6 +289,8 @@
     SUBDIR += dvdvideo
     SUBDIR += dvtm
     SUBDIR += dwatch
+    SUBDIR += dwatch-gource
+    SUBDIR += dwatch-pwsnoop
     SUBDIR += e2fsprogs
     SUBDIR += ec2-scripts
     SUBDIR += edid-decode
@@ -306,7 +315,7 @@
     SUBDIR += farbot
     SUBDIR += fastest_cvsup
     SUBDIR += fatback
-    SUBDIR += fbsdupdatecheck
+    SUBDIR += fcode-utils
     SUBDIR += fconfig
     SUBDIR += fcron
     SUBDIR += fd
@@ -401,7 +410,6 @@
     SUBDIR += gapcmon
     SUBDIR += garcon
     SUBDIR += gather
-    SUBDIR += gbi
     SUBDIR += gcdmaster
     SUBDIR += gcombust
     SUBDIR += gconf-editor
@@ -412,8 +420,6 @@
     SUBDIR += getdelta
     SUBDIR += geteltorito
     SUBDIR += getssl
-    SUBDIR += ghostbsd-bug-report
-    SUBDIR += ghostbsd-grub2-settings
     SUBDIR += gigolo
     SUBDIR += gkfreq
     SUBDIR += gkleds2
@@ -424,7 +430,6 @@
     SUBDIR += gkrelltop
     SUBDIR += gksu
     SUBDIR += glogg
-    SUBDIR += gnome_subr
     SUBDIR += gnome-control-center
     SUBDIR += gnome-device-manager
     SUBDIR += gnome-mount
@@ -433,7 +438,9 @@
     SUBDIR += gnome-schedule
     SUBDIR += gnome-settings-daemon
     SUBDIR += gnome-system-monitor
+    SUBDIR += gnome_subr
     SUBDIR += goaccess
+    SUBDIR += gomplate
     SUBDIR += google-compute-engine-oslogin
     SUBDIR += goss
     SUBDIR += gpart
@@ -502,7 +509,6 @@
     SUBDIR += intel-pcm
     SUBDIR += intel-pcm-devel
     SUBDIR += intel-qcu
-    SUBDIR += inxi
     SUBDIR += iocage
     SUBDIR += iocell
     SUBDIR += iogen
@@ -615,8 +621,6 @@
     SUBDIR += logtool
     SUBDIR += logwatch
     SUBDIR += lookat
-    SUBDIR += LPRng
-    SUBDIR += LPRngTool
     SUBDIR += lr
     SUBDIR += lscpu
     SUBDIR += lsof
@@ -714,6 +718,7 @@
     SUBDIR += msiklm
     SUBDIR += msktutil
     SUBDIR += msyslog
+    SUBDIR += mtm
     SUBDIR += mtpfs
     SUBDIR += mtxorbd
     SUBDIR += multitail
@@ -757,12 +762,11 @@
     SUBDIR += ori
     SUBDIR += osinfo-db-tools
     SUBDIR += osquery
-    SUBDIR += p5-arclog
-    SUBDIR += p5-BackupPC-XS
-    SUBDIR += p5-Brackup
     SUBDIR += p5-BSD-Jail-Object
     SUBDIR += p5-BSD-Process
     SUBDIR += p5-BSD-Sysctl
+    SUBDIR += p5-BackupPC-XS
+    SUBDIR += p5-Brackup
     SUBDIR += p5-Dir-Purge
     SUBDIR += p5-File-DirCompare
     SUBDIR += p5-File-Listing
@@ -798,7 +802,6 @@
     SUBDIR += p5-Proc-PidUtil
     SUBDIR += p5-Proclet
     SUBDIR += p5-Quota
-    SUBDIR += p5-reslog
     SUBDIR += p5-Rex
     SUBDIR += p5-Samba-SIDhelper
     SUBDIR += p5-Schedule-At
@@ -830,6 +833,8 @@
     SUBDIR += p5-Unix-Syslog
     SUBDIR += p5-User
     SUBDIR += p5-ZConf-Cron
+    SUBDIR += p5-arclog
+    SUBDIR += p5-reslog
     SUBDIR += packer
     SUBDIR += pacman
     SUBDIR += paicc
@@ -844,8 +849,6 @@
     SUBDIR += pax-utils
     SUBDIR += pbi-manager
     SUBDIR += pbimaker
-    SUBDIR += pc-diskmanager
-    SUBDIR += pc-firewall
     SUBDIR += pc-networkmanager
     SUBDIR += pc-sysinstall
     SUBDIR += pc-updatemanager
@@ -942,6 +945,7 @@
     SUBDIR += pwgen
     SUBDIR += pwsafe
     SUBDIR += pxattr
+    SUBDIR += py-XenAPI
     SUBDIR += py-analyzemft
     SUBDIR += py-bcfg2
     SUBDIR += py-cdmi
@@ -967,7 +971,6 @@
     SUBDIR += py-honcho
     SUBDIR += py-hpilo
     SUBDIR += py-iowait
-    SUBDIR += py-ixautomation
     SUBDIR += py-mqttwarn
     SUBDIR += py-nagiosplugin
     SUBDIR += py-nomad
@@ -995,7 +998,6 @@
     SUBDIR += py-supervisor
     SUBDIR += py-tmuxp
     SUBDIR += py-uptime
-    SUBDIR += py-XenAPI
     SUBDIR += py-zdaemon
     SUBDIR += pydf
     SUBDIR += qchroot
@@ -1121,6 +1123,9 @@
     SUBDIR += rubygem-vagrant-mutate
     SUBDIR += rubygem-vagrant-vbguest
     SUBDIR += rubygem-vmstat
+    SUBDIR += rubygem-win32-file
+    SUBDIR += rubygem-win32-file-security
+    SUBDIR += rubygem-win32-file-stat
     SUBDIR += rubygem-winrm
     SUBDIR += rubygem-winrm-elevated
     SUBDIR += rubygem-winrm-fs
@@ -1160,7 +1165,6 @@
     SUBDIR += searchmonkey
     SUBDIR += seatools
     SUBDIR += sec
-    SUBDIR += sedutil
     SUBDIR += serf
     SUBDIR += setcdboot
     SUBDIR += setquota
@@ -1170,6 +1174,7 @@
     SUBDIR += shlock
     SUBDIR += shmcat
     SUBDIR += showbeastie
+    SUBDIR += shuf
     SUBDIR += siegfried
     SUBDIR += signon-kwallet-extension
     SUBDIR += signon-plugin-oauth2
@@ -1189,6 +1194,7 @@
     SUBDIR += snmp_exporter
     SUBDIR += snooze
     SUBDIR += snowlog
+    SUBDIR += sockaddr
     SUBDIR += socket
     SUBDIR += socklog
     SUBDIR += solaar
@@ -1249,7 +1255,6 @@
     SUBDIR += terraform
     SUBDIR += testdisk
     SUBDIR += thefish
-    SUBDIR += throttle
     SUBDIR += timelimit
     SUBDIR += timemon
     SUBDIR += titlefix
@@ -1270,9 +1275,9 @@
     SUBDIR += tree
     SUBDIR += tren
     SUBDIR += trueos-libqt5
-    SUBDIR += trueos-libsh
     SUBDIR += trueos-utils
     SUBDIR += trueos-utils-qt5
+    SUBDIR += trueos-libsh
     SUBDIR += ts
     SUBDIR += tss
     SUBDIR += tty-clock
@@ -1326,7 +1331,6 @@
     SUBDIR += udfclient
     SUBDIR += uefi-edk2-bhyve
     SUBDIR += uefi-edk2-bhyve-csm
-    SUBDIR += UEFITool
     SUBDIR += ufs_copy
     SUBDIR += uhidd
     SUBDIR += uif2iso

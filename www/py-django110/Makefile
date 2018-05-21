@@ -1,5 +1,5 @@
 # Created by: Jose Alonso Cardenas Marquez <acardenas@bsd.org.pe>
-# $FreeBSD$
+# $FreeBSD: head/www/py-django110/Makefile 441892 2017-05-28 03:53:21Z sunpoet $
 
 PORTNAME=	django
 PORTVERSION=	1.10.8
@@ -16,8 +16,6 @@ COMMENT=	High-level Python Web Framework
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz
 
 NO_ARCH=	yes
 USES=		cpe python shebangfix

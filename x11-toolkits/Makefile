@@ -63,6 +63,7 @@
     SUBDIR += gtksourceview2-reference
     SUBDIR += gtksourceview3
     SUBDIR += gtksourceview3-reference
+    SUBDIR += gtksourceview4
     SUBDIR += gtksourceviewmm3
     SUBDIR += hippo-canvas
     SUBDIR += hs-GLURaw
@@ -222,6 +223,7 @@
     SUBDIR += py-wxPython30
     SUBDIR += py-xlib
     SUBDIR += pypy-tkinter
+    SUBDIR += qml-box2d
     SUBDIR += qt4-declarative
     SUBDIR += qt4-gui
     SUBDIR += qt4pas
