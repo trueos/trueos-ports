@@ -3,6 +3,7 @@
 
 PORTNAME=	palemoon
 DISTVERSION=	27.9.2
+PORTREVISION=	1
 DISTVERSIONSUFFIX=_Release
 CATEGORIES=	www ipv6
 
@@ -44,6 +45,9 @@ OPTIONS_DEFAULT=	BUNDLED_CAIRO GTK2
 OPTIONS_EXCLUDE=	DTRACE INTEGER_SAMPLES JACK TEST
 
 .include "${.CURDIR}/../../www/firefox/Makefile.options"
+
+# Inconsistent fallback order (libcubeb vs. audio_device)
+SNDIO_PREVENTS=		${OPTIONS_MULTI_AUDIO:NSNDIO}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \

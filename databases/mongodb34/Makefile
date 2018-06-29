@@ -26,14 +26,14 @@ ONLY_FOR_ARCHS_REASON=	"Only supported on amd64 (i386 deprecated in v3)"
 LIB_DEPENDS=	libpcre.so:devel/pcre \
 		libsnappy.so:archivers/snappy \
 		libboost_system.so:devel/boost-libs
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>=3.11:devel/py-yaml \
-		${PYTHON_PKGNAMEPREFIX}pymongo>=3.0:databases/pymongo
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>=3.11:devel/py-yaml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pymongo>=3.0:databases/pymongo@${PY_FLAVOR}
 
 CONFLICTS_BUILD=	mongo-cxx-driver
 
 CHOSEN_COMPILER_TYPE=	clang
 
-USES=		compiler:c++14-lang cpe python:build scons
+USES=		compiler:c++14-lang cpe python:build scons portssl
 USE_RC_SUBR=	mongod
 
 MAKE_ARGS=	--prefix=${STAGEDIR}${PREFIX} \

@@ -13,6 +13,7 @@
     SUBDIR += bind910
     SUBDIR += bind911
     SUBDIR += bind912
+    SUBDIR += bind913
     SUBDIR += bind99
     SUBDIR += bindgraph
     SUBDIR += bundy
@@ -181,6 +182,7 @@
     SUBDIR += powerdns-recursor
     SUBDIR += powerdns-recursor40
     SUBDIR += public_suffix_list
+    SUBDIR += py-aiodns
     SUBDIR += py-bonjour
     SUBDIR += py-cloudflare
     SUBDIR += py-dns

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	citra
-PORTVERSION=	s20180518
+PORTVERSION=	s20180529
 PORTREVISION?=	0
 CATEGORIES=	emulators
 
@@ -21,20 +21,16 @@ BROKEN_FreeBSD_10=	libc++ does not support C++17 features e.g., weak_from_this
 
 BUILD_DEPENDS=	boost-libs>=1.66:devel/boost-libs
 
-# backend_x64/hostloc.h:93:8: fatal error: no type named 'Reg64' in namespace 'Xbyak'
-ONLY_FOR_ARCHS=	amd64
-ONLY_FOR_ARCHS_REASON=	https://github.com/MerryMage/dynarmic/issues/35
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	citra-emu
-GH_TAGNAME=	e35c634f
+GH_TAGNAME=	72f9142b
 GH_TUPLE=	citra-emu:ext-libressl-portable:cbb1dca:libressl/externals/libressl \
-		citra-emu:ext-soundtouch:019d208:soundtouch/externals/soundtouch \
+		citra-emu:ext-soundtouch:1d0e6cf:soundtouch/externals/soundtouch \
 		MerryMage:dynarmic:d1d4705:dynarmic/externals/dynarmic \
 		benhoyt:inih:r40:inih/externals/inih/inih \
 		catchorg:Catch2:v2.1.1:catch/externals/catch \
 		fmtlib:fmt:4.0.0-510-g5859e58:fmt/externals/fmt \
-		herumi:xbyak:v5.53-1-gc5da377:xbyak/externals/xbyak \
+		herumi:xbyak:v5.64:xbyak/externals/xbyak \
 		lsalzman:enet:39a72ab:enet/externals/enet \
 		neobrain:nihstro:fd69de1:nihstro/externals/nihstro \
 		weidai11:cryptopp:CRYPTOPP_6_1_0:cryptopp/externals/cryptopp/cryptopp
