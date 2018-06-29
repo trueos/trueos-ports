@@ -76,6 +76,7 @@
     SUBDIR += hdf
     SUBDIR += hdf5
     SUBDIR += hdf5-18
+    SUBDIR += hs-bio
     SUBDIR += hypre
     SUBDIR += iboview
     SUBDIR += isaac-cfd

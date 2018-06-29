@@ -2,7 +2,7 @@
 
 PORTNAME=	cryptohash-cryptoapi
 PORTVERSION=	0.1.4
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	security haskell
 
 MAINTAINER=	haskell@FreeBSD.org

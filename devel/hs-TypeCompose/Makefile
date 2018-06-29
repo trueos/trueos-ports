@@ -13,7 +13,5 @@ LICENSE=	BSD3CLAUSE
 
 USE_CABAL=	base-orphans
 
-IGNORE=		Doesn't build with recent GHC version
-
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	vagrant-vbguest
-PORTVERSION=	0.15.2
+PORTVERSION=	0.15.1
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 

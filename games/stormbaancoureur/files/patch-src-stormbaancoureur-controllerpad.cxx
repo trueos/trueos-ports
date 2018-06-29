@@ -1,6 +1,6 @@
---- src-stormbaancoureur/controllerpad.cxx.orig	2008-04-20 15:56:35 UTC
-+++ src-stormbaancoureur/controllerpad.cxx
-@@ -15,7 +15,6 @@
+--- src-stormbaancoureur/controllerpad.cxx.orig	Mon Jul 17 00:26:08 2006
++++ src-stormbaancoureur/controllerpad.cxx	Mon Jul 17 00:28:23 2006
+@@ -14,7 +14,6 @@
  #include <windows.h>
  #include <mmsystem.h>
  #else
@@ -8,7 +8,7 @@
  #include <sys/ioctl.h>  // for ioctl()
  #include <unistd.h>     // for close()
  #include <stdio.h>      // for perror()
-@@ -82,100 +81,7 @@ action_button(-1),
+@@ -81,100 +80,7 @@
  accel_axis(-1),
  accel_button(-1)
  {
@@ -110,7 +110,7 @@
  }
  
  
-@@ -195,80 +101,6 @@ ControllerPad::~ControllerPad()
+@@ -194,80 +100,6 @@
  
  void ControllerPad::Sustain(float dt)
  {

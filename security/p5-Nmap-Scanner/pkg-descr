@@ -4,4 +4,4 @@ modules, a developer, network administrator, or other techie can create
 perl routines or classes which can be used to automate and integrate
 nmap scans elegantly into new and existing perl scripts.
 
-WWW: https://metacpan.org/release/Nmap-Scanner
+WWW: http://search.cpan.org/dist/Nmap-Scanner/

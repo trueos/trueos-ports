@@ -18,9 +18,10 @@ OCTSRC=		${DISTNAME}
 
 WRKSRC=	${WRKDIR}/${OCTSRC}/src
 
-USES+=		compiler:gcc-c++11-lib
-
 .include "${.CURDIR}/../../Mk/bsd.octave.mk"
+
+post-patch:
+	${REINPLACE_CMD} -e s/CC/MKOCTFILE/ -e s/-Wall// -e s/-Wextra// ${WRKSRC}/Makefile
 
 post-build:
 	${RM} ${WRKSRC}/Makefile ${WRKSRC}/configure

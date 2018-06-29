@@ -1,4 +1,4 @@
 MouseX::Foreign provides an ability for Mouse classes to extend any classes,
 including non-Mouse classes, including Moose classes.
 
-WWW: https://metacpan.org/release/MouseX-Foreign
+WWW: http://search.cpan.org/dist/MouseX-Foreign/

@@ -2,18 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	IO-Socket-SSL
-PORTVERSION=	2.056
+PORTVERSION=	2.051
 CATEGORIES=	security perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:SULLR
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	svysh.fbsd@gmail.com
+MAINTAINER=	jadawin@FreeBSD.org
 COMMENT=	Perl5 interface to SSL sockets
 
-LICENSE=	ART10 GPLv1+
-LICENSE_COMB=	dual
-LICENSE_FILE=	${WRKSRC}/lib/IO/Socket/SSL.pod
+LICENSE=	ARTPERL10
 
 BUILD_DEPENDS=	p5-Net-SSLeay>=1.59:security/p5-Net-SSLeay \
 		p5-Mozilla-CA>=20130114:www/p5-Mozilla-CA

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	fpm
-PORTVERSION=	1.10.0
+PORTVERSION=	1.9.3
+PORTREVISION=	1
 CATEGORIES=	archivers rubygems
 MASTER_SITES=	RG
 
@@ -30,7 +31,6 @@ PLIST_FILES=	bin/fpm
 
 post-patch:
 	@${REINPLACE_CMD} -e '/clamp/ s|1\.0\.0|1.0|' ${WRKSRC}/${GEMSPEC}
-	@${REINPLACE_CMD} -e '/ruby-xz/ s|~> 0\.2\.3|>= 0|' ${WRKSRC}/${GEMSPEC}
 # Remove backports
 	@${REINPLACE_CMD} -e '/backports/d' ${WRKSRC}/${GEMSPEC}
 	@${REINPLACE_CMD} -e '/require "backports"/d' ${WRKSRC}/lib/fpm/package.rb ${WRKSRC}/lib/fpm/package/*.rb

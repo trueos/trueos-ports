@@ -6,4 +6,4 @@ values, scalar values can contain anything except newlines. Trailing
 whitespace will be trimmed unless the value is surrounded in double
 quotes.
 
-WWW: https://metacpan.org/release/Config-Record
+WWW: http://search.cpan.org/dist/Config-Record/

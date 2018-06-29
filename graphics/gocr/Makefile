@@ -34,25 +34,28 @@ DOC_FILES2=	*.dtd *.xml *.html *.txt *.fig *.png
 OPTIONS_DEFINE=	X11 DOCS
 OPTIONS_DEFAULT=	X11
 
-X11_USES=		tk
-X11_PLIST_FILES=	bin/gocr.tcl
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MX11}
+USES+=		tk
+PLIST_FILES+=	bin/gocr.tcl
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|@LIBS@|-L${LOCALBASE}/lib @LIBS@|g' ${WRKSRC}/src/Makefile.in
-
-post-patch-X11-off:
+.if !  ${PORT_OPTIONS:MX11}
 	@${REINPLACE_CMD} -e '/gocr.tcl/d' ${WRKSRC}/src/Makefile.in
-
-post-patch-X11-on:
+.else
 	@${REINPLACE_CMD} -e 's|exec wish|exec ${WISH}|' ${WRKSRC}/bin/gocr.tcl
+.endif
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/gocr
-
-post-install-DOCS-on:
+.if ${PORT_OPTIONS:MDOCS}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOC_FILES1:S|^|${DOCSRCDIR1}/|} ${STAGEDIR}${DOCSDIR}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR2}
 	${INSTALL_DATA} ${DOC_FILES2:S|^|${DOCSRCDIR2}/|} ${STAGEDIR}${DOCSDIR2}
+.endif
 
 .include <bsd.port.mk>

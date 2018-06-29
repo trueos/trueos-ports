@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	streaming-commons
-PORTVERSION=	0.2.0.0
+PORTVERSION=	0.1.18
 PORTREVISION=	1
 CATEGORIES=	devel haskell
 
@@ -10,7 +10,7 @@ COMMENT=	Common lower-level functions needed by various streaming data libraries
 
 LICENSE=	MIT
 
-USE_CABAL=	async blaze-builder network random zlib
+USE_CABAL=	async blaze-builder network random stm text zlib
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

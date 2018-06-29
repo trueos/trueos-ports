@@ -16,7 +16,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-USES=		libtool portssl pkgconfig
+USES=		libtool ssl pkgconfig
 
 SUB_FILES=	pkg-message
 

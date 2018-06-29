@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	scipy
-PORTVERSION=	1.1.0
+PORTVERSION=	0.19.0
+PORTREVISION=	5
 CATEGORIES=	science python
 MASTER_SITES=	http://docs.scipy.org/doc/scipy/:doc \
 		CHEESESHOP:source \
@@ -21,7 +22,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 BUILD_DEPENDS=	${PYNUMPY}
 RUN_DEPENDS=	${PYNUMPY}
 
-USES=		fortran python
+USES=		fortran python zip
 USE_PYTHON=	autoplist concurrent distutils
 LDFLAGS+=	-shared
 PYDISTUTILS_BUILDARGS=	--fcompiler=gnu95

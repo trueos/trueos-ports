@@ -2,4 +2,4 @@ POSIX::getpeername provides getpeername(2).  perl's core getpeername
 needs a open file handle.  POSIX::getpeername allows you to get
 peername from sockfd.
 
-WWW: https://metacpan.org/release/POSIX-getpeername
+WWW: http://search.cpan.org/dist/POSIX-getpeername/

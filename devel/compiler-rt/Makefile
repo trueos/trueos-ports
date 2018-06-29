@@ -9,10 +9,6 @@ MASTER_SITES=	LOCAL/brooks
 MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	Compiler runtime library with Blocks support
 
-LICENSE=	BSD3CLAUSE MIT
-LICENSE_COMB=	dual
-LICENSE_FILE=	${WRKSRC}/LICENSE.TXT
-
 BUILD_DEPENDS=	cmake:devel/cmake
 
 BROKEN_powerpc64=	does not build: undefined reference to fmax
@@ -20,8 +16,6 @@ BROKEN_powerpc64=	does not build: undefined reference to fmax
 CONFIGURE_WRKSRC=	${WRKDIR}/build
 BUILD_WRKSRC=		${WRKDIR}/build
 INSTALL_WRKSRC=		${WRKDIR}/build
-TEST_WRKSRC=		${WRKDIR}/build
-TEST_TARGET=		test
 
 CMAKE_SOURCE_PATH=	${WRKSRC}
 
@@ -79,5 +73,8 @@ post-patch:
 	${REINPLACE_CMD} -e 's/\(MACRO_ADD_CHECK_TEST( ${test}\)/# \1/' \
 	    ${WRKSRC}/test/CMakeLists.txt
 .endfor
+
+regression-test:
+	cd ${BUILD_WRKSRC} && make test
 
 .include <bsd.port.post.mk>

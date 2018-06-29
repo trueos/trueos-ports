@@ -11,9 +11,7 @@ COMMENT=	This library provides bindings for the Dot language used by the Graphvi
 LICENSE=	BSD3CLAUSE
 
 USES=		pkgconfig
-USE_CABAL=	colour dlist fgl polyparse temporary wl-pprint-text
-
-IGNORE=		Doesn't build with recent GHC version
+USE_CABAL=	colour dlist fgl polyparse temporary text wl-pprint-text
 
 BUILD_DEPENDS+=	${LOCALBASE}/libdata/pkgconfig/libxdot.pc:graphics/graphviz
 

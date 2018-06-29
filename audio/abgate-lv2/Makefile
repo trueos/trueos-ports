@@ -3,7 +3,6 @@
 PORTNAME=	abGate
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.1.9
-PORTREVISION=	1
 CATEGORIES=	audio
 PKGNAMESUFFIX=	-lv2
 
@@ -19,8 +18,7 @@ USES=		gmake pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	antanasbruzas
 USE_CXXSTD=	c++11
-USE_QT5=	core gui widgets buildtools_build qmake_build
-USE_GL=		gl
+USE_QT4=	corelib gui moc_build rcc_build qmake_build uic_build
 USE_GNOME=	atkmm gtk20 gtkmm24 libsigc++20
 USE_LDCONFIG=	yes
 
@@ -30,7 +28,7 @@ post-patch:
 		s|g++|$$(CXX)|; \
 		s|CPPFLAGS|CXXFLAGS|; \
 		s| -g -O3||; \
-		s|cd abGateQt; qmake; make|cd abGateQt; $(QMAKE) \&\& $$(MAKE)|' \
+		s|cd abGateQt; qmake; make|cd abGateQt; qmake \&\& $$(MAKE)|' \
 		${WRKSRC}/Makefile
 	@${REINPLACE_CMD} -E ' \
 		s|^QMAKE_CXXFLAGS (.*)|QMAKE_CXXFLAGS = ${CXXFLAGS}|; \

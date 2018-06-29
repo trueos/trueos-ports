@@ -10,4 +10,4 @@ install XS dependent packages.
 If you are not familiar with Ext.Direct, more information can be found in
 RPC::ExtDirect::Intro.
 
-WWW: https://metacpan.org/release/Plack-Middleware-ExtDirect
+WWW: http://search.cpan.org/dist/Plack-Middleware-ExtDirect/

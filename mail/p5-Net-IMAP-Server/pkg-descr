@@ -3,4 +3,4 @@ specification, along with several IMAP4rev1 extensions. It provides
 separation of the mailbox and message store from the client interaction
 loop.
 
-WWW: https://metacpan.org/release/Net-IMAP-Server
+WWW: http://search.cpan.org/dist/Net-IMAP-Server/

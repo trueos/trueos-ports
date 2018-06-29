@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	acme-tiny
-DISTVERSION=	4.0.4
+DISTVERSION=	4.0.3
 CATEGORIES=	security python
 
 MAINTAINER=	mat@FreeBSD.org

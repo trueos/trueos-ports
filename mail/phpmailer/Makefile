@@ -12,10 +12,6 @@ COMMENT=	Full Featured Email Transfer Class for PHP
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-CONFLICTS_INSTALL=	phpmailer6
-
-PORTSCOUT=	limit:^5\.
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	PHPMailer
 GH_PROJECT=	PHPMailer

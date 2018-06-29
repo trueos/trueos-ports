@@ -5,4 +5,4 @@ methods:
 
 blocksize, keysize, encrypt, decrypt
 
-WWW: https://metacpan.org/release/Crypt-DES
+WWW: http://search.cpan.org/dist/Crypt-DES/

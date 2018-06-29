@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	hs-bibutils
-PORTVERSION=	6.2.0.1
+PORTVERSION=	5.5
+PORTREVISION=	2
 CATEGORIES=	textproc haskell
 
 MAINTAINER=	haskell@FreeBSD.org

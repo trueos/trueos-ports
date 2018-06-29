@@ -11,15 +11,13 @@ MAINTAINER=	python@FreeBSD.org
 COMMENT=	Produces HTML5 documents from reStructuredText sources
 
 LICENSE=	MIT
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Genshi>=0.7:textproc/py-genshi@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pygments>=2.0.2:textproc/py-pygments@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}docutils>=0.12:textproc/py-docutils@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Genshi>=0.7:textproc/py-genshi@${FLAVOR} \
+	${PYTHON_PKGNAMEPREFIX}pygments>=2.1:textproc/py-pygments@${FLAVOR} \
+	${PYTHON_PKGNAMEPREFIX}docutils>=0.12:textproc/py-docutils@${FLAVOR}
 
-USES=		python
-USE_PYTHON=	distutils concurrent autoplist
-
+USES=	python:2.7
+USE_PYTHON=	distutils autoplist
 NO_ARCH=	yes
 
 .include <bsd.port.mk>

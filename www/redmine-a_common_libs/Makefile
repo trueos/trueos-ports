@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	a_common_libs
-PORTVERSION=	2.4.6
+PORTVERSION=	2.1.8
 CATEGORIES=	www
 MASTER_SITES=	http://bitbucket.org/dkuk/${PORTNAME}/get/
 PKGNAMEPREFIX=	redmine-
@@ -12,11 +12,9 @@ DIST_SUBDIR=	${PORTNAME}-${PORTVERSION}
 MAINTAINER=	feld@FreeBSD.org
 COMMENT=	Common libraries for RedMine
 
-RUN_DEPENDS=	rubygem-activerecord-session_store>0:databases/rubygem-activerecord-session_store
-
 NO_ARCH=	yes
 
-BB_COMMIT=	7c2f0ce66275
+BB_COMMIT=	a7b8c62fe17d
 
 REDMINE_PLUGIN_NAME=	${PORTNAME}
 

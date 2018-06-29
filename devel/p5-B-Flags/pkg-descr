@@ -6,4 +6,4 @@ through the Perl source code in order to do anything useful with. This
 module adds "flagspv" to the SV and op classes and "privatepv" to the op
 classes, which makes them easier to understand.
 
-WWW: https://metacpan.org/release/B-Flags
+WWW: http://search.cpan.org/dist/B-Flags/

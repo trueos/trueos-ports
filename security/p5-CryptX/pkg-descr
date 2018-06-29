@@ -10,4 +10,4 @@ Currently available modules:
   *   Cryptographically secure random number generators
   *   Key derivation functions - PBKDF1, PBKFD2 and HKDF
 
-WWW: https://metacpan.org/release/CryptX
+WWW: http://search.cpan.org/dist/CryptX/

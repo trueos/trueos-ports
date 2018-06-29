@@ -2,7 +2,6 @@
 
 PORTNAME=	dhcpd
 PORTVERSION=	6.0.20170207
-PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	koue@chaosophia.net
@@ -26,10 +25,6 @@ MAKE_ARGS+=	BINDIR=${PREFIX}/sbin MANDIR=${PREFIX}/man/man
 
 USERS=		dhcpd
 GROUPS=		dhcpd
-
-post-patch:
-	@${REINPLACE_CMD} -e "s|/etc/dhcpd.conf|${PREFIX}/etc/dhcpd.conf|" \
-		${WRKSRC}/dhcpd.[h8]
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/dhcpd.conf \

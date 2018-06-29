@@ -68,7 +68,7 @@ do-build:
 do-install:
 	@${CP} -a ${WRKSRC} ${STAGEDIR}${PREFIX}/go14
 
-do-test:
+regression-test: build
 	cd ${WRKSRC}/src && GOROOT=${WRKSRC} PATH=${WRKSRC}/bin:${PATH} ${SH} run.bash --no-rebuild --banner
 
 .include <bsd.port.post.mk>

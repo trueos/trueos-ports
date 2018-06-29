@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	ix-bhyve
-PORTVERSION=	18.06
+PORTVERSION=	18.05
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	jmaloney@ixsystems.com

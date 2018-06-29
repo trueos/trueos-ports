@@ -3,37 +3,36 @@
 
 PORTNAME=	ocrad
 PORTVERSION=	0.26
-PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	GNU
 EXTRACT_SUFX=	.tar.lz
 
-MAINTAINER=	yuri@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OCR program implemented as filter
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 HAS_CONFIGURE=	yes
-CONFIGURE_ARGS=	--prefix=${PREFIX} CXX="${CXX}" CXXFLAGS="${CXXFLAGS} -fPIC" --mandir=${PREFIX}/man --infodir=${PREFIX}/info
-USE_LDCONFIG=	yes
-
-PLIST_FILES=	bin/${PORTNAME} \
-		include/ocradlib.h \
-		lib/libocrad.so \
-		man/man1/ocrad.1.gz \
-		info/ocrad.info
-
-OPTIONS_DEFINE=	DOCS EXAMPLES
+CONFIGURE_ARGS=	--prefix=${PREFIX} CXX="${CXX}" CXXFLAGS="${CXXFLAGS}"
 
 PORTDOCS=	AUTHORS ChangeLog NEWS README
 PORTEXAMPLES=	*
+PLIST_FILES=	bin/${PORTNAME} man/man1/ocrad.1.gz
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+do-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/doc/ocrad.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	(cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} \
+		${STAGEDIR}${DOCSDIR})
 
 post-install-EXAMPLES-on:
-	cd ${WRKSRC}/testsuite && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	@(cd ${WRKSRC}/testsuite && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
 
 .include <bsd.port.mk>

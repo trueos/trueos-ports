@@ -11,8 +11,6 @@ COMMENT=	Python bindings for libstorj
 
 LICENSE=	LGPL21+
 
-BROKEN=		fails to build
-
 BUILD_DEPENDS=	swig3.0:devel/swig30
 LIB_DEPENDS=	libstorj.so:net/libstorj
 

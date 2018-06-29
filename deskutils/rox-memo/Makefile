@@ -11,7 +11,7 @@ MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Appointment/TODO management for the ROX desktop
 
 RUN_DEPENDS=	${LOCALBASE}/bin/rox:x11-fm/rox-filer \
-		${PYTHON_PKGNAMEPREFIX}roxlib>=0:devel/py-roxlib@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}roxlib>=0:devel/py-roxlib
 
 USES=		python:2.7 shebangfix tar:bzip2
 SHEBANG_FILES=	Memo/AppRun Memo/AppletRun

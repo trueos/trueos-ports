@@ -4,4 +4,4 @@ This module makes forking test!
 
 This module merges test count with parent process & child process.
 
-WWW: https://metacpan.org/release/Test-SharedFork
+WWW: http://search.cpan.org/dist/Test-SharedFork/

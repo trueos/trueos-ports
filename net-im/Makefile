@@ -133,7 +133,6 @@
     SUBDIR += pidgin-skype
     SUBDIR += pidgin-skypeweb
     SUBDIR += pidgin-twitter
-    SUBDIR += pidgin-window_merge
     SUBDIR += plasma-applet-ktp-kde4
     SUBDIR += poezio
     SUBDIR += profanity

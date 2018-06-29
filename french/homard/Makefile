@@ -19,7 +19,7 @@ RESTRICTED=	The free downloading of HOMARD software is only allowed for coupling
 
 ONLY_FOR_ARCHS=	amd64 i386
 
-USES=		linux python:2.7 shebangfix
+USES=		linux python shebangfix
 SHEBANG_FILES=	${WRKSRC}/ASTER_HOMARD/homard	\
 		${WRKSRC}/homard_base ${WRKSRC}/setup_homard.py
 REINPLACE_ARGS=	-i ""

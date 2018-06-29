@@ -1,6 +1,6 @@
---- flow/ThreadPrimitives.cpp.orig	2018-05-11 01:30:59 UTC
+--- flow/ThreadPrimitives.cpp.orig	2018-04-24 15:27:55 UTC
 +++ flow/ThreadPrimitives.cpp
-@@ -37,7 +37,7 @@ extern std::string format( const char *form, ... );
+@@ -37,7 +37,7 @@ extern std::string format( const char *f
  Event::Event() {
  #ifdef _WIN32
  	ev = CreateEvent(NULL, FALSE, FALSE, NULL);

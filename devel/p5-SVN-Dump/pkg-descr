@@ -10,4 +10,4 @@ document:
 * Some special records (delete records with a Node-kind header)
   recursively contain included records.
 
-WWW: https://metacpan.org/release/SVN-Dump
+WWW: http://search.cpan.org/dist/SVN-Dump/

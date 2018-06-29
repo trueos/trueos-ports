@@ -2,7 +2,6 @@
 
 PORTNAME=	network
 DISTVERSION=	${QT5_VERSION}
-PORTREVISION=	1
 CATEGORIES=	net ipv6
 PKGNAMEPREFIX=	qt5-
 
@@ -14,7 +13,7 @@ BROKEN_SSL_REASON_openssl-devel=	error: member access into incomplete type 'X509
 
 RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss
 
-USES=		portssl
+USES=		ssl
 USE_QT5=	core qmake_build buildtools_build
 QT_DIST=	base
 HAS_CONFIGURE=	yes

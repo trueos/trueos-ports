@@ -2,4 +2,4 @@ This module provides a single function, refcount(), which obtains the
 reference count of the object being pointed to by the passed reference
 value.
 
-WWW: https://metacpan.org/release/Devel-Refcount
+WWW: http://search.cpan.org/dist/Devel-Refcount/

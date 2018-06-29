@@ -1,6 +1,6 @@
---- lib/include/vm_basic_types.h.orig	2018-03-30 18:44:35 UTC
+--- lib/include/vm_basic_types.h.orig	2017-02-24 22:15:37 UTC
 +++ lib/include/vm_basic_types.h
-@@ -418,6 +418,7 @@ typedef int64 VmTimeVirtualClock;  /* Virtual Clock ke
+@@ -415,6 +415,7 @@ typedef int64 VmTimeVirtualClock;  /* Vi
        #endif
     #elif defined(__linux__) || \
          (defined(__FreeBSD__) && (__FreeBSD__ + 0))\

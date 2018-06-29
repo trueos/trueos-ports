@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	python-lzo
-DISTVERSION=	1.12
+PORTVERSION=	1.11
 CATEGORIES=	archivers python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,7 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	liblzo2.so:archivers/lzo2
 
-USES=		localbase python
+USES=		python
 USE_PYTHON=	autoplist distutils
+CFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/lzo
 
 .include <bsd.port.mk>

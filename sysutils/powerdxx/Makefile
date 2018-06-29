@@ -2,7 +2,6 @@
 
 PORTNAME=	powerdxx
 DISTVERSION=	0.3.0
-PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	lebarondemerde@privacychain.ch

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	win32-file
-PORTVERSION=	0.8.2
+PORTVERSION=	0.8.1
 CATEGORIES=	sysutils rubygems
 MASTER_SITES=	RG
 

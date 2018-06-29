@@ -26,23 +26,34 @@ USES=		cmake python:2.7 tar:bzip2
 USE_LDCONFIG=	yes
 
 ALL_TARGET=	all
-TEST_TARGET=	test
 
 OPTIONS_DEFINE=	DOCS MANPAGES
 OPTIONS_DEFAULT=	MANPAGES
-OPTIONS_SUB=	yes
 
-MANPAGES_PLIST_FILES=	man/man1/shiboken.1.gz
-MANPAGES_CMAKE_OFF=	-DNO_INSTALL_MANPAGES:BOOL="ON"
+.include <bsd.port.options.mk>
 
-DOCS_BUILD_DEPENDS=	sphinx-build:textproc/py-sphinx
-DOCS_ALL_TARGET=	doc
+.if ${PORT_OPTIONS:MMANPAGES}
+PLIST_FILES+=	man/man1/shiboken.1.gz
+.else
+CMAKE_ARGS=	-DNO_INSTALL_MANPAGES:BOOL="ON"
+.endif
 
-post-install-DOCS-on:
-	cd ${WRKSRC}/doc/html && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
+.if ${PORT_OPTIONS:MDOCS}
+BUILD_DEPENDS+=	sphinx-build:textproc/py-sphinx
+ALL_TARGET+=	doc
+post-install:
+	if [ -d ${WRKSRC}/doc/html ]; then \
+		${MKDIR} ${STAGEDIR}${DOCSDIR} && \
+		cd ${WRKSRC}/doc/html && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}; \
+	fi
+.endif
 
 post-patch:
 	@cd ${WRKSRC}/generator && \
-		${MV} ${PORTNAME} ${PORTNAME}.dir
+	${MV} ${PORTNAME} ${PORTNAME}.dir
+
+regression-test: build
+	@${ECHO_MSG} "===> Running shiboken regression tests"
+	@cd ${WRKSRC} && ${MAKE} test
 
 .include <bsd.port.mk>

@@ -3,7 +3,6 @@
 
 PORTNAME=	tty-markdown
 PORTVERSION=	0.3.0
-PORTREVISION=	1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

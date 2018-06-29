@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lumina-coreutils
-PORTVERSION=	1.4.2
-PORTREVISION=	201803131031
+PORTVERSION=	1.4.1
 CATEGORIES=	x11
 
 MAINTAINER=	jt@ixsystems.com
@@ -32,7 +31,7 @@ USE_QT5=	core gui widgets network svg imageformats \
 USE_GITHUB=	yes
 GH_ACCOUNT=	trueos
 GH_PROJECT=	lumina
-GH_TAGNAME=	e1dae8c03e02869f752ca6210ea276e32545f11a
+GH_TAGNAME=	b6536c1547571ae8dd0618bed752e2e0025bf2a7
 WRKSRC_SUBDIR=	src-qt5/core-utils
 
 .if${PORT_OPTIONS:MI18N}

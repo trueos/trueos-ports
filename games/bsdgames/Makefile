@@ -7,7 +7,7 @@ PORTEPOCH=	1
 CATEGORIES=	games
 MASTER_SITES=	LOCAL/adamw
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	adamw@FreeBSD.org
 COMMENT=	Traditional BSD games taken from DragonFly BSD
 
 LICENSE=	BSD3CLAUSE

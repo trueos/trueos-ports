@@ -11,7 +11,7 @@ COMMENT=	KSNI App Indicator library
 LIB_DEPENDS=	libdbusmenu-gtk3.so:devel/libdbusmenu \
 		libindicator3.so:devel/libindicator
 
-USES=		gmake libtool pkgconfig python:2.7
+USES=		gmake libtool pkgconfig python
 USE_LDCONFIG=	yes
 USE_GNOME=	gtk30 pygtk2
 

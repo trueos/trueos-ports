@@ -9,4 +9,4 @@ acceptable.
 The resulting date will be a Date::Simple object. Date::Simple for more
 information on this.
 
-WWW: https://metacpan.org/release/CGI-Untaint-date
+WWW: http://search.cpan.org/dist/CGI-Untaint-date/

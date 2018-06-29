@@ -3,7 +3,7 @@
 
 PORTNAME=	htmlize.el
 PORTVERSION=	1.39
-PORTREVISION=	6
+PORTREVISION=	5
 CATEGORIES=	textproc elisp
 MASTER_SITES=	http://fly.srk.fer.hr/~hniksic/emacs/
 PKGNAMESUFFIX=	${EMACS_PKGNAMESUFFIX}

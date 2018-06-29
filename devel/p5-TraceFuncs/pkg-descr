@@ -16,4 +16,4 @@ something like:
 |  done (in ./t.pm:34)
 +-< global: '0'
 
-WWW: https://metacpan.org/release/traceFunc
+WWW: http://search.cpan.org/dist/traceFunc/

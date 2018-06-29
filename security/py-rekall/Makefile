@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	rekall
-DISTVERSION=	1.7.2rc1
+PORTVERSION=	1.6.0
+PORTREVISION=	1
 CATEGORIES=	security python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,22 +13,12 @@ COMMENT=	Memory forensics analysis framework
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}rekall_lib>=1.7.1:security/py-rekall_lib@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}rekall-core>=1.7.1:security/py-rekall-core@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}ipython>=5.0.0:devel/ipython@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}rekall-core>=1.5.0.p:security/py-rekall-core@${FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}ipython>=5.0.0:devel/ipython@${FLAVOR}
 
 NO_ARCH=	yes
-USES=		python shebangfix zip
+USES=		python:2.7 zip
 USE_PYTHON=	distutils autoplist
-
-python_OLD_CMD=	python
-SHEBANG_FILES=	tools/devel/autopep8.sh \
-		tools/devel/presubmit.sh \
-		tools/linux/lmap/tools/fix_versions.py \
-		tools/profiles/unpack_kdbg_kit.py \
-		tools/testing/tap.py \
-		tools/testing/test_suite.py \
-		tools/windows/winpmem/winpmem.py
 
 .include <bsd.port.pre.mk>
 

@@ -26,7 +26,7 @@ MAKE_ENV=	INSTALL_ROOT="${STAGEDIR}"
 
 BUILD_DEPENDS+=	boost-libs>1.52:devel/boost-libs
 
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3
 
 post-extract:
 	cd ${WRKSRC_parts};\

@@ -71,6 +71,8 @@
 
 depend()
 {
+	provide webcamd
+	need net
 	before devd
 	after dbus
 	keyword -shutdown
@@ -220,7 +222,7 @@ stop()
     done
   else
     echo "${name} is not running."
-    return 0
+    return 1
   fi
 }
 

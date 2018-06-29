@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	zenphoto
-PORTVERSION=	1.5
-DISTVERSIONPREFIX=	v
+PORTVERSION=	1.4.14
+DISTVERSIONPREFIX=	${PORTNAME}-
+PORTREVISION=	2
 CATEGORIES=	www
 PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
@@ -11,7 +12,6 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Simpler web photo gallery
 
 LICENSE=	GPLv2+
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 NO_ARCH=	yes
 NO_BUILD=	yes
@@ -25,7 +25,8 @@ USE_GITHUB=	yes
 post-extract:
 	@${MKDIR} ${WRKSRC}/cache/
 	@${FIND} ${WRKSRC} -name '.git*' -delete
-	@${RM} ${WRKSRC}/zp-core/Zenphoto.package
+	@${FIND} -s ${WRKSRC}/ -type d -empty | ${XARGS} -I % ${TOUCH} %/.keepme
+	@${RM} ${WRKSRC}/doc_files/Zenphoto\ license.txt ${WRKSRC}/doc_files/README.html ${WRKSRC}/zp-core/Zenphoto.package
 
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}/
@@ -33,15 +34,19 @@ do-install:
 
 # maintainer section:
 
+MS_DIR=		albums cache themes zp-core
 MS_PLIST=	${WRKDIR}/.ms-pkg-plist
 
 genplist: do-clean extract
-	@${ECHO_CMD} '@owner www' > ${MS_PLIST}
-	@${ECHO_CMD} '@group www' >> ${MS_PLIST}
-	@cd ${WRKSRC}/ && ${FIND} * -type f | ${SORT} | ${SED} 's|^|%%WWWDIR%%/|' >> ${MS_PLIST}
-	@cd ${WRKSRC}/ && (${FIND} * -type d -empty | ${XARGS} -I _ ${ECHO_CMD} '@dir %%WWWDIR%%/_') >> ${MS_PLIST}
-	@${ECHO_CMD} '@owner' >> ${MS_PLIST}
-	@${ECHO_CMD} '@group' >> ${MS_PLIST}
-	@${INSTALL} -m 600 ${MS_PLIST} ${PLIST}
+	${ECHO_CMD} '@owner www' > ${MS_PLIST}
+	${ECHO_CMD} '@group www' >> ${MS_PLIST}
+	cd ${WRKSRC}/ && ${FIND} * -type f | ${SORT} | ${SED} 's|^|%%WWWDIR%%/|' >> ${MS_PLIST}
+.for dir in ${MS_DIR}
+	${ECHO_CMD} '@dir %%WWWDIR%%/${dir}' >> ${MS_PLIST}
+.endfor
+	${ECHO_CMD} '@dir %%WWWDIR%%' >> ${MS_PLIST}
+	${ECHO_CMD} '@owner' >> ${MS_PLIST}
+	${ECHO_CMD} '@group' >> ${MS_PLIST}
+	${INSTALL} -m 600 ${MS_PLIST} ${PLIST}
 
 .include <bsd.port.mk>

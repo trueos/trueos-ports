@@ -2,4 +2,4 @@ Chemistry::Elements provides an easy, object-oriented way to keep
 track of your chemical data. Using either the atomic number, chemical
 symbol, or element name you can construct an Element object.
 
-WWW: https://metacpan.org/release/Chemistry-Elements
+WWW: http://search.cpan.org/dist/Chemistry-Elements/

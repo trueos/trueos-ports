@@ -3,15 +3,13 @@
 
 PORTNAME=		nbc
 PORTVERSION=		1.2.1.r4
-PORTREVISION=		12
+PORTREVISION=		11
 CATEGORIES=		lang
 MASTER_SITES=		SF/bricxcc/NBC_NXC/NBC%20release%20${PORTVERSION:S/.r/%20r/}
 DISTNAME=		${PORTNAME}-${PORTVERSION}.src
 
 MAINTAINER=		rene@FreeBSD.org
 COMMENT=		Programming language for the LEGO MINDSTORMS NXT
-
-LICENSE=		MPL11
 
 MAKE_JOBS_UNSAFE=	yes
 MAKEFILE=		nbcunix.mak
@@ -32,8 +30,6 @@ PLIST_FILES=		bin/nbc \
 
 PORTDOCS=		Changelog \
 			Readme
-
-LLD_UNSAFE=		yes # PR 228613, needs FPC changes?
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' ${WRKSRC}/${MAKEFILE}

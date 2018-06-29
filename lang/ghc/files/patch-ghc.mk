@@ -8,14 +8,14 @@
  else
  $(error Make has restarted itself $(MAKE_RESTARTS) times; is there a makefile bug? See http://ghc.haskell.org/trac/ghc/wiki/Building/Troubleshooting#Makehasrestarteditself3timesisthereamakefilebug for details)
  endif
-@@ -459,10 +460,7 @@ PACKAGES_STAGE1 += ghc-boot-th
- PACKAGES_STAGE1 += ghc-boot
+@@ -465,10 +466,7 @@ PACKAGES_STAGE1 += ghc-boot
  PACKAGES_STAGE1 += template-haskell
- PACKAGES_STAGE1 += ghc-compact
+ PACKAGES_STAGE1 += hoopl
+ PACKAGES_STAGE1 += transformers
 -
 -ifeq "$(HADDOCK_DOCS)" "YES"
  PACKAGES_STAGE1 += xhtml
 -endif
  
- ifeq "$(WITH_TERMINFO)" "YES"
- PACKAGES_STAGE1 += terminfo
+ ifeq "$(Windows_Target)" "NO"
+ ifneq "$(TargetOS_CPP)" "ios"

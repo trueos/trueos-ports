@@ -11,4 +11,4 @@ DBI.  From its description ...
   checking, but it also makes immediate error check simply " $db->query(...) or
   die $db->error".
 
-WWW: https://metacpan.org/release/DBIx-Simple
+WWW: http://search.cpan.org/dist/DBIx-Simple/

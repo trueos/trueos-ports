@@ -1,4 +1,3 @@
-lib/rsyslog/fmhash.so
 lib/rsyslog/fmhttp.so
 lib/rsyslog/im3195.so
 lib/rsyslog/imdiag.so

@@ -1,4 +1,4 @@
 This module lets you peek into archives without extracting them.
 It currently supports tar files and zip files.
 
-WWW: https://metacpan.org/release/Archive-Peek
+WWW: http://search.cpan.org/dist/Archive-Peek/

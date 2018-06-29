@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	nvidia-settings
-PORTVERSION=	396.24
+PORTVERSION=	384.59
+PORTREVISION=	1
 CATEGORIES=	x11
 
 MAINTAINER=	bland@FreeBSD.org
@@ -32,7 +33,6 @@ PLIST_FILES=	bin/nvidia-settings \
 		share/pixmaps/nvidia-settings.png
 
 LDFLAGS+=	-pthread
-LLD_UNSAFE=	yes
 MAKE_ENV=	NV_USE_BUNDLED_LIBJANSSON=0 \
 		NV_VERBOSE= \
 		GTK3_AVAILABLE=0 \

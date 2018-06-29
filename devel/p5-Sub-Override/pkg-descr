@@ -7,4 +7,4 @@ and to supply a sub to replace it with.
   my $override = Sub::Override->new;
   $override->replace('Some::sub', sub { 'new data' });
 
-WWW: https://metacpan.org/release/Sub-Override
+WWW: http://search.cpan.org/dist/Sub-Override/

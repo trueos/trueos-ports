@@ -2,13 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	XML-FeedPP
-PORTVERSION=	0.95
+PORTVERSION=	0.43
+PORTREVISION=	1
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	oleg@mamontov.net
-COMMENT=	Parse/write/merge/edit RSS/RDF/Atom syndication feeds
+COMMENT=	Get an RSS file and parse it
 
 LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	App-perlbrew
-PORTVERSION=	0.83
+PORTVERSION=	0.82
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:GUGOD
@@ -25,11 +25,10 @@ TEST_DEPENDS=	p5-File-Which>=1.21:sysutils/p5-File-Which \
 		p5-Test-Exception>=0.32:devel/p5-Test-Exception \
 		p5-Test-NoWarnings>=1.04:devel/p5-Test-NoWarnings \
 		p5-Test-Output>=1.03:devel/p5-Test-Output \
-		p5-Test-Spec>=0.47:devel/p5-Test-Spec \
-		p5-Test-TempDir-Tiny>=0.016:devel/p5-Test-TempDir-Tiny
+		p5-Test-Spec>=0.47:devel/p5-Test-Spec
 
 NO_ARCH=	yes
-USE_PERL5=	modbuildtiny
+USE_PERL5=	configure
 USES=		perl5
 
 .include <bsd.port.pre.mk>

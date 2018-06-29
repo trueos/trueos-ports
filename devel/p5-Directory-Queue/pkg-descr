@@ -3,4 +3,4 @@ underlying filesystem for storage, security and to prevent race
 conditions via atomic operations. It focuses on simplicity, robustness
 and scalability.
 
-WWW: https://metacpan.org/release/Directory-Queue
+WWW: http://search.cpan.org/dist/Directory-Queue/

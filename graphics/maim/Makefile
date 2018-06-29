@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	maim
-PORTVERSION=	5.5.1
+PORTVERSION=	3.4.47
 DISTVERSIONPREFIX=	v
 CATEGORIES=	graphics
 
@@ -10,23 +10,17 @@ COMMENT=	Screenshot utility with performance improvements over scrot
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	${LOCALBASE}/include/glm/glm.hpp:math/glm
-LIB_DEPENDS=	libImlib2.so:graphics/imlib2 \
-		libicuuc.so:devel/icu \
-		libpng16.so:graphics/png \
-		libslopy.so:x11/slop
+LIB_DEPENDS=	libImlib2.so:graphics/imlib2
 
-USES=		cmake jpeg
 USE_GITHUB=	yes
 GH_ACCOUNT=	naelstrof
-USE_GL=		gl glut
-USE_XORG=	ice sm x11 xcomposite xext xfixes xrandr xrender
+
+USES=		cmake
+USE_XORG=	x11 xrandr xfixes
 PLIST_FILES=	bin/${PORTNAME} man/man1/${PORTNAME}.1.gz
 
-CMAKE_ARGS=	-DSLOP_LIBRARIES=${LOCALBASE}/lib/libslopy.so
-
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
-	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
+	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/man-src/${PORTNAME}.1.gz ${STAGEDIR}${MAN1PREFIX}/man/man1
 
 .include <bsd.port.mk>

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	ltl2ba
-PORTVERSION=	1.2
+PORTVERSION=	1.1
 CATEGORIES=	math
-MASTER_SITES=	http://www.lsv.ens-cachan.fr/~gastin/ltl2ba/
+MASTER_SITES=	http://www.lsv.ens-cachan.fr/~gastin/ltl2ba/ LOCAL/bf
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast translation from LTL formulae to Buechi automata

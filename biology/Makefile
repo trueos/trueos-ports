@@ -19,9 +19,7 @@
     SUBDIR += cd-hit
     SUBDIR += cdbfasta
     SUBDIR += chemeq
-    SUBDIR += clustal-omega
     SUBDIR += clustalw
-    SUBDIR += clustalx
     SUBDIR += consed
     SUBDIR += crux
     SUBDIR += ddocent

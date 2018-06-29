@@ -1,22 +1,26 @@
 # $FreeBSD$
 
 PORTNAME=	msgpack
-PORTVERSION=	3.0.1
+PORTVERSION=	1.4.2
 DISTVERSIONPREFIX=	cpp-
+PORTREVISION=	3
 CATEGORIES=	devel
 
-MAINTAINER=	adamw@FreeBSD.org
-COMMENT=	Efficient binary serialization, like JSON but smaller and faster
+MAINTAINER=	kuriyama@FreeBSD.org
+COMMENT=	MessagePack implementation for C and C++
 
-LICENSE=	BSL
-LICENSE_FILE=	${WRKSRC}/LICENSE_1_0.txt
+LICENSE=	APACHE20
 
 TEST_DEPENDS=	googletest>0:devel/googletest
 
-USES=		cmake pathfix
-USE_LDCONFIG=	yes
 USE_GITHUB=	yes
 GH_PROJECT=	msgpack-c
+
+USES=		autoreconf:build libtool:build localbase pathfix
+GNU_CONFIGURE=	yes
+INSTALL_TARGET=	install-strip
+TEST_TARGET=	check
+USE_LDCONFIG=	yes
 
 .include <bsd.port.options.mk>
 
@@ -24,5 +28,8 @@ GH_PROJECT=	msgpack-c
 # required for __sync _* atomic operations on sparc
 USE_GCC=	yes
 .endif
+
+pre-configure:
+	cd ${WRKSRC} && ./bootstrap
 
 .include <bsd.port.mk>

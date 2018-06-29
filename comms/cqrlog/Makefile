@@ -3,22 +3,22 @@
 
 PORTNAME=	cqrlog
 PORTVERSION=	2.2.0
-PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	comms hamradio
-PKGNAMESUFFIX=	${LAZARUS_PKGNAMESUFFIX}
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Amateur Radio logging application
 
 LICENSE=	GPLv2
 
+BUILD_DEPENDS=	lazbuild:editors/lazarus
+PATCH_DEPENDS=	${LAZARUS_DIR}/tools/lazres:editors/lazarus
 LIB_DEPENDS=	libhamlib.so:comms/hamlib
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ok2cqr
 
-USES=		fpc lazarus:flavors shebangfix
+USES=		fpc shebangfix
 SHEBANG_FILES=	tools/cqrlog-apparmor-fix \
 		voice_keyer/voice_keyer.sh
   
@@ -28,18 +28,23 @@ USE_FPC=	cairo fcl-base chm fcl-db fcl-image fcl-json fcl-net fcl-web \
 
 ALL_TARGET=	${PORTNAME}
 
-MAKE_ENV+=	LAZBUILD_CMD="${LAZBUILD_CMD}" \
-		LAZBUILD_ARGS="${LAZBUILD_ARGS}" \
-		LCL_PLATFORM="${LCL_PLATFORM}" \
-		LAZARUS_DIR="${LAZARUS_DIR}"
+LAZARUS_VER=	1.8.0
+LAZARUS_DIR=	${LOCALBASE}/share/lazarus-${LAZARUS_VER}
+
+OPTIONS_SINGLE=		LCL
+OPTIONS_SINGLE_LCL=	GTK2 QT4
+OPTIONS_DEFAULT=	GTK2
 
 USE_XORG+=	x11
-NO_LAZBUILD=	yes
-LAZBUILD_ARGS=	-d --pcp=.
-LAZARUS_NO_FLAVORS=qt5
+USE_GNOME+=	gdkpixbuf2 cairo
 
-gtk2_CONFLICTS_INSTALL=	${PORTNAME}-qt4
-qt4_CONFLICTS_INSTALL=	${PORTNAME}-gtk2
+GTK2_USE=	fpc=gtk2 gnome=gtk20
+GTK2_BUILD_DEPENDS=	${LAZARUS_DIR}/lcl/units/${BUILDNAME}/gtk2/interfaces.ppu:editors/lazarus-lcl-gtk2
+GTK2_MAKE_ARGS=	PLATFORM=gtk2
+
+QT4_LIB_DEPENDS=	libQt4Pas.so:x11-toolkits/qt4pas
+QT4_BUILD_DEPENDS=	${LAZARUS_DIR}/lcl/units/${BUILDNAME}/qt/interfaces.ppu:editors/lazarus-lcl-qt
+QT4_MAKE_ARGS=	PLATFORM=qt
 
 post-extract:
 	@${RM} -r ${WRKSRC}/src/lnet/lib/openssl.pas
@@ -62,6 +67,8 @@ post-patch:
 		${WRKSRC}/src/dData.pas ${WRKSRC}/src/fGrayline.pas
 	${REINPLACE_CMD} -e s!Linux!FreeBSD!g \
 		${WRKSRC}/src/fMain.lfm
+	${REINPLACE_CMD} -e s!%%LAZARUSDIR%%!${LAZARUS_DIR}!g \
+		${WRKSRC}/Makefile
 	${RM} -r ${WRKSRC}/src/mysql
 
 .include <bsd.port.mk>

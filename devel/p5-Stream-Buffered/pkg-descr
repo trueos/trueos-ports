@@ -3,4 +3,4 @@ strings and then get a seekable filehandle once everything is
 buffered.  It uses PerlIO and/or temporary file to save the buffer
 depending on the length of the size.
 
-WWW: https://metacpan.org/release/Stream-Buffered
+WWW: http://search.cpan.org/dist/Stream-Buffered/

@@ -1,7 +1,7 @@
 # Created by: Alexander Botero-Lowry <alex@foxybanana.com>
 # $FreeBSD$
 
-PORTREVISION=	6
+PORTREVISION=	5
 
 CATEGORIES=	audio python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,10 +14,8 @@ LIB_DEPENDS+=	libxmmsclient.so:audio/xmms2
 
 MASTERDIR=	${.CURDIR}/../xmms2
 
-USES=		python:2.7 ssl
+USES=		python:2.7
 USE_PYTHON=	flavors
-
-BROKEN_SSL=	openssl-devel
 
 PLIST=		${.CURDIR}/pkg-plist
 

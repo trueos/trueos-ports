@@ -1,10 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	aphpbreakdown
-DISTVERSION=	2.1.0
+DISTVERSION=	1.0.0
 CATEGORIES=	devel www
 MASTER_SITES=	http://phar.code-mesa.com/
-PKGNAMEPREFIX=  ${PHP_PKGNAMEPREFIX}
 EXTRACT_SUFX=	.phar
 
 MAINTAINER=	freebsd@code-mesa.com
@@ -12,7 +11,7 @@ COMMENT=	Code-Analyzer for PHP for Compatibility Check-UP
 
 LICENSE=	BSD2CLAUSE
 
-USES=	php:flavors
+USES=	php
 USE_PHP=	tokenizer phar hash
 
 NO_ARCH=	yes

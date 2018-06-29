@@ -4,4 +4,4 @@ an argument to the constructor, or you can let Proc::Pidfile choose
 one (basically, "/var/run/$basename", if you can write to /var/run,
 otherwise "/$tmpdir/$basename").
 
-WWW: https://metacpan.org/release/Proc-Pidfile
+WWW: http://search.cpan.org/dist/Proc-Pidfile/

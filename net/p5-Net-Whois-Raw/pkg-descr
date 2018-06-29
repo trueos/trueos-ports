@@ -13,4 +13,4 @@ Usage:
 
 	print "Hurry up!\n" if !whois('microsoft.com');
 
-WWW: https://metacpan.org/release/Net-Whois-Raw
+WWW: http://search.cpan.org/dist/Net-Whois-Raw/

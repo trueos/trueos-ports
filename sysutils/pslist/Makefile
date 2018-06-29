@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pslist
-PORTVERSION=	1.4.0
+PORTVERSION=	1.3.1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://devel.ringlet.net/files/sys/pslist/
 

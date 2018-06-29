@@ -14,7 +14,6 @@ COMMENT=	PagerDuty Agent software
 LICENSE=	BSD3CLAUSE
 
 USES=		python:2.7 shebangfix
-USE_PYTHON=	flavors
 SHEBANG_FILES=	bin/*
 NO_ARCH=	yes
 NO_BUILD=	yes

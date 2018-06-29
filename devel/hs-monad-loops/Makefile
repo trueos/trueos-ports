@@ -2,7 +2,7 @@
 
 PORTNAME=	monad-loops
 PORTVERSION=	0.4.3
-PORTREVISION=	3
+PORTREVISION=	2
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

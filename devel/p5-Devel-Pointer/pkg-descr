@@ -5,4 +5,4 @@ dereference it normally; although with this module, you can.
 Be careful, though, to avoid dereferencing things that don't want to be
 dereferenced.
 
-WWW: https://metacpan.org/release/Devel-Pointer
+WWW: http://search.cpan.org/dist/Devel-Pointer/

@@ -5,7 +5,8 @@
 
 PORTNAME=	RStudio
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.2.637
+DISTVERSION=	1.1.453
+PORTREVISION=	1
 CATEGORIES=	devel math java
 MASTER_SITES=	https://s3.amazonaws.com/rstudio-dictionaries/:dictionaries \
 		https://s3.amazonaws.com/rstudio-buildtools/:buildtools
@@ -15,9 +16,7 @@ DISTFILES=	core-dictionaries.zip:dictionaries \
 		mathjax-26.zip:buildtools
 
 PATCH_SITES=	https://github.com/${PORTNAME}/${GH_PROJECT}/commit/
-PATCHFILES=	ab3d4355ab5c7f4bc7af1f7aeabe62c3d1bbccec.patch:-p1 \
-		85896f38b7d25661dd29f76b2bbf1b64d5e34fa4.patch:-p1 \
-		8967d0e4979b81b4792093e869ae9a6bf6d96397.patch:-p1
+PATCHFILES=	ab3d4355ab5c7f4bc7af1f7aeabe62c3d1bbccec.patch:-p1
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Integrated development environment (IDE) for R
@@ -33,15 +32,14 @@ LIB_DEPENDS=	libR.so:math/R \
 		libinotify.so:devel/libinotify \
 		libuuid.so:misc/e2fsprogs-libuuid
 
-USES=		cmake:outsource desktop-file-utils fortran pkgconfig shared-mime-info ssl
+USES=		cmake:outsource desktop-file-utils fortran pkgconfig shared-mime-info
 USE_QT5=	core dbus gui location network opengl printsupport qml quick sensors \
-		sql svg webchannel webengine webkit widgets xml xmlpatterns buildtools_build qmake_build
+		sql svg webchannel webkit widgets xml xmlpatterns buildtools_build qmake_build
 USE_JAVA=	yes
 JAVA_BUILD=	yes
 USE_GITHUB=	yes
 GH_PROJECT=	${PORTNAME:tl}
-GH_TUPLE=	rstudio:r2d3:v0.2.0:r2d3/dependencies/common/r2d3 \
-		rstudio:rmarkdown:aed26ac:rmarkdown/dependencies/common/rmarkdown \
+GH_TUPLE=	rstudio:rmarkdown:aed26ac:rmarkdown/dependencies/common/rmarkdown \
 		rstudio:rsconnect:03c379b:rsconnect/dependencies/common/rsconnect
 
 CMAKE_ARGS=	-DRSTUDIO_TARGET=Desktop \
@@ -50,8 +48,8 @@ CMAKE_ARGS=	-DRSTUDIO_TARGET=Desktop \
 MAKE_ENV=	HOME=${WRKDIR} \
 		ANT_OPTS="-Duser.home=${WRKDIR}"
 
-GWT_VERSION=	2.8.1
-GIN_VERSION=	2.1.2
+GWT_VERSION=	2.7.0
+GIN_VERSION=	1.5
 
 post-extract:
 	@${MKDIR} ${WRKSRC}/dependencies/common/dictionaries && ${MV} ${WRKDIR}/en_* ${WRKSRC}/dependencies/common/dictionaries/
@@ -61,7 +59,6 @@ post-extract:
 
 post-patch:
 	@${REINPLACE_CMD} -e ' \
-		s|target_link_libraries(rstudio|target_link_libraries(rstudio procstat|; \
 		s|get_filename_component|#get_filename_component|; \
 		s|set(CMAKE_PREFIX_PATH "$${QT_BIN_DIR}//..//lib//cmake")|set(CMAKE_PREFIX_PATH "${LOCALBASE}/lib/cmake")|; \
 		s|/usr/share/|${PREFIX}/share/|g' \

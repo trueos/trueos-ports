@@ -164,7 +164,7 @@ bs:*:220:
 opensips:*:221:
 rtpproxy:*:222:
 mqttwarn:*:223:
-payara:*:224:
+# free: 224
 postgrey:*:225:
 sqlgrey:*:226:
 _hfm:*:227:
@@ -391,7 +391,7 @@ callweaver:*:444:
 # free: 448
 # free: 449
 ecartis:*:450:
-librarian:*:451:
+# free: 451
 # free: 452
 # free: 453
 # free: 454

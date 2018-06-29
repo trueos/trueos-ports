@@ -5,9 +5,7 @@ DISTVERSION=	${KDE_PLASMA_VERSION}
 CATEGORIES=	sysutils kde kde-plasma
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	Plasma5 non-interactive system tools
-
-CONFLICTS_INSTALL=	kde-runtime-kde4
+COMMENT=	Plasma5 non-interactive system tools 
 
 USES=		cmake:outsource compiler:c++11-lib cpe gettext kde:5 tar:xz
 USE_KDE=	activities auth bookmarks codecs completion config configwidgets \

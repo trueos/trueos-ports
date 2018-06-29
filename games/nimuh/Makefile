@@ -11,16 +11,15 @@ DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${PORTNAME}-data-${PORTVERSION}${EXTRACT_S
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Puzzle game destined to improve the knowledge of Andalusia
 
-LICENSE=	CC-BY-NC-SA-2.0
-
 LIB_DEPENDS=	libexpat.so:textproc/expat2
 
 GNU_CONFIGURE=	yes
-USES=		gmake localbase
+USES=		gmake
 USE_SDL=	sdl image mixer
-USE_GL=		gl glu
+USE_GL=		gl
 
-CXXFLAGS+=	-Wno-c++11-narrowing
+CPPFLAGS+=	-I${LOCALBASE}/include
+LDFLAGS+=	-L${LOCALBASE}/lib
 
 DATA_WRKSRC=	${WRKDIR}/${PORTNAME}-data-${PORTVERSION}
 

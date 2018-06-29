@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	django-filer
-PORTVERSION=	1.3.2
+PORTVERSION=	0.8.6
+PORTREVISION=	3
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -10,18 +11,11 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	xenophon+fbsdports@irtnog.org
 COMMENT=	File and Image Management Application for django
 
-LICENSE=	BSD2CLAUSE
-LICENSE_FILE=	${WRKSRC}/LICENSE
-
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django111>=0:www/py-django111@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}django-easy-thumbnails>=2:graphics/py-django-easy-thumbnails@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}django-mptt>=0.6:www/py-django-mptt@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}django_polymorphic>=0.7:www/py-django_polymorphic@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}unidecode>=0:converters/py-unidecode@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}pillow>=2.3.0:graphics/py-pillow@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django18>=0:www/py-django18@${FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}django-easy-thumbnails>=0:graphics/py-django-easy-thumbnails@${FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow@${FLAVOR}
 
 USES=		python
 USE_PYTHON=	autoplist distutils
-NO_ARCH=	yes
 
 .include <bsd.port.mk>
