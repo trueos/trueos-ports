@@ -82,7 +82,11 @@ PGSQL_DEFAULT?=		9.5
 # Possible values: 7.1, 7.2, 7.3
 PHP_DEFAULT?=		7.2
 # Possible values: 2.7, 3.5, 3.6, 3.7
-PYTHON_DEFAULT?=	3.6
+# TODO: Changing default python to v3.6 causes several port build to fail
+#	such as emulators/playonbsd which is based on wxWidgets (x11-toolkits/wxgtk2.8)
+#	where x11-toolkits/py-wxPython28 depends on Python 2.7) 
+#PYTHON_DEFAULT?=	3.6
+PYTHON_DEFAULT?=	2.7
 # Possible values: 2.7
 PYTHON2_DEFAULT?=	2.7
 # Possible values: 3.5, 3.6, 3.7
