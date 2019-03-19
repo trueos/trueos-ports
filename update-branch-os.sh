@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -xv
 # Helper script to checkout OS ports to a specific
 # Branch or tag for building
 #
@@ -34,6 +34,9 @@ update_port()
 	fi
 
 	GH_HASH=$(fetch -o - https://api.github.com/repos/$project/$repo/git/refs/heads/$dbranch 2>/dev/null | jq -r '."object"."sha"')
+        if [ -z "${GH_HASH}" ]; then
+	    	GH_HASH=$(fetch -o - https://api.github.com/repos/$project/$repo/git/refs/heads/$dbranch 2>/dev/null | jq -r '.[0]."object"."sha"')
+        fi
 	GH_DATE=$(fetch -o - https://api.github.com/repos/$project/$repo/commits/$GH_HASH 2>/dev/null | jq -r '."commit"."author"."date"')
 
 	#echo "$GH_HASH"
@@ -52,11 +55,11 @@ update_port()
 	if [ "$port" = "os" ] ; then
 		sed -i '' "s/.*OS_PORTVERSION=.*/OS_PORTVERSION=	$TSTAMP/" ${port}/Makefile.common
 		sed -i '' "s/.*GH_TAGNAME=.*/GH_TAGNAME=	$GH_HASH/" ${port}/src/Makefile
-		make -C ${port}/src OSVERSION=1200000 makesum
+		make -C ${port}/src OSVERSION=1300000 makesum
 	else
 		sed -i '' "s/.*PORTVERSION=.*/PORTVERSION=	$TSTAMP/" ${port}/Makefile
 		sed -i '' "s/.*GH_TAGNAME=.*/GH_TAGNAME=	$GH_HASH/" ${port}/Makefile
-		make -C ${port} OSVERSION=1200000 makesum
+		make -C ${port} OSVERSION=1300000 makesum
 	fi
 
 }
