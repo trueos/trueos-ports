@@ -18,6 +18,6 @@ PLIST_DIRS=		/var/db
 
 do-install:
 	@${MKDIR} -p ${STAGEDIR}/var/db
-	@${CP} ${PORTSDIR}/trueos-manifest.json ${STAGEDIR}/var/db/current-manifest.json
+	@${CP} ${PORTSDIR}/local_source/trueos-manifest.json ${STAGEDIR}/var/db/current-manifest.json
 
 .include <bsd.port.post.mk>
