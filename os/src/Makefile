@@ -11,9 +11,9 @@ MAINTAINER=	kris@ixsystems.com
 COMMENT=	Port for the OS base sources
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	trueos
+GH_ACCOUNT=  	darkfiberiru	
 GH_PROJECT=	trueos
-GH_TAGNAME=	a9d5dfb78b9d1e20f6f85b044247370057e92124
+GH_TAGNAME=	03848e98affc3113311855aabab892f81d4d0835
 
 PREFIX=/
 SRCDIR?=/usr/src
