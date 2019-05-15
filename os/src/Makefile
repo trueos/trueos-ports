@@ -4,7 +4,7 @@
 
 PORTNAME=	src
 PORTVERSION=	${OS_PORTVERSION}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	os
 
 MAINTAINER=	kris@ixsystems.com
@@ -13,7 +13,7 @@ COMMENT=	Port for the OS base sources
 USE_GITHUB=	yes
 GH_ACCOUNT=  	darkfiberiru	
 GH_PROJECT=	trueos
-GH_TAGNAME=	03848e98affc3113311855aabab892f81d4d0835
+GH_TAGNAME=	870ad2c67053fa280d53d6e8dd0deefb68beb4e3
 
 PREFIX=/
 SRCDIR?=/usr/src

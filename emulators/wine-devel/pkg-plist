@@ -43,6 +43,7 @@ include/wine/msvcrt/errno.h
 include/wine/msvcrt/fcntl.h
 include/wine/msvcrt/float.h
 include/wine/msvcrt/fpieee.h
+include/wine/msvcrt/inttypes.h
 include/wine/msvcrt/io.h
 include/wine/msvcrt/limits.h
 include/wine/msvcrt/locale.h
@@ -57,6 +58,7 @@ include/wine/msvcrt/setjmp.h
 include/wine/msvcrt/share.h
 include/wine/msvcrt/signal.h
 include/wine/msvcrt/stddef.h
+include/wine/msvcrt/stdint.h
 include/wine/msvcrt/stdio.h
 include/wine/msvcrt/stdlib.h
 include/wine/msvcrt/string.h
@@ -366,7 +368,7 @@ include/wine/windows/dxgiformat.h
 include/wine/windows/dxgiformat.idl
 include/wine/windows/dxgitype.h
 include/wine/windows/dxgitype.idl
-%%STAGING%%include/wine/windows/dxva.h
+include/wine/windows/dxva.h
 include/wine/windows/dxva2api.h
 include/wine/windows/dxva2api.idl
 include/wine/windows/dyngraph.idl
@@ -512,6 +514,8 @@ include/wine/windows/mfidl.h
 include/wine/windows/mfidl.idl
 include/wine/windows/mfobjects.h
 include/wine/windows/mfobjects.idl
+include/wine/windows/mfplay.h
+include/wine/windows/mfplay.idl
 include/wine/windows/mfreadwrite.h
 include/wine/windows/mfreadwrite.idl
 include/wine/windows/mftransform.h
@@ -606,6 +610,7 @@ include/wine/windows/ntddstor.h
 include/wine/windows/ntddvdeo.h
 include/wine/windows/ntdef.h
 include/wine/windows/ntdsapi.h
+%%STAGING%%include/wine/windows/ntifs.h
 include/wine/windows/ntlsa.h
 include/wine/windows/ntquery.h
 include/wine/windows/ntsecapi.h
@@ -684,6 +689,8 @@ include/wine/windows/raserror.h
 include/wine/windows/reason.h
 include/wine/windows/regstr.h
 include/wine/windows/restartmanager.h
+%%STAGING%%include/wine/windows/restrictederrorinfo.h
+%%STAGING%%include/wine/windows/restrictederrorinfo.idl
 include/wine/windows/richedit.h
 include/wine/windows/richole.h
 include/wine/windows/richole.idl
@@ -2566,6 +2573,7 @@ lib/wine/libpowrprof.def
 lib/wine/libpropsys.def
 lib/wine/libpsapi.def
 lib/wine/libquartz.def
+lib/wine/libqwave.def
 lib/wine/librasapi32.def
 lib/wine/librasdlg.def
 lib/wine/libresutils.def

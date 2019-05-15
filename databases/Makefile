@@ -106,12 +106,6 @@
     SUBDIR += hashtypes
     SUBDIR += hbase
     SUBDIR += hiredis
-    SUBDIR += hs-esqueleto
-    SUBDIR += hs-hedis
-    SUBDIR += hs-mysql
-    SUBDIR += hs-persistent
-    SUBDIR += hs-persistent-sqlite
-    SUBDIR += hs-persistent-template
     SUBDIR += hsqldb
     SUBDIR += influxdb
     SUBDIR += innotop
@@ -850,6 +844,7 @@
     SUBDIR += py-sybase
     SUBDIR += py-tableschema
     SUBDIR += py-tarantool
+    SUBDIR += py-tiledb
     SUBDIR += py-umemcache
     SUBDIR += py-unqlite
     SUBDIR += py-varstack
@@ -886,7 +881,6 @@
     SUBDIR += rrdtool
     SUBDIR += rrdtool12
     SUBDIR += ruby-bdb
-    SUBDIR += ruby-odbc
     SUBDIR += ruby-qdbm
     SUBDIR += ruby-tokyocabinet
     SUBDIR += ruby-xapian
@@ -917,11 +911,11 @@
     SUBDIR += rubygem-data_objects
     SUBDIR += rubygem-datamapper
     SUBDIR += rubygem-dbd-mysql
-    SUBDIR += rubygem-dbd-odbc
     SUBDIR += rubygem-dbd-pg
     SUBDIR += rubygem-dbd-sqlite3
     SUBDIR += rubygem-dbf
     SUBDIR += rubygem-dbi
+    SUBDIR += rubygem-dbm
     SUBDIR += rubygem-dm-aggregates
     SUBDIR += rubygem-dm-chunked_query
     SUBDIR += rubygem-dm-constraints
@@ -1024,6 +1018,7 @@
     SUBDIR += tdb
     SUBDIR += tdbc
     SUBDIR += tile38
+    SUBDIR += tiledb
     SUBDIR += timescaledb
     SUBDIR += tinycdb
     SUBDIR += tokyocabinet
