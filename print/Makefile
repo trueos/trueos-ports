@@ -115,6 +115,7 @@
     SUBDIR += lilypond-devel
     SUBDIR += linux-c6-cups-libs
     SUBDIR += linux-c7-cups-libs
+    SUBDIR += linux-c7-freetype
     SUBDIR += linux-c7-harfbuzz
     SUBDIR += lout
     SUBDIR += lprps
@@ -196,6 +197,7 @@
     SUBDIR += py-rtf
     SUBDIR += py-stapler
     SUBDIR += py-trml2pdf
+    SUBDIR += py-weasyprint
     SUBDIR += qpdf
     SUBDIR += qpdfview
     SUBDIR += qt5-printsupport

@@ -659,6 +659,12 @@ PYGAME=		${PYTHON_PKGNAMEPREFIX}game>0:devel/py-game@${PY_FLAVOR}
 PYNUMPY=	${PYTHON_PKGNAMEPREFIX}numpy>0:math/py-numpy@${PY_FLAVOR}
 
 # Common Python modules that can be needed but only for some versions of Python.
+.if ${PYTHON_REL} < 3500
+PY_TYPING=	${PYTHON_PKGNAMEPREFIX}typing>=3.6.4:devel/py-typing@${PY_FLAVOR}
+.else
+PY_TYPING=
+.endif
+
 .if ${PYTHON_REL} < 3400
 PY_ENUM34=	${PYTHON_PKGNAMEPREFIX}enum34>0:devel/py-enum34@${PY_FLAVOR}
 PY_ENUM_COMPAT=	${PYTHON_PKGNAMEPREFIX}enum-compat>0:devel/py-enum-compat@${PY_FLAVOR}
@@ -676,7 +682,7 @@ PY_IPADDRESS=
 .endif
 
 .if ${PYTHON_REL} < 3200
-PY_FUTURES=	${PYTHON_PKGNAMEPREFIX}futures>0:devel/py-futures@${PY_FLAVOR}
+PY_FUTURES=	${PYTHON_PKGNAMEPREFIX}futures>=3.2:devel/py-futures@${PY_FLAVOR}
 .else
 PY_FUTURES=
 .endif

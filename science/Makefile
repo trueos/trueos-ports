@@ -132,6 +132,7 @@
     SUBDIR += libssm
     SUBDIR += libsvm
     SUBDIR += libsvm-python
+    SUBDIR += libvdwxc
     SUBDIR += libxc
     SUBDIR += liggghts
     SUBDIR += lm
@@ -173,6 +174,7 @@
     SUBDIR += openkim
     SUBDIR += openmx
     SUBDIR += opensim-core
+    SUBDIR += opensph
     SUBDIR += opsin
     SUBDIR += p5-Algorithm-SVMLight
     SUBDIR += p5-Chemistry-3DBuilder
@@ -230,6 +232,7 @@
     SUBDIR += py-chempy
     SUBDIR += py-coards
     SUBDIR += py-dlib
+    SUBDIR += py-eccodes-python
     SUBDIR += py-geometer
     SUBDIR += py-gpaw
     SUBDIR += py-gsd
@@ -301,9 +304,11 @@
     SUBDIR += sigrok-firmware-utils
     SUBDIR += silo
     SUBDIR += simbody
+    SUBDIR += simgrid
     SUBDIR += simint
     SUBDIR += simlib
     SUBDIR += simsmith
+    SUBDIR += smoldyn
     SUBDIR += sparta
     SUBDIR += spglib
     SUBDIR += step

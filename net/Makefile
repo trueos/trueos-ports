@@ -91,6 +91,7 @@
     SUBDIR += corkscrew
     SUBDIR += corosync2
     SUBDIR += corosync3
+    SUBDIR += coturn
     SUBDIR += courier-authlib-ldap
     SUBDIR += cppzmq
     SUBDIR += cryptcat
@@ -230,6 +231,7 @@
     SUBDIR += haproxy-devel
     SUBDIR += haproxy17
     SUBDIR += haproxy18
+    SUBDIR += haproxy19
     SUBDIR += hexinject
     SUBDIR += hidentd
     SUBDIR += hinfo
@@ -256,6 +258,7 @@
     SUBDIR += ilbc
     SUBDIR += imapproxy
     SUBDIR += incidenceeditor
+    SUBDIR += inlets
     SUBDIR += intel-em-kmod
     SUBDIR += intel-ix-kmod
     SUBDIR += intel-ixl-kmod
@@ -311,6 +314,7 @@
     SUBDIR += kmbox
     SUBDIR += kmime
     SUBDIR += knc
+    SUBDIR += knxd
     SUBDIR += kontactinterface
     SUBDIR += kpimtextedit
     SUBDIR += krdc
@@ -487,7 +491,6 @@
     SUBDIR += netstrain
     SUBDIR += nettest
     SUBDIR += netwib
-    SUBDIR += neubot
     SUBDIR += nfs-ganesha
     SUBDIR += nfs-ganesha-kmod
     SUBDIR += nfsshell
@@ -511,6 +514,7 @@
     SUBDIR += ntlmaps
     SUBDIR += ntopng
     SUBDIR += ntp
+    SUBDIR += ntp-devel
     SUBDIR += ntpa
     SUBDIR += ntraceroute
     SUBDIR += nusoap
@@ -527,6 +531,7 @@
     SUBDIR += opal
     SUBDIR += open-isns
     SUBDIR += openbgpd
+    SUBDIR += openbgpd6
     SUBDIR += openbsc
     SUBDIR += openggsn
     SUBDIR += openldap24-client
@@ -600,6 +605,7 @@
     SUBDIR += p5-MaxMind-DB-Reader
     SUBDIR += p5-MaxMind-DB-Reader-XS
     SUBDIR += p5-MaxMind-DB-Writer
+    SUBDIR += p5-Mojo-RabbitMQ-Client
     SUBDIR += p5-Net
     SUBDIR += p5-Net-ACME2
     SUBDIR += p5-Net-AMQP
@@ -1150,6 +1156,7 @@
     SUBDIR += radsecproxy
     SUBDIR += radvd
     SUBDIR += rclone
+    SUBDIR += rclone-browser
     SUBDIR += rdapper
     SUBDIR += rdesktop
     SUBDIR += rdist6
@@ -1175,6 +1182,7 @@
     SUBDIR += ripe-whois
     SUBDIR += routinator
     SUBDIR += rp-pppoe
+    SUBDIR += rsocket-cpp
     SUBDIR += rsplib
     SUBDIR += rsync
     SUBDIR += rsync-bpc
@@ -1186,11 +1194,13 @@
     SUBDIR += rubygem-amq-protocol
     SUBDIR += rubygem-amqp
     SUBDIR += rubygem-amqp-utils
+    SUBDIR += rubygem-apollo_upload_server
     SUBDIR += rubygem-asset_sync
     SUBDIR += rubygem-aws-s3
     SUBDIR += rubygem-aws-ses
     SUBDIR += rubygem-azure
     SUBDIR += rubygem-azure-core
+    SUBDIR += rubygem-beefcake
     SUBDIR += rubygem-bunny
     SUBDIR += rubygem-connection_pool
     SUBDIR += rubygem-docker-api
@@ -1209,6 +1219,7 @@
     SUBDIR += rubygem-fog-brightbox
     SUBDIR += rubygem-fog-brightbox0
     SUBDIR += rubygem-fog-cloudatcost
+    SUBDIR += rubygem-fog-cloudstack
     SUBDIR += rubygem-fog-digitalocean
     SUBDIR += rubygem-fog-dnsimple
     SUBDIR += rubygem-fog-dynect
@@ -1270,8 +1281,12 @@
     SUBDIR += rubygem-omniauth-oauth
     SUBDIR += rubygem-omniauth-oauth2
     SUBDIR += rubygem-omniauth-openid
+    SUBDIR += rubygem-omniauth-salesforce
     SUBDIR += rubygem-omniauth-twitter
+    SUBDIR += rubygem-omniauth-ultraauth
+    SUBDIR += rubygem-omniauth_openid_connect
     SUBDIR += rubygem-open-uri-cached
+    SUBDIR += rubygem-openid_connect
     SUBDIR += rubygem-opennebula
     SUBDIR += rubygem-orchestrator_client
     SUBDIR += rubygem-ovirt-engine-sdk

@@ -1,8 +1,7 @@
-# Created by: mat
 # $FreeBSD$
 
 PORTNAME=	perl
-DISTVERSION=	${PERL_VERSION}-RC1
+DISTVERSION=	${PERL_VERSION}
 PORTREVISION=	0
 CATEGORIES=	lang devel perl5
 MASTER_SITES=	CPAN/../../src/5.0
@@ -16,9 +15,9 @@ LICENSE_COMB=	dual
 LICENSE_FILE_ART10=	${WRKSRC}/Artistic
 LICENSE_FILE_GPLv1+ =	${WRKSRC}/Copying
 
-# Uncomment when the default Perl is switched to 5.2(X+2)
+# Uncomment when the default Perl is switched to 5.32
 #DEPRECATED=	Support end three years after .0 release, please upgrade to a more recent version of Perl
-#EXPIRATION_DATE=<Release date of .0 + 3 years>
+#EXPIRATION_DATE=	2022-05-22
 
 USES=	cpe tar:xz
 
@@ -44,7 +43,6 @@ CONFIGURE_ARGS=	-sde -Dprefix=${PREFIX} \
 	-Dsiteman3dir=${SITE_MAN3} \
 	-Dsiteman1dir=${SITE_MAN1} \
 	-Ui_malloc -Ui_iconv -Uinstallusrbinperl -Dusenm=n \
-	-Accflags='-DUSE_THREAD_SAFE_LOCALE' \
 	-Dcc="${CC}" -Duseshrplib -Dinc_version_list=none \
 	-Dcf_by=${MAINTAINER:C,@.*,,} -Dcf_email=${MAINTAINER} \
 	-Dcf_time="`${STAT} -t \"%a %b %d %T %Z %Y\" -f %Sm ${_DISTDIR}/${DISTNAME}${EXTRACT_SUFX}`"
@@ -168,6 +166,10 @@ _PERL5_DEFAULT_FILE=	/tmp/PERL5_DEFAULT
 # Get the default version, and possibly, overwrite it.
 .include <bsd.port.options.mk>
 .sinclude "${_PERL5_DEFAULT_FILE}"
+
+.if ${OSVERSION} >= 1200004
+CONFIGURE_ARGS+=	-Accflags='-DUSE_THREAD_SAFE_LOCALE'
+.endif
 
 # if this port is default due PERL5_DEFAULT
 # change PKGNAME to reflect this

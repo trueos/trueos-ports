@@ -86,6 +86,7 @@
     SUBDIR += bareos17-client
     SUBDIR += bareos17-client-static
     SUBDIR += bareos17-server
+    SUBDIR += barrier
     SUBDIR += bastille
     SUBDIR += batmon
     SUBDIR += battmond
@@ -219,6 +220,7 @@
     SUBDIR += daemonize
     SUBDIR += daemontools
     SUBDIR += daemontools-encore
+    SUBDIR += daggy
     SUBDIR += dar
     SUBDIR += dateutils
     SUBDIR += dc3dd
@@ -247,7 +249,6 @@
     SUBDIR += diskscrub
     SUBDIR += disktool
     SUBDIR += disktype
-    SUBDIR += djmount
     SUBDIR += dmg2img
     SUBDIR += dmidecode
     SUBDIR += docker
@@ -291,6 +292,7 @@
     SUBDIR += dwatch-pwsnoop
     SUBDIR += e2fsprogs
     SUBDIR += ec2-scripts
+    SUBDIR += eclat
     SUBDIR += edid-decode
     SUBDIR += eject
     SUBDIR += eksctl
@@ -678,6 +680,7 @@
     SUBDIR += mgeupsd
     SUBDIR += minikube
     SUBDIR += minimunin
+    SUBDIR += minipro
     SUBDIR += minirsyslogd
     SUBDIR += mixer
     SUBDIR += mkdesktop
@@ -763,6 +766,9 @@
     SUBDIR += openhpi
     SUBDIR += openipmi
     SUBDIR += openupsd
+    SUBDIR += openzfs
+    SUBDIR += openzfs-kmod
+    SUBDIR += openzfs-kmod-debug
     SUBDIR += ori
     SUBDIR += osinfo-db-tools
     SUBDIR += osquery
@@ -1011,6 +1017,7 @@
     SUBDIR += py-azure-cli-vm
     SUBDIR += py-bcfg2
     SUBDIR += py-bitrot
+    SUBDIR += py-borgmatic
     SUBDIR += py-cdmi
     SUBDIR += py-cpuinfo
     SUBDIR += py-croniter
@@ -1035,6 +1042,8 @@
     SUBDIR += py-hpilo
     SUBDIR += py-iowait
     SUBDIR += py-ixautomation
+    SUBDIR += py-leviathan
+    SUBDIR += py-mitogen
     SUBDIR += py-mqttwarn
     SUBDIR += py-nagiosplugin
     SUBDIR += py-packet-python
@@ -1294,6 +1303,7 @@
     SUBDIR += swapd
     SUBDIR += swapexd
     SUBDIR += swapmon
+    SUBDIR += swapusage
     SUBDIR += sweeper
     SUBDIR += symlinks
     SUBDIR += symon
@@ -1315,6 +1325,7 @@
     SUBDIR += syslog-ng318
     SUBDIR += syslog-ng319
     SUBDIR += syslog-ng320
+    SUBDIR += syslog-ng321
     SUBDIR += syslog-ng39
     SUBDIR += syslogger
     SUBDIR += sysrc
@@ -1387,8 +1398,8 @@
     SUBDIR += u-boot-nanopi-a64
     SUBDIR += u-boot-nanopi-m1plus
     SUBDIR += u-boot-nanopi-neo
-    SUBDIR += u-boot-nanopi-neo2
     SUBDIR += u-boot-nanopi-neo-air
+    SUBDIR += u-boot-nanopi-neo2
     SUBDIR += u-boot-olimex-a20-som-evb
     SUBDIR += u-boot-olinuxino-lime
     SUBDIR += u-boot-olinuxino-lime2
@@ -1559,8 +1570,6 @@
     SUBDIR += zisofs-tools
     SUBDIR += znapzend
     SUBDIR += zogftw
-    SUBDIR += zol
-    SUBDIR += zol-kmod
     SUBDIR += zrep
     SUBDIR += zrepl
     SUBDIR += zsd

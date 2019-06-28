@@ -81,7 +81,6 @@
     SUBDIR += castxml
     SUBDIR += catdoc
     SUBDIR += cdif
-    SUBDIR += cdiff
     SUBDIR += cgrep
     SUBDIR += chkascii
     SUBDIR += chpp
@@ -302,6 +301,7 @@
     SUBDIR += it-hyphen
     SUBDIR += it-mythes
     SUBDIR += itstool
+    SUBDIR += itstool22
     SUBDIR += jade
     SUBDIR += jakarta-commons-digester
     SUBDIR += jalingo
@@ -419,6 +419,7 @@
     SUBDIR += lt-hyphen
     SUBDIR += lttoolbox
     SUBDIR += ltxml
+    SUBDIR += lua-lyaml
     SUBDIR += luaexpat
     SUBDIR += luaexpat-51
     SUBDIR += lucene
@@ -432,6 +433,7 @@
     SUBDIR += man2html
     SUBDIR += markdown
     SUBDIR += markdown-mode.el
+    SUBDIR += markdownfmt
     SUBDIR += mathml-xsd
     SUBDIR += mdocml
     SUBDIR += meld
@@ -801,6 +803,7 @@
     SUBDIR += p5-Term-QRCode
     SUBDIR += p5-Test-Groonga
     SUBDIR += p5-Test-Perl-Critic
+    SUBDIR += p5-Test-Regexp
     SUBDIR += p5-Text-ANSI-Util
     SUBDIR += p5-Text-ANSI-WideUtil
     SUBDIR += p5-Text-ANSITable
@@ -1311,6 +1314,7 @@
     SUBDIR += py-parsel
     SUBDIR += py-parsimonious
     SUBDIR += py-parso
+    SUBDIR += py-patiencediff
     SUBDIR += py-pdfminer
     SUBDIR += py-pdfminer.six
     SUBDIR += py-pdfminer3k
@@ -1434,8 +1438,8 @@
     SUBDIR += raptor2
     SUBDIR += rarian
     SUBDIR += rasqal
-    SUBDIR += re_graph
     SUBDIR += re-flex
+    SUBDIR += re_graph
     SUBDIR += redet
     SUBDIR += redland
     SUBDIR += redland-bindings
@@ -1476,6 +1480,7 @@
     SUBDIR += rubygem-asciidoctor
     SUBDIR += rubygem-asciidoctor-diagram
     SUBDIR += rubygem-asciidoctor-plantuml
+    SUBDIR += rubygem-asciidoctor-plantuml008
     SUBDIR += rubygem-autoprefixer-rails
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
@@ -1842,6 +1847,7 @@
     SUBDIR += yali
     SUBDIR += yamcha
     SUBDIR += yaml-mode.el
+    SUBDIR += ydiff
     SUBDIR += yelp-tools
     SUBDIR += yelp-xsl
     SUBDIR += yi-aspell
@@ -1850,8 +1856,6 @@
     SUBDIR += yould
     SUBDIR += zenxml
     SUBDIR += zorba
-    SUBDIR += zsh-autosuggestions
-    SUBDIR += zsh-syntax-highlighting
     SUBDIR += zu-aspell
     SUBDIR += zu-hunspell
     SUBDIR += zxing-cpp
