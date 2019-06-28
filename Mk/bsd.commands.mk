@@ -22,6 +22,7 @@ BSDMAKE?=		/usr/bin/make
 BZCAT?=			/usr/bin/bzcat
 BZIP2_CMD?=		/usr/bin/bzip2
 CAT?=			/bin/cat
+CHFLAGS?=		/bin/chflags
 CHGRP?=			/usr/bin/chgrp
 CHMOD?=			/bin/chmod
 CHOWN?=			/usr/sbin/chown
@@ -120,11 +121,7 @@ ECHO_MSG?=		${ECHO_CMD}
 
 .elif !defined(_PKGTOOLSDEFINED)
 _PKGTOOLSDEFINED=	yes
-.if exists(/usr/sbin/pkg-static)
-PKG_BIN?=		/usr/sbin/pkg-static
-.else
 PKG_BIN?=		${LOCALBASE}/sbin/pkg-static
-.endif
 PKG_REGISTER?=		${PKG_BIN} register
 PKG_DELETE?=		${PKG_BIN} delete -y
 PKG_INFO?=		${PKG_BIN} info -g

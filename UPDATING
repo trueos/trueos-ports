@@ -5,6 +5,106 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20190619:
+  AFFECTS: users of samba4[6-8] and devel/talloc, devel/tevent, databases/tdb, databases/ldb*
+  AUTHOR: timur@FreeBSD.org
+
+  To introduce samba410(we deliberatly skip samba49 due the complexity of handling)
+  and to drop dependency on deprecated Python 2.7, Samba supplimentary libraries
+  talloc, tevent and tdb were splitted into current Python 3 compatiable versions
+  and legacy ones, with the suffix "1".
+
+  Old versions of Samba were changed to depend on the legacy supplimentary libraries,
+  so if you need to install samba46, samba47 or samba48 over previous Samba
+  installations you need to downgrade supplimentary libs with the following commands:
+
+  for users of portmaster:
+        portmaster -o devel/talloc1 devel/talloc
+        portmaster -o devel/tevent1 devel/tevent
+        portmaster -o databases/tdb1 databases/tdb
+        portmaster -r devel/talloc1
+
+  for users of portupgrade:
+        portupgrade -o devel/talloc1 devel/talloc
+        portupgrade -o devel/tevent1 devel/tevent
+        portupgrade -o databases/tdb1 databases/tdb
+        portupgrade -fr devel/talloc1
+
+20190613:
+  AFFECTS: users of www/qt5-webengine
+  AUTHOR: kai@FreeBSD.org
+
+  Users that upgrade www/qt5-webengine without using pkg/poudriere might
+  experience failures due to conflicts with the installed version of 5.12.2.
+
+  In that case, pkg delete -f the qt5-webengine package before building
+  the updated version.
+
+20190611:
+  AFFECTS: users of net/routinator
+  AUTHOR: rodrigo@FreeBSD.org
+
+  Release 0.4.0 fundamentally changes the command line options for
+  running the server and introduces a new way to initialize the local RPKI
+  repository used by Routinator.
+  If you have been using previous releases, you will likely have to adjust
+  your tooling. We apologize for this, but we also feel that the new commands
+  are more intuitive and logical.
+
+20190604:
+  AFFECTS: users of samba47
+  AUTHOR: antoine@FreeBSD.org
+
+  The default version of samba has been switched from 4.7 to 4.8.
+  Upgrade instructions:
+
+  For package users having samba47 installed indirectly (as a dependency):
+    # pkg upgrade
+
+  For package users having samba47 installed directly (leaf port):
+    # pkg upgrade
+    # pkg install samba48
+
+  For ports users:
+    If you want to keep samba47, add DEFAULT_VERSIONS+= samba=4.7 to make.conf
+
+    If you want to upgrade to samba48, remove samba47:
+    # pkg delete -f samba47
+
+    Portmaster users:
+    # portmaster net/samba48
+    # portmaster -a
+
+    Portupgrade users:
+    # portinstall net/samba48
+    # portupgrade -a
+
+20180601:
+  AFFECTS: www/tt-rss
+  AUTHOR: dereks@lifeofadishwasher.com
+
+  tt-rss now uses php intl for extension; a web server reload
+  will be required if intl extension isn't already loaded.
+
+20190522:
+  AFFECTS: users of sysutils/graylog
+  AUTHOR: dch@FreeBSD.org
+
+  The port has been updated to the latest stable version 3.0.2, which
+  includes more plugins by default, but also requires manual changes to
+  graylog's configuration files, possibly port and URL changes, such as
+  X-Graylog-Server-URL settings, and elasticsearch must be >= 5.
+
+  The location of configuration files has been amended to align with the
+  official distribution files and locations.
+
+  After upgrading, manually review and merge changes from your
+  /usr/local/etc/graylog/server/server.conf into
+  /usr/local/etc/graylog/graylog.conf
+
+  Consult https://www.graylog.org/post/announcing-graylog-v3-0-ga for
+  further details.
+
 20190506:
   AFFECTS: users of www/gitea
   AUTHOR: stb@lassitu.de

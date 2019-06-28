@@ -3,6 +3,7 @@
 PORTNAME=	openjdk
 DISTVERSIONPREFIX=	jdk-	
 DISTVERSION=	${JDK_MAJOR_VERSION}.${JDK_MINOR_VERSION}.${JDK_PATCH_VERSION}+${JDK_BUILD_NUMBER}-${BSD_JDK_VERSION}
+PORTREVISION=	1
 CATEGORIES=	java devel
 PKGNAMESUFFIX?=	${JDK_MAJOR_VERSION}
 
@@ -16,13 +17,14 @@ ONLY_FOR_ARCHS=	amd64 i386
 BUILD_DEPENDS=	zip:archivers/zip \
 		autoconf>0:devel/autoconf \
 		${LOCALBASE}/include/cups/cups.h:print/cups \
-		bash:shells/bash
+		bash:shells/bash \
+		grep:textproc/gnugrep
 LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
 		libgif.so:graphics/giflib \
 		liblcms2.so:graphics/lcms2 \
-		libpng16.so:graphics/png
+		libpng.so:graphics/png
 
 USES=		compiler:features gmake iconv jpeg pkgconfig
 USE_XORG=	x11 xext xi xrender xt xtst
@@ -31,6 +33,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	battleblow
 GH_PROJECT=	openjdk-jdk11u
 
+BINARY_ALIAS=	grep=${LOCALBASE}/bin/grep
 _MAKE_JOBS=	#
 MAKE_ENV=	LANG="C" \
 		LC_ALL="C" \
@@ -53,7 +56,7 @@ JDK_MAJOR_VERSION=	11
 JDK_MINOR_VERSION=	0
 JDK_PATCH_VERSION=	3
 JDK_BUILD_NUMBER=	7
-BSD_JDK_VERSION=	1
+BSD_JDK_VERSION=	2
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	CC=/usr/bin/cc \

@@ -502,6 +502,7 @@
     SUBDIR += midipp
     SUBDIR += mikmod
     SUBDIR += milkytracker
+    SUBDIR += mio2jack
     SUBDIR += mixer.app
     SUBDIR += mixmos
     SUBDIR += mixxx
@@ -547,6 +548,7 @@
     SUBDIR += mps
     SUBDIR += mumble
     SUBDIR += murmur
+    SUBDIR += muse-sequencer
     SUBDIR += musepack
     SUBDIR += musescore
     SUBDIR += musicbox-tag-editor
@@ -659,6 +661,7 @@
     SUBDIR += py-ao
     SUBDIR += py-apetag
     SUBDIR += py-aubio
+    SUBDIR += py-audioread
     SUBDIR += py-cddb
     SUBDIR += py-discid
     SUBDIR += py-discogs-client
@@ -769,7 +772,6 @@
     SUBDIR += soundtouch
     SUBDIR += sox
     SUBDIR += spc2it
-    SUBDIR += specimen
     SUBDIR += spectrogram
     SUBDIR += speech-denoiser-lv2
     SUBDIR += speex
@@ -824,6 +826,7 @@
     SUBDIR += tkeca
     SUBDIR += toolame
     SUBDIR += tosha
+    SUBDIR += traverso
     SUBDIR += triceratops-lv2
     SUBDIR += trommler
     SUBDIR += tse3

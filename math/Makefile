@@ -148,7 +148,9 @@
     SUBDIR += blis
     SUBDIR += blitz++
     SUBDIR += blocksolve95
+    SUBDIR += boolector
     SUBDIR += bsdnt
+    SUBDIR += btor2tools
     SUBDIR += cadabra2
     SUBDIR += calc
     SUBDIR += calcoo
@@ -185,6 +187,7 @@
     SUBDIR += coq
     SUBDIR += crlibm
     SUBDIR += cryptominisat
+    SUBDIR += curv
     SUBDIR += cvc3
     SUBDIR += cvc4
     SUBDIR += dbcsr
@@ -209,6 +212,7 @@
     SUBDIR += ess
     SUBDIR += eukleides
     SUBDIR += eval
+    SUBDIR += exprtk
     SUBDIR += facile
     SUBDIR += fann
     SUBDIR += fcl
@@ -262,7 +266,6 @@
     SUBDIR += gnuplot-tex-extras
     SUBDIR += gotoblas
     SUBDIR += grace
-    SUBDIR += gracetmpl
     SUBDIR += graphthing
     SUBDIR += gretl
     SUBDIR += gri
@@ -335,6 +338,7 @@
     SUBDIR += ltl
     SUBDIR += ltl2ba
     SUBDIR += lybniz
+    SUBDIR += mandelbulber2
     SUBDIR += mate-calc
     SUBDIR += math77
     SUBDIR += mathgl
@@ -474,6 +478,7 @@
     SUBDIR += openlibm
     SUBDIR += openmesh
     SUBDIR += opensolaris-libm
+    SUBDIR += openturns
     SUBDIR += optpp
     SUBDIR += orpie
     SUBDIR += osi
@@ -703,6 +708,7 @@
     SUBDIR += py-gnuplot
     SUBDIR += py-grandalf
     SUBDIR += py-graphillion
+    SUBDIR += py-gym
     SUBDIR += py-igakit
     SUBDIR += py-igraph
     SUBDIR += py-intspan
@@ -721,7 +727,6 @@
     SUBDIR += py-networkx
     SUBDIR += py-networkx1
     SUBDIR += py-nevergrad
-    SUBDIR += py-numarray
     SUBDIR += py-numeric
     SUBDIR += py-numexpr
     SUBDIR += py-numpy
@@ -774,7 +779,6 @@
     SUBDIR += py-svgmath
     SUBDIR += py-sym
     SUBDIR += py-symcxx
-    SUBDIR += py-symeig
     SUBDIR += py-sympy
     SUBDIR += py-theano
     SUBDIR += py-ufl
@@ -805,11 +809,13 @@
     SUBDIR += rubygem-expression_parser
     SUBDIR += rubygem-fftw3
     SUBDIR += rubygem-mathn
+    SUBDIR += rubygem-mtrc
     SUBDIR += rubygem-narray
     SUBDIR += rubygem-narray_miss
     SUBDIR += rubygem-numru-misc
     SUBDIR += rubygem-numru-units
     SUBDIR += rubygem-rb-gsl
+    SUBDIR += rumur
     SUBDIR += saga
     SUBDIR += sage
     SUBDIR += sc

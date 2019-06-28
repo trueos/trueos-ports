@@ -1,4 +1,3 @@
-# Created by: mat
 # $FreeBSD$
 
 PORTNAME=	perl
@@ -22,7 +21,7 @@ LICENSE_COMB=	dual
 LICENSE_FILE_ART10=	${WRKSRC}/Artistic
 LICENSE_FILE_GPLv1+ =	${WRKSRC}/Copying
 
-# Uncomment when the default Perl is switched to 5.2(X+2)
+# Uncomment when the default Perl is switched to 5.3(X+2)
 #DEPRECATED=	Support end three years after .0 release, please upgrade to a more recent version of Perl
 #EXPIRATION_DATE=<Release date of .0 + 3 years>
 
@@ -36,7 +35,7 @@ USE_LDCONFIG=	${PREFIX}/${_ARCH_LIB}/CORE
 USE_GITHUB=	yes
 GH_ACCOUNT=	Perl
 GH_PROJECT=	perl5
-GH_TAGNAME=	v5.30.0-RC1-4-g3119bee2e3
+GH_TAGNAME=	v5.31.0-167-gfa068f6da2
 
 TEST_TARGET=	test_harness
 TEST_ENV=	${MAKE_ENV} TEST_JOBS=${MAKE_JOBS_NUMBER} \
@@ -58,7 +57,6 @@ CONFIGURE_ARGS=	-sde -Dprefix=${PREFIX} \
 	-Dsiteman3dir=${SITE_MAN3} \
 	-Dsiteman1dir=${SITE_MAN1} \
 	-Ui_malloc -Ui_iconv -Uinstallusrbinperl -Dusenm=n \
-	-Accflags='-DUSE_THREAD_SAFE_LOCALE' \
 	-Dcc="${CC}" -Duseshrplib -Dinc_version_list=none \
 	-Dcf_by=${MAINTAINER:C,@.*,,} -Dcf_email=${MAINTAINER} \
 	-Dcf_time="`${STAT} -t \"%a %b %d %T %Z %Y\" -f %Sm ${_DISTDIR}/${DISTNAME}${EXTRACT_SUFX}`"
@@ -191,6 +189,10 @@ _PERL5_DEFAULT_FILE=	/tmp/PERL5_DEFAULT
 # Get the default version, and possibly, overwrite it.
 .include <bsd.port.options.mk>
 .sinclude "${_PERL5_DEFAULT_FILE}"
+
+.if ${OSVERSION} >= 1200004
+CONFIGURE_ARGS+=	-Accflags='-DUSE_THREAD_SAFE_LOCALE'
+.endif
 
 # if this port is default due PERL5_DEFAULT
 # change PKGNAME to reflect this
