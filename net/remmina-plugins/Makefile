@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME?=	remmina-plugins
-DISTVERSION=	1.2.31.4
-PORTREVISION=	1
+DISTVERSION=	1.3.4
 CATEGORIES=	net gnome
 
 MAINTAINER?=	woodsb02@FreeBSD.org
