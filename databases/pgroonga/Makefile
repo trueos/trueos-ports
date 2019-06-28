@@ -11,6 +11,8 @@ COMMENT=	Open-source fulltext search engine for PostGRESQL
 
 LICENSE=	PostgreSQL
 
+BROKEN=		redefinition of 'PGrnGroongaInitialized' with a different type: 'bool' vs 'bool' (aka 'char')
+
 LIB_DEPENDS=	libgroonga.so:textproc/groonga
 
 USES=		gmake pgsql pkgconfig
@@ -19,7 +21,7 @@ LLD_UNSAFE=	yes
 SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	MECAB
-MECAB_DESCRIBE=	Use MeCab as a tokenizer
+MECAB_DESC=	Use MeCab as a tokenizer
 MECAB_BUILD_DEPENDS=	mecab-ipadics>=0.996:japanese/mecab-ipadic
 
 post-install:

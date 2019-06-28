@@ -2,7 +2,7 @@
 
 PORTNAME=	ca_root_nss
 PORTVERSION=	${VERSION_NSS}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	security
 MASTER_SITES=	MOZILLA/security/nss/releases/${DISTNAME:tu:C/[-.]/_/g}_RTM/src
 DISTNAME=	nss-${VERSION_NSS}${NSS_SUFFIX}
@@ -12,13 +12,16 @@ COMMENT=	Root certificate bundle from the Mozilla Project
 
 LICENSE=	MPL20
 
-OPTIONS_DEFINE=		ETCSYMLINK
+OPTIONS_DEFINE=		ETCSYMLINK LOCALSYMLINK
 OPTIONS_DEFAULT=	ETCSYMLINK
 
 OPTIONS_SUB=		yes
 
 ETCSYMLINK_DESC=	Add symlink to /etc/ssl/cert.pem
 ETCSYMLINK_CONFLICTS_INSTALL=	ca-roots-[0-9]*
+
+LOCALSYMLINK_DESC=	Add symlink to ${LOCALBASE}/etc/ssl/cert.pem
+LOCALSYMLINK_CONFLICTS_INSTALL=	ca-roots-[0-9]*
 
 USES=		perl5 ssl:build
 USE_PERL5=	build
@@ -33,7 +36,7 @@ PLIST_SUB+=	CERTDIR=${CERTDIR}
 # !!!  Please DO NOT submit patches for new version until it has !!!
 # !!!  been committed there first.                               !!!
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-VERSION_NSS=	3.43
+VERSION_NSS=	3.44
 #NSS_SUFFIX=	-with-ckbi-1.98
 CERTDATA_TXT_PATH=	nss-${VERSION_NSS}/nss/lib/ckfw/builtins/certdata.txt
 BUNDLE_PROCESSOR=	MAca-bundle.pl
@@ -65,5 +68,9 @@ do-install:
 do-install-ETCSYMLINK-on:
 	${MKDIR} ${STAGEDIR}/etc/ssl
 	${LN} -sf ${PREFIX}/${CERTDIR}/ca-root-nss.crt ${STAGEDIR}/etc/ssl/cert.pem
+
+do-install-LOCALSYMLINK-on:
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/ssl
+	${LN} -sf ${PREFIX}/${CERTDIR}/ca-root-nss.crt ${STAGEDIR}${PREFIX}/etc/ssl/cert.pem
 
 .include <bsd.port.mk>
