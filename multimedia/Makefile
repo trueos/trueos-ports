@@ -27,6 +27,7 @@
     SUBDIR += bitstream
     SUBDIR += blind
     SUBDIR += bsdbktr_tvtune
+    SUBDIR += butt
     SUBDIR += camserv
     SUBDIR += ccextractor
     SUBDIR += cclive
@@ -210,6 +211,7 @@
     SUBDIR += libmpeg2
     SUBDIR += libmpeg3
     SUBDIR += libmtp
+    SUBDIR += libopenshot
     SUBDIR += libquicktime
     SUBDIR += libquicktime-lame
     SUBDIR += libquvi

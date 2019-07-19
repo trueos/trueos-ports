@@ -100,7 +100,6 @@
     SUBDIR += gom
     SUBDIR += gqlplus
     SUBDIR += grass7
-    SUBDIR += gtksql
     SUBDIR += hamsterdb
     SUBDIR += hashtypes
     SUBDIR += hbase
@@ -182,6 +181,8 @@
     SUBDIR += mariadb102-server
     SUBDIR += mariadb103-client
     SUBDIR += mariadb103-server
+    SUBDIR += mariadb104-client
+    SUBDIR += mariadb104-server
     SUBDIR += mariadb55-client
     SUBDIR += mariadb55-server
     SUBDIR += mdbtools
@@ -560,7 +561,6 @@
     SUBDIR += pecl-memcached
     SUBDIR += pecl-mongodb
     SUBDIR += pecl-redis
-    SUBDIR += pecl-redis3
     SUBDIR += pecl-rrd
     SUBDIR += percona-pam-for-mysql
     SUBDIR += percona-toolkit
@@ -886,6 +886,7 @@
     SUBDIR += rubygem-activemodel4
     SUBDIR += rubygem-activemodel5
     SUBDIR += rubygem-activemodel50
+    SUBDIR += rubygem-activerecord-explain-analyze
     SUBDIR += rubygem-activerecord-import
     SUBDIR += rubygem-activerecord-jdbc-adapter
     SUBDIR += rubygem-activerecord-jdbcmysql-adapter

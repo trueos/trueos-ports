@@ -8,7 +8,7 @@ DISTFILES=
 EXTRACT_ONLY=
 
 MAINTAINER=	kmoore@FreeBSD.org
-COMMENT=	Userland lib32 support
+COMMENT=	FreeBSD userland 32bit libraries
 
 BUILD_DEPENDS=  ${OS_WORLDDIST}:os/buildworld@${OS_FLAVOR}
 
@@ -30,6 +30,7 @@ do-install:
 		| ${SED} -e 's,^\./,,g' \
 		| ${AWK} '{print length, $$0}' | ${SORT} -rn \
 		| ${AWK} '{print $$2 }' \
+		| ${GREP} -v -e '\.a' \
 		>> ${TMPPLIST})
 	(cd ${STAGEDIR}; ${FIND} ./usr/lib32 \( -type d \) \
 		| ${SED} -e 's,^\./,,g' \

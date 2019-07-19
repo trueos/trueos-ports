@@ -1,5 +1,14 @@
 --- configure.orig	2017-07-13 08:56:44 UTC
 +++ configure
+@@ -806,7 +806,7 @@ if test $with_sharedlibs = "yes"; then
+     *-*-linux-gnu|*-*-linux|*-*-freebsd[3-9]*|*-*-freebsd[1-9][0-9]*\
+     |*-*-openbsd*|*-*-netbsd*|*-*-dragonfly*|*-*-gnu*|*-*-haiku*)
+       sharedcccompopts="-fPIC"
+-      mksharedlib="$bytecc -shared"
++      mksharedlib="$bytecc $bytecclinkopts -shared"
+       bytecclinkopts="$bytecclinkopts -Wl,-E"
+       byteccrpath="-Wl,-rpath,"
+       mksharedlibrpath="-Wl,-rpath,"
 @@ -838,6 +838,7 @@ if test $with_sharedlibs = "yes"; then
      x86_64-*-darwin*)             natdynlink=true;;
      s390x*-*-linux*)              natdynlink=true;;
@@ -16,15 +25,17 @@
    esac
  fi
  
-@@ -921,6 +923,7 @@ case "$target" in
+@@ -921,6 +923,9 @@ case "$target" in
    powerpc*-*-linux*)            arch=power;
                                  if $arch64; then model=ppc64; else model=ppc; fi
                                  system=elf;;
-+  powerpc-*-freebsd*)           arch=power; model=ppc; system=bsd_elf;;
++  powerpc*-*-freebsd*)          arch=power;
++                                if $arch64; then model=ppc64; else model=ppc; fi
++                                system=bsd_elf;;
    powerpc-*-netbsd*)            arch=power; model=ppc; system=elf;;
    powerpc-*-openbsd*)           arch=power; model=ppc; system=bsd_elf;;
    s390x*-*-linux*)              arch=s390x; model=z10; system=elf;;
-@@ -946,6 +949,7 @@ case "$target" in
+@@ -946,6 +951,7 @@ case "$target" in
    x86_64-*-darwin*)             arch=amd64; system=macosx;;
    x86_64-*-mingw*)              arch=amd64; system=mingw;;
    aarch64-*-linux*)             arch=arm64; system=linux;;
@@ -32,7 +43,7 @@
    x86_64-*-cygwin*)             arch=amd64; system=cygwin;;
  esac
  
-@@ -1051,10 +1055,12 @@ case "$arch,$system" in
+@@ -1051,10 +1057,12 @@ case "$arch,$system" in
      case "$nativecc" in gcc*) ;; *) cc_profile='-xpg';; esac;;
    amd64,linux) profiling='true';;
    amd64,openbsd) profiling='true';;
@@ -45,7 +56,7 @@
    arm,linux*) profiling='true';;
    power,elf) profiling='true';;
    power,bsd*) profiling='true';;
-@@ -2029,7 +2035,7 @@ MKLIB=${TOOLPREF}ar rc \$(1) \$(2); ${TOOLPREF}ranlib 
+@@ -2029,7 +2037,7 @@ MKLIB=${TOOLPREF}ar rc \$(1) \$(2); ${TOOLPREF}ranlib 
  #ml   Printf.sprintf "${TOOLPREF}ar rc %s %s %s; ${TOOLPREF}ranlib %s"
  #ml                  out opts files out;;
  EOF

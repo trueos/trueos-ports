@@ -62,6 +62,7 @@
     SUBDIR += elixir
     SUBDIR += elixir-mode.el
     SUBDIR += elk
+    SUBDIR += elm
     SUBDIR += emacs-lisp-intro
     SUBDIR += erlang
     SUBDIR += erlang-doc
@@ -125,6 +126,7 @@
     SUBDIR += gnatdroid-sysroot
     SUBDIR += gnatdroid-sysroot-x86
     SUBDIR += gnatdroid-x86
+    SUBDIR += gnu-apl
     SUBDIR += gnu-cobol
     SUBDIR += gnustep-base
     SUBDIR += go
