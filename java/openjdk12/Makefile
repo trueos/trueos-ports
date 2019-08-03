@@ -25,6 +25,7 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libgif.so:graphics/giflib \
 		liblcms2.so:graphics/lcms2 \
 		libpng.so:graphics/png
+RUN_DEPENDS=	javavm:java/javavmwrapper
 
 USES=		compiler:features gmake iconv jpeg pkgconfig
 USE_XORG=	x11 xext xi xrandr xrender xt xtst
@@ -34,6 +35,8 @@ GH_ACCOUNT=	battleblow
 GH_PROJECT=	openjdk-jdk12u
 
 BINARY_ALIAS=	grep=${LOCALBASE}/bin/grep
+NO_CCACHE=	yes
+
 _MAKE_JOBS=	#
 MAKE_ENV=	LANG="C" \
 		LC_ALL="C" \
@@ -54,9 +57,9 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	12
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	1
-JDK_BUILD_NUMBER=	12
-BSD_JDK_VERSION=	2
+JDK_PATCH_VERSION=	2
+JDK_BUILD_NUMBER=	10
+BSD_JDK_VERSION=	1
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	CC=/usr/bin/cc \
@@ -137,6 +140,7 @@ do-install:
 	@cd ${STAGEDIR}${INSTALLDIR} && \
 		${FIND} bin -type f -exec ${CHMOD} ${BINMODE} {} \;
 	@${CHMOD} ${BINMODE} ${STAGEDIR}${INSTALLDIR}/lib/jspawnhelper
+	@${ECHO} "@javavm ${INSTALLDIR}/bin/java" >> ${TMPPLIST}
 	@${FIND} ${STAGEDIR}${INSTALLDIR} -not -type d | ${SORT} | \
 		${SED} -e 's|^${STAGEDIR}${PREFIX}/||' >> ${TMPPLIST}
 

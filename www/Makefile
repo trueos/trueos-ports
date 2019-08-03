@@ -33,7 +33,6 @@
     SUBDIR += archiva
     SUBDIR += aria2
     SUBDIR += asql
-    SUBDIR += august
     SUBDIR += awffull
     SUBDIR += aws
     SUBDIR += aws-demos
@@ -505,6 +504,7 @@
     SUBDIR += opera-linuxplugins
     SUBDIR += orangehrm
     SUBDIR += osrm-backend
+    SUBDIR += ot-recorder
     SUBDIR += otrs
     SUBDIR += otter-browser
     SUBDIR += owncloud
@@ -1310,7 +1310,6 @@
     SUBDIR += p5-WebService-Linode
     SUBDIR += p5-WebService-MoviePosterDB
     SUBDIR += p5-WebService-MusicBrainz
-    SUBDIR += p5-WebService-MusicBrainz0
     SUBDIR += p5-WebService-NoPaste
     SUBDIR += p5-WebService-Pushover
     SUBDIR += p5-WebService-Rakuten
@@ -1510,6 +1509,7 @@
     SUBDIR += py-dj22-django-treebeard
     SUBDIR += py-dj22-djangorestframework
     SUBDIR += py-dj22-drf-yasg
+    SUBDIR += py-dj22-swapper
     SUBDIR += py-django
     SUBDIR += py-django-allauth
     SUBDIR += py-django-annotations
@@ -2426,7 +2426,6 @@
     SUBDIR += webhook
     SUBDIR += webinject
     SUBDIR += webkit2-gtk3
-    SUBDIR += weblint
     SUBDIR += weblint++
     SUBDIR += webpy
     SUBDIR += webreport

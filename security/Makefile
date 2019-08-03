@@ -278,6 +278,7 @@
     SUBDIR += l5
     SUBDIR += lasso
     SUBDIR += lastpass-cli
+    SUBDIR += lego
     SUBDIR += libadacrypt
     SUBDIR += libargon2
     SUBDIR += libassuan
@@ -1094,7 +1095,6 @@
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
     SUBDIR += rubygem-googleauth
-    SUBDIR += rubygem-googleauth06
     SUBDIR += rubygem-gpgme
     SUBDIR += rubygem-gpgr
     SUBDIR += rubygem-gssapi

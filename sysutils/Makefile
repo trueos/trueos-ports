@@ -53,6 +53,7 @@
     SUBDIR += asmon
     SUBDIR += asusoled
     SUBDIR += atf-master
+    SUBDIR += atf-rk3328
     SUBDIR += atf-rk3399
     SUBDIR += atf-sun50i_a64
     SUBDIR += atitvout
@@ -103,6 +104,7 @@
     SUBDIR += biosfont
     SUBDIR += bkpupsd
     SUBDIR += bksh
+    SUBDIR += boot-extract
     SUBDIR += boxbackup-devel
     SUBDIR += brasero
     SUBDIR += bsd-splash-changer
@@ -591,6 +593,7 @@
     SUBDIR += linux-c7-lttng-ust
     SUBDIR += linux-c7-userspace-rcu
     SUBDIR += linux-crashplan
+    SUBDIR += linux-rkbin
     SUBDIR += linuxfdisk
     SUBDIR += livecd
     SUBDIR += lizardfs
@@ -1109,6 +1112,7 @@
     SUBDIR += reoback
     SUBDIR += reptyr
     SUBDIR += respond
+    SUBDIR += rest-server
     SUBDIR += restic
     SUBDIR += retail
     SUBDIR += rex
@@ -1413,6 +1417,8 @@
     SUBDIR += u-boot-pine64-lts
     SUBDIR += u-boot-pinebook
     SUBDIR += u-boot-riotboard
+    SUBDIR += u-boot-rock64
+    SUBDIR += u-boot-rockpro64
     SUBDIR += u-boot-rpi
     SUBDIR += u-boot-rpi-0-w
     SUBDIR += u-boot-rpi2

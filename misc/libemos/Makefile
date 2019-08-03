@@ -2,7 +2,7 @@
 
 PORTNAME=	libemos
 DISTVERSION=	4.5.9
-PORTREVISION=	1
+PORTREVISION=	3
 DISTVERSIONSUFFIX=	-Source
 CATEGORIES=	misc
 MASTER_SITES=	https://confluence.ecmwf.int/download/attachments/3473472/
@@ -20,6 +20,9 @@ LIB_DEPENDS=	libeccodes.so:science/eccodes \
 USES=		cmake:noninja fortran
 
 CMAKE_ON=	BUILD_SHARED_LIBS # not respected: https://jira.ecmwf.int/browse/SUP-2691
+CMAKE_OFF=	HAVE_TESTS
+
+LDFLAGS+=	-leccodes
 
 post-stage: # installs the file from eccodes: https://jira.ecmwf.int/browse/SUP-2693
 	@${RM} ${STAGEDIR}${PREFIX}/bin/bufr_filter

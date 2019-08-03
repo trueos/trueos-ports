@@ -27,6 +27,7 @@
     SUBDIR += arp-sk
     SUBDIR += arpdig
     SUBDIR += arping
+    SUBDIR += arpoison
     SUBDIR += arprelease
     SUBDIR += asio
     SUBDIR += aslookup
@@ -240,6 +241,7 @@
     SUBDIR += hostapd
     SUBDIR += howl
     SUBDIR += hping
+    SUBDIR += hping3
     SUBDIR += hs-network
     SUBDIR += hsflowd
     SUBDIR += htpdate
@@ -340,6 +342,7 @@
     SUBDIR += libcapn
     SUBDIR += libcmis
     SUBDIR += libcoap
+    SUBDIR += libdaq
     SUBDIR += libdmapsharing
     SUBDIR += libdnet
     SUBDIR += libexosip2
@@ -944,6 +947,7 @@
     SUBDIR += pear-XML_RPC
     SUBDIR += pear-XML_RPC2
     SUBDIR += pecl-amqp
+    SUBDIR += pecl-mosquitto
     SUBDIR += pecl-oauth2
     SUBDIR += pecl-radius
     SUBDIR += pecl-rdkafka
