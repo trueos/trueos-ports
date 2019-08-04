@@ -23,13 +23,14 @@ GL_COMMIT=	e1a0ffd30a0d8e35ed86ec81ecb4719bb870d62c
 
 USES=	metaport
 
-OPTIONS_DEFINE=		EXEC KEYRING NX RDP SPICE TELEP VNC XDMCP WWW 
-OPTIONS_DEFAULT=	EXEC KEYRING RDP SPICE TELEP VNC XDMCP WWW
+OPTIONS_DEFINE=		EXEC KEYRING NX RDP SPICE VNC XDMCP WWW
+OPTIONS_DEFAULT=	EXEC KEYRING RDP SPICE VNC XDMCP WWW
 EXEC_DESC=		Plugin to execute a command
 KEYRING_DESC=		GNOME Keyring plugin
 NX_DESC=		NX protocol plugin
 RDP_DESC=		Remote Desktop Protocol plugin
 SPICE_DESC=		Spice protocol plugin
+ST_DESC=		(Simple) Terminal Plugin
 TELEP_DESC=		Telepathy protocol plugin
 VNC_DESC=		VNC protocol plugin
 XDMCP_DESC=		XDMCP protocol plugin
@@ -40,7 +41,7 @@ KEYRING_RUN_DEPENDS=	remmina-plugin-secret>=0:net/remmina-plugin-secret
 NX_RUN_DEPENDS=		remmina-plugin-nx>=0:net/remmina-plugin-nx
 RDP_RUN_DEPENDS=	remmina-plugin-rdp>=0:net/remmina-plugin-rdp
 SPICE_RUN_DEPENDS=	remmina-plugin-spice>=0:net/remmina-plugin-spice
-TELEP_RUN_DEPENDS=	remmina-plugin-telepathy>=0:net/remmina-plugin-telepathy
+ST_RUN_DEPENDS=		remmina-plugin-st>=0:net/remmina-plugin-st
 VNC_RUN_DEPENDS=	remmina-plugin-vnc>=0:net/remmina-plugin-vnc
 XDMCP_RUN_DEPENDS=	remmina-plugin-xdmcp>=0:net/remmina-plugin-xdmcp
 WWW_RUN_DEPENDS=	remmina-plugin-www>=0:net/remmina-plugin-www
