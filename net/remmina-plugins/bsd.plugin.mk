@@ -56,6 +56,7 @@ post-patch:
 .if ${PKGNAMESUFFIX:S,-,,} != "st"
 	${REINPLACE_CMD} -e '/find_suggested_package(SPICE)/d' ${WRKSRC}/plugins/CMakeLists.txt
 	${REINPLACE_CMD} -e '/add_subdirectory(spice)/d' ${WRKSRC}/plugins/CMakeLists.txt
+.endif
 .if ${PKGNAMESUFFIX:S,-,,} != "telepathy"
 	${REINPLACE_CMD} -e '/find_suggested_package(TELEPATHY)/d' ${WRKSRC}/plugins/CMakeLists.txt
 	${REINPLACE_CMD} -e '/add_subdirectory(telepathy)/d' ${WRKSRC}/plugins/CMakeLists.txt
