@@ -65,6 +65,9 @@ post-patch:
 .if ${PKGNAMESUFFIX:S,-,,} != "xdmcp"
 	${REINPLACE_CMD} -e '/add_subdirectory(xdmcp)/d' ${WRKSRC}/plugins/CMakeLists.txt
 .endif
+.if ${PKGNAMESUFFIX:S,-,,} != "www"
+	${REINPLACE_CMD} -e '/add_subdirectory(www)/d' ${WRKSRC}/plugins/CMakeLists.txt
+.endif
 
 .include <bsd.port.post.mk>
 .endif
