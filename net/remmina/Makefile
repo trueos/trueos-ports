@@ -27,7 +27,7 @@ USE_XORG=	ice sm x11 xext xkbfile
 INSTALLS_ICONS=	yes
 CMAKE_ARGS=	--build=build \
 		-DWITH_APPINDICATOR:BOOL=false
-SHEBANG_FILES=	bin/remmina-file-wrapper.sh
+SHEBANG_FILES=  data/desktop/remmina-file-wrapper.sh.in
 
 OPTIONS_DEFINE=		AVAHI GCRYPT NLS SSH TERM
 OPTIONS_DEFAULT=	AVAHI GCRYPT SSH TERM
