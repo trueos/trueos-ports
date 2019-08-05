@@ -54,8 +54,7 @@ post-patch:
 	${REINPLACE_CMD} -e '/add_subdirectory(spice)/d' ${WRKSRC}/plugins/CMakeLists.txt
 .endif
 .if ${PKGNAMESUFFIX:S,-,,} != "st"
-	${REINPLACE_CMD} -e '/find_suggested_package(SPICE)/d' ${WRKSRC}/plugins/CMakeLists.txt
-	${REINPLACE_CMD} -e '/add_subdirectory(spice)/d' ${WRKSRC}/plugins/CMakeLists.txt
+	${REINPLACE_CMD} -e '/add_subdirectory(st)/d' ${WRKSRC}/plugins/CMakeLists.txt
 .endif
 .if ${PKGNAMESUFFIX:S,-,,} != "telepathy"
 	${REINPLACE_CMD} -e '/find_suggested_package(TELEPATHY)/d' ${WRKSRC}/plugins/CMakeLists.txt
@@ -71,6 +70,10 @@ post-patch:
 .endif
 .if ${PKGNAMESUFFIX:S,-,,} != "www"
 	${REINPLACE_CMD} -e '/add_subdirectory(www)/d' ${WRKSRC}/plugins/CMakeLists.txt
+.endif
+.if ${PKGNAMESUFFIX:S,-,,} != "kwallet"
+	${REINPLACE_CMD} -e '/add_definitions(-DWITH_KF5WALLET)/d' ${WRKSRC}/plugins/CMakeLists.txt
+	${REINPLACE_CMD} -e '/add_subdirectory(kwallet)/d' ${WRKSRC}/plugins/CMakeLists.txt
 .endif
 
 .include <bsd.port.post.mk>
