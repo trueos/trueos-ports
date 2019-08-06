@@ -7,6 +7,7 @@ COMMENT=	Remmina plugin for XDMCP protocol
 
 RUN_DEPENDS=	Xephyr:x11-servers/xephyr
 
+USES+=		gnome
 USE_GNOME+=	cairo
 
 MASTERDIR=	${.CURDIR}/../remmina-plugins
