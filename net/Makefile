@@ -1177,7 +1177,7 @@
     SUBDIR += remmina-plugin-st
     SUBDIR += remmina-plugin-vnc
     SUBDIR += remmina-plugin-xdmcp
-    SUBDIR += remmina-plugins-www
+    SUBDIR += remmina-plugin-www
     SUBDIR += remmina-plugins
     SUBDIR += remotebox
     SUBDIR += remotedesk
