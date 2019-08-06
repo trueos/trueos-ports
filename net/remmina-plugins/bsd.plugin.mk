@@ -33,7 +33,7 @@ post-patch:
 	${REINPLACE_CMD} -e '/add_subdirectory(data)/d' ${WRKSRC}/CMakeLists.txt
 	${REINPLACE_CMD} -e '/add_subdirectory(po)/d' ${WRKSRC}/CMakeLists.txt
 	${REINPLACE_CMD} -e '/find_suggested_package(AVAHI)/d' ${WRKSRC}/CMakeLists.txt
-	${REINPLACE_CMD} -e '/    target_link_libraries(remmina ${SSH_LIBRARIES})/d' ${WRKSRC}/plugins/CMakeLists.txt
+	${REINPLACE_CMD} -e '/target_link_libraries(remmina/d' ${WRKSRC}/plugins/CMakeLists.txt
 
 # Which plugins to build
 .if ${PKGNAMESUFFIX:S,-,,} != "exec"
