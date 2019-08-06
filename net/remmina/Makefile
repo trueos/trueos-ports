@@ -15,19 +15,20 @@ LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 		libsoup-2.4.so:devel/libsoup \
 		libsodium.so:security/libsodium
 
+USES=		cmake desktop-file-utils gettext localbase:ldflags pathfix \
+		pkgconfig shared-mime-info ssl gnome shebangfix
+
 USE_GITLAB=	yes
 GL_ACCOUNT=	Remmina
 GL_PROJECT=	Remmina
 GL_COMMIT=	e1a0ffd30a0d8e35ed86ec81ecb4719bb870d62c
 
-USES=		cmake desktop-file-utils gettext localbase:ldflags pathfix \
-		pkgconfig shared-mime-info ssl gnome shebangfix
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 pango
 USE_XORG=	ice sm x11 xext xkbfile
 INSTALLS_ICONS=	yes
 CMAKE_ARGS=	--build=build \
 		-DWITH_APPINDICATOR:BOOL=false
-SHEBANG_FILES=  data/desktop/remmina-file-wrapper.sh.in
+SHEBANG_FILES=	data/desktop/remmina-file-wrapper.sh.in
 
 OPTIONS_DEFINE=		AVAHI GCRYPT NLS SSH TERM
 OPTIONS_DEFAULT=	AVAHI GCRYPT SSH TERM

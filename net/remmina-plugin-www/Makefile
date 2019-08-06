@@ -3,7 +3,7 @@
 
 PKGNAMESUFFIX=	-www
 
-COMMENT=	Remmina plugin to open an authenticated web-browser 
+COMMENT=	Remmina plugin to open an authenticated web-browser
 
 USES+=		gnome
 USE_GNOME+=	cairo
