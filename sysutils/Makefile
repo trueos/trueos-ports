@@ -1348,6 +1348,7 @@
     SUBDIR += tenshi
     SUBDIR += tentakel
     SUBDIR += terraform
+    SUBDIR += terraform-provider-vultr
     SUBDIR += testdisk
     SUBDIR += thefish
     SUBDIR += throttle

@@ -1424,8 +1424,8 @@
     SUBDIR += linux-c6-dbus-glib
     SUBDIR += linux-c6-dbus-libs
     SUBDIR += linux-c6-devtools
+    SUBDIR += linux-c6-elfutils-libelf
     SUBDIR += linux-c6-icu
-    SUBDIR += linux-c6-libelf
     SUBDIR += linux-c6-libgfortran
     SUBDIR += linux-c6-libglade2
     SUBDIR += linux-c6-libpciaccess
@@ -1439,8 +1439,9 @@
     SUBDIR += linux-c7-dbus-glib
     SUBDIR += linux-c7-dbus-libs
     SUBDIR += linux-c7-devtools
+    SUBDIR += linux-c7-elfutils-libelf
+    SUBDIR += linux-c7-elfutils-libs
     SUBDIR += linux-c7-icu
-    SUBDIR += linux-c7-libelf
     SUBDIR += linux-c7-libgfortran
     SUBDIR += linux-c7-libglade2
     SUBDIR += linux-c7-libpciaccess
@@ -1452,6 +1453,7 @@
     SUBDIR += linux-c7-sdl12
     SUBDIR += linux-c7-sdl20
     SUBDIR += linux-c7-strace
+    SUBDIR += linux-c7-systemd-libs
     SUBDIR += linux-ltp
     SUBDIR += linux_libusb
     SUBDIR += lion
@@ -5382,15 +5384,18 @@
     SUBDIR += rubygem-actionview4
     SUBDIR += rubygem-actionview5
     SUBDIR += rubygem-actionview50
+    SUBDIR += rubygem-actionview52
     SUBDIR += rubygem-active_scaffold
     SUBDIR += rubygem-activejob4
     SUBDIR += rubygem-activejob5
     SUBDIR += rubygem-activejob50
+    SUBDIR += rubygem-activejob52
     SUBDIR += rubygem-activemessaging
     SUBDIR += rubygem-activerecord-deprecated_finders
     SUBDIR += rubygem-activesupport4
     SUBDIR += rubygem-activesupport5
     SUBDIR += rubygem-activesupport50
+    SUBDIR += rubygem-activesupport52
     SUBDIR += rubygem-airborne
     SUBDIR += rubygem-akismet
     SUBDIR += rubygem-algebrick
@@ -5477,6 +5482,7 @@
     SUBDIR += rubygem-coercible
     SUBDIR += rubygem-coffee-rails-rails5
     SUBDIR += rubygem-coffee-rails-rails50
+    SUBDIR += rubygem-coffee-rails-rails52
     SUBDIR += rubygem-coffee-rails4
     SUBDIR += rubygem-coffee-rails41
     SUBDIR += rubygem-coffee-script
@@ -5530,6 +5536,7 @@
     SUBDIR += rubygem-device_detector
     SUBDIR += rubygem-devise
     SUBDIR += rubygem-devise-rails5
+    SUBDIR += rubygem-devise-rails52
     SUBDIR += rubygem-dig_rb
     SUBDIR += rubygem-directory_watcher
     SUBDIR += rubygem-ditz
@@ -5582,6 +5589,7 @@
     SUBDIR += rubygem-font-awesome-rails
     SUBDIR += rubygem-font-awesome-rails-rails5
     SUBDIR += rubygem-font-awesome-rails-rails50
+    SUBDIR += rubygem-font-awesome-rails-rails52
     SUBDIR += rubygem-foreigner
     SUBDIR += rubygem-foreman
     SUBDIR += rubygem-formatador
@@ -5605,6 +5613,7 @@
     SUBDIR += rubygem-gettext_i18n_rails
     SUBDIR += rubygem-gettext_i18n_rails_js-rails5
     SUBDIR += rubygem-gettext_i18n_rails_js-rails50
+    SUBDIR += rubygem-gettext_i18n_rails_js-rails52
     SUBDIR += rubygem-gh
     SUBDIR += rubygem-gibbler
     SUBDIR += rubygem-gio2
@@ -5646,6 +5655,7 @@
     SUBDIR += rubygem-hashie2
     SUBDIR += rubygem-health_check
     SUBDIR += rubygem-health_check26-rails5
+    SUBDIR += rubygem-health_check26-rails52
     SUBDIR += rubygem-heapy
     SUBDIR += rubygem-highline
     SUBDIR += rubygem-hike
@@ -5675,6 +5685,7 @@
     SUBDIR += rubygem-jbuilder
     SUBDIR += rubygem-jbuilder-rails5
     SUBDIR += rubygem-jbuilder-rails50
+    SUBDIR += rubygem-jbuilder-rails52
     SUBDIR += rubygem-jekyll-coffeescript
     SUBDIR += rubygem-jenkins_api_client
     SUBDIR += rubygem-jeweler
@@ -5799,12 +5810,16 @@
     SUBDIR += rubygem-pdk
     SUBDIR += rubygem-peek
     SUBDIR += rubygem-peek-gc-rails5
+    SUBDIR += rubygem-peek-gc-rails52
     SUBDIR += rubygem-peek-host
     SUBDIR += rubygem-peek-performance_bar
     SUBDIR += rubygem-peek-rails4
     SUBDIR += rubygem-peek-rails5
+    SUBDIR += rubygem-peek-rails52
     SUBDIR += rubygem-peek-rblineprof-rails5
+    SUBDIR += rubygem-peek-rblineprof-rails52
     SUBDIR += rubygem-peek-redis-rails5
+    SUBDIR += rubygem-peek-redis-rails52
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform
     SUBDIR += rubygem-pleaserun
@@ -5842,6 +5857,7 @@
     SUBDIR += rubygem-rails-i18n-4
     SUBDIR += rubygem-rails-i18n-rails5
     SUBDIR += rubygem-rails-i18n-rails50
+    SUBDIR += rubygem-rails-i18n-rails52
     SUBDIR += rubygem-rails-observers
     SUBDIR += rubygem-rainbow
     SUBDIR += rubygem-rake
@@ -5866,6 +5882,7 @@
     SUBDIR += rubygem-redis-activesupport
     SUBDIR += rubygem-redis-activesupport-rails5
     SUBDIR += rubygem-redis-activesupport-rails50
+    SUBDIR += rubygem-redis-activesupport-rails52
     SUBDIR += rubygem-redis-store
     SUBDIR += rubygem-redmine_plugin_support
     SUBDIR += rubygem-reentrant_flock
@@ -5962,6 +5979,7 @@
     SUBDIR += rubygem-sprockets-rails
     SUBDIR += rubygem-sprockets-rails-rails5
     SUBDIR += rubygem-sprockets-rails-rails50
+    SUBDIR += rubygem-sprockets-rails-rails52
     SUBDIR += rubygem-sprockets-sass
     SUBDIR += rubygem-sprockets3
     SUBDIR += rubygem-spruz
@@ -6055,6 +6073,7 @@
     SUBDIR += rubygem-wdm
     SUBDIR += rubygem-web-console-rails5
     SUBDIR += rubygem-web-console-rails50
+    SUBDIR += rubygem-web-console-rails52
     SUBDIR += rubygem-web-console2
     SUBDIR += rubygem-webby
     SUBDIR += rubygem-webfinger
