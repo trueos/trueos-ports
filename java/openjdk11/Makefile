@@ -96,6 +96,11 @@ JDK_BUILD_TYPE=		release
 
 .include <bsd.port.pre.mk>
 
+# Support aarch64 on FreeBSD 12 and up
+.if ${OSVERSION} >= 1200500
+ONLY_FOR_ARCHS+=aarch64
+.endif
+
 BOOTSTRAP_JDKS=	${LOCALBASE}/openjdk11 \
 		${LOCALBASE}/bootstrap-openjdk11
 
@@ -126,6 +131,11 @@ CONFIGURE_ARGS+=	--disable-warnings-as-errors \
 			--with-extra-cxxflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFAULT}"
 .else
 MAKE_ENV+=	USE_CLANG=true
+.endif
+
+.if ${ARCH} == aarch64
+CONFIGURE_ARGS+=	--disable-warnings-as-errors \
+			--disable-dtrace
 .endif
 
 .if empty(ICONV_LIB)

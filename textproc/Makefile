@@ -1218,8 +1218,6 @@
     SUBDIR += print-n-times
     SUBDIR += pugixml
     SUBDIR += pup
-    SUBDIR += pure-csv
-    SUBDIR += pure-xml
     SUBDIR += py-Chameleon
     SUBDIR += py-CommonMark
     SUBDIR += py-MarkupSafe
@@ -1260,6 +1258,7 @@
     SUBDIR += py-elasticsearch-curator
     SUBDIR += py-elasticsearch-dsl
     SUBDIR += py-elasticsearch5
+    SUBDIR += py-elasticsearch6
     SUBDIR += py-elib.intl
     SUBDIR += py-empy
     SUBDIR += py-enchant
@@ -1488,7 +1487,6 @@
     SUBDIR += rubygem-asciidoctor-diagram
     SUBDIR += rubygem-asciidoctor-include-ext
     SUBDIR += rubygem-asciidoctor-plantuml
-    SUBDIR += rubygem-asciidoctor-plantuml008
     SUBDIR += rubygem-autoprefixer-rails
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
@@ -1529,6 +1527,7 @@
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
     SUBDIR += rubygem-escape_utils11
+    SUBDIR += rubygem-extended-markdown-filter
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
     SUBDIR += rubygem-ferret
@@ -1539,12 +1538,10 @@
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-github-markup17
     SUBDIR += rubygem-gitlab-grit
-    SUBDIR += rubygem-gitlab-linguist
     SUBDIR += rubygem-gitlab-markup
     SUBDIR += rubygem-heredoc_unindent
     SUBDIR += rubygem-hikidoc
     SUBDIR += rubygem-html-pipeline
-    SUBDIR += rubygem-html-pipeline1
     SUBDIR += rubygem-html-pipeline27
     SUBDIR += rubygem-html2text
     SUBDIR += rubygem-htmlentities

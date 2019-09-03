@@ -1497,7 +1497,6 @@
     SUBDIR += py-dj22-django-auth-ldap
     SUBDIR += py-dj22-django-cacheops
     SUBDIR += py-dj22-django-cors-headers
-    SUBDIR += py-dj22-django_csp
     SUBDIR += py-dj22-django-debug-toolbar
     SUBDIR += py-dj22-django-filter
     SUBDIR += py-dj22-django-formset-js-improved
@@ -1510,6 +1509,7 @@
     SUBDIR += py-dj22-django-taggit-serializer
     SUBDIR += py-dj22-django-timezone-field
     SUBDIR += py-dj22-django-treebeard
+    SUBDIR += py-dj22-django_csp
     SUBDIR += py-dj22-djangorestframework
     SUBDIR += py-dj22-drf-yasg
     SUBDIR += py-dj22-swapper
@@ -2053,8 +2053,8 @@
     SUBDIR += rubygem-http
     SUBDIR += rubygem-http-cookie
     SUBDIR += rubygem-http-form_data
-    SUBDIR += rubygem-http_router
     SUBDIR += rubygem-http3
+    SUBDIR += rubygem-http_router
     SUBDIR += rubygem-httparty
     SUBDIR += rubygem-httpclient
     SUBDIR += rubygem-httpi
@@ -2180,7 +2180,6 @@
     SUBDIR += rubygem-responders
     SUBDIR += rubygem-responders-rails5
     SUBDIR += rubygem-responders-rails52
-    SUBDIR += rubygem-responders2-rails5
     SUBDIR += rubygem-responders2-rails52
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook

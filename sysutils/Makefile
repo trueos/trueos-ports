@@ -503,6 +503,7 @@
     SUBDIR += intel-qcu
     SUBDIR += inxi
     SUBDIR += intel-undervolt
+    SUBDIR += ioc
     SUBDIR += iocage
     SUBDIR += iocage-devel
     SUBDIR += iocell
@@ -1331,6 +1332,7 @@
     SUBDIR += syslog-ng320
     SUBDIR += syslog-ng321
     SUBDIR += syslog-ng322
+    SUBDIR += syslog-ng323
     SUBDIR += syslog-ng39
     SUBDIR += syslogger
     SUBDIR += sysrc
@@ -1448,6 +1450,7 @@
     SUBDIR += UEFITool
     SUBDIR += uefi-edk2-bhyve-devel
     SUBDIR += uefi-edk2-qemu
+    SUBDIR += ufetch
     SUBDIR += ufs_copy
     SUBDIR += uhidd
     SUBDIR += uif2iso
