@@ -1047,7 +1047,9 @@ OVERLAYS?=
 .if !defined(_FLAVOR)
 _FLAVOR:=	${FLAVOR}
 .endif
+.if !defined(PORTS_FEATURES) && empty(${PORTS_FEATURES:MFLAVORS})
 PORTS_FEATURES+=	FLAVORS
+.endif
 MINIMAL_PKG_VERSION=	1.6.0
 
 _PORTS_DIRECTORIES+=	${PKG_DBDIR} ${PREFIX} ${WRKDIR} ${EXTRACT_WRKDIR} \
@@ -1472,7 +1474,7 @@ _usefound=
 .endif
 .endfor
 .if !defined(_usefound)
-ERROR+=	"Unkonwn USES=${f:C/\:.*//}"
+ERROR+=	"Unknown USES=${f:C/\:.*//}"
 .endif
 .endfor
 
@@ -1998,7 +2000,7 @@ _usefound=
 .endif
 .endfor
 .if !defined(_usefound)
-ERROR+=	"Unkonwn USES=${f:C/\:.*//}"
+ERROR+=	"Unknown USES=${f:C/\:.*//}"
 .endif
 .endfor
 
@@ -4069,6 +4071,7 @@ DEPENDS-LIST= \
 
 ALL-DEPENDS-LIST=			${DEPENDS-LIST} -r ${_UNIFIED_DEPENDS:Q}
 ALL-DEPENDS-FLAVORS-LIST=	${DEPENDS-LIST} -f -r ${_UNIFIED_DEPENDS:Q}
+DEINSTALL-DEPENDS-FLAVORS-LIST=	${DEPENDS-LIST} -f -r ${_UNIFIED_DEPENDS:N${PKG_DEPENDS}:Q}
 MISSING-DEPENDS-LIST=		${DEPENDS-LIST} -m ${_UNIFIED_DEPENDS:Q}
 BUILD-DEPENDS-LIST=			${DEPENDS-LIST} "${PKG_DEPENDS} ${EXTRACT_DEPENDS} ${PATCH_DEPENDS} ${FETCH_DEPENDS} ${BUILD_DEPENDS} ${LIB_DEPENDS}"
 RUN-DEPENDS-LIST=			${DEPENDS-LIST} "${LIB_DEPENDS} ${RUN_DEPENDS}"
@@ -4093,7 +4096,7 @@ limited-clean-depends:
 .if !target(deinstall-depends)
 deinstall-depends:
 	@recursive_cmd="deinstall"; \
-	    recursive_dirs="$$(${ALL-DEPENDS-FLAVORS-LIST})"; \
+		recursive_dirs="$$(${DEINSTALL-DEPENDS-FLAVORS-LIST})"; \
 		${_FLAVOR_RECURSIVE_SH}
 .endif
 

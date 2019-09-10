@@ -254,7 +254,6 @@
     SUBDIR += gimp-refocus-plugin
     SUBDIR += gimp-resynthesizer
     SUBDIR += gimp-save-for-web
-    SUBDIR += gimp-wavelet-decompose-plugin
     SUBDIR += gimp-wavelet-denoise-plugin
     SUBDIR += gimp-wavelet-sharpen-plugin
     SUBDIR += giram
@@ -535,8 +534,6 @@
     SUBDIR += linux-c7-wayland
     SUBDIR += lua-gd
     SUBDIR += luminance-qt5
-    SUBDIR += luxrender
-    SUBDIR += luxrender14
     SUBDIR += lximage-qt
     SUBDIR += magnum
     SUBDIR += magnum-examples

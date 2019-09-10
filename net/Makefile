@@ -95,6 +95,7 @@
     SUBDIR += corosync3
     SUBDIR += coturn
     SUBDIR += courier-authlib-ldap
+    SUBDIR += courier-sox
     SUBDIR += cppzmq
     SUBDIR += cryptcat
     SUBDIR += csocks
@@ -1473,7 +1474,6 @@
     SUBDIR += tsocks
     SUBDIR += tucan
     SUBDIR += turnserver
-    SUBDIR += turses
     SUBDIR += twitux
     SUBDIR += u6rd
     SUBDIR += ucarp
