@@ -5,6 +5,14 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20190911:
+  AFFECTS: users of security/bastillion
+  AUTHOR: netchild@FreeBSD.org
+
+  The datastore of bastillion needs to be updated:
+    java -jar $PREFIX/jetty_bastillion/upgrade/bastillion-upgrade-3.08.00.jar \
+      $PREFIX/jetty_bastillion/bastillion/WEB-INF/classes/BastillionConfig.properties
+
 20190909:
   AFFECTS: users of lang/ruby25
   AUTHOR: mfechner@FreeBSD.org
@@ -161,6 +169,21 @@ you update your ports collection, before attempting any port upgrades.
   Users that still use the Python 2.7 version of net-im/py-matrix-synapse
   should switch to a newer Python version, e.g. 3.6, which is the default
   Python version since April 2019.
+
+20190717:
+  AFFECTS: users of net-p2p/zetacoin and net-p2p/zetacoin-nox11
+  AUTHOR: daniel@morante.net
+
+  Zetacoin will default to using modern versions of BDB (5.x or 6.x) when
+  the WALLET option is selected.   See pkg-help for explanation.
+
+  The zetacoin-nox11 slave port was renamed to zetacoin-daemon to align
+  with the net-p2p/bitcoin format.
+  
+  The zetacoin-cli and zetacoin-tx utilities have been re-packaged into
+  a separate port. If you require these programs, or use the zetacoin-cli
+  program to access the daemon or the GUI, install net-p2p/zetacoin-utils
+  to reinstall them.
 
 20190717:
   AFFECTS: users of sysutils/py-borgmatic

@@ -585,7 +585,6 @@
     SUBDIR += libsunacl
     SUBDIR += libsysstat
     SUBDIR += liburcu
-    SUBDIR += libutempter
     SUBDIR += life-preserver
     SUBDIR += lineak-defaultplugin
     SUBDIR += lineak-xosdplugin

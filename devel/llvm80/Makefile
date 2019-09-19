@@ -48,7 +48,7 @@ CMAKE_ARGS+=	-DCMAKE_INSTALL_MANDIR:PATH="share/man"
 CMAKE_ARGS+=	-DLLVM_PARALLEL_LINK_JOBS=1
 CMAKE_ARGS+=	-DPYTHON_EXECUTABLE=${PYTHON_CMD} \
 		-DPYTHON_INCLUDE_DIR=${PYTHON_INCLUDEDIR} \
-		-DPYTHON_LIBRARY=${LOCALBASE}/lib/lib${PYTHON_VERSION}m.so
+		-DPYTHON_LIBRARY=${LOCALBASE}/lib/lib${PYTHON_VERSION}${PYTHON_ABIVER}.so
 
 # Disable assertions.  They should be disabled by cmake, but USES=cmake
 # overrides -DCMAKE_*_FLAGS_RELEASE.
@@ -355,10 +355,6 @@ _COMPILER_RT_LIBS+= \
 	libclang_rt.ubsan_standalone-i386.a \
 	libclang_rt.ubsan_standalone-i386.so \
 	libclang_rt.ubsan_standalone_cxx-i386.a
-.endif
-
-.if ${OPSYS} == "FreeBSD" && ${COMPILER_TYPE} != clang
-CXXFLAGS+=	-D_GLIBCXX_USE_C99
 .endif
 
 # Use lld for armv6 on clang 7 and up to avoid binutils ld issues

@@ -200,6 +200,7 @@
     SUBDIR += gitlab-pages
     SUBDIR += gitlab-workhorse
     SUBDIR += glassfish
+    SUBDIR += glassfish5
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += go-appengine-sdk
@@ -283,6 +284,7 @@
     SUBDIR += jspwiki
     SUBDIR += jtoolkit
     SUBDIR += junkbuster
+    SUBDIR += jwt-cli
     SUBDIR += kanboard
     SUBDIR += kannel
     SUBDIR += kannel-sqlbox
@@ -326,6 +328,8 @@
     SUBDIR += ljdump
     SUBDIR += llgal
     SUBDIR += logtools
+    SUBDIR += lua-resty-core
+    SUBDIR += lua-resty-lrucache
     SUBDIR += luakit
     SUBDIR += lynx
     SUBDIR += lynx-current
@@ -1446,6 +1450,7 @@
     SUBDIR += py-amf
     SUBDIR += py-apachelog
     SUBDIR += py-arxiv
+    SUBDIR += py-asgiref
     SUBDIR += py-autobahn
     SUBDIR += py-aws-requests-auth
     SUBDIR += py-azure-common

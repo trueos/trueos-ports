@@ -38,6 +38,7 @@
     SUBDIR += cl-clx
     SUBDIR += cl-clx-sbcl
     SUBDIR += compton-conf
+    SUBDIR += conlecterm
     SUBDIR += controllermap
     SUBDIR += cool-retro-term
     SUBDIR += decurs
@@ -199,6 +200,7 @@
     SUBDIR += lilyterm
     SUBDIR += linux-c6-pixman
     SUBDIR += linux-c6-xorg-libs
+    SUBDIR += linux-c7-libxkbcommon
     SUBDIR += linux-c7-pixman
     SUBDIR += linux-c7-xorg-libs
     SUBDIR += listres
@@ -341,6 +343,7 @@
     SUBDIR += viewres
     SUBDIR += virtboard
     SUBDIR += virtualgl
+    SUBDIR += wallutils
     SUBDIR += waybar
     SUBDIR += wbar
     SUBDIR += wbarconf

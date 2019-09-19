@@ -3,6 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	4.2.1
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	https://ffmpeg.org/releases/
@@ -303,7 +304,8 @@ LIBBLURAY_LIB_DEPENDS=	libbluray.so:multimedia/libbluray
 LIBBLURAY_CONFIGURE_ENABLE=	libbluray
 
 # librsvg
-LIBRSVG2_LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2
+LIBRSVG2_USES=			gnome
+LIBRSVG2_USE=			GNOME=librsvg2
 LIBRSVG2_CONFIGURE_ENABLE=	librsvg
 
 # libxml
@@ -451,7 +453,7 @@ SVTAV1_PREVENTS_MSG=	Only one SVT vendor patch can be applied at the same time
 # svt-hevc
 SVTHEVC_LIB_DEPENDS=	libSvtHevcEnc.so:multimedia/svt-hevc
 SVTHEVC_CONFIGURE_ON=	--enable-libsvthevc
-SVTHEVC_PATCH_SITES=	https://github.com/Intel/SVT-HEVC/raw/v1.4.0/ffmpeg_plugin/:svthevc
+SVTHEVC_PATCH_SITES=	https://github.com/Intel/SVT-HEVC/raw/v1.4.1/ffmpeg_plugin/:svthevc
 SVTHEVC_PATCHFILES=	0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch:-p1:svthevc \
 			0002-doc-Add-libsvt_hevc-encoder-docs.patch:-p1:svthevc
 .if make(makesum)
@@ -574,8 +576,8 @@ ZVBI_CONFIGURE_ENABLE=	libzvbi
 # License knobs
 GPL3_CONFIGURE_ENABLE=	version3
 GPL3_VARS=		LICENSE="GPLv3+ LGPL3+"
-LICENSE_FILE_GPLv3=	${WRKSRC}/COPYING.GPLv3
-LICENSE_FILE_LGPL3=	${WRKSRC}/COPYING.LGPLv3
+LICENSE_FILE_GPLv3+ =	${WRKSRC}/COPYING.GPLv3
+LICENSE_FILE_LGPL3+ =	${WRKSRC}/COPYING.LGPLv3
 
 NONFREE_CONFIGURE_ENABLE=nonfree
 NONFREE_VARS=		RESTRICTED="enabling OPENSSL or FDK_AAC restricts redistribution"
@@ -598,10 +600,7 @@ CONFIGURE_ARGS+=--prefix="${PREFIX}" \
 		--enable-shared \
 		--enable-pic \
 		--enable-gpl \
-		--enable-postproc \
-		--enable-avfilter \
 		--enable-avresample \
-		--enable-pthreads \
 		--cc="${CC}"
 
 DOC_FILES=	Changelog CREDITS INSTALL.md LICENSE.md MAINTAINERS \
