@@ -975,6 +975,10 @@
     SUBDIR += php73-soap
     SUBDIR += php73-sockets
     SUBDIR += php73-xmlrpc
+    SUBDIR += php74-ldap
+    SUBDIR += php74-soap
+    SUBDIR += php74-sockets
+    SUBDIR += php74-xmlrpc
     SUBDIR += phpldapadmin
     SUBDIR += pim6-tools
     SUBDIR += pim6dd
@@ -1278,6 +1282,7 @@
     SUBDIR += rubygem-mqtt
     SUBDIR += rubygem-net-ldap
     SUBDIR += rubygem-net-netrc
+    SUBDIR += rubygem-net-ntp
     SUBDIR += rubygem-net-ping
     SUBDIR += rubygem-netrc
     SUBDIR += rubygem-network_interface

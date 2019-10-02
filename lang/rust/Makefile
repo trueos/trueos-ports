@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rust
-PORTVERSION?=	1.37.0
+PORTVERSION?=	1.38.0
 PORTREVISION?=	0
 CATEGORIES=	lang
 MASTER_SITES=	https://static.rust-lang.org/dist/:src \
@@ -10,14 +10,16 @@ MASTER_SITES=	https://static.rust-lang.org/dist/:src \
 		LOCAL/tobik/rust:rust_bootstrap \
 		https://static.rust-lang.org/dist/:cargo_bootstrap \
 		LOCAL/tobik/rust:cargo_bootstrap \
-		https://github.com/llvm/llvm-project/releases/download/llvmorg-8.0.1/:compiler_rt
+		https://releases.llvm.org/${COMPILER_RT_VERSION}/:compiler_rt \
+		https://github.com/llvm/llvm-project/releases/download/llvmorg-${COMPILER_RT_VERSION}/:compiler_rt
 DISTNAME?=	${PORTNAME}c-${PORTVERSION}-src
 DISTFILES?=	${NIGHTLY_SUBDIR}${DISTNAME}${EXTRACT_SUFX}:src \
 		${_RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz:rust_bootstrap \
 		${_RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz:rust_bootstrap \
 		${_CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz:cargo_bootstrap \
 		${DISTFILES_${ARCH}}
-DISTFILES_armv6=	compiler-rt-8.0.1.src.tar.xz:compiler_rt
+DISTFILES_armv6=	compiler-rt-${COMPILER_RT_VERSION}.src.tar.xz:compiler_rt
+DISTFILES_armv7=	compiler-rt-${COMPILER_RT_VERSION}.src.tar.xz:compiler_rt
 DIST_SUBDIR?=	rust
 EXTRACT_ONLY?=	${DISTFILES:N*\:*bootstrap:C/:.*//}
 
@@ -29,6 +31,7 @@ LICENSE_COMB=	dual
 LICENSE_FILE_APACHE20=	${WRKSRC}/LICENSE-APACHE
 LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 
+IGNORE_FreeBSD_11_powerpc64=	is missing a bootstrap for FreeBSD 11.x powerpc64
 ONLY_FOR_ARCHS?=	aarch64 amd64 armv6 armv7 i386 powerpc64
 ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap compiler
 
@@ -38,9 +41,13 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libgit2.so:devel/libgit2 \
 		libssh2.so:security/libssh2
 
-USES=		libedit pkgconfig python:2.7,build ssl tar:xz
+USES=		libedit pkgconfig python:build ssl tar:xz
 
 CONFLICTS_INSTALL?=	rust-nightly
+
+EXTRA_PATCHES+=		${EXTRA_PATCHES_${ARCH}}
+EXTRA_PATCHES_armv6=	${PATCHDIR}/extra-patch-arm-compiler-rt
+EXTRA_PATCHES_armv7=	${PATCHDIR}/extra-patch-arm-compiler-rt
 
 PLIST_FILES=	lib/rustlib/components \
 		lib/rustlib/rust-installer-version
@@ -54,9 +61,10 @@ DOCS_VARS=		_RUST_BUILD_DOCS=true
 GDB_RUN_DEPENDS=	${LOCALBASE}/bin/gdb:devel/gdb
 
 # See WRKSRC/src/stage0.txt for the date and version values.
-BOOTSTRAPS_DATE?=		2019-07-04
-RUST_BOOTSTRAP_VERSION?=	1.36.0
-CARGO_BOOTSTRAP_VERSION?=	0.37.0
+BOOTSTRAPS_DATE?=		2019-08-15
+RUST_BOOTSTRAP_VERSION?=	1.37.0
+CARGO_BOOTSTRAP_VERSION?=	0.38.0
+COMPILER_RT_VERSION?=		9.0.0
 
 BOOTSTRAPS_SUFFIX?=		${BOOTSTRAPS_SUFFIX_${ARCH}}
 BOOTSTRAPS_SUFFIX_powerpc64?=	-elfv1
@@ -76,9 +84,9 @@ _CARGO_BOOTSTRAP=	${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/cargo-${CARGO_B
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == powerpc64
-# The bootstrap is hardcoded to use gcc8
+# The bootstrap is hardcoded to use gcc9
 # but we can build with a newer or older compiler as provided by USE_GCC=yes
-BUILD_DEPENDS+=	gcc8:lang/gcc8
+BUILD_DEPENDS+=	gcc9:lang/gcc9
 USE_GCC=	yes
 .endif
 
@@ -106,8 +114,8 @@ post-extract:
 		${WRKSRC}/build/cache/${_RUST_STD_BOOTSTRAP}.tar.gz
 	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${_CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
 		${WRKSRC}/build/cache/${_CARGO_BOOTSTRAP}.tar.gz
-.if ${ARCH} == armv6
-	${LN} -sf ${WRKDIR}/compiler-rt-8.0.1.src ${WRKSRC}/src/llvm-project/compiler-rt
+.if ${ARCH} == armv6 || ${ARCH} == armv7
+	${LN} -sf ${WRKDIR}/compiler-rt-${COMPILER_RT_VERSION}.src ${WRKSRC}/src/llvm-project/compiler-rt
 .endif
 
 post-patch:
@@ -236,58 +244,20 @@ do-test:
 
 .if !defined(_RUST_MAKESUM_GUARD)
 makesum:
-	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=${ONLY_FOR_ARCHS:O:[1]}
+	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=${ONLY_FOR_ARCHS:O:[1]} DISTINFO_FILE=${DISTINFO_FILE}.tmp
 .for arch in ${ONLY_FOR_ARCHS:O:[2..-1]}
 	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=${arch} DISTINFO_FILE=${DISTINFO_FILE}.${arch}
-	${GREP} ${_RUST_ARCH_${arch}:U${arch}} ${DISTINFO_FILE}.${arch} >> ${DISTINFO_FILE}
+	${GREP} ${_RUST_ARCH_${arch}:U${arch}} ${DISTINFO_FILE}.${arch} >> ${DISTINFO_FILE}.tmp
 .for file in ${DISTFILES_${arch}}
-	${GREP} ${file:S,:, ,:[1]} ${DISTINFO_FILE}.${arch} >> ${DISTINFO_FILE}
+	${GREP} ${file:S,:, ,:[1]} ${DISTINFO_FILE}.${arch} >> ${DISTINFO_FILE}.tmp
 .endfor
 	${RM} ${DISTINFO_FILE}.${arch}
 .endfor
 	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=powerpc64 BOOTSTRAPS_SUFFIX="-elfv2" DISTINFO_FILE=${DISTINFO_FILE}.powerpc64-elfv2
-	${GREP} ${_RUST_ARCH_powerpc64:Upowerpc64} ${DISTINFO_FILE}.powerpc64-elfv2 >> ${DISTINFO_FILE}
+	${GREP} ${_RUST_ARCH_powerpc64:Upowerpc64} ${DISTINFO_FILE}.powerpc64-elfv2 >> ${DISTINFO_FILE}.tmp
 	${RM} ${DISTINFO_FILE}.powerpc64-elfv2
+	${AWK} '!seen[$$0]++' ${DISTINFO_FILE}.tmp > ${DISTINFO_FILE}
+	${RM} ${DISTINFO_FILE}.tmp
 .endif
-
-BOOTSTRAPS_SOURCE_PKG_FBSDVER=		10
-BOOTSTRAPS_SOURCE_PKG_FBSDVER_aarch64=	11
-BOOTSTRAPS_SOURCE_PKG_FBSDVER_armv6=	11
-BOOTSTRAPS_SOURCE_PKG_FBSDVER_armv7=	12
-BOOTSTRAPS_SOURCE_PKG_FBSDVER_powerpc64=	11
-BOOTSTRAPS_SOURCE_PKG_REV=
-BOOTSTRAPS_SOURCE_PKG_URL=	https://pkg.freebsd.org/FreeBSD:${BOOTSTRAPS_SOURCE_PKG_FBSDVER_${ARCH}:U${BOOTSTRAPS_SOURCE_PKG_FBSDVER}}:${ARCH}/latest/All/rust-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}${BOOTSTRAPS_SOURCE_PKG_REV}.txz
-BOOTSTRAPS_SOURCE_PKG=		${_DISTDIR}/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rust-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${ARCH}.txz
-
-package-to-bootstraps: ${BOOTSTRAPS_SOURCE_PKG}
-	${MKDIR} ${WRKDIR}/bootstraps
-	${RM} -r ${WRKDIR}/bootstraps/usr
-	${EXTRACT_CMD} \
-		-C ${WRKDIR}/bootstraps \
-		--strip-components 3 \
-		${EXTRACT_BEFORE_ARGS} ${BOOTSTRAPS_SOURCE_PKG} ${LOCALBASE}
-# `rustc` bootstrap.
-	${RM} -r ${WRKDIR}/bootstraps/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
-	${MKDIR} ${WRKDIR}/bootstraps/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
-	cd ${WRKDIR}/bootstraps/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET} && \
-		${MKDIR} rustc/bin rustc/lib && \
-		${MV} ${WRKDIR}/bootstraps/bin/rust* rustc/bin && \
-		${MV} ${WRKDIR}/bootstraps/lib/*.so rustc/lib
-	${TAR} -cz --format=ustar -C ${WRKDIR}/bootstraps \
-		-f ${_DISTDIR}/${_RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
-		rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
-# `rust-std` bootstrap.
-	${RM} -r ${WRKDIR}/bootstraps/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
-	${MKDIR} ${WRKDIR}/bootstraps/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
-	cd ${WRKDIR}/bootstraps/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET} && \
-		${MKDIR} rust-std-${_RUST_TARGET}/lib/rustlib/${_RUST_TARGET} && \
-		${MV} ${WRKDIR}/bootstraps/lib/rustlib/${_RUST_TARGET}/lib rust-std-${_RUST_TARGET}/lib/rustlib/${_RUST_TARGET}
-	${TAR} -cz --format=ustar -C ${WRKDIR}/bootstraps \
-		-f ${_DISTDIR}/${_RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
-		rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${_RUST_TARGET}
-
-${BOOTSTRAPS_SOURCE_PKG}:
-	${MKDIR} ${@:H}
-	${FETCH_CMD} -o $@ ${BOOTSTRAPS_SOURCE_PKG_URL}
 
 .include <bsd.port.post.mk>

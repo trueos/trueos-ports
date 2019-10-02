@@ -2,6 +2,7 @@
 
 PORTNAME=	fts-xapian
 PORTVERSION=	1.2.1
+DISTVERSIONPREFIX=	${PORTNAME}-
 PORTREVISION=	1
 CATEGORIES=	mail
 PKGNAMEPREFIX=	dovecot-
@@ -11,18 +12,17 @@ COMMENT=	Dovecot FTS plugin based on Xapian
 
 LICENSE=	LGPL21
 
+BUILD_DEPENDS=	dovecot>=2.3.7:mail/dovecot
 LIB_DEPENDS=	libxapian.so:databases/xapian-core \
 		libicuuc.so:devel/icu
-BUILD_DEPENDS=	dovecot>=2.3.7:mail/dovecot
 RUN_DEPENDS=	dovecot>=2.3.7:mail/dovecot
 
-USES=		autoreconf libtool pkgconfig
+USES=		autoreconf compiler:c++11-lang libtool pkgconfig
 
 USE_LDCONFIG=	yes
 
 USE_GITHUB=yes
 GH_ACCOUNT=	grosjo
-GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 
 GNU_CONFIGURE=	yes
 

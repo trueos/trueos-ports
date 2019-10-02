@@ -144,7 +144,6 @@
     SUBDIR += libSM
     SUBDIR += libX11
     SUBDIR += libXScrnSaver
-    SUBDIR += libXTrap
     SUBDIR += libXau
     SUBDIR += libXcm
     SUBDIR += libXcomposite
@@ -159,8 +158,6 @@
     SUBDIR += libXp
     SUBDIR += libXpm
     SUBDIR += libXpresent
-    SUBDIR += libXprintAppUtil
-    SUBDIR += libXprintUtil
     SUBDIR += libXrandr
     SUBDIR += libXrender
     SUBDIR += libXres
@@ -293,8 +290,7 @@
     SUBDIR += roxbg
     SUBDIR += roxterm
     SUBDIR += rsibreak
-    SUBDIR += rstart
-    SUBDIR += rubygem-gnome2
+    SUBDIR += rubygem-gnome
     SUBDIR += rxvt
     SUBDIR += rxvt-unicode
     SUBDIR += sakura
@@ -405,7 +401,6 @@
     SUBDIR += xcurs
     SUBDIR += xcursorgen
     SUBDIR += xcut
-    SUBDIR += xdbedizzy
     SUBDIR += xditview
     SUBDIR += xdm
     SUBDIR += xdotool
@@ -482,10 +477,8 @@
     SUBDIR += xorg-libraries
     SUBDIR += xorg-minimal
     SUBDIR += xorgproto
-    SUBDIR += xplsprinters
     SUBDIR += xpr
     SUBDIR += xpra
-    SUBDIR += xprehashprinterlist
     SUBDIR += xprintidle
     SUBDIR += xprompt
     SUBDIR += xprop
@@ -521,7 +514,6 @@
     SUBDIR += xtestpicture
     SUBDIR += xtoolwait
     SUBDIR += xtrans
-    SUBDIR += xtrap
     SUBDIR += xtrlock
     SUBDIR += xtset
     SUBDIR += xvattr
