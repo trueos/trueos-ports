@@ -236,6 +236,7 @@
     SUBDIR += dim
     SUBDIR += dirdiff
     SUBDIR += direnv
+    SUBDIR += direvent
     SUBDIR += dirvish
     SUBDIR += diskcheckd
     SUBDIR += diskimage-tools
@@ -615,6 +616,7 @@
     SUBDIR += LPRng
     SUBDIR += LPRngTool
     SUBDIR += lr
+    SUBDIR += lsblk
     SUBDIR += lscpu
     SUBDIR += lsof
     SUBDIR += lsop
@@ -1081,6 +1083,7 @@
     SUBDIR += roct
     SUBDIR += roottail
     SUBDIR += rovclock
+    SUBDIR += rshim-user-space
     SUBDIR += rpi-firmware
     SUBDIR += rsnapshot
     SUBDIR += rsyncbackup
