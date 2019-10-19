@@ -49,7 +49,7 @@
 %%LDAP%%lib/dovecot/libdovecot-ldap.so.0
 %%LDAP%%lib/dovecot/libdovecot-ldap.so.0.0.0
 %%LIBWRAP%%libexec/dovecot/tcpwrap
-%%LUA_LIBDIR%%exec/dovecot/health-check.sh
+libexec/dovecot/health-check.sh
 %%LUA%%%%LUA_LIBDIR%%/dovecot/%%LUA_LIBDIR%%01_mail_lua_plugin.a
 %%LUA%%%%LUA_LIBDIR%%/dovecot/%%LUA_LIBDIR%%01_mail_lua_plugin.so
 %%LUA%%%%LUA_LIBDIR%%/dovecot/%%LUA_LIBDIR%%22_push_notification_lua_plugin.a

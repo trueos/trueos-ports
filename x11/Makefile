@@ -25,7 +25,6 @@
     SUBDIR += bgrot
     SUBDIR += bgs
     SUBDIR += bitmap
-    SUBDIR += blast
     SUBDIR += bmpanel2
     SUBDIR += bricons
     SUBDIR += brisk-menu
@@ -54,7 +53,6 @@
     SUBDIR += docker-tray
     SUBDIR += dsbautostart
     SUBDIR += dxpc
-    SUBDIR += dynamag
     SUBDIR += dzen2
     SUBDIR += eaglemode
     SUBDIR += editres
@@ -73,8 +71,8 @@
     SUBDIR += fstobdf
     SUBDIR += gcb
     SUBDIR += gdm
-    SUBDIR += ghostbsd-installed-common-settings
-    SUBDIR += ghostbsd-live-common-settings
+    SUBDIR += ghostbsd-common-settings
+    SUBDIR += ghostbsd-mate
     SUBDIR += ghostbsd-mate-settings
     SUBDIR += ghostbsd-slim-theme
     SUBDIR += ghostbsd-xfce-settings
@@ -150,7 +148,6 @@
     SUBDIR += libXcursor
     SUBDIR += libXdamage
     SUBDIR += libXdmcp
-    SUBDIR += libXevie
     SUBDIR += libXext
     SUBDIR += libXfixes
     SUBDIR += libXi
@@ -179,7 +176,6 @@
     SUBDIR += libgnomemm26
     SUBDIR += libinput
     SUBDIR += libmatekbd
-    SUBDIR += liboldX
     SUBDIR += libsx
     SUBDIR += libsynaptics
     SUBDIR += libwacom
@@ -189,7 +185,6 @@
     SUBDIR += libxfce4util
     SUBDIR += libxkbcommon
     SUBDIR += libxkbfile
-    SUBDIR += libxkbui
     SUBDIR += libxklavier
     SUBDIR += libxshmfence
     SUBDIR += lightdm
@@ -219,7 +214,6 @@
     SUBDIR += mate-applets
     SUBDIR += mate-base
     SUBDIR += mate-desktop
-    SUBDIR += mate-live-settings
     SUBDIR += mate-menus
     SUBDIR += mate-panel
     SUBDIR += mate-screensaver
@@ -257,6 +251,7 @@
     SUBDIR += perwindowlayoutd
     SUBDIR += pipeglade
     SUBDIR += pixman
+    SUBDIR += plank
     SUBDIR += plasma5-kactivitymanagerd
     SUBDIR += plasma5-kgamma5
     SUBDIR += plasma5-kscreen
@@ -400,7 +395,6 @@
     SUBDIR += xcolors
     SUBDIR += xcolorsel
     SUBDIR += xconsole
-    SUBDIR += xcurs
     SUBDIR += xcursorgen
     SUBDIR += xcut
     SUBDIR += xditview
@@ -491,16 +485,11 @@
     SUBDIR += xrootconsole
     SUBDIR += xrsh
     SUBDIR += xrsi
-    SUBDIR += xrx
     SUBDIR += xscope
     SUBDIR += xscreensaver
-    SUBDIR += xscreensaver-gnome
-    SUBDIR += xscreensaver-gnome-hacks
     SUBDIR += xscreensaver.app
     SUBDIR += xsel-conrad
     SUBDIR += xset
-    SUBDIR += xsetmode
-    SUBDIR += xsetpointer
     SUBDIR += xsetroot
     SUBDIR += xsettingsd
     SUBDIR += xskyroot

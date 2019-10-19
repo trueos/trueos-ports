@@ -512,7 +512,7 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				- Similiar to INSTALL_PROGRAM and INSTALL_DATA commands but
 #				  working on whole trees of directories, takes 3 arguments,
 #				  last one is find(1) arguments and optional.
-#				  Example use: 
+#				  Example use:
 #				  cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${DOCSDIR} "! -name *\.bak"
 #
 #				  Installs all directories and files from ${WRKSRC}/doc
@@ -1854,6 +1854,11 @@ PKG_DEPENDS+=	${LOCALBASE}/sbin/pkg:${PKG_ORIGIN}
 .if defined(LLD_UNSAFE) && ${/usr/bin/ld:L:tA} == /usr/bin/ld.lld
 LDFLAGS+=	-fuse-ld=bfd
 BINARY_ALIAS+=	ld=${LD}
+.  if ${ARCH} == powerpc64
+# Base ld.bfd can't do ELFv2 which powerpc64 with Clang in base uses
+USE_BINUTILS=	yes
+LDFLAGS+=		-B${LOCALBASE}/bin
+.  endif
 .  if !defined(USE_BINUTILS)
 .    if exists(/usr/bin/ld.bfd)
 LD=	/usr/bin/ld.bfd
@@ -2580,7 +2585,7 @@ VALID_CATEGORIES+= accessibility afterstep arabic archivers astro audio \
 	benchmarks biology cad chinese comms converters databases \
 	deskutils devel docs dns editors elisp emulators enlightenment finance french freenas ftp \
 	games geography german gnome gnustep graphics hamradio haskell hebrew hungarian \
-	ipv6 irc japanese java kde ${_KDE_CATEGORIES_SUPPORTED} kld korean lang linux lisp \
+	irc japanese java kde ${_KDE_CATEGORIES_SUPPORTED} kld korean lang linux lisp \
 	mail mate math mbone misc multimedia net net-im net-mgmt net-p2p net-vpn news os \
 	palm parallel pear perl5 plan9 polish portuguese ports-mgmt \
 	print python ruby rubygems russian \
@@ -3320,7 +3325,7 @@ identify-install-conflicts:
 
 .if !target(check-install-conflicts)
 check-install-conflicts:
-.if ( defined(CONFLICTS) || defined(CONFLICTS_INSTALL) || ( defined(CONFLICTS_BUILD) && defined(DEFER_CONFLICTS_CHECK) ) ) && !defined(DISABLE_CONFLICTS) 
+.if ( defined(CONFLICTS) || defined(CONFLICTS_INSTALL) || ( defined(CONFLICTS_BUILD) && defined(DEFER_CONFLICTS_CHECK) ) ) && !defined(DISABLE_CONFLICTS)
 .if defined(DEFER_CONFLICTS_CHECK)
 	@conflicts_with=$$( \
 	{ ${PKG_QUERY} -g "%n-%v %p %o" ${CONFLICTS:C/.+/'&'/} ${CONFLICTS_BUILD:C/.+/'&'/} ${CONFLICTS_INSTALL:C/.+/'&'/} 2>/dev/null || : ; } \
@@ -4065,7 +4070,7 @@ MISSING-DEPENDS-LIST=		${DEPENDS-LIST} -m ${_UNIFIED_DEPENDS:Q}
 BUILD-DEPENDS-LIST=			${DEPENDS-LIST} "${PKG_DEPENDS} ${EXTRACT_DEPENDS} ${PATCH_DEPENDS} ${FETCH_DEPENDS} ${BUILD_DEPENDS} ${LIB_DEPENDS}"
 RUN-DEPENDS-LIST=			${DEPENDS-LIST} "${LIB_DEPENDS} ${RUN_DEPENDS}"
 TEST-DEPENDS-LIST=			${DEPENDS-LIST} ${TEST_DEPENDS:Q}
-CLEAN-DEPENDS-LIST=			${DEPENDS-LIST} -wr ${_UNIFIED_DEPENDS:Q} 
+CLEAN-DEPENDS-LIST=			${DEPENDS-LIST} -wr ${_UNIFIED_DEPENDS:Q}
 CLEAN-DEPENDS-LIMITED-LIST=	${DEPENDS-LIST} -w ${_UNIFIED_DEPENDS:Q}
 
 .if !target(clean-depends)
