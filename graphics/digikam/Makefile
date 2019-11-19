@@ -31,8 +31,8 @@ LIB_DEPENDS=	libKF5KGeoMap.so:astro/libkgeomap \
 		libpng.so:graphics/png \
 		libtiff.so:graphics/tiff
 
-USES=		bison cmake compiler:c++11-lib desktop-file-utils eigen:3 gl jpeg \
-		kde:5 pkgconfig qt:5 shebangfix tar:xz
+USES=		bison cmake compiler:c++11-lib desktop-file-utils eigen:3 gl \
+		gnome jpeg kde:5 pkgconfig qt:5 shebangfix tar:xz xorg
 USE_GL=		gl glu
 USE_GNOME=	glib20 libxml2 libxslt
 USE_KDE=	archive auth bookmarks calendarcore codecs completion config \
@@ -77,7 +77,8 @@ MEDIAPLAYER_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
 MEDIAPLAYER_CMAKE_BOOL_OFF=	CMAKE_DISABLE_FIND_PACKAGE_FFmpeg \
 				CMAKE_DISABLE_FIND_PACKAGE_QtAV
 
-MYSQL_USE=		MYSQL=server QT=sql-mysql_run
+MYSQL_USES=		mysql:server
+MYSQL_USE=		QT=sql-mysql_run
 MYSQL_CMAKE_BOOL=	ENABLE_INTERNALMYSQL \
 			ENABLE_MYSQLSUPPORT
 MYSQL_CMAKE_ON=		-DMYSQLD_PATH:PATH=${LOCALBASE}/libexec \

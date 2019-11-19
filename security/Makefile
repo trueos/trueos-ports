@@ -86,7 +86,6 @@
     SUBDIR += cl-md5-sbcl
     SUBDIR += clamassassin
     SUBDIR += clamav
-    SUBDIR += clamav-milter
     SUBDIR += clamav-unofficial-sigs
     SUBDIR += clamd-stream-client
     SUBDIR += clamfs
@@ -149,6 +148,7 @@
     SUBDIR += fakebo
     SUBDIR += fakeident
     SUBDIR += fakeroot
+    SUBDIR += farmhash
     SUBDIR += fbopenssl
     SUBDIR += fcheck
     SUBDIR += fcrackzip
@@ -1328,6 +1328,7 @@
     SUBDIR += yubikey-personalization-gui
     SUBDIR += yubioath-desktop
     SUBDIR += zebedee
+    SUBDIR += zeek
     SUBDIR += zenmap
     SUBDIR += zeronet
     SUBDIR += zxid

@@ -13,6 +13,7 @@
     SUBDIR += atlc
     SUBDIR += basicdsp
     SUBDIR += brickutils
+    SUBDIR += brlcad
     SUBDIR += calculix
     SUBDIR += calculix-ccx
     SUBDIR += cascade
@@ -22,6 +23,8 @@
     SUBDIR += dinotrace
     SUBDIR += electric
     SUBDIR += electric-ng
+    SUBDIR += elmerfem
+    SUBDIR += fasm
     SUBDIR += feappv
     SUBDIR += fidocadj
     SUBDIR += freecad

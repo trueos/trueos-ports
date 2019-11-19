@@ -86,6 +86,7 @@
     SUBDIR += clash
     SUBDIR += cloud-init
     SUBDIR += cloud-init-azure
+    SUBDIR += cloudflared
     SUBDIR += clusterit
     SUBDIR += cnd
     SUBDIR += concourse-fly
@@ -140,6 +141,7 @@
     SUBDIR += elixir-kafka_ex
     SUBDIR += elixir-oauth2
     SUBDIR += empty
+    SUBDIR += endlessh
     SUBDIR += enet
     SUBDIR += erlang-ranch
     SUBDIR += erlang-xmlrpc
@@ -973,6 +975,7 @@
     SUBDIR += php74-sockets
     SUBDIR += php74-xmlrpc
     SUBDIR += phpldapadmin
+    SUBDIR += pichi
     SUBDIR += pim6-tools
     SUBDIR += pim6dd
     SUBDIR += pim6sd
@@ -1256,11 +1259,15 @@
     SUBDIR += rubygem-gitaly-proto
     SUBDIR += rubygem-gitlab_omniauth-ldap
     SUBDIR += rubygem-google-cloud-bigquery
+    SUBDIR += rubygem-google-cloud-bigtable
     SUBDIR += rubygem-google-cloud-core
     SUBDIR += rubygem-google-cloud-env
     SUBDIR += rubygem-google-cloud-logging
+    SUBDIR += rubygem-google-cloud-pubsub
+    SUBDIR += rubygem-google-cloud-spanner
     SUBDIR += rubygem-google-cloud-storage
     SUBDIR += rubygem-grpc
+    SUBDIR += rubygem-grpc124
     SUBDIR += rubygem-hangouts-chat
     SUBDIR += rubygem-http-parser
     SUBDIR += rubygem-http_parser.rb

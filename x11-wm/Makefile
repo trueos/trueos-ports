@@ -17,6 +17,7 @@
     SUBDIR += bspwm
     SUBDIR += cage
     SUBDIR += ccsm
+    SUBDIR += chamfer
     SUBDIR += clementine-wm
     SUBDIR += compiz
     SUBDIR += compiz-fusion
@@ -96,6 +97,7 @@
     SUBDIR += peksystray
     SUBDIR += pekwm
     SUBDIR += phluid
+    SUBDIR += picom
     SUBDIR += piewm
     SUBDIR += plasma5-kdecoration
     SUBDIR += plasma5-kwin

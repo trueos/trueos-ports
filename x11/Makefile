@@ -152,7 +152,6 @@
     SUBDIR += libXfixes
     SUBDIR += libXi
     SUBDIR += libXinerama
-    SUBDIR += libXp
     SUBDIR += libXpm
     SUBDIR += libXpresent
     SUBDIR += libXrandr
@@ -162,7 +161,6 @@
     SUBDIR += libXv
     SUBDIR += libXvMC
     SUBDIR += libXxf86dga
-    SUBDIR += libXxf86misc
     SUBDIR += libXxf86vm
     SUBDIR += libdmx
     SUBDIR += libexo
@@ -195,6 +193,10 @@
     SUBDIR += linux-c7-libxkbcommon
     SUBDIR += linux-c7-pixman
     SUBDIR += linux-c7-xorg-libs
+    SUBDIR += linux-nvidia-libs
+    SUBDIR += linux-nvidia-libs-304
+    SUBDIR += linux-nvidia-libs-340
+    SUBDIR += linux-nvidia-libs-390
     SUBDIR += listres
     SUBDIR += lsw
     SUBDIR += luit
@@ -210,6 +212,7 @@
     SUBDIR += lxqt-globalkeys
     SUBDIR += lxqt-runner
     SUBDIR += lxrandr
+    SUBDIR += ly
     SUBDIR += mate
     SUBDIR += mate-applets
     SUBDIR += mate-base
@@ -234,6 +237,7 @@
     SUBDIR += nvidia-driver
     SUBDIR += nvidia-driver-304
     SUBDIR += nvidia-driver-340
+    SUBDIR += nvidia-driver-390
     SUBDIR += nvidia-settings
     SUBDIR += nvidia-xconfig
     SUBDIR += nxcomp
@@ -286,6 +290,7 @@
     SUBDIR += roxterm
     SUBDIR += rsibreak
     SUBDIR += rubygem-gnome
+    SUBDIR += run_scaled
     SUBDIR += rxvt
     SUBDIR += rxvt-unicode
     SUBDIR += sakura
@@ -422,10 +427,8 @@
     SUBDIR += xfce4-whiskermenu-plugin
     SUBDIR += xfce4-wmdock-plugin
     SUBDIR += xfd
-    SUBDIR += xfindproxy
     SUBDIR += xfishtank
     SUBDIR += xforward
-    SUBDIR += xfwp
     SUBDIR += xgamma
     SUBDIR += xgc
     SUBDIR += xgrab

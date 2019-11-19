@@ -4,7 +4,7 @@
 PORTNAME=	osg
 PORTVERSION=	3.4.1
 DISTVERSIONPREFIX=	OpenSceneGraph-
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	graphics
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -99,6 +99,7 @@ QT5_USE=		qt=buildtools_build,core,gui,opengl,qmake_build,webkit
 QT5_CMAKE_ON=		-DDESIRED_QT_VERSION=5
 QT5_VARS=		FORCE_REQUIRE+="Qt5Widgets Qt5WebKitWidgets"
 QT5_VARS_OFF=		FORCE_IGNORE+="Qt5Widgets Qt5WebKitWidgets"
+SDL_USES=		sdl
 SDL_USE=		sdl=sdl
 SDL_VARS=		FORCE_REQUIRE+=SDL
 SDL_VARS_OFF=		FORCE_IGNORE+=SDL

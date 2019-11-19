@@ -679,6 +679,7 @@
     SUBDIR += postgis23
     SUBDIR += postgis24
     SUBDIR += postgis25
+    SUBDIR += postgis30
     SUBDIR += postgresql-cstore_fdw
     SUBDIR += postgresql-jdbc
     SUBDIR += postgresql-libpgeasy
@@ -977,6 +978,7 @@
     SUBDIR += rubygem-memcache-client
     SUBDIR += rubygem-mysql
     SUBDIR += rubygem-mysql2
+    SUBDIR += rubygem-mysql204
     SUBDIR += rubygem-openid-redis-store
     SUBDIR += rubygem-paranoia
     SUBDIR += rubygem-peek-mysql2-rails5
@@ -999,7 +1001,6 @@
     SUBDIR += rubygem-redis-actionpack-rails50
     SUBDIR += rubygem-redis-actionpack-rails52
     SUBDIR += rubygem-redis-namespace
-    SUBDIR += rubygem-redis3
     SUBDIR += rubygem-seed-fu
     SUBDIR += rubygem-sqlite3
     SUBDIR += rubygem-sqlite3-ruby
