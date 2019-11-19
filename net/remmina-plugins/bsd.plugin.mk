@@ -33,8 +33,6 @@ post-patch:
 	${REINPLACE_CMD} -e '/add_subdirectory(data)/d' ${WRKSRC}/CMakeLists.txt
 	${REINPLACE_CMD} -e '/add_subdirectory(po)/d' ${WRKSRC}/CMakeLists.txt
 	${REINPLACE_CMD} -e '/find_suggested_package(AVAHI)/d' ${WRKSRC}/CMakeLists.txt
-	${REINPLACE_CMD} -e '/target_link_libraries(remmina/d' ${WRKSRC}/plugins/CMakeLists.txt
-
 # Which plugins to build
 .if ${PKGNAMESUFFIX:S,-,,} != "exec"
 	${REINPLACE_CMD} -e '/add_subdirectory(exec)/d' ${WRKSRC}/plugins/CMakeLists.txt
@@ -55,9 +53,6 @@ post-patch:
 	${REINPLACE_CMD} -e '/find_suggested_package(SPICE)/d' ${WRKSRC}/plugins/CMakeLists.txt
 	${REINPLACE_CMD} -e '/add_subdirectory(spice)/d' ${WRKSRC}/plugins/CMakeLists.txt
 .endif
-.if ${PKGNAMESUFFIX:S,-,,} != "st"
-	${REINPLACE_CMD} -e '/add_subdirectory(st)/d' ${WRKSRC}/plugins/CMakeLists.txt
-.endif
 .if ${PKGNAMESUFFIX:S,-,,} != "telepathy"
 	${REINPLACE_CMD} -e '/find_suggested_package(TELEPATHY)/d' ${WRKSRC}/plugins/CMakeLists.txt
 	${REINPLACE_CMD} -e '/add_subdirectory(telepathy)/d' ${WRKSRC}/plugins/CMakeLists.txt
@@ -69,13 +64,6 @@ post-patch:
 .endif
 .if ${PKGNAMESUFFIX:S,-,,} != "xdmcp"
 	${REINPLACE_CMD} -e '/add_subdirectory(xdmcp)/d' ${WRKSRC}/plugins/CMakeLists.txt
-.endif
-.if ${PKGNAMESUFFIX:S,-,,} != "www"
-	${REINPLACE_CMD} -e '/add_subdirectory(www)/d' ${WRKSRC}/plugins/CMakeLists.txt
-.endif
-.if ${PKGNAMESUFFIX:S,-,,} != "kwallet"
-	${REINPLACE_CMD} -e '/add_definitions(-DWITH_KF5WALLET)/d' ${WRKSRC}/plugins/CMakeLists.txt
-	${REINPLACE_CMD} -e '/add_subdirectory(kwallet)/d' ${WRKSRC}/plugins/CMakeLists.txt
 .endif
 
 .include <bsd.port.post.mk>

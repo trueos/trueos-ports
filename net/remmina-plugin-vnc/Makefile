@@ -9,7 +9,7 @@ LIB_DEPENDS=	libgnutls.so:security/gnutls \
 		libgcrypt.so:security/libgcrypt \
 		libvncserver.so:net/libvncserver
 
-USES=		jpeg gnome
+USES=		jpeg
 USE_GNOME+=	cairo
 
 MASTERDIR=	${.CURDIR}/../remmina-plugins

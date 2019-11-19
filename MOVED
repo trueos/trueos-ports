@@ -12856,4 +12856,3 @@ devel/ddd||2019-07-31|Has expired: does not work with modern gdb
 devel/py-pip-tools2|devel/py-pip-tools|2019-07-31|Has expired: Use devel/py-pip-tools instead
 lang/cint|lang/cling|2019-07-31|Has expired: Abandonware; superseded by lang/cling
 emulators/pearpc||2019-08-01|Has expired: Abandonware
-net/remmina-plugin-telepathy||2019-08-04|Disabled upstream for build Issues

@@ -1173,11 +1173,9 @@
     SUBDIR += remmina-plugin-nx
     SUBDIR += remmina-plugin-rdp
     SUBDIR += remmina-plugin-secret
-    SUBDIR += remmina-plugin-spice
-    SUBDIR += remmina-plugin-st
+    SUBDIR += remmina-plugin-telepathy
     SUBDIR += remmina-plugin-vnc
     SUBDIR += remmina-plugin-xdmcp
-    SUBDIR += remmina-plugin-www
     SUBDIR += remmina-plugins
     SUBDIR += remotebox
     SUBDIR += remotedesk
