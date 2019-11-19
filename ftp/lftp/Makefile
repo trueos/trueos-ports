@@ -4,7 +4,7 @@
 PORTNAME=	lftp
 PORTVERSION=	4.8.4
 PORTREVISION=	5
-CATEGORIES=	ftp ipv6
+CATEGORIES=	ftp
 MASTER_SITES=	http://lftp.tech/ftp/ \
 		http://lftp.tech/ftp/old/ \
 		http://lftp.cybermirror.org/ \
@@ -69,10 +69,6 @@ NEED_PTHREAD=	# empty
 .endif
 .if !empty(NEED_PTHREAD)
 LDFLAGS+=	-pthread
-.endif
-
-.if ${ARCH} == powerpc64
-USE_GCC=	yes
 .endif
 
 .include <bsd.port.post.mk>

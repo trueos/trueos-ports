@@ -9,7 +9,12 @@ CATEGORIES=	sysutils
 MAINTAINER=	kmoore@FreeBSD.org
 COMMENT=	PC-BSD Command-Line Utilities
 
+BROKEN=		unfetchable
+
 LICENSE=	BSD3CLAUSE
+
+DEPRECATED=	Abandoned upstream
+EXPIRATION_DATE=	2019-12-15
 
 RUN_DEPENDS=	sipcalc:net-mgmt/sipcalc \
 		eject:sysutils/eject
@@ -18,6 +23,7 @@ WRKSRC_SUBDIR=	src-sh/pcbsd-utils
 USE_QT=		core network buildtools qmake
 USES=		pkgconfig qt:5
 MAKE_ARGS=	PREFIX=${STAGEDIR}${PREFIX}
+MAKE_JOBS_UNSAFE=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	pcbsd

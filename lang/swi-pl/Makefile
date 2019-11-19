@@ -8,14 +8,13 @@ CATEGORIES=	lang
 MASTER_SITES=	http://www.swi-prolog.org/download/stable/src/
 DISTNAME=	swipl-${PORTVERSION}
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Edinburgh-style Prolog compiler
 
 LICENSE=	BSD2CLAUSE
 
 BROKEN_mips=		fails to link: libswipl.so: undefined reference to '__sync_sub_and_fetch_4'
 BROKEN_mips64=		fails to link: libswipl.so: undefined reference to '__sync_sub_and_fetch_4'
-BROKEN_powerpc64=	fails to compile: pce_principal.pl:155: Shared object "pl2xpce" not found, required by "swipl"
 
 LIB_DEPENDS=	libgmp.so:math/gmp \
 		libodbc.so:databases/unixODBC \
@@ -27,8 +26,8 @@ SWIPLDIR=	${PORTNAME:C/-//}-${PORTVERSION}
 
 NOPRECIOUSMAKEVARS=	yes
 
-USES=		libedit gmake jpeg libarchive pathfix pkgconfig \
-		readline shebangfix ssl
+USES=		compiler:c11 libedit gmake jpeg libarchive pathfix pkgconfig \
+		readline shebangfix ssl xorg
 USE_XORG=	ice sm x11 xext xft xinerama xpm xt
 
 MAKE_JOBS_UNSAFE=	yes

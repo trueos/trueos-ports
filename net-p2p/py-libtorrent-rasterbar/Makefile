@@ -3,8 +3,8 @@
 
 PORTNAME=	libtorrent-rasterbar
 DISTVERSION=	1.1.10
-PORTREVISION=	4
-CATEGORIES=	net-p2p ipv6 python
+PORTREVISION=	5
+CATEGORIES=	net-p2p python
 MASTER_SITES=	https://github.com/arvidn/libtorrent/releases/download/libtorrent-${PORTVERSION:S/./_/g}/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 

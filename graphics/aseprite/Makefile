@@ -34,7 +34,8 @@ LIB_DEPENDS=		liballeg.so:devel/allegro \
 			libtinyxml.so:textproc/tinyxml \
 			libzstd.so:archivers/zstd
 
-USES=			cmake compiler:c++11-lib iconv:wchar_t jpeg localbase:ldflags pkgconfig ssl
+USES=			cmake compiler:c++11-lib gnome iconv:wchar_t jpeg \
+			localbase:ldflags pkgconfig ssl xorg
 USE_GITHUB=		yes
 GH_TUPLE=		aseprite:libarchive:c51dbfc:libarchive/third_party/libarchive
 GH_TUPLE+=		aseprite:clip:964a64a:clip/src/clip
@@ -64,8 +65,6 @@ CMAKE_ON=		USE_SHARED_ALLEGRO4 \
 			USE_SHARED_TINYXML \
 			USE_SHARED_ZLIB
 CMAKE_ARGS=		-DFREEBSD_LIB_PATH=${LOCALBASE}/lib
-
-CXXFLAGS+=		-D_GLIBCXX_USE_C99 # XXX ports/193528
 
 OPTIONS_DEFINE=		STEAM WEBP
 OPTIONS_DEFAULT=	WEBP

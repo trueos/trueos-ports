@@ -3,9 +3,9 @@
 
 PORTNAME=	WinFF
 PORTVERSION=	1.5.5
-PORTREVISION=	12
+PORTREVISION=	15
 CATEGORIES=	multimedia
-MASTER_SITES=	http://winff.org/docs/source/
+MASTER_SITES=	LOCAL/thierry
 PKGNAMESUFFIX=	${LAZARUS_PKGNAMESUFFIX}
 DISTNAME=	${_PORTNAME}-${PORTVERSION}-source
 
@@ -16,12 +16,11 @@ LICENSE=	GPLv3
 
 LIB_DEPENDS=	libavutil.so:multimedia/ffmpeg
 
+USES=		fpc lazarus:flavors xorg
 USE_XORG=	x11
-USES=		fpc lazarus:flavors
 USE_FPC=	chm fcl-base fcl-image fcl-json fcl-xml pasjpeg regexpr x11
 
 NO_WRKSUBDIR=	yes
-LLD_UNSAFE=	yes
 _PORTNAME=	${PORTNAME:tl}
 DATADIR=	${PREFIX}/share/${_PORTNAME}
 DOCSDIR=	${PREFIX}/share/doc/${_PORTNAME}
@@ -40,6 +39,7 @@ LAZBUILD_ARGS=		-d
 BUILD_WRKSRC=	${WRKDIR}/${PKGNAME}/${_PORTNAME}
 
 .if ${FLAVOR:Ugtk2:Mgtk2}
+USES+=		gnome
 USE_FPC+=	cairo
 USE_GNOME+=	cairo
 INSTALLS_ICONS=yes

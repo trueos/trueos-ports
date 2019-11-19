@@ -2,30 +2,28 @@
 # $FreeBSD$
 
 PORTNAME=	elmerfem
-PORTVERSION=	8.3.20170524
-PORTREVISION=	6
+PORTVERSION=	8.4
+DISTVERSIONPREFIX=	release-
 CATEGORIES=	cad science
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	ELMER FEM package
+COMMENT=	Finite element software for multiphysical problems
 
 LICENSE=	GPLv2
 
-BROKEN=		fails to build
-DEPRECATED=	Broken for more than 6 months
-EXPIRATION_DATE=	2019-05-08
-
 LIB_DEPENDS=	libparpack.so:math/arpack-ng \
+		libmetis.so:math/metis \
 		libmpich.so:net/mpich
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ElmerCSC
-GH_TAGNAME=	release-8.3
 
-USES=		blaslapack:netlib cmake fortran gmake tcl
+USES=		blaslapack:netlib cmake fortran tcl
 
 USE_LDCONFIG=	${PREFIX}/lib/elmersolver
 ALL_TARGET=	# empty
+
+CMAKE_ARGS=	-DELMER_FEM_REVISION:STRING=f6bfdc9
 
 CMAKE_ARGS+=	-DHAVE_INTTYPES_H=ON
 .if !defined(MAINTAINER_MODE)
@@ -44,11 +42,16 @@ FFLAGS+=	-fPIC
 LDFLAGS+=	-L${LOCALBASE}/lib
 FCPPFLAGS+=	-ansi
 
+post-patch:
+	@${RM} -r ${WRKSRC}/elmergrid/src/metis-5.1.0
+	@${REINPLACE_CMD} -e 's,"metis.*/metis\.h",<metis.h>,' \
+		${WRKSRC}/elmergrid/src/femelmer.c
+
 post-install:
 	${LN} -sf ElmerSolver_mpi ${STAGEDIR}${PREFIX}/bin/ElmerSolver
 	@${STRIP_CMD} ${STAGEDIR}/${PREFIX}/bin/ElmerGrid
 
 do-test:
-	cd ${WRKSRC} && ${SETENV} LD_LIBRARY_PATH=${PREFIX}/share/elmersolver/lib ${MAKE_CMD} 1dtest_Source
+	@cd ${TEST_WRKSRC} && ctest -C ${CMAKE_BUILD_TYPE} ${_MAKE_JOBS}
 
 .include <bsd.port.post.mk>

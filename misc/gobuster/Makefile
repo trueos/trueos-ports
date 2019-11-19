@@ -3,6 +3,7 @@
 PORTNAME=	gobuster
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.0.1
+PORTREVISION=	1
 CATEGORIES=	misc dns
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -11,7 +12,8 @@ COMMENT=	Directory/file & DNS busting tool written in Go
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go
+USES=		go:modules
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	OJ
 GH_TUPLE=	google:uuid:c2e93f3:uuid/vendor/github.com/google/uuid \
@@ -21,7 +23,6 @@ GH_TUPLE=	google:uuid:c2e93f3:uuid/vendor/github.com/google/uuid \
 		spf13:cobra:0.0.5:cobra/vendor/github.com/spf13/cobra \
 		spf13:pflag:v1.0.3:pflag/vendor/github.com/spf13/pflag \
 		golang:sys:d8f5ea2:sys/vendor/golang.org/x/sys
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
 
 PLIST_FILES=	bin/${PORTNAME}
 

@@ -2,7 +2,7 @@
 
 PORTNAME=	cde
 DISTVERSION=	2.3.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	x11
 MASTER_SITES=	SF/cdesktopenv/src/
 
@@ -11,6 +11,9 @@ COMMENT=	Common Desktop Environment
 
 LICENSE=	LGPL21
 
+.if ${/usr/bin/ld:L:tA} == /usr/bin/ld.lld
+BROKEN=		Fails to build: ld: error: ../../../exports/lib/libDtHelp.so: undefined reference to jpeg_CreateDecompress
+.endif
 BROKEN_mips64=		fails to build: ./config/imake/imake: No such file or directory
 BROKEN_powerpc64=	fails to build: ./config/imake/imake: No such file or directory
 
@@ -25,7 +28,7 @@ RUN_DEPENDS=	${LOCALBASE}/bin/fc-cache:x11-fonts/fontconfig \
 		xrdb:x11/xrdb \
 		xset:x11/xset
 
-USES=		iconv:wchar_t motif perl5 shebangfix tcl:85
+USES=		iconv:wchar_t motif perl5 shebangfix tcl:85 xorg
 SHEBANG_LANG=	pl ksh tcl
 SHEBANG_FILES=	programs/dtdocbook/sgmls/sgmls.pl \
 		programs/dtinfo/tools/bin/ccdate \
@@ -33,19 +36,13 @@ SHEBANG_FILES=	programs/dtdocbook/sgmls/sgmls.pl \
 		programs/dtdocbook/doc2sdl/dtdocbook
 USE_LDCONFIG=	${PREFIX}/dt/lib
 USE_RC_SUBR=	dtcms dtspc dtlogin
-USE_XORG=	ice sm x11 xau xdmcp xext xinerama xmu xp xscrnsaver xt
+USE_XORG=	ice sm x11 xau xdmcp xext xinerama xmu xscrnsaver xt
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
 ALL_TARGET=	World
 MAKE_ARGS+=	PERL=${PERL}
 MAKE_JOBS_UNSAFE=yes
 SUB_FILES=	pkg-message
-
-.include <bsd.port.options.mk>
-
-.if ${OSVERSION} >= 1300018
-BROKEN=	Fails to build: ld: error: ../../../exports/lib/libDtHelp.so: undefined reference to jpeg_CreateDecompress
-.endif
 
 post-patch:
 	@if [ -f /usr/include/iconv.h ]; then \
@@ -115,7 +112,6 @@ post-patch:
 #	@${LN} -s ${LOCALBASE}/include/Xm ${WRKSRC}/imports/x11/include
 #	@${LN} -s ${LOCALBASE}/include/fontconfig ${WRKSRC}/imports/x11/include
 #	@${LN} -s ${LOCALBASE}/include/freetype2 ${WRKSRC}/imports/x11/include
-
 
 do-install:
 	cd ${WRKSRC}/admin/IntegTools/dbTools && \

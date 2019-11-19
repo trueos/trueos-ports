@@ -190,7 +190,7 @@ mastodon:*:244:
 fcron:*:247:
 # free: 248
 # free: 249
-# free: 250
+sems:*:250:
 # free: 251
 # free: 252
 _adsuck:*:253:
@@ -296,7 +296,7 @@ radarr:*:352:
 _iodined:*:353:
 jackett:*:354:
 nzbhydra2:*:355:
-# free: 356
+lidarr:*:356:
 # free: 357
 # free: 358
 # free: 359
@@ -722,7 +722,7 @@ litecoin:*:778:
 bitcoin:*:779:
 zetacoin:*:780:
 monero:*:781:
-# free: 782
+zeek:*:782:
 # free: 783
 # free: 784
 # free: 785
@@ -792,9 +792,9 @@ graylog:*:848:
 chronyd:*:849:
 qbittorrent:*:850:
 cassandra:*:851:
-# free: 852
+p0f:*:852:
 _geodns:*:853:
-# free: 854
+ebusd:*:854:
 # free: 855
 # free: 856
 # free: 857

@@ -3,7 +3,7 @@
 
 PORTNAME=	idjc
 PORTVERSION=	0.8.17
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	audio python
 MASTER_SITES=	SF/idjc
 
@@ -33,7 +33,7 @@ RUN_DEPENDS=	oggenc:audio/vorbis-tools \
 OPTIONS_DEFINE=	DOCS NLS
 OPTIONS_SUB=	YES
 
-USES=		compiler:nestedfct desktop-file-utils gettext gmake \
+USES=		compiler:nestedfct desktop-file-utils gettext gmake gnome \
 		libtool pathfix pkgconfig python:2.7
 LDFLAGS+=	-L${LOCALBASE}/lib
 NLS_USES=	gettext

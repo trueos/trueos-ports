@@ -4,7 +4,7 @@
 PORTNAME=	mapnik
 PORTVERSION=	3.0.9
 DISTVERSIONPREFIX=	v
-PORTREVISION=	27
+PORTREVISION=	29
 CATEGORIES=	graphics geography
 MASTER_SITES=	http://mapnik.s3.amazonaws.com/dist/v${PORTVERSION}/
 
@@ -26,7 +26,7 @@ LIB_DEPENDS=	libicuuc.so:devel/icu \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz
 
-USES=		compiler:c++11-lib pkgconfig python scons tar:bzip2
+USES=		compiler:c++11-lib gnome pkgconfig python scons tar:bzip2
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
 MAKE_ARGS=	INPUT_PLUGINS="`${ECHO} ${INPUT_PLUGINS} | ${TR} ' ' ,`" \
@@ -80,12 +80,6 @@ CAIRO_LIB_DEPENDS=	libcairo.so:graphics/cairo
 CAIRO_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cairo>=1.8.2:graphics/py-cairo@${PY_FLAVOR}
 CAIRO_MAKE_ARGS_OFF=	CAIRO=False
 
-.include <bsd.port.pre.mk>
-
-.if ${CHOSEN_COMPILER_TYPE} == gcc
-CXXFLAGS+=	-D_GLIBCXX_USE_C99 # gcc c++11 support is broken on FreeBSD
-.endif
-
 pre-configure-SQLITE3-on:
 	@if ! ${LOCALBASE}/bin/sqlite3 :memory: 'create virtual table foo using rtree(pkid, xmin, xmax, ymin, ymax)' > /dev/null 2>&1; then \
 		${ECHO_MSG} "" ; \
@@ -112,4 +106,4 @@ post-install-DOCS-on:
 	@cd ${WRKSRC} && ${COPYTREE_SHARE} "AUTHORS.md CHANGELOG.md README.md docs" \
 		${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

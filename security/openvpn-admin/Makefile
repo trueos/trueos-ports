@@ -5,7 +5,7 @@ PORTNAME=	openvpn-admin
 PORTVERSION=	1.9.4
 DISTVERSIONSUFFIX=	-2
 PORTREVISION=	6
-CATEGORIES=	security gnome
+CATEGORIES=	security gnome net-vpn
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/release-${PORTVERSION}
 
 MAINTAINER=	egypcio@FreeBSD.org
@@ -21,7 +21,7 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 NO_ARCH=	yes
 PORTSCOUT=	skipv:${PORTVERSION}${DISTVERSIONSUFFIX}
 
-USES=		gettext gmake pkgconfig
+USES=		gettext gmake gnome pkgconfig
 USE_GNOME=	gtksharp20 intltool
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

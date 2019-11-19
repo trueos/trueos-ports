@@ -2,11 +2,15 @@
 
 PORTNAME=		crystal
 DISTVERSION=		0.28.0
+PORTREVISION=		2
 CATEGORIES=		lang
 MASTER_SITES=		https://unrelentingtech.s3.dualstack.eu-west-1.amazonaws.com/crystal/:bootstrap
 DISTFILES=		${BOOTSTRAP_PATH}:bootstrap
 DIST_SUBDIR=		${PORTNAME}
 EXTRACT_ONLY=		${DISTNAME}${EXTRACT_SUFX}
+
+PATCH_SITES=		https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=		2fafc7d60825.patch:-p1
 
 MAINTAINER=	greg@unrelenting.technology
 COMMENT=	Language with Ruby-like syntax and static type checking
@@ -32,6 +36,7 @@ LLVM_VERSION=	60
 BOOTSTRAP_PATH=	crystal-${BOOTSTRAP_VER}-freebsd${BOOTSTRAP_OSREL}-${ARCH}
 BOOTSTRAP_VER?=	0.27.2
 
+MAKE_ENV=	LD_LIBMAP="libevent-2.1.so.6=libevent-2.1.so.7"
 MAKE_ARGS=	SHELL=sh \
 		LLVM_CONFIG="${LOCALBASE}/bin/llvm-config${LLVM_VERSION}" \
 		FLAGS="--release --no-debug --progress --threads=${MAKE_JOBS_NUMBER}" \

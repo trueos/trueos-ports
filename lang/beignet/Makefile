@@ -4,7 +4,7 @@
 PORTNAME=	beignet
 DISTVERSION=	1.3.2
 DISTVERSIONSUFFIX=	-source
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	lang
 MASTER_SITES=	https://01.org/sites/default/files/
 
@@ -23,7 +23,7 @@ RUN_DEPENDS=	opencl>=0:devel/opencl \
 
 WRKSRC=		${WRKDIR}/Beignet-${DISTVERSION}-Source
 
-USES=		cmake ncurses pkgconfig shebangfix
+USES=		cmake gl ncurses pkgconfig shebangfix xorg
 USE_XORG=	sm ice x11 xext xfixes
 USE_GL=		gl egl
 USE_LDCONFIG=	${LOCALBASE}/lib/${PORTNAME}

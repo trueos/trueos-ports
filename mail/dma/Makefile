@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	dma
-PORTVERSION=	0.11
+PORTVERSION=	0.12
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 PORTEPOCH=	1
-CATEGORIES=	mail ipv6
+CATEGORIES=	mail
 
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	DragonFly Mail Agent, a small MTA for local/outbound mail
@@ -31,13 +30,14 @@ MAKE_ENV=	__MAKE_CONF=/dev/null SRCCONF=/dev/null NO_WERROR=defined \
 
 USE_RC_SUBR=	dma_flushq
 SUB_FILES=	pkg-message
-EXTRA_PATCHES=	${FILESDIR}/fix-security-hole.patch:-p1
 
 # Allow subports to extend.
 CONFFILES+=	dma.conf auth.conf
 
 # 11.x has dma imported into base and /var/spool/dma added to mtree
 PLIST_SUB+=	VARDIR="@comment "
+
+PORTSCOUT=	limit:^[0-9\.]*$$
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/etc/dma,${PREFIX}/etc/dma,g' \

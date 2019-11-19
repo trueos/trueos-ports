@@ -2,7 +2,8 @@
 
 PORTNAME=	dive
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.7.2
+DISTVERSION=	0.8.0
+PORTREVISION=	1
 CATEGORIES=	misc
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -11,7 +12,7 @@ COMMENT=	Tool for exploring each layer in a docker image
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go
+USES=		go:modules
 USE_GITHUB=	yes
 GH_ACCOUNT=	wagoodman
 GH_TUPLE=	\
@@ -43,7 +44,7 @@ GH_TUPLE=	\
 		mattn:go-runewidth:v0.0.3:mattn_go_runewidth/vendor/github.com/mattn/go-runewidth \
 		mitchellh:go-homedir:v1.0.0:mitchellh_go_homedir/vendor/github.com/mitchellh/go-homedir \
 		mitchellh:mapstructure:v1.0.0:mitchellh_mapstructure/vendor/github.com/mitchellh/mapstructure \
-		moby:moby:0b7cb16dde4a20d024c7be59801d63bcfd18611b:moby_moby/vendor/github.com/moby/moby \
+		moby:moby:0b7cb16dde4a20d024c7be59801d63bcfd18611b:moby_moby/vendor/github.com/docker/docker \
 		nsf:termbox-go:60ab7e3d12ed:nsf_termbox_go/vendor/github.com/nsf/termbox-go \
 		opencontainers:go-digest:v1.0.0-rc1:opencontainers_go_digest/vendor/github.com/opencontainers/go-digest \
 		opencontainers:image-spec:v1.0.1:opencontainers_image_spec/vendor/github.com/opencontainers/image-spec \
@@ -60,11 +61,6 @@ GH_TUPLE=	\
 		spf13:viper:v1.2.1:spf13_viper/vendor/github.com/spf13/viper \
 		wagoodman:keybinding:6a824da6df05:wagoodman_keybinding/vendor/github.com/wagoodman/keybinding
 
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
-
 PLIST_FILES=	bin/${PORTNAME}
-
-post-patch:
-	@${GREP} -rl github.com/docker/docker ${WRKSRC} | ${XARGS} ${REINPLACE_CMD} 's|github.com/docker/docker|github.com/moby/moby|'
 
 .include <bsd.port.mk>

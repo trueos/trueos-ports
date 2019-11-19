@@ -3,13 +3,15 @@
 
 PORTNAME=	checkmol
 PORTVERSION=	0.5
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	science
 MASTER_SITES=	http://merian.pch.univie.ac.at/pch/download/chemistry/checkmol/
 EXTRACT_SUFX=	.pas
 
 MAINTAINER=	acm@FreeBSD.org
 COMMENT=	Analyze molecules for the presence of functional groups
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv2+
 
@@ -22,8 +24,6 @@ EXTRACT_AFTER_ARGS=	${WRKSRC}
 USES=		fpc
 
 PLIST_FILES=	bin/checkmol bin/matchmol
-
-LLD_UNSAFE=	yes
 
 do-build:
 	(cd ${WRKSRC} && ${LOCALBASE}/bin/fpc ${EXTRACT_ONLY} -S2 -O3)

@@ -19,15 +19,13 @@ LIB_DEPENDS=	libconfuse.so:devel/libconfuse \
 		libenet.so:net/enet
 EXTRACT_DEPENDS=	unrar:archivers/unrar
 
-BROKEN_powerpc64=	fails to compile: gcc5: error: unrecognized command line option '-msse'
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	omf2097
 GH_TAGNAME=	c36c421
 GH_TUPLE=	omf2097:libShadowDive:b2c34a6:shadow \
 		kode54:dumb:238f23c:libdumb
 
-USES=		cmake:insource compiler:c++11-lang gettext openal
+USES=		cmake:insource compiler:c++11-lang gettext openal sdl
 USE_SDL=	sdl2
 LLD_UNSAFE=	yes
 
@@ -45,6 +43,8 @@ post-extract:
 post-patch:
 	${REINPLACE_CMD} -e 's,%%PREFIX%%,"${PREFIX}",g' \
 		${WRKSRC}/src/resources/pathmanager.c
+	${REINPLACE_CMD} -e 's,-msse ,,' \
+		${WRKSRC}/external/dumb/dumb/cmake/CMakeLists.txt
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/openomf ${STAGEDIR}${PREFIX}/bin

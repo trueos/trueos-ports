@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	erkale
-DISTVERSION=	g20190412
+DISTVERSION=	g20190812
 PORTREVISION=	3
 CATEGORIES=	science
 
@@ -11,7 +11,6 @@ COMMENT=	Quantum chemistry program to solve the electronic structure of atoms
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN_aarch64=	clang-8: error: no such file or directory: 'NOTFOUND'
 BROKEN_i386=	liberkale_omp.so.0.1.0: undefined reference to `__atomic_compare_exchange'
 
 BUILD_DEPENDS=	armadillo>0:math/armadillo
@@ -22,6 +21,7 @@ LIB_DEPENDS=	libderiv.so:science/libint \
 		libopenblas.so:math/openblas \
 		libsz.so:science/szip \
 		libxc.so:science/libxc
+RUN_DEPENDS=	${LOCALBASE}/share/erkale/basis/6-21G.gbs:science/erkale-pseudopotentials
 
 FLAVORS=	serial parallel
 FLAVOR?=	${FLAVORS:[1]}
@@ -30,7 +30,7 @@ serial_PKGNAMESUFFIX=	-serial
 USES=		cmake:noninja fortran pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	susilehtola
-GH_TAGNAME=	695bd16
+GH_TAGNAME=	b9279190bbd82fef33968e88bad706c8e213b6e4
 USE_LDCONFIG=	yes
 
 TEST_TARGET=	test
@@ -45,6 +45,7 @@ CMAKE_OFF=	USE_OPENMP
 .else # parallel
 CMAKE_ON+=	USE_OPENMP
 SUFFIX=		_omp
+LIB_DEPENDS+=	libomp.so:devel/llvm${LLVM_DEFAULT}
 .endif
 
 OPTIONS_SINGLE=		LINALG

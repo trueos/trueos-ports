@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tautulli
-PORTVERSION=	2.1.32
+PORTVERSION=	2.1.37
 DISTVERSIONPREFIX=v
 CATEGORIES=	multimedia python
 

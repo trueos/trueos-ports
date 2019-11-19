@@ -7,7 +7,6 @@ share/bash-completion/completions/wxmaxima
 %%DOCSDIR%%/Autocomplete2.jpg
 %%DOCSDIR%%/BatchImage.jpg
 %%DOCSDIR%%/BatchImage.png
-%%DOCSDIR%%/InputCell.jpg
 %%DOCSDIR%%/Matrix table example.png
 %%DOCSDIR%%/MatrixTableExample.png
 %%DOCSDIR%%/Second table example.png
@@ -56,10 +55,7 @@ share/pixmaps/wxmaxima-32.xpm
 share/wxMaxima/COPYING
 share/wxMaxima/README
 share/wxMaxima/README.md
-share/wxMaxima/a.png
-share/wxMaxima/b.png
-share/wxMaxima/c.png
-share/wxMaxima/d.png
 share/wxMaxima/io.github.wxmaxima_developers.wxMaxima.png
 share/wxMaxima/io.github.wxmaxima_developers.wxMaxima.svg
+share/wxMaxima/quit.mac
 share/wxMaxima/testbench_simple.wxmx

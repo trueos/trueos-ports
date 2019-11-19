@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sqlite3
-DISTVERSION=	3.29.0
+DISTVERSION=	3.30.1
 CATEGORIES=	databases
 MASTER_SITES=	https://www.sqlite.org/2019/ http://www2.sqlite.org/2019/ http://www3.sqlite.org/2019/
 DISTNAME=	sqlite-autoconf-${PORTVERSION:C/\.([[:digit:]])[[:>:]]/0\1/g:S/.//g}00
@@ -252,7 +252,7 @@ post-install:
 	${RM} ${STAGEDIR}${PREFIX}/include/msvc.h
 
 # for compares with checksum from of the site
-sha1: fetch
+sha1: checksum
 .if defined(SHA1) && !empty(SHA1)
 	@sha1 -c ${SHA1} ${DISTDIR}/${ALLFILES}
 .else

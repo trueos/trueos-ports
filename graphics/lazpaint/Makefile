@@ -3,7 +3,7 @@
 PORTNAME=	lazpaint
 PORTVERSION=	6.4.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES=	graphics
 PKGNAMESUFFIX=	${LAZARUS_PKGNAMESUFFIX}
 
@@ -15,7 +15,7 @@ LICENSE=	GPLv3
 gtk2_CONFLICTS_INSTALL=	${PORTNAME}-qt5
 qt5_CONFLICTS_INSTALL=	${PORTNAME}-gtk2
 
-USES=		dos2unix fpc lazarus:flavors
+USES=		dos2unix fpc gnome lazarus:flavors xorg
 USE_FPC=	chm fcl-base fcl-image fcl-json fcl-net fcl-web fcl-xml \
 		opengl openssl pasjpeg rtl-extra rtl-objpas x11
 USE_XORG=	x11
@@ -37,7 +37,6 @@ LAZARUS_PROJECT_FILES+=	bgracontrols/bgracontrols.lpk
 LAZARUS_PROJECT_FILES+=	lazpaint/lazpaint.lpi
 
 LAZBUILD_ARGS=	-d
-LLD_UNSAFE=	yes
 
 post-patch:
 	${REINPLACE_CMD} 's|%%DATADIR%%|${DATADIR}|g' ${WRKSRC}/lazpaint/utranslation.pas

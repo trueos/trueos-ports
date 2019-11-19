@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	9.1.0
-PORTREVISION=	1
+PORTVERSION=	9.2.0
 CATEGORIES=	lang
 MASTER_SITES=	GCC
 PKGNAMESUFFIX=	${SUFFIX}
@@ -39,7 +38,7 @@ SSP_UNSAFE=	yes
 CFLAGS:=	${CFLAGS:N-mretpoline}
 CXXFLAGS:=	${CXXFLAGS:N-mretpoline}
 
-OPTIONS_DEFINE=		BOOTSTRAP GRAPHITE
+OPTIONS_DEFINE=		BOOTSTRAP GRAPHITE PLUGINS
 OPTIONS_DEFAULT=	BOOTSTRAP
 BOOTSTRAP_DESC=		Build using a full bootstrap
 GRAPHITE_DESC=		Support for Graphite loop optimizations
@@ -54,6 +53,8 @@ MULTILIB_CONFIGURE_ENABLE=	multilib
 .else
 CONFIGURE_ARGS+=	--disable-multilib
 .endif
+
+PLUGINS_CONFIGURE_ENABLE=	plugin
 
 .include <bsd.port.pre.mk>
 

@@ -3,13 +3,15 @@
 
 PORTNAME=	tfel
 PORTVERSION=	3.1.2
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	science
 MASTER_SITES=	SF/${PORTNAME}/
 PKGNAMESUFFIX=	-mfront
 
 MAINTAINER=	pfg@FreeBSD.org
 COMMENT=	Code generation tool dedicated to material knowledge
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv3
 

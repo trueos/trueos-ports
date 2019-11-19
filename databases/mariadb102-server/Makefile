@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	10.2.25
-PORTREVISION?=	1
-CATEGORIES=	databases ipv6
+PORTVERSION=	10.2.26
+PORTREVISION?=	0
+CATEGORIES=	databases
 MASTER_SITES=	http://mirrors.supportex.net/${SITESDIR}/ \
 		http://mirror2.hs-esslingen.de/pub/Mirrors/${SITESDIR}/ \
 		http://gd.tuwien.ac.at/db/${SITESDIR}/ \
@@ -203,7 +203,7 @@ post-install:
 	# Fix https://mariadb.atlassian.net/browse/MDEV-9388
 	@${REINPLACE_CMD} 's/-l-pthread/-pthread/' ${STAGEDIR}${PREFIX}/bin/mysql_config
 
-post-install-GSSAPI_NONE:
+post-install-GSSAPI_NONE-off:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/mysql/plugin/auth_gssapi_client.so
 
 .else # targets for -server

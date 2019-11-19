@@ -30,7 +30,6 @@
     SUBDIR += file-roller
     SUBDIR += fpc-bzip2
     SUBDIR += fpc-unzip
-    SUBDIR += freetar
     SUBDIR += gcab
     SUBDIR += gcpio
     SUBDIR += gnome-autoar
@@ -39,9 +38,7 @@
     SUBDIR += gzip
     SUBDIR += gzrecover
     SUBDIR += ha
-    SUBDIR += hffzip
     SUBDIR += hlextract
-    SUBDIR += hpack.non-usa.only
     SUBDIR += innoextract
     SUBDIR += javatar
     SUBDIR += jzlib
@@ -64,12 +61,12 @@
     SUBDIR += liblz4
     SUBDIR += liblzxcomp
     SUBDIR += libmspack
-    SUBDIR += liborange
     SUBDIR += libpar2
     SUBDIR += librtfcomp
     SUBDIR += libunrar
     SUBDIR += libunrar5
     SUBDIR += libzip
+    SUBDIR += linux-c7-lz4
     SUBDIR += lizard
     SUBDIR += lrzip
     SUBDIR += lua-lzlib
@@ -115,6 +112,7 @@
     SUBDIR += p5-Compress-Snappy
     SUBDIR += p5-Gzip-Faster
     SUBDIR += p5-IO-Compress
+    SUBDIR += p5-IO-Compress-Brotli
     SUBDIR += p5-IO-Compress-Lzf
     SUBDIR += p5-IO-Compress-Lzma
     SUBDIR += p5-IO-Compress-Lzop
@@ -161,6 +159,10 @@
     SUBDIR += php73-phar
     SUBDIR += php73-zip
     SUBDIR += php73-zlib
+    SUBDIR += php74-bz2
+    SUBDIR += php74-phar
+    SUBDIR += php74-zip
+    SUBDIR += php74-zlib
     SUBDIR += pigz
     SUBDIR += pixz
     SUBDIR += plzip
@@ -169,7 +171,6 @@
     SUBDIR += ppunpack
     SUBDIR += pxz
     SUBDIR += py-acefile
-    SUBDIR += py-attic
     SUBDIR += py-backports.lzma
     SUBDIR += py-borgbackup
     SUBDIR += py-brotli
@@ -181,6 +182,7 @@
     SUBDIR += py-librtfcomp
     SUBDIR += py-lz4
     SUBDIR += py-lzma
+    SUBDIR += py-lzstring
     SUBDIR += py-pyliblzma
     SUBDIR += py-python-lhafile
     SUBDIR += py-python-lzo
@@ -208,6 +210,7 @@
     SUBDIR += rubygem-minitar-cli
     SUBDIR += rubygem-ruby-xz
     SUBDIR += rubygem-rubyzip
+    SUBDIR += rubygem-rubyzip12
     SUBDIR += rubygem-rubyzip2
     SUBDIR += rubygem-snappy
     SUBDIR += rvm
@@ -239,7 +242,6 @@
     SUBDIR += unrar
     SUBDIR += unrar-iconv
     SUBDIR += unshield
-    SUBDIR += untar
     SUBDIR += unzip
     SUBDIR += unzoo
     SUBDIR += upx

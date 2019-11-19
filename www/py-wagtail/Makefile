@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wagtail
-PORTVERSION=	2.5.1
+PORTVERSION=	2.6.3
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}beautifulsoup460>=4.5.1<4.6.1:www/py-beautifulsoup460@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}django22>=2.0<2.3:www/py-django22@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}django-modelcluster>=4.2<5.0:www/py-django-modelcluster@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}django-modelcluster4>=4.2<5.0:www/py-django-modelcluster4@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}dj22-django-taggit>=0.23<1.0:www/py-dj22-django-taggit@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}dj22-django-treebeard>=4.2.0<5.0:www/py-dj22-django-treebeard@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}dj22-djangorestframework>=3.7.4<4.0:www/py-dj22-djangorestframework@${PY_FLAVOR} \
@@ -26,7 +26,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}beautifulsoup460>=4.5.1<4.6.1:www/py-beautif
 		${PYTHON_PKGNAMEPREFIX}requests>=2.11.1<3.0:www/py-requests@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}six>=1.11<2.0:devel/py-six@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}unidecode>=0.04.14<2.0:converters/py-unidecode@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}willow>=1.1<1.2:graphics/py-willow@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}willow11>=1.1<1.2:graphics/py-willow11@${PY_FLAVOR}
 
 USES=		python:3.5+ shebangfix
 USE_PYTHON=	autoplist distutils

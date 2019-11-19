@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	fet
-DISTVERSION=	5.37.2
-PORTREVISION=	3
-CATEGORIES=	deskutils kde
+DISTVERSION=	5.40.3
+CATEGORIES=	deskutils
 MASTER_SITES=	http://lalescu.ro/liviu/fet/download/ \
 		http://lalescu.ro/liviu/fet/download/old/ \
 		http://timetabling.de/download/ \
@@ -16,7 +15,7 @@ COMMENT=	Free timetabling software
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		compiler:c++14-lang qmake qt:5 tar:bzip2
+USES=		compiler:c++14-lang gl qmake qt:5 tar:bzip2
 USE_GL=		gl
 USE_QT=		buildtools_build core printsupport widgets xml
 USE_CXXSTD=	c++14

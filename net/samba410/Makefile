@@ -3,7 +3,7 @@
 
 PORTNAME=			${SAMBA4_BASENAME}410
 PORTVERSION=			${SAMBA4_VERSION}
-PORTREVISION=			1
+PORTREVISION=			0
 CATEGORIES?=			net
 MASTER_SITES=			SAMBA/samba/stable SAMBA/samba/rc
 DISTNAME=			${SAMBA4_DISTNAME}
@@ -15,14 +15,16 @@ LICENSE=			GPLv3+
 LICENSE_FILE=			${WRKSRC}/COPYING
 
 IGNORE_NONTHREAD_PYTHON=	needs port lang/python${PYTHON_SUFFIX} to be build with THREADS support
-
 CONFLICTS_INSTALL?=		samba4-4.0.* samba4[1-9]-4.* p5-Parse-Pidl-4.*
 
+USES=				cpe
+
 EXTRA_PATCHES+=			${PATCHDIR}/0001-Zfs-provision-1.patch:-p1
+EXTRA_PATCHES+=			${PATCHDIR}/0001-provision-use-ASCII-quotes.patch:-p1
 
 SAMBA4_BASENAME=		samba
 SAMBA4_PORTNAME=		${SAMBA4_BASENAME}4
-SAMBA4_VERSION=			4.10.5
+SAMBA4_VERSION=			4.10.10
 SAMBA4_DISTNAME=		${SAMBA4_BASENAME}-${SAMBA4_VERSION:S|.p|pre|:S|.r|rc|:S|.t|tp|:S|.a|alpha|}
 
 WRKSRC?=			${WRKDIR}/${DISTNAME}
@@ -65,9 +67,8 @@ CONFIGURE_ARGS+=		--mandir="${MANPREFIX}/man" \
 # XXX: Flags
 CONFIGURE_ENV+=			PTHREAD_LDFLAGS="-lpthread"
 
-USES=				compiler:c++11-lang cpe iconv gettext-runtime \
-				localbase:ldflags perl5 pkgconfig shebangfix \
-				ssl waf
+USES+=				compiler:c++11-lang iconv localbase:ldflags \
+				perl5 pkgconfig shebangfix ssl waf gettext-runtime
 USE_PERL5=			build
 USE_LDCONFIG=			${SAMBA4_LIBDIR}
 LLD_UNSAFE=			yes
@@ -79,58 +80,67 @@ PKGCONFIGDIR_REL?=		${PKGCONFIGDIR:S,^${PREFIX}/,,}
 PLIST_SUB+=			PKGCONFIGDIR=${PKGCONFIGDIR_REL}
 SUB_LIST+=			PKGCONFIGDIR=${PKGCONFIGDIR_REL}
 ##############################################################################
-# Options
 OPTIONS_SUB=			yes
 
-OPTIONS_DEFINE=			AD_DC ADS DEBUG DOCS FAM LDAP \
-				QUOTAS SYSLOG UTMP PROFILE
-# Make those default options
-OPTIONS_DEFAULT:=		${OPTIONS_DEFINE} GSSAPI_BUILTIN
+OPTIONS_DEFINE=			AD_DC ADS CLUSTER CUPS DEBUG DOCS FAM GPGME \
+				LDAP NTVFS PROFILE QUOTAS SPOTLIGHT SYSLOG UTMP
 # This shouldn't be default in the release
 OPTIONS_DEFINE+=		DEVELOPER MANDOC
+#OPTIONS_DEFINE+=		MEMORY_DEBUG
 
 OPTIONS_DEFINE_amd64=		AESNI
 OPTIONS_DEFAULT_amd64=		AESNI
 
-OPTIONS_DEFINE+=		CLUSTER CUPS GLUSTERFS GPGME NTVFS SPOTLIGHT
-#OPTIONS_DEFINE+=		MEMORY_DEBUG
+OPTIONS_GROUP=			VFS
+OPTIONS_GROUP_VFS=		FRUIT GLUSTERFS
 
-OPTIONS_SINGLE=			GSSAPI
+OPTIONS_SINGLE=			GSSAPI ZEROCONF
 # GSSAPI_HEIMDAL
 OPTIONS_SINGLE_GSSAPI=		GSSAPI_BUILTIN GSSAPI_MIT
+OPTIONS_SINGLE_ZEROCONF=	ZEROCONF_NONE AVAHI MDNSRESPONDER
 
-OPTIONS_RADIO=			DNS ZEROCONF
-OPTIONS_RADIO_DNS=		NSUPDATE BIND911 BIND913 BIND914
-OPTIONS_RADIO_ZEROCONF=		MDNSRESPONDER AVAHI
+OPTIONS_RADIO=			DNS
+OPTIONS_RADIO_DNS=		NSUPDATE BIND911 BIND914
+# Make those default options
+OPTIONS_DEFAULT=		AD_DC ADS DEBUG DOCS FAM LDAP \
+				QUOTAS SYSLOG UTMP PROFILE \
+				FRUIT GSSAPI_BUILTIN AVAHI
 ##############################################################################
 AD_DC_DESC=			Active Directory Domain Controller
 ADS_DESC=			Active Directory client(implies LDAP)
 AESNI_DESC=			Accelerated AES crypto functions(amd64 only)
-CLUSTER_DESC=			Clustering
+CLUSTER_DESC=			Clustering support
 DEVELOPER_DESC=			With developer framework(implies NTVFS)
 FAM_DESC=			File Alteration Monitor
-GPGME_DESC=			GpgME
-GLUSTERFS_DESC=			GlusterFS
+GPGME_DESC=			GpgME support
 LDAP_DESC=			LDAP client
 LIBZFS_DESC=			LibZFS
-SPOTLIGHT_DESC=			Spotlight
+SPOTLIGHT_DESC=			Spotlight server-side search support
 MANDOC_DESC=			Build manpages from DOCBOOK templates
-MEMORY_DEBUG_DESC=		Debug memory allocation
+MEMORY_DEBUG_DESC=		Debug memory allocator
 NTVFS_DESC=			Build *DEPRECATED* NTVFS file server
 PICKY_DEVELOPER_DESC=		Treat compiler warnings as errors(implies DEVELOPER)
 PROFILE_DESC=			Profiling data
-QUOTAS_DESC=			Disk quota
+QUOTAS_DESC=			Disk quota support
 UTMP_DESC=			UTMP accounting
+
+VFS_DESC=			VFS modules
+GLUSTERFS_DESC=			GlusterFS support
+FRUIT_DESC=			MacOSX and TimeMachine support
 
 GSSAPI_BUILTIN_DESC=		GSSAPI support via bundled Heimdal
 
+ZEROCONF_DESC=			Zero configuration networking
+ZEROCONF_NONE_DESC=		Zeroconf support is absent
+
+DNS_DESC=			DNS frontend
 BIND911_DESC=			Use Bind 9.11 as AD DC DNS server frontend
-BIND913_DESC=			Use Bind 9.13 as AD DC DNS server frontend
 BIND914_DESC=			Use Bind 9.14 as AD DC DNS server frontend
 NSUPDATE_DESC=			Use samba NSUPDATE utility for AD DC
 ##############################################################################
 # XXX: Unconditional dependencies which can't be switched off(if present in
 # the system)
+
 # Readline(sponsored by Python)
 # XXX: USES=readline pollutes CPPFLAGS, so we explicitly put dependency
 LIB_DEPENDS+=			libreadline.so:devel/readline
@@ -140,7 +150,8 @@ LIB_DEPENDS+=			libpopt.so:devel/popt
 LIB_DEPENDS+=			libinotify.so:devel/libinotify
 # GNUTLS
 LIB_DEPENDS+=			libgnutls.so:security/gnutls
-# NFS4 ACL glue
+LIB_DEPENDS+=			libgcrypt.so:security/libgcrypt
+# NFSv4 ACL glue
 LIB_DEPENDS+=			libsunacl.so:sysutils/libsunacl
 # Jansson
 BUILD_DEPENDS+=			jansson>=2.10:devel/jansson
@@ -154,13 +165,13 @@ BUILD_DEPENDS+=			p5-Parse-Yapp>=0:devel/p5-Parse-Yapp
 SAMBA4_BUNDLED_LIBS+=		!libarchive
 BUILD_DEPENDS+=			libarchive>=3.1.2:archivers/libarchive
 RUN_DEPENDS+=			libarchive>=3.1.2:archivers/libarchive
+
 ### Bundled libraries
 SAMBA4_BUNDLED_CMOCKA?=		no
 SAMBA4_BUNDLED_TALLOC?=		no
 SAMBA4_BUNDLED_TEVENT?=		no
 SAMBA4_BUNDLED_TDB?=		no
 SAMBA4_BUNDLED_LDB?=		yes
-SAMBA4_LDB=			15
 # cmocka
 .if defined(SAMBA4_BUNDLED_CMOCKA) && ${SAMBA4_BUNDLED_CMOCKA} == yes
 SAMBA4_BUNDLED_LIBS+=		cmocka
@@ -214,7 +225,7 @@ PLIST_SUB+=			SAMBA4_BUNDLED_TDB="@comment "
 SUB_LIST+=			SAMBA4_BUNDLED_TDB="@comment "
 .endif
 # ldb
-.if (defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes) || !defined(SAMBA4_LDB)
+.if defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes
 SAMBA4_BUNDLED_LDB=		yes
 SAMBA4_BUNDLED_LIBS+=		ldb
 PLIST_SUB+=			SAMBA4_BUNDLED_LDB=""
@@ -222,8 +233,8 @@ SUB_LIST+=			SAMBA4_BUNDLED_LDB=""
 SAMBA4_MODULEDIR=		${SAMBA4_LIBDIR}/modules
 .else
 SAMBA4_BUNDLED_LIBS+=		!ldb
-BUILD_DEPENDS+=			ldb14>=1.5.4:databases/ldb15
-RUN_DEPENDS+=			ldb14>=1.5.4:databases/ldb15
+BUILD_DEPENDS+=			ldb15>=1.5.4:databases/ldb15
+RUN_DEPENDS+=			ldb15>=1.5.4:databases/ldb15
 PLIST_SUB+=			SAMBA4_BUNDLED_LDB="@comment "
 SUB_LIST+=			SAMBA4_BUNDLED_LDB="@comment "
 SAMBA4_MODULEDIR=		${PREFIX}/lib/shared-modules
@@ -231,6 +242,7 @@ SAMBA4_MODULEDIR=		${PREFIX}/lib/shared-modules
 
 .if (defined(SAMBA4_BUNDLED_TALLOC) && ${SAMBA4_BUNDLED_TEVENT} == yes) \
 	|| (defined(SAMBA4_BUNDLED_TDB) && ${SAMBA4_BUNDLED_TDB} == yes) \
+	|| (defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes) \
 	|| (defined(SAMBA4_BUNDLED_TEVENT) && ${SAMBA4_BUNDLED_TEVENT} == yes)
 SAMBA4_BUNDLED_LIBS+=		replace
 .endif
@@ -261,13 +273,20 @@ CONFIGURE_ARGS+=		\
 				--with-acl-support \
 				--with-sendfile-support \
 				--disable-ctdb-tests \
-				${ICONV_CONFIGURE_BASE}
+
+#				${ICONV_CONFIGURE_BASE}
 ##############################################################################
-BIND911_RUN_DEPENDS=		bind911>=9.11.0.0:dns/bind911
-BIND912_RUN_DEPENDS=		bind912>=9.12.0.0:dns/bind912
-BIND913_RUN_DEPENDS=		bind913>=9.13.0.0:dns/bind913
-BIND914_RUN_DEPENDS=		bind914>=9.14.0.0:dns/bind914
-NSUPDATE_RUN_DEPENDS=		samba-nsupdate:dns/samba-nsupdate
+FRUIT_PREVENTS=			ZEROCONF_NONE
+FRUIT_PREVENTS_MSG=		MacOSX support requires Zeroconf(AVAHI or MDNSRESPONDER)
+FRUIT_VARS=			SAMBA4_MODULES+=vfs_fruit
+FRUIT_PLIST_FILES+=		man/man8/vfs_fruit.8.gz
+
+GLUSTERFS_CONFIGURE_ENABLE=	glusterfs
+GLUSTERFS_LIB_DEPENDS=		libglusterfs.so:net/glusterfs
+GLUSTERFS_VARS=			SAMBA4_MODULES+=vfs_glusterfs
+GLUSTERFS_PLIST_FILES+=		man/man8/vfs_glusterfs.8.gz
+##############################################################################
+ZEROCONF_NONE_VARS=		MAKE_ENV+=ZEROCONF=none
 
 AVAHI_CONFIGURE_ENABLE=		avahi
 AVAHI_LIB_DEPENDS=		libavahi-client.so:net/avahi-app
@@ -276,6 +295,10 @@ AVAHI_VARS=			SAMBA4_SERVICES+=avahi_daemon
 MDNSRESPONDER_CONFIGURE_ENABLE=	dnssd
 MDNSRESPONDER_LIB_DEPENDS=	libdns_sd.so:net/mDNSResponder
 MDNSRESPONDER_VARS=		SAMBA4_SERVICES+=mdnsd
+##############################################################################
+BIND911_RUN_DEPENDS=		bind911>=9.11.0.0:dns/bind911
+BIND914_RUN_DEPENDS=		bind914>=9.14.0.0:dns/bind914
+NSUPDATE_RUN_DEPENDS=		samba-nsupdate:dns/samba-nsupdate
 ##############################################################################
 DEBUG_CONFIGURE_ON=		--verbose --enable-debug
 DEBUG_MAKE_ARGS=		--verbose
@@ -299,7 +322,7 @@ DEVELOPER_TEST_DEPENDS=		${GDB_CMD}:devel/gdb
 DEVELOPER_VARS_OFF=		GDB_CMD=true
 # XXX: Mostly used in conjuction with the DEVELOPER option, don't enable it
 # if you don't know what you are doing
-NTVS_IMPLIES=			AD_DC
+NTVFS_IMPLIES=			AD_DC
 NTVFS_CONFIGURE_WITH=		ntvfs-fileserver
 NTVFS_PLIST_FILES=		${SAMBA4_MODULEDIR}/service/smb.so \
 				lib/samba4/private/libntvfs-samba4.so
@@ -312,11 +335,6 @@ CUPS_LIB_DEPENDS=		libcups.so:print/cups
 FAM_USES=			fam
 FAM_CONFIGURE_WITH=		fam
 
-GLUSTERFS_CONFIGURE_ENABLE=	glusterfs
-GLUSTERFS_LIB_DEPENDS=		libglusterfs.so:net/glusterfs
-GLUSTERFS_VARS=			SAMBA4_MODULES+=vfs_glusterfs
-GLUSTERFS_PLIST_FILES+=		man/man8/vfs_glusterfs.8.gz
-
 GPGME_CONFIGURE_WITH=		gpgme
 GPGME_LIB_DEPENDS=		libgpgme.so:security/gpgme
 
@@ -327,7 +345,7 @@ QUOTAS_CONFIGURE_WITH=		quotas
 SPOTLIGHT_CONFIGURE_ENABLE=	spotlight
 SPOTLIGHT_BUILD_DEPENDS=	tracker>=1.4.1:sysutils/tracker
 SPOTLIGHT_RUN_DEPENDS=		tracker>=1.4.1:sysutils/tracker
-SPOTLIGHT_USES=			bison
+SPOTLIGHT_USES=			bison gnome
 SPOTLIGHT_USE=			gnome=glib20
 
 SYSLOG_CONFIGURE_WITH=		syslog
@@ -390,6 +408,48 @@ SAMBA4_MODULES+=		auth_skel pdb_test gpext_security gpext_registry gpext_scripts
 				vfs_fake_dfq vfs_skel_opaque vfs_skel_transparent vfs_shadow_copy_test vfs_fake_acls \
 				vfs_nfs4acl_xattr vfs_error_inject vfs_delay_inject
 .endif
+# Python bindings
+.if defined(NO_PYTHON)
+USES+=				python:2.7+,build,test
+CONFIGURE_ARGS+=		--disable-python
+PLIST_SUB+=			SAMBA4_PYTHON="@comment "
+SUB_LIST+=			SAMBA4_PYTHON="@comment "
+.else
+USES+=				python:3.4+
+PLIST_SUB+=			SAMBA4_PYTHON=""
+SUB_LIST+=			SAMBA4_PYTHON=""
+CONFIGURE_ARGS+=		--nopycache
+
+.if defined(SAMBA4_BUNDLED_TALLOC) && ${SAMBA4_BUNDLED_TALLOC} == yes
+SAMBA4_BUNDLED_LIBS+=		pytalloc-util
+.else
+SAMBA4_BUNDLED_LIBS+=		!pytalloc-util
+.endif
+
+.if defined(SAMBA4_BUNDLED_TEVENT) && ${SAMBA4_BUNDLED_TEVENT} == yes
+SAMBA4_BUNDLED_LIBS+=		pytevent
+.else
+SAMBA4_BUNDLED_LIBS+=		!pytevent
+.endif
+
+.if defined(SAMBA4_BUNDLED_TDB) && ${SAMBA4_BUNDLED_TDB} == yes
+SAMBA4_BUNDLED_LIBS+=		pytdb
+.else
+SAMBA4_BUNDLED_LIBS+=		!pytdb
+.endif
+
+.if defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes
+SAMBA4_BUNDLED_LIBS+=		pyldb pyldb-util
+.else
+SAMBA4_BUNDLED_LIBS+=		!pyldb !pyldb-util
+.endif
+# External Python modules
+BUILD_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}dnspython>=1.15.0:dns/py-dnspython@${PY_FLAVOR}
+RUN_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}dnspython>=1.15.0:dns/py-dnspython@${PY_FLAVOR}
+
+BUILD_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}iso8601>=0.1.11:devel/py-iso8601@${PY_FLAVOR}
+RUN_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}iso8601>=0.1.11:devel/py-iso8601@${PY_FLAVOR}
+.endif
 
 .if defined(WANT_EXP_MODULES) && !empty(WANT_EXP_MODULES)
 SAMBA4_MODULES+=		${WANT_EXP_MODULES}
@@ -407,36 +467,6 @@ CONFIGURE_ARGS+=		--with-shared-modules="${SAMBA4_MODULES:C|-|_|:Q:C|(\\\\ )+|,|
 .for module in ${SAMBA4_MODULES}
 PLIST_FILES+=			${SAMBA4_MODULEDIR}/${module:C|_|/|:C|-|_|}.so
 .endfor
-# Python bindings
-.if defined(NO_PYTHON)
-USES+=				python:2.7+,build,test
-CONFIGURE_ARGS+=		--disable-python
-PLIST_SUB+=			SAMBA4_PYTHON="@comment "
-SUB_LIST+=			SAMBA4_PYTHON="@comment "
-.else
-USES+=				python:3.4+
-PLIST_SUB+=			SAMBA4_PYTHON=""
-SUB_LIST+=			SAMBA4_PYTHON=""
-
-.if !defined(SAMBA4_BUNDLED_TALLOC)
-SAMBA4_BUNDLED_LIBS+=		!pytalloc-util
-.endif
-.if !defined(SAMBA4_BUNDLED_TEVENT)
-SAMBA4_BUNDLED_LIBS+=		!pytevent
-.endif
-.if !defined(SAMBA4_BUNDLED_TDB)
-SAMBA4_BUNDLED_LIBS+=		!pytdb
-.endif
-.if !defined(SAMBA4_BUNDLED_LDB)
-SAMBA4_BUNDLED_LIBS+=		!pyldb,!pyldb-util
-.endif
-# External Python modules
-BUILD_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}dnspython>=1.15.0:dns/py-dnspython@${PY_FLAVOR}
-RUN_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}dnspython>=1.15.0:dns/py-dnspython@${PY_FLAVOR}
-
-BUILD_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}iso8601>=0.1.11:devel/py-iso8601@${PY_FLAVOR}
-RUN_DEPENDS+=			${PYTHON_PKGNAMEPREFIX}iso8601>=0.1.11:devel/py-iso8601@${PY_FLAVOR}
-.endif
 # !SAMBA4_SUBPORT
 .endif
 
@@ -455,10 +485,11 @@ CONFIGURE_ARGS+=		--accel-aes=none
 
 # Only for 64-bit architectures
 .if ${ARCH} != armv6 && ${ARCH} != armv7 && ${ARCH} != i386 && ${ARCH} != mips && ${ARCH} != powerpc && ${ARCH} != powerpcspe
-.	if defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes && ${PORT_OPTIONS:MAD_DC}
+.	if defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes && (${PORT_OPTIONS:MAD_DC} || ${PORT_OPTIONS:MDEVELOPER})
 # LMDB
 SAMBA4_LMDB_DEPENDS=		lmdb>=0.9.16:databases/lmdb
-PLIST_FILES+=			lib/samba4/private/libldb-mdb-int-samba4.so
+PLIST_FILES+=			lib/samba4/private/libldb-mdb-int-samba4.so \
+				${SAMBA4_MODULEDIR}/ldb/mdb.so
 .	endif
 .endif
 
@@ -555,7 +586,6 @@ pre-build-MANDOC-off:
 				lib/tdb/man/tdbtool.8 \
 				lib/talloc/man/talloc.3 \
 				lib/tdb/man/tdbrestore.8 \
-				lib/ldb/man/ldb.3 \
 				lib/ldb/man/ldbadd.1 \
 				lib/ldb/man/ldbsearch.1 \
 				lib/ldb/man/ldbmodify.1 \
@@ -576,15 +606,27 @@ pre-build-MANDOC-off:
 .endif
 
 post-install-rm-junk:
-.for f in vfs_aio_linux.8 vfs_btrfs.8 vfs_ceph.8 vfs_gpfs.8
-				${RM} ${STAGEDIR}${PREFIX}/man/man8/${f}
-.endfor
 .if defined(NO_PYTHON)
 				${RM} -r ${STAGEDIR}${PYTHON_SITELIBDIR}/samba/third_party/dns \
 					 ${STAGEDIR}${PYTHON_SITELIBDIR}/samba/third_party/iso8601
 .endif
 
-post-install: post-install-rm-junk
+post-install-fix-manpages:
+.for f in vfs_aio_linux.8 vfs_btrfs.8 vfs_ceph.8 vfs_gpfs.8
+				${RM} ${STAGEDIR}${PREFIX}/man/man8/${f}
+.endfor
+.if defined(SAMBA4_BUNDLED_LDB) && ${SAMBA4_BUNDLED_LDB} == yes
+.	for f in ldbadd.1 ldbdel.1 ldbedit.1 ldbmodify.1 ldbrename.1 ldbsearch.1
+				${MV} ${STAGEDIR}${PREFIX}/man/man1/${f} ${STAGEDIR}${PREFIX}/man/man1/samba-${f}
+.	endfor
+.endif
+.if defined(SAMBA4_BUNDLED_TDB) && ${SAMBA4_BUNDLED_TDB} == yes
+.	for f in tdbbackup.8 tdbdump.8 tdbrestore.8 tdbtool.8
+				${MV} ${STAGEDIR}${PREFIX}/man/man8/${f} ${STAGEDIR}${PREFIX}/man/man8/samba-${f}
+.	endfor
+.endif
+
+post-install: post-install-rm-junk post-install-fix-manpages
 				${LN} -sf smb.conf.5.gz ${STAGEDIR}${PREFIX}/man/man5/smb4.conf.5.gz
 # Run post-install script
 .for dir in			${SAMBA4_LOGDIR} ${SAMBA4_RUNDIR} ${SAMBA4_LOCKDIR} ${SAMBA4_MODULEDIR}
@@ -596,11 +638,21 @@ post-install: post-install-rm-junk
 					${INSTALL} -d -m 0755 "${STAGEDIR}${SAMBA4_MODULEDIR}/${dir}"
 .endfor
 
+post-install-FRUIT-off:
+				${RM} ${STAGEDIR}${SAMBA4_MODULEDIR}/vfs/fruit.so
+				${RM} ${STAGEDIR}${PREFIX}/man/man8/vfs_fruit.8
+
 post-install-DOCS-on:
 				${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for doc in			${PORTDOCS}
 				${INSTALL_DATA} ${WRKDIR}/${doc} ${STAGEDIR}${DOCSDIR}
 .endfor
+
+post-install-CLUSTER-on:
+				${LN} -nfs ../../../../share/ctdb/events/legacy/00.ctdb.script		${STAGEDIR}${PREFIX}/etc/ctdb/events/legacy/00.ctdb.script
+				${LN} -nfs ../../../../share/ctdb/events/legacy/10.interface.script	${STAGEDIR}${PREFIX}/etc/ctdb/events/legacy/10.interface.script
+				${LN} -nfs ../../../../share/ctdb/events/legacy/05.system.script	${STAGEDIR}${PREFIX}/etc/ctdb/events/legacy/05.system.script
+				${LN} -nfs ../../../../share/ctdb/events/legacy/01.reclock.script	${STAGEDIR}${PREFIX}/etc/ctdb/events/legacy/01.reclock.script
 
 # !SAMBA4_SUBPORT
 .endif

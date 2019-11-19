@@ -53,14 +53,14 @@ GCC_DEFAULT?=		9
 GHOSTSCRIPT_DEFAULT?=	agpl
 # Possible values: 0.6, 0.7, 1.0, 1.1
 JULIA_DEFAULT?=		1.0
-# Possible values: 2.0.0
-LAZARUS_DEFAULT?=	2.0.0
+# Possible values: 2.0.4
+LAZARUS_DEFAULT?=	2.0.4
 # Possible values: c6, c7
 LINUX_DEFAULT?=		c7
-# Possible values: 60, 70, 80, -devel (to be used when non-base compiler is required)
+# Possible values: 60, 70, 80, 90, -devel (to be used when non-base compiler is required)
 # Please give notice to the Graphics Team (x11@FreeBSD.org) in advance before 
 # bumping the LLVM version.
-LLVM_DEFAULT?=		80
+LLVM_DEFAULT?=		90
 # Possible values: 5.1, 5.2, 5.3
 LUA_DEFAULT?=		5.2
 # Possible values: 5.5, 5.6, 5.7, 8.0, 5.5m, 10.0m, 10.1m, 10.2m, 10.3m, 5.5p, 5.6p, 5.7p, 5.6w
@@ -68,7 +68,7 @@ MYSQL_DEFAULT?=		5.7
 # Possible values: 5.26, 5.28, 5.30, devel
 .if !exists(${LOCALBASE}/bin/perl) || (!defined(_PORTS_ENV_CHECK) && \
     defined(PACKAGE_BUILDING))
-PERL5_DEFAULT?=		5.28
+PERL5_DEFAULT?=		5.30
 .elif !defined(PERL5_DEFAULT)
 # There's no need to replace development versions, like "5.23" with "devel"
 # because 1) nobody is supposed to use it outside of poudriere, and 2) it must
@@ -80,21 +80,21 @@ _PERL5_FROM_BIN!=	${LOCALBASE}/bin/perl -e 'printf "%vd\n", $$^V;'
 _EXPORTED_VARS+=	_PERL5_FROM_BIN
 PERL5_DEFAULT:=		${_PERL5_FROM_BIN:R}
 .endif
-# Possible values: 9.4, 9.5, 9.6, 10, 11
-PGSQL_DEFAULT?=		9.5
-# Possible values: 7.1, 7.2, 7.3
+# Possible values: 9.4, 9.5, 9.6, 10, 11, 12
+PGSQL_DEFAULT?=		11
+# Possible values: 7.1, 7.2, 7.3, 7.4
 PHP_DEFAULT?=		7.2
-# Possible values: 2.7, 3.5, 3.6, 3.7
+# Possible values: 2.7, 3.5, 3.6, 3.7, 3.8
 PYTHON_DEFAULT?=	3.6
 # Possible values: 2.7
 PYTHON2_DEFAULT?=	2.7
-# Possible values: 3.5, 3.6, 3.7
+# Possible values: 3.5, 3.6, 3.7, 3.8
 PYTHON3_DEFAULT?=	3.6
 # Possible values: 2.4, 2.5, 2.6
-RUBY_DEFAULT?=		2.5
+RUBY_DEFAULT?=		2.6
 # Possible values: rust, rust-nightly
 RUST_DEFAULT?=		rust
-# Possible values: 4.6, 4.7, 4.8, 4.10
+# Possible values: 4.8, 4.10
 SAMBA_DEFAULT?=		4.8
 # Possible values: base, openssl, openssl111, libressl, libressl-devel
 .if !defined(SSL_DEFAULT)

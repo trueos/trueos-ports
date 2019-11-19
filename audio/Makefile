@@ -32,7 +32,6 @@
     SUBDIR += ario
     SUBDIR += arss
     SUBDIR += artyfx-lv2
-    SUBDIR += ascd
     SUBDIR += asmix
     SUBDIR += asmixer
     SUBDIR += asterisk-espeak
@@ -44,7 +43,6 @@
     SUBDIR += audacity
     SUBDIR += audiere
     SUBDIR += audiocd-kio
-    SUBDIR += audiotag
     SUBDIR += aumix
     SUBDIR += autocd
     SUBDIR += autotalent
@@ -192,6 +190,7 @@
     SUBDIR += fomp-lv2
     SUBDIR += foo-yc20
     SUBDIR += forked-daapd
+    SUBDIR += fossmixer
     SUBDIR += fpc-a52
     SUBDIR += fpc-mad
     SUBDIR += fpc-modplug
@@ -204,13 +203,13 @@
     SUBDIR += funktrackergold
     SUBDIR += gbemol
     SUBDIR += gbsplay
+    SUBDIR += geonkick-lv2
     SUBDIR += gervill
     SUBDIR += ghostess
     SUBDIR += giada
     SUBDIR += gimmix
     SUBDIR += gkrellmvolume2
     SUBDIR += glurp
-    SUBDIR += gmidimonitor
     SUBDIR += gmpc
     SUBDIR += gmpc-alarm
     SUBDIR += gmpc-albumview
@@ -220,7 +219,6 @@
     SUBDIR += gmpc-libnotify
     SUBDIR += gmpc-lyrics
     SUBDIR += gmpc-lyricsplugin
-    SUBDIR += gmpc-lyricwiki
     SUBDIR += gmpc-magnatune
     SUBDIR += gmpc-mdcover
     SUBDIR += gmpc-mserver
@@ -347,7 +345,6 @@
     SUBDIR += ir-lv2
     SUBDIR += jack
     SUBDIR += jack_ghero
-    SUBDIR += jack_mixer
     SUBDIR += jack_umidi
     SUBDIR += jack-keyboard
     SUBDIR += jack-smf-utils
@@ -355,7 +352,6 @@
     SUBDIR += jalv-select
     SUBDIR += jamin
     SUBDIR += jid3lib
-    SUBDIR += jmusic
     SUBDIR += jokosher
     SUBDIR += juk
     SUBDIR += juke
@@ -458,6 +454,7 @@
     SUBDIR += linux-c6-pulseaudio-utils
     SUBDIR += linux-c6-sdl_mixer
     SUBDIR += linux-c7-alsa-lib
+    SUBDIR += linux-c7-alsa-lib-devel
     SUBDIR += linux-c7-alsa-plugins-oss
     SUBDIR += linux-c7-alsa-plugins-pulseaudio
     SUBDIR += linux-c7-alsa-utils
@@ -493,14 +490,14 @@
     SUBDIR += madfufw
     SUBDIR += madplay
     SUBDIR += malint
-    SUBDIR += maplay
     SUBDIR += mate-media
-    SUBDIR += mbox
+    SUBDIR += mclk-lv2
     SUBDIR += mctoolame-decoder
     SUBDIR += mctoolame-encoder
     SUBDIR += mda-lv2
     SUBDIR += mhwaveedit
     SUBDIR += midi-matrix-lv2
+    SUBDIR += midiomatic-lv2
     SUBDIR += midipp
     SUBDIR += mikmod
     SUBDIR += milkytracker
@@ -509,6 +506,7 @@
     SUBDIR += mixmos
     SUBDIR += mixxx
     SUBDIR += mixxx21
+    SUBDIR += mkcue
     SUBDIR += mma
     SUBDIR += moc
     SUBDIR += modplugplay
@@ -568,7 +566,6 @@
     SUBDIR += nosefart
     SUBDIR += noson-app
     SUBDIR += nspmod
-    SUBDIR += nuvolaplayer
     SUBDIR += oaml
     SUBDIR += ocp
     SUBDIR += ogg2mp3
@@ -793,6 +790,7 @@
     SUBDIR += sratom
     SUBDIR += stegosaurus-lv2
     SUBDIR += stk
+    SUBDIR += stone-phaser-lv2
     SUBDIR += streamripper
     SUBDIR += streamtranscoder
     SUBDIR += string-machine-lv2
@@ -842,7 +840,6 @@
     SUBDIR += umix
     SUBDIR += umodplayer
     SUBDIR += umurmur
-    SUBDIR += vagalume
     SUBDIR += vamp-plugin-sdk
     SUBDIR += vgmplay
     SUBDIR += vimpc
@@ -871,7 +868,6 @@
     SUBDIR += wmix
     SUBDIR += wmmp
     SUBDIR += wmrecord
-    SUBDIR += wmsmixer
     SUBDIR += workman
     SUBDIR += wxguitar
     SUBDIR += x42-plugins-lv2
@@ -889,7 +885,6 @@
     SUBDIR += xmixer
     SUBDIR += xmmix
     SUBDIR += xmms2
-    SUBDIR += xmms2-scrobbler
     SUBDIR += xmp
     SUBDIR += xmradio
     SUBDIR += xoscope

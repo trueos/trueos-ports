@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME?=	wireshark
-PORTVERSION=	3.0.3
-PORTREVISION?=	1
-CATEGORIES=	net ipv6
+PORTVERSION=	3.0.6
+PORTREVISION?=	0
+CATEGORIES=	net
 MASTER_SITES=	http://www.wireshark.org/download/src/ \
 		http://ftp.uni-kl.de/pub/wireshark/src/ \
 		http://wireshark.askapache.com/download/src/all-versions/ \
@@ -26,9 +26,9 @@ CONFLICTS_INSTALL?=	wireshark-lite-[0-9]* tshark-[0-9]* tshark-lite-[0-9]*
 DATADIR_NAME=	wireshark
 DATADIR=	${PREFIX}/share/${DATADIR_NAME}
 
-USES=		alias cmake cpe compiler:c++11-lang gettext-runtime \
-		libtool localbase pathfix localbase:ldflags \
-		perl5 pkgconfig python:3.4+ ssl tar:xz
+USES=		alias cmake compiler:c++11-lang cpe gettext-runtime gnome \
+		libtool localbase pathfix perl5 pkgconfig python:3.4+ ssl \
+		tar:xz
 USE_PERL5=	build
 USE_GNOME=	glib20 libxml2
 USE_LDCONFIG=	yes
@@ -43,7 +43,7 @@ LIB_DEPENDS+=	libgpg-error.so:security/libgpg-error \
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 
 .for x in capinfos editcap mergecap rawshark text2pcap dftest randpkt \
-    reordercap captype randpktdump udpdump sharkd dumpcap
+    reordercap captype randpktdump udpdump sharkd
 .if defined(LITE)
 PKGNAMESUFFIX=		-lite
 PLIST_SUB+=		${x:tu}="@comment $x not installed" \

@@ -53,7 +53,7 @@ FFLAGS=		-O2
 LDFLAGS+=	-lpthread -lexecinfo
 
 MAKE_ENV=	CCACHE_DISABLE=yes PACKAGE=${PORTNAME}
-NOCCACHE=	yes
+NO_CCACHE=	yes
 
 CONFLICTS=	lam-7.* mpd-[0-9]* mpiexec-0.*
 
@@ -124,6 +124,7 @@ CONFIGURE_ARGS+=	--disable-graphics
 PLIST_SUB+=	X11="@comment "
 .else
 CONFIGURE_ARGS+=	--x-includes=${LOCALBASE}/include --x-libraries==${LOCALBASE}/lib
+USES+=		xorg
 USE_XORG=	x11 xt
 PLIST_SUB+=	X11=${PLX11}
 .endif

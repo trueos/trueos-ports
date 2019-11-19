@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	10.4.6
-PORTREVISION?=	1
-CATEGORIES=	databases ipv6
+PORTVERSION=	10.4.7
+PORTREVISION?=	0
+CATEGORIES=	databases
 MASTER_SITES=	http://mirrors.supportex.net/${SITESDIR}/ \
 		http://mirror2.hs-esslingen.de/pub/Mirrors/${SITESDIR}/ \
 		http://gd.tuwien.ac.at/db/${SITESDIR}/ \
@@ -149,6 +149,7 @@ OQGRAPH_LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 ROCKSDB_USES=		python
 SNAPPY_CMAKE_BOOL=	WITH_INNODB_SNAPPY WITH_ROCKSDB_snappy
 SNAPPY_LIB_DEPENDS=	libsnappy.so:archivers/snappy
+TOKUDB_BROKEN=		Error with bundled liblzma
 TOKUDB_IMPLIES=		SNAPPY
 TOKUDB_PORTDOCS=	README.md
 TOKUDB_VARS=		LICENSE+=PerconaFT LICENSE_COMB=multi
@@ -213,7 +214,7 @@ post-install:
 	${RM} -r ${STAGEDIR}${DATADIR}
 	${RM} -r ${STAGEDIR}${PREFIX}/include/mysql/server
 
-post-install-GSSAPI_NONE:
+post-install-GSSAPI_NONE-off:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/mysql/plugin/auth_gssapi_client.so
 
 .else # ! ${PKGNAMESUFFIX:M*-client}

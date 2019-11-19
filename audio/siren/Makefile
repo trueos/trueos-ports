@@ -3,6 +3,7 @@
 
 PORTNAME=	siren
 PORTVERSION=	0.9
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://www.kariliq.nl/${PORTNAME}/dist/
 
@@ -58,8 +59,8 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|-lcurses|-lncurses|' ${WRKSRC}/configure
 
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/siren
-	${FIND} ${STAGEDIR}${PREFIX}/lib/siren -path '*.so' \
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/siren
+	@${FIND} ${STAGEDIR}${PREFIX}/lib/siren -path '*.so' \
 		| ${XARGS} ${STRIP_CMD}
 
 .include <bsd.port.mk>

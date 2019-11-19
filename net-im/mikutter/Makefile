@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mikutter
-PORTVERSION=	3.9.2
+PORTVERSION=	3.9.6
 CATEGORIES=	net-im ruby
 MASTER_SITES=	https://mikutter.hachune.net/bin/ \
 		LOCAL/meta/${PORTNAME}
@@ -19,7 +19,7 @@ RUN_DEPENDS=	rubygem-gtk2>=3.3.1:x11-toolkits/rubygem-gtk2 \
 		rubygem-addressable>=2.6.0:www/rubygem-addressable \
 		rubygem-delayer>=1.0.0:devel/rubygem-delayer \
 		rubygem-delayer-deferred>=2.1.0:devel/rubygem-delayer-deferred \
-		rubygem-diva>=1.0.0:devel/rubygem-diva \
+		rubygem-diva>=1.0.1:devel/rubygem-diva \
 		rubygem-gettext>=3.2.6:devel/rubygem-gettext \
 		rubygem-gio2>=3.3.1:devel/rubygem-gio2 \
 		rubygem-httpclient>=2.8.3:www/rubygem-httpclient \
@@ -30,7 +30,6 @@ RUN_DEPENDS=	rubygem-gtk2>=3.3.1:x11-toolkits/rubygem-gtk2 \
 		rubygem-nokogiri>=1.8.5:textproc/rubygem-nokogiri \
 		rubygem-oauth>=0.5.4:net/rubygem-oauth \
 		rubygem-pluggaloid>=1.2.0:devel/rubygem-pluggaloid \
-		rubygem-public_suffix>=3.0.3:dns/rubygem-public_suffix \
 		rubygem-text>=1.3.1:textproc/rubygem-text \
 		rubygem-totoridipjp>=0.1.0:www/rubygem-totoridipjp \
 		rubygem-twitter-text>=2.1.0:textproc/rubygem-twitter-text \

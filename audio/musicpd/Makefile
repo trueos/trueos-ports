@@ -1,9 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	musicpd
-PORTVERSION=	0.21.11
-PORTREVISION=	1
-CATEGORIES=	audio ipv6
+PORTVERSION=	0.21.16
+CATEGORIES=	audio
 MASTER_SITES=	https://www.musicpd.org/download/mpd/${PORTVERSION:R}/
 DISTNAME=	mpd-${PORTVERSION}
 
@@ -27,6 +26,7 @@ MESON_ARGS=	-Dauto_features=disabled \
 		-Dicu=enabled \
 		-Doss=enabled \
 		-Dpipe=true \
+		-Dsyslog=enabled \
 		-Dzlib=enabled
 CFLAGS+=	-I${PREFIX}/include
 CPPFLAGS+=	-I${LOCALBASE}/include

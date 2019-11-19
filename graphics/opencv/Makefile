@@ -3,7 +3,7 @@
 
 PORTNAME=	opencv
 PORTVERSION=	3.4.1
-PORTREVISION=	21
+PORTREVISION=	25
 CATEGORIES=	graphics
 
 MAINTAINER=	ports@FreeBSD.org
@@ -269,6 +269,7 @@ OPENGL_LIB_DEPENDS=	${PORT_OPTIONS:MGTK2:C,.+,libgtkglext-x11-1.0.so:x11-toolkit
 
 # GUI
 
+GTK2_USES=		gnome
 GTK2_USE=		GNOME=cairo,gdkpixbuf2,gtk20
 GTK2_CMAKE_BOOL=	WITH_GTK
 GTK2_LIB_DEPENDS=	libfreetype.so:print/freetype2 \

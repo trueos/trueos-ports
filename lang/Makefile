@@ -11,7 +11,7 @@
     SUBDIR += alchemist.el
     SUBDIR += algol68g
     SUBDIR += angelscript
-    SUBDIR += arena
+    SUBDIR += apache-commons-jelly
     SUBDIR += asis
     SUBDIR += asn1c
     SUBDIR += atlast
@@ -49,11 +49,8 @@
     SUBDIR += crystal
     SUBDIR += csharp-mode.el
     SUBDIR += cython
-    SUBDIR += diveintopython
     SUBDIR += dlang-tools
     SUBDIR += dlv
-    SUBDIR += dmd1
-    SUBDIR += dmd2
     SUBDIR += duktape
     SUBDIR += duktape-lib
     SUBDIR += ecl
@@ -92,6 +89,7 @@
     SUBDIR += fpc-rtl-extra
     SUBDIR += fpc-rtl-objpas
     SUBDIR += fpc-rtl-unicode
+    SUBDIR += fpc-source
     SUBDIR += fpc-units
     SUBDIR += fpc-utils
     SUBDIR += fsharp
@@ -103,7 +101,6 @@
     SUBDIR += gcc-ecj45
     SUBDIR += gcc10-devel
     SUBDIR += gcc48
-    SUBDIR += gcc5
     SUBDIR += gcc6
     SUBDIR += gcc6-aux
     SUBDIR += gcc7
@@ -132,7 +129,6 @@
     SUBDIR += go-devel
     SUBDIR += go14
     SUBDIR += gomacro
-    SUBDIR += gprolog
     SUBDIR += gravity
     SUBDIR += groovy
     SUBDIR += gscheme
@@ -154,7 +150,6 @@
     SUBDIR += io-devel
     SUBDIR += itcl
     SUBDIR += itcl4
-    SUBDIR += jakarta-commons-jelly
     SUBDIR += janet
     SUBDIR += jimtcl
     SUBDIR += jruby
@@ -167,6 +162,7 @@
     SUBDIR += jython
     SUBDIR += kawa
     SUBDIR += kf5-kross
+    SUBDIR += kotlin
     SUBDIR += kross-interpreters
     SUBDIR += kturtle
     SUBDIR += lafontaine
@@ -191,6 +187,7 @@
     SUBDIR += lua52
     SUBDIR += lua53
     SUBDIR += luajit
+    SUBDIR += luajit-openresty
     SUBDIR += malbolge
     SUBDIR += maude
     SUBDIR += mawk
@@ -200,7 +197,6 @@
     SUBDIR += mixal
     SUBDIR += mlton
     SUBDIR += mmix
-    SUBDIR += modula3
     SUBDIR += mono
     SUBDIR += mono-basic
     SUBDIR += mosh
@@ -235,7 +231,6 @@
     SUBDIR += opendylan
     SUBDIR += ott
     SUBDIR += owl-lisp
-    SUBDIR += p2c
     SUBDIR += p5-Data-JavaScript
     SUBDIR += p5-Error
     SUBDIR += p5-Expect
@@ -275,7 +270,6 @@
     SUBDIR += perl5.30
     SUBDIR += petite-chez
     SUBDIR += pfe
-    SUBDIR += phantomjs
     SUBDIR += pharo
     SUBDIR += phc
     SUBDIR += php-mode.el
@@ -285,17 +279,21 @@
     SUBDIR += php72-extensions
     SUBDIR += php73
     SUBDIR += php73-extensions
+    SUBDIR += php74
+    SUBDIR += php74-extensions
     SUBDIR += picoc
     SUBDIR += plexil
     SUBDIR += pocl
     SUBDIR += polyml
     SUBDIR += ponyc
+    SUBDIR += ponyc-static
     SUBDIR += ptoc
-    SUBDIR += pure
+    SUBDIR += purescript
     SUBDIR += py-hy
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
     SUBDIR += py-qt5-qml
+    SUBDIR += py-textX
     SUBDIR += pypy
     SUBDIR += pypy3
     SUBDIR += python
@@ -311,9 +309,10 @@
     SUBDIR += python35
     SUBDIR += python36
     SUBDIR += python37
+    SUBDIR += python38
     SUBDIR += qmasm
     SUBDIR += qscheme
-    SUBDIR += quack
+    SUBDIR += quickjs
     SUBDIR += racket
     SUBDIR += racket-minimal
     SUBDIR += ratfor
@@ -357,13 +356,12 @@
     SUBDIR += spidermonkey185
     SUBDIR += spidermonkey24
     SUBDIR += spidermonkey52
+    SUBDIR += spidermonkey60
     SUBDIR += spl
     SUBDIR += squeak
     SUBDIR += squirrel
     SUBDIR += starlogo
-    SUBDIR += stldoc
     SUBDIR += swi-pl
-    SUBDIR += swift
     SUBDIR += tcbasic
     SUBDIR += tcc
     SUBDIR += tcl-manual
@@ -387,5 +385,6 @@
     SUBDIR += yap-devel
     SUBDIR += yorick
     SUBDIR += ypsilon
+    SUBDIR += zig
 
 .include <bsd.port.subdir.mk>

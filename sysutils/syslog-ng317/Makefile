@@ -15,11 +15,14 @@ COMMENT=	Powerful syslogd replacement
 
 BROKEN_sparc64=		fails to link: Internal error: Segmentation fault (program ld)
 
+DEPRECATED=	No longer supported by Balabit
+EXPIRATION_DATE=	2019-12-31
+
 LIB_DEPENDS=	libpcre.so:devel/pcre \
 		libuuid.so:misc/e2fsprogs-libuuid
 
-USES=		autoreconf:build compiler:c11 gmake libtool pathfix pkgconfig \
-		ssl gettext-runtime python:build shebangfix
+USES=		autoreconf:build compiler:c11 gettext-runtime gmake gnome \
+		libtool pathfix pkgconfig python:build shebangfix ssl
 
 CONFLICTS?=	syslog-ng-[0-9]* syslog-ng[0-9]-[0-9]* \
 		syslog-ng[0-9][0-9]-[0-9]* \
@@ -108,6 +111,7 @@ JAVA_USE=			JAVA=yes
 JAVA_PLIST_FILES=		lib/syslog-ng/libmod-java.so \
 				lib/syslog-ng/java-modules/syslog-ng-core.jar
 
+JAVA_MOD_IMPLIES=		JAVA
 JAVA_MOD_CONFIGURE_ENABLE=	java-modules
 JAVA_MOD_USE=			JAVA=yes
 JAVA_MOD_BUILD_DEPENDS=		gradle:devel/gradle \
@@ -192,6 +196,9 @@ BROKEN=           Default configuration does not currently support non-JSON buil
 post-patch:
 	@${CP} ${WRKSRC}/scl/syslog-ng.conf ${WRKSRC}/scl/syslog-ng.conf.dist
 	@${CP} ${WRKSRC}/scl/scl.conf ${WRKSRC}/scl/scl.conf.sample
+
+post-patch-JAVA_MOD-on:
+	@${REINPLACE_CMD} 's,$$(GRADLE),& --no-daemon,g' ${WRKSRC}/Makefile.in
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}

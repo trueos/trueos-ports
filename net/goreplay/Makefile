@@ -3,6 +3,7 @@
 PORTNAME=	goreplay
 PORTVERSION=	0.16.1
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	swills@FreeBSD.org
@@ -22,12 +23,5 @@ GH_TUPLE=	google:gopacket:v1.1.16:gopacket/vendor/github.com/google/gopacket \
 GH_SUBDIR=	src/github.com/buger/goreplay
 
 PLIST_FILES=	bin/${PORTNAME}
-
-do-build:
-	@cd ${WRKSRC}/${GH_SUBDIR} ; ${SETENV} ${MAKE_ENV} GOPATH=${WRKSRC} go build
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/goreplay \
-		${STAGEDIR}${PREFIX}/bin/
 
 .include <bsd.port.mk>

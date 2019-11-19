@@ -13,8 +13,12 @@ COMMENT=	Convert between XML and a line-oriented format similar to XPath
 
 LICENSE=	GPLv2
 
+BROKEN=		unfetchable
+DEPRECATED=	Unfetchable, unmaintained
+EXPIRATION_DATE=	2019-10-16
+
 GNU_CONFIGURE=	yes
-USES=		pkgconfig
+USES=		gnome pkgconfig
 USE_GNOME=	libxml2
 
 PLIST_FILES=	bin/xml2 \

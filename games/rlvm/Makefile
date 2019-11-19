@@ -4,7 +4,7 @@ PORTNAME=	rlvm
 DISTVERSIONPREFIX=	release-
 DISTVERSION=	0.14-67
 DISTVERSIONSUFFIX=	-g9350209
-PORTREVISION=	20
+PORTREVISION=	21
 CATEGORIES=	games
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
@@ -27,14 +27,13 @@ RUN_DEPENDS=	${LOCALBASE}/share/fonts/dejavu/DejaVuSans.ttf:x11-fonts/dejavu
 USE_GITHUB=	yes
 GH_ACCOUNT=	eglaysher
 
-USES=		compiler:c++11-lib pkgconfig scons
+USES=		compiler:c++11-lib gl gnome pkgconfig scons sdl
 USE_GL=		glew glu
 USE_GNOME=	gtk20
 USE_SDL=	image mixer ttf
 EXCLUDE=	GLEW SDL_image SDL_mixer SDL_ttf gmock gtest guichan \
 		luabind utf8cpp # leaving only pygame, xclannad, *.cpp
 EXTRACT_AFTER_ARGS=${EXCLUDE:S,^,--exclude vendor/,}
-CFLAGS+=	-D_GLIBCXX_USE_C99 # XXX ports/193528
 LDFLAGS+=	-Wl,--as-needed # avoid overlinking (gtk deps)
 MAKE_ARGS=	VERBOSE=1
 INSTALLS_ICONS=	yes

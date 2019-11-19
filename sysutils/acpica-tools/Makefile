@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	acpica
-PORTVERSION=	20190703
+PORTVERSION=	20191018
 CATEGORIES=	sysutils devel
 MASTER_SITES=	https://acpica.org/sites/acpica/files/ \
 		LOCAL/jkim
@@ -25,7 +25,7 @@ ACPICA_TOOLS+=	acpixtract iasl
 
 PLIST_FILES=	${ACPICA_TOOLS:S,^,bin/,}
 
-MAKE_ARGS=	HOST=_FreeBSD NOOPT=TRUE PROGS="${ACPICA_TOOLS}"
+MAKE_ARGS=	HOST=_FreeBSD PROGS="${ACPICA_TOOLS}"
 MAKE_ARGS+=	CC="${CC}" LEX="${FLEX}" YACC="${YACC}"
 
 do-install:

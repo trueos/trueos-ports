@@ -2,7 +2,6 @@
 
 PORTNAME=	kamoso
 DISTVERSION=	${KDE_APPLICATIONS_VERSION}
-PORTREVISION=	2
 CATEGORIES=	multimedia kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
@@ -10,7 +9,8 @@ COMMENT=	Application to take pictures and videos out of your webcam
 
 LICENSE=	GPLv2
 
-USES=		cmake compiler:c++11-lang gettext gl kde:5 pkgconfig qt:5 tar:xz
+USES=		cmake compiler:c++11-lang gettext gl gnome kde:5 pkgconfig qt:5 \
+		tar:xz
 USE_GL=		gl
 USE_GNOME=	glib20
 USE_GSTREAMER1=	yes

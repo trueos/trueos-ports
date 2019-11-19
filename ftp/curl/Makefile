@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	curl
-PORTVERSION=	7.65.3
+PORTVERSION=	7.67.0
 CATEGORIES=	ftp net www
 MASTER_SITES=	https://curl.haxx.se/download/ \
 		LOCAL/sunpoet
@@ -109,7 +109,6 @@ HTTP2_USES=		pkgconfig
 IDN_CONFIGURE_WITH=	libidn2
 IDN_LIB_DEPENDS=	libidn2.so:dns/libidn2
 IMAP_CONFIGURE_ENABLE=	imap
-IPV6_CATEGORIES=	ipv6
 IPV6_CONFIGURE_ENABLE=	ipv6
 LDAP_CONFIGURE_ENABLE=	ldap
 LDAP_USE=		OPENLDAP=yes
@@ -141,8 +140,7 @@ TELNET_CONFIGURE_ENABLE=telnet
 TFTP_CONFIGURE_ENABLE=	tftp
 THREADED_RESOLVER_CONFIGURE_ENABLE=	pthreads threaded-resolver
 TLS_SRP_CONFIGURE_ENABLE=	tls-srp
-WOLFSSL_CONFIGURE_ENV=	ac_cv_header_cyassl_options_h=no
-WOLFSSL_CONFIGURE_WITH=	cyassl
+WOLFSSL_CONFIGURE_WITH=	wolfssl
 WOLFSSL_LIB_DEPENDS=	libwolfssl.so:security/wolfssl
 
 .include <bsd.port.pre.mk>
@@ -158,7 +156,7 @@ IGNORE=		only supports LDAPS with SSL
 post-patch:
 	@${REINPLACE_CMD} -e '/^SUBDIRS = / s|$$| docs scripts|; /^DIST_SUBDIRS = / s| docs scripts||; /cd docs &&/d' ${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e 's|\(flags_dbg_off=\)".*"|\1""|; s|\(flags_opt_off=\)".*"|\1""|' ${WRKSRC}/configure
-	@${REINPLACE_CMD} -e 's|include <gssapi.h>|include <gssapi/gssapi.h>|' ${WRKSRC}/lib/curl_gssapi.h ${WRKSRC}/lib/urldata.h
+	@${REINPLACE_CMD} -e 's|include <gssapi.h>|include <gssapi/gssapi.h>|' ${WRKSRC}/lib/urldata.h
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/docs/libcurl/libcurl.m4 ${STAGEDIR}${PREFIX}/share/aclocal/

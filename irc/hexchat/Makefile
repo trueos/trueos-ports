@@ -5,7 +5,7 @@ PORTNAME=	hexchat
 PORTVERSION=	2.14.2
 DISTVERSIONPREFIX=	v
 PORTREVISION=	3
-CATEGORIES=	irc gnome ipv6
+CATEGORIES=	irc gnome
 
 MAINTAINER=	pkubaj@anongoth.pl
 COMMENT=	IRC chat program with GTK and Text Frontend
@@ -21,7 +21,7 @@ LIB_DEPENDS=	libproxy.so:net/libproxy \
 RUN_DEPENDS=	${LOCALBASE}/share/xml/iso-codes/iso_639.xml:misc/iso-codes
 
 USES=		compiler:c++11-lang desktop-file-utils gettext-tools gnome \
-		libtool meson ninja pkgconfig python:3.5+ shebangfix ssl
+		libtool meson ninja pkgconfig python:3.5+ shebangfix ssl xorg
 USE_GNOME=	cairo gtk20 intltool libxml2
 USE_XORG=	x11
 USE_GITHUB=	yes

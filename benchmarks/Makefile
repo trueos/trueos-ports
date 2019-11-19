@@ -16,7 +16,6 @@
     SUBDIR += dhrystone
     SUBDIR += dkftpbench
     SUBDIR += fhourstones
-    SUBDIR += filebench
     SUBDIR += fio
     SUBDIR += flamegraph
     SUBDIR += flops
@@ -26,6 +25,7 @@
     SUBDIR += gtkperf
     SUBDIR += hey
     SUBDIR += himenobench
+    SUBDIR += hipercontracer
     SUBDIR += hpl
     SUBDIR += httperf
     SUBDIR += hyperfine

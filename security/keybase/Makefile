@@ -1,8 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	keybase
-PORTVERSION=	4.2.1
+PORTVERSION=	5.0.0
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	security
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -24,8 +25,6 @@ GH_PROJECT=	client
 USE_GITHUB=	yes
 
 post-patch:
-	@${MV} ${WRKSRC}/install/stop_linux.go ${WRKSRC}/install/stop_freebsd.go
-	@${REINPLACE_CMD} -e '/+build/ s|$$| freebsd|' ${WRKSRC}/client/platform_specific_ctl_commands_other.go ${WRKSRC}/install/stop_freebsd.go
 	@${REINPLACE_CMD} -e '/+build/ s|,amd64||' ${WRKSRC}/vendor/github.com/keybase/go-ps/process_freebsd.go
 
 .include <bsd.port.mk>

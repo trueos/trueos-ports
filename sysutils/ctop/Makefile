@@ -3,17 +3,16 @@
 PORTNAME=	ctop
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.7.2
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Top-like interface for Docker container metrics
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go
-
-GO_PKGNAME=	github.com/bcicen/ctop
+USES=		go:modules
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	bcicen

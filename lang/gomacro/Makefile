@@ -4,9 +4,10 @@ PORTNAME=	gomacro
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.7-304
 DISTVERSIONSUFFIX=	-g2f4dc7c
+PORTREVISION=	1
 CATEGORIES=	lang
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Interactive Go interpreter and debugger with REPL, generics and macros
 
 LICENSE=	MPL20

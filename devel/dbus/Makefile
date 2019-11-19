@@ -7,7 +7,7 @@ PORTREVISION=	0
 CATEGORIES=	devel gnome
 MASTER_SITES=	http://dbus.freedesktop.org/releases/dbus/
 
-MAINTAINER=	gnome@FreeBSD.org
+MAINTAINER=	desktop@FreeBSD.org
 COMMENT=	Message bus system for inter-application communication
 
 LICENSE=	GPLv2
@@ -45,6 +45,7 @@ X11_DESC=	Support X11 Desktop Environments
 MANPAGES_CONFIGURE_ENV=	XMLTO=${LOCALBASE}/bin/minixmlto
 MANPAGES_BUILD_DEPENDS=	minixmlto:textproc/minixmlto
 MANPAGES_CONFIGURE_ENABLE=	xml-docs
+X11_USES=	xorg
 X11_USE=	xorg=ice,sm,x11
 X11_CONFIGURE_WITH=	x
 

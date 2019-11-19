@@ -24,7 +24,6 @@
     SUBDIR += cream
     SUBDIR += cudatext
     SUBDIR += deforaos-editor
-    SUBDIR += dexed
     SUBDIR += dhex
     SUBDIR += diakonos
     SUBDIR += dkns
@@ -167,6 +166,7 @@
     SUBDIR += libreoffice-st
     SUBDIR += libreoffice-sv
     SUBDIR += libreoffice-sw_TZ
+    SUBDIR += libreoffice-szl
     SUBDIR += libreoffice-ta
     SUBDIR += libreoffice-te
     SUBDIR += libreoffice-tg
@@ -188,6 +188,7 @@
     SUBDIR += mg
     SUBDIR += micro
     SUBDIR += mined
+    SUBDIR += mle
     SUBDIR += morla
     SUBDIR += mousepad
     SUBDIR += mp
@@ -199,10 +200,10 @@
     SUBDIR += neovim-qt
     SUBDIR += nvi-devel
     SUBDIR += nvi-m17n
+    SUBDIR += o
     SUBDIR += omegaT
     SUBDIR += openoffice-4
     SUBDIR += openoffice-devel
-    SUBDIR += p5-Padre
     SUBDIR += p5-Proc-InvokeEditor
     SUBDIR += p5-Vimana
     SUBDIR += paredit-mode.el
@@ -258,6 +259,5 @@
     SUBDIR += xvile
     SUBDIR += yudit
     SUBDIR += zile
-    SUBDIR += zoinks
 
 .include <bsd.port.subdir.mk>

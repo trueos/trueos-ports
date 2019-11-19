@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ImageMagick
-DISTVERSION=	7.0.8-50
+DISTVERSION=	7.0.8-57
 PORTREVISION=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://www.imagemagick.org/download/ \
@@ -161,8 +161,7 @@ RAW_IMPLIES=		LCMS2
 
 SVG_DESC=		SVG vector image format support (via librsvg, implies the x11 option)
 SVG_CONFIGURE_WITH=	rsvg
-SVG_LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2
-SVG_USE=		gnome=cairo,gdkpixbuf2
+SVG_USE=		gnome=cairo,gdkpixbuf2,librsvg2
 SVG_IMPLIES=		X11
 
 TIFF_CONFIGURE_WITH=	tiff
@@ -172,6 +171,7 @@ WEBP_CONFIGURE_WITH=	webp
 WEBP_LIB_DEPENDS=	libwebp.so:graphics/webp
 
 X11_CONFIGURE_WITH=	x
+X11_USES=		xorg
 X11_USE=		xorg=ice,sm,x11,xext,xt
 X11_VARS=		CONFLICTS_INSTALL+="ImageMagick7-nox11-* \
 			CONFLICTS+=display-[0-9]*

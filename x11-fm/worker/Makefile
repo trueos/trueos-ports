@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	worker
-PORTVERSION=	4.0.0
-PORTREVISION=	1
+PORTVERSION=	4.1.0
 CATEGORIES=	x11-fm
 MASTER_SITES=	http://www.boomerangsworld.de/cms/worker/downloads/
 
@@ -14,7 +13,8 @@ LICENSE=	GPLv2+
 
 RUN_DEPENDS=	bash:shells/bash
 
-USES=		compiler:c++14-lang pkgconfig python:2.7 shebangfix tar:bzip2
+USES=		compiler:c++14-lang localbase pkgconfig python:run \
+		shebangfix tar:bzip2 xorg
 GNU_CONFIGURE=	yes
 USE_XORG=	x11 xinerama
 
@@ -35,21 +35,14 @@ HAL_LIB_DEPENDS=	libhal-storage.so:sysutils/hal \
 			libdbus-glib-1.so:devel/dbus-glib \
 			libdbus-1.so:devel/dbus
 HAL_USE=	gnome=glib20 xorg=sm,ice
-HAL_USES=	gettext-runtime
+HAL_USES=	gettext-runtime gnome
 
 INOTIFY_LIB_DEPENDS=	libinotify.so:devel/libinotify
-INOTIFY_LDFLAGS=	-L${LOCALBASE}/lib
 
 LUA_CONFIGURE_OFF=	--disable-lua
-LUA_USES=	lua:51
+LUA_USES=	lua
 
 XFT_CONFIGURE_OFF=	--disable-xft
 XFT_USE=	xorg=xft
 
-.include <bsd.port.pre.mk>
-
-.if ${CHOSEN_COMPILER_TYPE} == gcc
-CXXFLAGS+=	-Wno-error=narrowing
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

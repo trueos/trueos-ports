@@ -206,14 +206,12 @@ lib/node_modules/npm/lib/config/clear-credentials-by-uri.js
 lib/node_modules/npm/lib/config/cmd-list.js
 lib/node_modules/npm/lib/config/core.js
 lib/node_modules/npm/lib/config/defaults.js
-lib/node_modules/npm/lib/config/fetch-opts.js
 lib/node_modules/npm/lib/config/figgy-config.js
 lib/node_modules/npm/lib/config/gentle-fs.js
 lib/node_modules/npm/lib/config/get-credentials-by-uri.js
 lib/node_modules/npm/lib/config/lifecycle.js
 lib/node_modules/npm/lib/config/load-cafile.js
 lib/node_modules/npm/lib/config/load-prefix.js
-lib/node_modules/npm/lib/config/load-uid.js
 lib/node_modules/npm/lib/config/nerf-dart.js
 lib/node_modules/npm/lib/config/set-credentials-by-uri.js
 lib/node_modules/npm/lib/config/set-user.js
@@ -949,15 +947,11 @@ lib/node_modules/npm/node_modules/clone/README.md
 lib/node_modules/npm/node_modules/clone/clone.iml
 lib/node_modules/npm/node_modules/clone/clone.js
 lib/node_modules/npm/node_modules/clone/package.json
-lib/node_modules/npm/node_modules/cmd-shim/.npmignore
-lib/node_modules/npm/node_modules/cmd-shim/.travis.yml
 lib/node_modules/npm/node_modules/cmd-shim/LICENSE
 lib/node_modules/npm/node_modules/cmd-shim/README.md
 lib/node_modules/npm/node_modules/cmd-shim/index.js
+lib/node_modules/npm/node_modules/cmd-shim/lib/to-batch-syntax.js
 lib/node_modules/npm/node_modules/cmd-shim/package.json
-lib/node_modules/npm/node_modules/cmd-shim/test/00-setup.js
-lib/node_modules/npm/node_modules/cmd-shim/test/basic.js
-lib/node_modules/npm/node_modules/cmd-shim/test/zz-cleanup.js
 lib/node_modules/npm/node_modules/co/History.md
 lib/node_modules/npm/node_modules/co/LICENSE
 lib/node_modules/npm/node_modules/co/Readme.md
@@ -1548,6 +1542,10 @@ lib/node_modules/npm/node_modules/from2/test.js
 lib/node_modules/npm/node_modules/fs-minipass/LICENSE
 lib/node_modules/npm/node_modules/fs-minipass/README.md
 lib/node_modules/npm/node_modules/fs-minipass/index.js
+lib/node_modules/npm/node_modules/fs-minipass/node_modules/minipass/LICENSE
+lib/node_modules/npm/node_modules/fs-minipass/node_modules/minipass/README.md
+lib/node_modules/npm/node_modules/fs-minipass/node_modules/minipass/index.js
+lib/node_modules/npm/node_modules/fs-minipass/node_modules/minipass/package.json
 lib/node_modules/npm/node_modules/fs-minipass/package.json
 lib/node_modules/npm/node_modules/fs-vacuum/.eslintrc
 lib/node_modules/npm/node_modules/fs-vacuum/.npmignore
@@ -1671,7 +1669,9 @@ lib/node_modules/npm/node_modules/gentle-fs/CHANGELOG.md
 lib/node_modules/npm/node_modules/gentle-fs/LICENSE
 lib/node_modules/npm/node_modules/gentle-fs/README.md
 lib/node_modules/npm/node_modules/gentle-fs/index.js
+lib/node_modules/npm/node_modules/gentle-fs/lib/chown.js
 lib/node_modules/npm/node_modules/gentle-fs/lib/link.js
+lib/node_modules/npm/node_modules/gentle-fs/lib/mkdir.js
 lib/node_modules/npm/node_modules/gentle-fs/lib/rm.js
 lib/node_modules/npm/node_modules/gentle-fs/node_modules/aproba/LICENSE
 lib/node_modules/npm/node_modules/gentle-fs/node_modules/aproba/README.md
@@ -2430,18 +2430,14 @@ lib/node_modules/npm/node_modules/minimist/test/parse.js
 lib/node_modules/npm/node_modules/minimist/test/parse_modified.js
 lib/node_modules/npm/node_modules/minimist/test/short.js
 lib/node_modules/npm/node_modules/minimist/test/whitespace.js
-lib/node_modules/npm/node_modules/minipass/README.md
-lib/node_modules/npm/node_modules/minipass/index.js
-lib/node_modules/npm/node_modules/minipass/node_modules/yallist/LICENSE
-lib/node_modules/npm/node_modules/minipass/node_modules/yallist/README.md
-lib/node_modules/npm/node_modules/minipass/node_modules/yallist/iterator.js
-lib/node_modules/npm/node_modules/minipass/node_modules/yallist/package.json
-lib/node_modules/npm/node_modules/minipass/node_modules/yallist/yallist.js
-lib/node_modules/npm/node_modules/minipass/package.json
 lib/node_modules/npm/node_modules/minizlib/LICENSE
 lib/node_modules/npm/node_modules/minizlib/README.md
 lib/node_modules/npm/node_modules/minizlib/constants.js
 lib/node_modules/npm/node_modules/minizlib/index.js
+lib/node_modules/npm/node_modules/minizlib/node_modules/minipass/LICENSE
+lib/node_modules/npm/node_modules/minizlib/node_modules/minipass/README.md
+lib/node_modules/npm/node_modules/minizlib/node_modules/minipass/index.js
+lib/node_modules/npm/node_modules/minizlib/node_modules/minipass/package.json
 lib/node_modules/npm/node_modules/minizlib/package.json
 lib/node_modules/npm/node_modules/mississippi/changelog.md
 lib/node_modules/npm/node_modules/mississippi/index.js
@@ -2666,6 +2662,7 @@ lib/node_modules/npm/node_modules/node-gyp/src/win_delay_load_hook.cc
 @(,,755) lib/node_modules/npm/node_modules/node-gyp/test/docker.sh
 lib/node_modules/npm/node_modules/node-gyp/test/fixtures/VS_2017_BuildTools_minimal.txt
 lib/node_modules/npm/node_modules/node-gyp/test/fixtures/VS_2017_Community_workload.txt
+lib/node_modules/npm/node_modules/node-gyp/test/fixtures/VS_2017_Express.txt
 lib/node_modules/npm/node_modules/node-gyp/test/fixtures/VS_2017_Unusable.txt
 lib/node_modules/npm/node_modules/node-gyp/test/fixtures/VS_2019_BuildTools_minimal.txt
 lib/node_modules/npm/node_modules/node-gyp/test/fixtures/VS_2019_Community_workload.txt
@@ -2816,9 +2813,6 @@ lib/node_modules/npm/node_modules/npm-install-checks/LICENSE
 lib/node_modules/npm/node_modules/npm-install-checks/README.md
 lib/node_modules/npm/node_modules/npm-install-checks/index.js
 lib/node_modules/npm/node_modules/npm-install-checks/package.json
-lib/node_modules/npm/node_modules/npm-install-checks/test/check-engine.js
-lib/node_modules/npm/node_modules/npm-install-checks/test/check-git.js
-lib/node_modules/npm/node_modules/npm-install-checks/test/check-platform.js
 lib/node_modules/npm/node_modules/npm-lifecycle/CHANGELOG.md
 lib/node_modules/npm/node_modules/npm-lifecycle/LICENSE
 lib/node_modules/npm/node_modules/npm-lifecycle/README.md
@@ -2859,6 +2853,11 @@ lib/node_modules/npm/node_modules/npm-registry-fetch/check-response.js
 lib/node_modules/npm/node_modules/npm-registry-fetch/config.js
 lib/node_modules/npm/node_modules/npm-registry-fetch/errors.js
 lib/node_modules/npm/node_modules/npm-registry-fetch/index.js
+lib/node_modules/npm/node_modules/npm-registry-fetch/node_modules/safe-buffer/LICENSE
+lib/node_modules/npm/node_modules/npm-registry-fetch/node_modules/safe-buffer/README.md
+lib/node_modules/npm/node_modules/npm-registry-fetch/node_modules/safe-buffer/index.d.ts
+lib/node_modules/npm/node_modules/npm-registry-fetch/node_modules/safe-buffer/index.js
+lib/node_modules/npm/node_modules/npm-registry-fetch/node_modules/safe-buffer/package.json
 lib/node_modules/npm/node_modules/npm-registry-fetch/package.json
 lib/node_modules/npm/node_modules/npm-registry-fetch/silentlog.js
 lib/node_modules/npm/node_modules/npm-run-path/index.js
@@ -3269,11 +3268,10 @@ lib/node_modules/npm/node_modules/read/LICENSE
 lib/node_modules/npm/node_modules/read/README.md
 lib/node_modules/npm/node_modules/read/lib/read.js
 lib/node_modules/npm/node_modules/read/package.json
-lib/node_modules/npm/node_modules/read-cmd-shim/.npmignore
+lib/node_modules/npm/node_modules/read-cmd-shim/LICENSE
 lib/node_modules/npm/node_modules/read-cmd-shim/README.md
 lib/node_modules/npm/node_modules/read-cmd-shim/index.js
 lib/node_modules/npm/node_modules/read-cmd-shim/package.json
-lib/node_modules/npm/node_modules/read-cmd-shim/test/integration.js
 lib/node_modules/npm/node_modules/read-installed/.npmignore
 lib/node_modules/npm/node_modules/read-installed/.travis.yml
 lib/node_modules/npm/node_modules/read-installed/LICENSE
@@ -3765,11 +3763,6 @@ lib/node_modules/npm/node_modules/tar/node_modules/minipass/LICENSE
 lib/node_modules/npm/node_modules/tar/node_modules/minipass/README.md
 lib/node_modules/npm/node_modules/tar/node_modules/minipass/index.js
 lib/node_modules/npm/node_modules/tar/node_modules/minipass/package.json
-lib/node_modules/npm/node_modules/tar/node_modules/yallist/LICENSE
-lib/node_modules/npm/node_modules/tar/node_modules/yallist/README.md
-lib/node_modules/npm/node_modules/tar/node_modules/yallist/iterator.js
-lib/node_modules/npm/node_modules/tar/node_modules/yallist/package.json
-lib/node_modules/npm/node_modules/tar/node_modules/yallist/yallist.js
 lib/node_modules/npm/node_modules/tar/package.json
 lib/node_modules/npm/node_modules/term-size/index.js
 lib/node_modules/npm/node_modules/term-size/license
@@ -3961,12 +3954,10 @@ lib/node_modules/npm/node_modules/util-promisify/package.json
 lib/node_modules/npm/node_modules/util-promisify/test/common.js
 lib/node_modules/npm/node_modules/util-promisify/test/index.js
 lib/node_modules/npm/node_modules/util-promisify/test/timers.js
-lib/node_modules/npm/node_modules/uuid/.eslintrc.json
 lib/node_modules/npm/node_modules/uuid/AUTHORS
 lib/node_modules/npm/node_modules/uuid/CHANGELOG.md
 lib/node_modules/npm/node_modules/uuid/LICENSE.md
 lib/node_modules/npm/node_modules/uuid/README.md
-lib/node_modules/npm/node_modules/uuid/README_js.md
 lib/node_modules/npm/node_modules/uuid/bin/uuid
 lib/node_modules/npm/node_modules/uuid/index.js
 lib/node_modules/npm/node_modules/uuid/lib/bytesToUuid.js
@@ -4148,6 +4139,7 @@ lib/node_modules/npm/scripts/gen-dev-ignores.js
 lib/node_modules/npm/scripts/index-build.js
 @(,,755) lib/node_modules/npm/scripts/install.sh
 lib/node_modules/npm/scripts/maketest
+lib/node_modules/npm/scripts/pr
 lib/node_modules/npm/scripts/publish-tag.js
 @(,,755) lib/node_modules/npm/scripts/release.sh
 @(,,755) lib/node_modules/npm/scripts/relocate.sh

@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	freeswitch
-PORTVERSION=	1.8.5
+PORTVERSION=	1.8.7
+PORTREVISION=	2
 CATEGORIES=	net
 MASTER_SITES=	http://files.freeswitch.org/releases/freeswitch/ \
 		http://files.freeswitch.org/releases/sounds/:sounds
@@ -90,7 +91,7 @@ ALL_MODULES_LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 				libyaml.so:textproc/libyaml
 ALL_MODULES_RUN_DEPENDS=	${LOCALBASE}/include/ladspa.h:audio/ladspa
 ALL_MODULES_USE=		XORG=x11 OPENLDAP=yes
-ALL_MODULES_USES=		autoreconf # required by mod_unimrcp
+ALL_MODULES_USES=		autoreconf xorg # required by mod_unimrcp
 
 8K_VARS=	BITRATES+=8000
 16K_VARS=	BITRATES+=16000

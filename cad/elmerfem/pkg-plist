@@ -37,6 +37,7 @@ share/elmersolver/include/dxfile.mod
 share/elmersolver/include/eigensolve.mod
 share/elmersolver/include/elementdescription.mod
 share/elmersolver/include/elementutils.mod
+share/elmersolver/include/emwavesolverutils.mod
 share/elmersolver/include/exchangecorrelations.mod
 share/elmersolver/include/fetisolve.mod
 share/elmersolver/include/freesurface.mod
@@ -59,6 +60,7 @@ share/elmersolver/include/huti_sfe.mod
 share/elmersolver/include/huti_tfqmr.mod
 share/elmersolver/include/integration.mod
 share/elmersolver/include/interpolation.mod
+share/elmersolver/include/interpvartovar.mod
 share/elmersolver/include/iso_varying_string.mod
 share/elmersolver/include/iterativemethods.mod
 share/elmersolver/include/itersolve.mod
@@ -66,6 +68,7 @@ share/elmersolver/include/kinds.mod
 share/elmersolver/include/linearalgebra.mod
 share/elmersolver/include/linearforms.mod
 share/elmersolver/include/listmatrix.mod
+share/elmersolver/include/listmatrixarray.mod
 share/elmersolver/include/lists.mod
 share/elmersolver/include/loadmod.mod
 share/elmersolver/include/ludecomposition.mod
@@ -75,6 +78,8 @@ share/elmersolver/include/materialmodels.mod
 share/elmersolver/include/maxwell.mod
 share/elmersolver/include/maxwellaxis.mod
 share/elmersolver/include/maxwellgeneral.mod
+share/elmersolver/include/meshpartition.mod
+share/elmersolver/include/meshremeshing.mod
 share/elmersolver/include/meshutils.mod
 share/elmersolver/include/messages.mod
 share/elmersolver/include/mgdynmaterialutils.mod
@@ -108,9 +113,12 @@ share/elmersolver/include/vectorhelmholtzutils.mod
 share/elmersolver/include/vecutils.mod
 share/elmersolver/include/viewfactorglobals.mod
 share/elmersolver/include/vtklegacyfile.mod
+share/elmersolver/include/zirka.mod
+share/elmersolver/include/zirkautils.mod
 share/elmersolver/lib/Acoustics.so
 share/elmersolver/lib/AdvectionDiffusion.so
 share/elmersolver/lib/AdvectionReaction.so
+share/elmersolver/lib/AllocateSolver.so
 share/elmersolver/lib/ArteryOutlet.so
 share/elmersolver/lib/ArtificialCompressibility.so
 share/elmersolver/lib/CircuitsAndDynamics.so
@@ -126,6 +134,7 @@ share/elmersolver/lib/DirectionSolver.so
 share/elmersolver/lib/DistanceSolve.so
 share/elmersolver/lib/DivProjection.so
 share/elmersolver/lib/DivergenceSolver.so
+share/elmersolver/lib/EMWaveSolver.so
 share/elmersolver/lib/ElasticSolve.so
 share/elmersolver/lib/ElectricForce.so
 share/elmersolver/lib/Electrokinetics.so
@@ -157,12 +166,14 @@ share/elmersolver/lib/LevelSet.so
 share/elmersolver/lib/MagneticSolve.so
 share/elmersolver/lib/MagnetoDynamics.so
 share/elmersolver/lib/MagnetoDynamics2D.so
+share/elmersolver/lib/Mesh2MeshSolver.so
 share/elmersolver/lib/MeshSolve.so
 share/elmersolver/lib/ModelPDE.so
 share/elmersolver/lib/MovingElstatSolver.so
 share/elmersolver/lib/NonphysicalMeshSolve.so
 share/elmersolver/lib/NormalSolver.so
 share/elmersolver/lib/OdeSolver.so
+share/elmersolver/lib/OpenFoam2ElmerIO.so
 share/elmersolver/lib/ParStokes.so
 share/elmersolver/lib/ParticleAdvector.so
 share/elmersolver/lib/ParticleDynamics.so
@@ -171,6 +182,7 @@ share/elmersolver/lib/PhaseChangeSolve.so
 share/elmersolver/lib/Poisson.so
 share/elmersolver/lib/PoissonBEM.so
 share/elmersolver/lib/PoissonBoltzmannSolve.so
+share/elmersolver/lib/PoissonDG.so
 share/elmersolver/lib/PressurePrecond.so
 share/elmersolver/lib/PressureUpdate.so
 share/elmersolver/lib/ProjectToPlane.so
@@ -195,6 +207,7 @@ share/elmersolver/lib/ShellSolver.so
 share/elmersolver/lib/Smitc.so
 share/elmersolver/lib/Spalart-Allmaras.so
 share/elmersolver/lib/StatCurrentSolve.so
+share/elmersolver/lib/StatCurrentSolveVec.so
 share/elmersolver/lib/StatElecBoundary.so
 share/elmersolver/lib/StatElecSolve.so
 share/elmersolver/lib/StatMagSolve.so

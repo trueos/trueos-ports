@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bazel
-DISTVERSION=	0.28.0
+DISTVERSION=	1.1.0
 CATEGORIES=	devel java
 MASTER_SITES=	https://storage.googleapis.com/bazel/${PORTVERSION}/rc${FINALRC}/
 DISTNAME=	bazel-${PORTVERSION}rc${FINALRC}-dist
@@ -20,6 +20,8 @@ BROKEN_powerpc64=	fails to compile: Action failed to execute: java.io.IOExceptio
 
 BUILD_DEPENDS=	bash:shells/bash \
 		zip:archivers/zip
+
+CONFLICTS_INSTALL=	bazel029
 
 USES=		python:3.3+ shebangfix zip:infozip
 

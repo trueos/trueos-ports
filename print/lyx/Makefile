@@ -3,7 +3,7 @@
 
 PORTNAME=	lyx
 PORTVERSION=	${MAJOR_VERSION}.${MINOR_VERSION}
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	print editors
 MASTER_SITES=	ftp://ftp.lyx.org/pub/lyx/stable/${MAJOR_VERSION}.x/ \
 		http://www-ftp.lip6.fr/ftp/pub/lyx/stable/${MAJOR_VERSION}.x/ \
@@ -23,7 +23,7 @@ MAJOR_VERSION=	2.3
 MINOR_VERSION=	2
 
 USES=		compiler:c++11-lang desktop-file-utils gmake iconv pkgconfig \
-		perl5 python:2.7 qt:5 shebangfix tar:xz
+		perl5 python:2.7 qt:5 shebangfix tar:xz xorg
 USE_QT=		core concurrent gui svg widgets x11extras buildtools_build qmake_build
 USE_XORG=	xcb
 GNU_CONFIGURE=	yes

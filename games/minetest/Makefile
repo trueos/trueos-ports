@@ -17,7 +17,7 @@ LIB_DEPENDS=	libsqlite3.so:databases/sqlite3 \
 USE_GITHUB=	yes
 GH_ACCOUNT=	minetest
 
-USES=		cmake iconv:wchar_t
+USES=		cmake compiler:c11 iconv:wchar_t
 LLD_UNSAFE=	yes
 CMAKE_ARGS=	-DCUSTOM_MANDIR="${PREFIX}/man" \
 		-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc"
@@ -45,7 +45,7 @@ CLIENT_DESC=		Build client
 CLIENT_CMAKE_BOOL=	BUILD_CLIENT
 CLIENT_LIB_DEPENDS=	libpng.so:graphics/png \
 			libIrrlicht.so:x11-toolkits/irrlicht
-CLIENT_USES=		gl jpeg
+CLIENT_USES=		gl jpeg xorg
 CLIENT_USE=		GL=gl XORG=x11,xext,xxf86vm
 SERVER_DESC=		Build server
 SERVER_CMAKE_BOOL=	BUILD_SERVER

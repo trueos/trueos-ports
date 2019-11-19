@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	php-mode.el
-PORTVERSION=	1.21.4
+PORTVERSION=	1.22.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	lang elisp
 PKGNAMESUFFIX=	${EMACS_PKGNAMESUFFIX}
@@ -26,8 +26,6 @@ do-install:
 		${WRKSRC}/php-face.elc \
 		${WRKSRC}/php-mode-debug.el \
 		${WRKSRC}/php-mode-debug.elc \
-		${WRKSRC}/php-mode-test.el \
-		${WRKSRC}/php-mode-test.elc \
 		${WRKSRC}/php-mode.el \
 		${WRKSRC}/php-mode.elc \
 		${WRKSRC}/php-project.el \

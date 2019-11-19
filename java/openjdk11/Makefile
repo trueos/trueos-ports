@@ -3,7 +3,6 @@
 PORTNAME=	openjdk
 DISTVERSIONPREFIX=	jdk-
 DISTVERSION=	${JDK_MAJOR_VERSION}.${JDK_MINOR_VERSION}.${JDK_PATCH_VERSION}+${JDK_BUILD_NUMBER}-${BSD_JDK_VERSION}
-PORTREVISION=	2
 CATEGORIES=	java devel
 PKGNAMESUFFIX?=	${JDK_MAJOR_VERSION}
 
@@ -12,7 +11,7 @@ COMMENT=	Java Development Kit ${JDK_MAJOR_VERSION}
 
 LICENSE=	GPLv2
 
-ONLY_FOR_ARCHS=	amd64 i386
+ONLY_FOR_ARCHS=	amd64 i386 powerpc64
 
 BUILD_DEPENDS=	zip:archivers/zip \
 		autoconf>0:devel/autoconf \
@@ -27,7 +26,7 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libpng.so:graphics/png
 RUN_DEPENDS=	javavm:java/javavmwrapper
 
-USES=		compiler:features gmake iconv jpeg pkgconfig
+USES=		compiler:features gmake iconv jpeg pkgconfig xorg
 USE_XORG=	x11 xext xi xrandr xrender xt xtst
 
 USE_GITHUB=	yes
@@ -57,8 +56,8 @@ NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	11
 JDK_MINOR_VERSION=	0
-JDK_PATCH_VERSION=	4
-JDK_BUILD_NUMBER=	11
+JDK_PATCH_VERSION=	5
+JDK_BUILD_NUMBER=	10
 BSD_JDK_VERSION=	1
 
 GNU_CONFIGURE=	yes
@@ -96,6 +95,11 @@ JDK_BUILD_TYPE=		release
 
 .include <bsd.port.pre.mk>
 
+# Support aarch64 on FreeBSD 12 and up
+.if ${OSVERSION} >= 1200500
+ONLY_FOR_ARCHS+=aarch64
+.endif
+
 BOOTSTRAP_JDKS=	${LOCALBASE}/openjdk11 \
 		${LOCALBASE}/bootstrap-openjdk11
 
@@ -119,13 +123,22 @@ CONFIGURE_ARGS+=	--with-toolchain-type=${COMPILER_TYPE}
 
 .if ${COMPILER_TYPE} == gcc
 USE_GCC=	yes
-CONFIGURE_ARGS+=	--disable-warnings-as-errors \
-			--disable-dtrace \
-			--with-extra-ldflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFAULT} -L${LOCALBASE}/lib/gcc${GCC_DEFAULT}" \
+CONFIGURE_ARGS+=	--with-extra-ldflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFAULT} -L${LOCALBASE}/lib/gcc${GCC_DEFAULT}" \
 			--with-extra-cflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFAULT}" \
 			--with-extra-cxxflags="-Wl,-rpath=${LOCALBASE}/lib/gcc${GCC_DEFAULT}"
 .else
 MAKE_ENV+=	USE_CLANG=true
+.endif
+
+.if ${ARCH} == aarch64 || ${ARCH} == powerpc64
+CONFIGURE_ARGS+=	--disable-warnings-as-errors \
+			--disable-dtrace
+.endif
+.if ${ARCH} != amd64
+CONFIGURE_ARGS+=	--enable-aot=no
+.endif
+.if ${ARCH} == powerpc64 && ${OSREL:C/\.[0-9]//} == 12
+EXTRA_PATCHES=		${PATCHDIR}/extra-patch-src_hotspot_cpu_ppc_vm__version__ppc.hpp
 .endif
 
 .if empty(ICONV_LIB)

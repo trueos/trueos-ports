@@ -3,7 +3,7 @@
 
 PORTNAME=	gource
 PORTVERSION=	0.47
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	graphics
 MASTER_SITES=	https://github.com/acaudwell/Gource/releases/download/${PORTNAME}-${PORTVERSION}/
 
@@ -20,7 +20,7 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 RUN_DEPENDS=	${LOCALBASE}/include/glm/glm.hpp:math/glm
 
 GNU_CONFIGURE=	yes
-USES=		gmake gl pkgconfig compiler:c++0x
+USES=		compiler:c++0x gl gmake pkgconfig sdl
 USE_GL=		glew gl glu
 USE_SDL=	image2 sdl2
 

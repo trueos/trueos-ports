@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	vapoursynth
-PORTVERSION=	R46
-PORTREVISION=	1
+DISTVERSION=	R48
 CATEGORIES=	multimedia
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -10,11 +9,13 @@ COMMENT=	Video processing framework with simplicity in mind
 
 LICENSE=	LGPL21+
 
+ONLY_FOR_ARCHS=	amd64 i386
+ONLY_FOR_ARCHS_REASON=	https://github.com/vapoursynth/vapoursynth/issues/509
+
 USE_GITHUB=	yes
 
 USES=		autoreconf gmake libtool localbase pathfix pkgconfig
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-D_GLIBCXX_USE_C99 # XXX ports/193528
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 DATADIR=	${PREFIX}/lib/vapoursynth
@@ -70,7 +71,7 @@ VSPIPE_CONFIGURE_ENABLE=	vspipe
 VSPIPE_IMPLIES=			VSSCRIPT
 
 VSSCRIPT_DESC=			Scripting library
-VSSCRIPT_USES=			compiler:c++11-lib python:3.3-
+VSSCRIPT_USES=			compiler:c++11-lib python:3.3+
 VSSCRIPT_CONFIGURE_ENABLE=	vsscript
 
 # PLUGINS group

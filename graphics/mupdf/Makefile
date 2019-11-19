@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mupdf
-DISTVERSION=	1.15.0
-PORTREVISION=	1
+DISTVERSION=	1.16.0
 DISTVERSIONSUFFIX=	-source
 PORTEPOCH=	1
 CATEGORIES=	graphics
@@ -22,7 +21,7 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libjbig2dec.so:graphics/jbig2dec \
 		libopenjp2.so:graphics/openjpeg
 
-USES=		cpe compiler:c++11-lang gl gmake jpeg pkgconfig
+USES=		cpe compiler:c++11-lang gl gmake jpeg pkgconfig xorg
 USE_XORG=	x11 xcursor xext xinerama xrandr
 USE_GL=		gl glut
 USE_LDCONFIG=	yes

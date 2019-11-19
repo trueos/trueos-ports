@@ -13,7 +13,9 @@ COMMENT=	Perl Data Language
 LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
-BROKEN_FreeBSD_13_i386=	ld: error: can't create dynamic relocation R_386_32 against local symbol in readonly segment; recompile object files with -fPIC or pass '-Wl,-z,notext' to allow text relocations in the output
+.if ${/usr/bin/ld:L:tA} == /usr/bin/ld.lld
+BROKEN_i386=	ld: error: can't create dynamic relocation R_386_32 against local symbol in readonly segment; recompile object files with -fPIC or pass '-Wl,-z,notext' to allow text relocations in the output
+.endif
 
 BUILD_DEPENDS=	p5-Astro-FITS-Header>=0:astro/p5-Astro-FITS-Header \
 		p5-Convert-UU>=0:converters/p5-Convert-UU \
@@ -62,7 +64,8 @@ PGPLOT_BUILD_DEPENDS=	p5-PGPLOT>=0:graphics/p5-PGPLOT
 PLPLOT_LIB_DEPENDS=	libplplotd.so:math/plplot
 OPENGL_BUILD_DEPENDS=	p5-OpenGL>=0.65:graphics/p5-OpenGL
 OPENGL_RUN_DEPENDS:=	${OPENGL_BUILD_DEPENDS}
-OPENGL_USE=		gl=yes
+OPENGL_USES=		gl
+OPENGL_USE=		gl=glu
 GD_LIB_DEPENDS=		libgd.so:graphics/gd
 F77_BUILD_DEPENDS=	p5-ExtUtils-F77>=0:lang/p5-ExtUtils-F77
 FFTW_LIB_DEPENDS=	libfftw.so:math/fftw

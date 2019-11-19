@@ -12,8 +12,11 @@ COMMENT=	Dashboard and graph editor for Graphite, InfluxDB & OpenTSDB
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	${LOCALBASE}/bin/phantomjs:lang/phantomjs \
-		webfonts>=0:x11-fonts/webfonts
+BROKEN=		lang/phantomjs was removed
+DEPRECATED=	Depends on expired lang/phantomjs
+EXPIRATION_DATE=2019-12-01
+
+RUN_DEPENDS=	webfonts>=0:x11-fonts/webfonts
 
 ONLY_FOR_ARCHS=	i386 amd64
 
@@ -23,7 +26,7 @@ USES=	compiler go
 
 USE_GITHUB=	yes
 
-GH_TUPLE= \
+GH_TUPLE=	\
 	BurntSushi:toml:v0.2.0:toml/src/github.com/BurntSushi/toml                                       \
 	Unknwon:com:v1:com/src/github.com/Unknwon/com                                                    \
 	aws:aws-sdk-go:v1.1.36:aws_sdk_go/src/github.com/aws/aws-sdk-go                                  \

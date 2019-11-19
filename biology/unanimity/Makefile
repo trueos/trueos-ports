@@ -3,11 +3,13 @@
 PORTNAME=		unanimity
 DISTVERSIONPREFIX=	v
 DISTVERSION=		3.4.1
-PORTREVISION=		2
+PORTREVISION=		3
 CATEGORIES=		biology
 
 MAINTAINER=	jwb@FreeBSD.org
 COMMENT=	Pacific Biosciences consensus library and applications
+
+BROKEN=		unfetchable
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE

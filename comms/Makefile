@@ -39,6 +39,7 @@
     SUBDIR += dump1090
     SUBDIR += ebook2cw
     SUBDIR += ebook2cwgui
+    SUBDIR += ebusd
     SUBDIR += echolinux
     SUBDIR += efax
     SUBDIR += ems-flasher
@@ -59,7 +60,6 @@
     SUBDIR += gqrx
     SUBDIR += gr-osmosdr
     SUBDIR += grig
-    SUBDIR += gsmlib
     SUBDIR += gstreamer1-plugins-spandsp
     SUBDIR += gtkmmorse
     SUBDIR += hackrf
@@ -69,6 +69,7 @@
     SUBDIR += hylafax
     SUBDIR += ibp
     SUBDIR += inspectrum
+    SUBDIR += iwmbt-firmware
     SUBDIR += java-simple-serial-connector
     SUBDIR += jerm
     SUBDIR += kb
@@ -103,11 +104,11 @@
     SUBDIR += ncid
     SUBDIR += nec2c
     SUBDIR += nmealib
-    SUBDIR += nokryptia
     SUBDIR += o2sms
     SUBDIR += obexapp
     SUBDIR += openobex
     SUBDIR += openzwave
+    SUBDIR += openzwave-devel
     SUBDIR += owfs
     SUBDIR += p5-Cisco-UCS
     SUBDIR += p5-Device-Gsm

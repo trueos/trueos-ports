@@ -4,7 +4,7 @@
 PORTNAME=	lightzone
 DISTVERSION=	4.1.8-3
 DISTVERSIONSUFFIX=	-g36e87773
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	graphics java
 DIST_SUBDIR=	${PORTNAME}
 
@@ -34,7 +34,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ktgw0316
 GH_PROJECT=	LightZone
 
-USES=		desktop-file-utils gmake jpeg pkgconfig
+USES=		desktop-file-utils gmake gnome jpeg pkgconfig xorg
 USE_ANT=	yes
 USE_JAVA=	yes
 USE_GCC=	yes

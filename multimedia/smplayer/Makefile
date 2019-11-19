@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	smplayer
-DISTVERSION=	18.10.0
-PORTREVISION=	2
+DISTVERSION=	19.5.0
 CATEGORIES=	multimedia audio kde
 MASTER_SITES=	SF/${PORTNAME}/SMPlayer/${PORTVERSION}
 
@@ -14,7 +13,7 @@ LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/Copying.txt
 
 USES=		cpe compiler:c++11-lang desktop-file-utils dos2unix gmake \
-		qmake qt:5 tar:bzip2
+		qmake qt:5 tar:bzip2 xorg
 USE_QT=		buildtools_build linguisttools_build \
 		core dbus gui network script widgets xml
 USE_XORG=	x11
@@ -35,7 +34,6 @@ OPTIONS_MULTI_ENGINE=	MPLAYER MPV
 OPTIONS_DEFINE=		DOCS DEBUG SKINS THEMES
 OPTIONS_DEFAULT=	MPV SKINS THEMES
 
-TOOLKIT_DESC=	Qt toolkit version
 ENGINE_DESC=	Multimedia engine
 MPLAYER_DESC=	Allow to use MPlayer as multimedia engine
 MPV_DESC=	Allow to use mpv as multimedia engine

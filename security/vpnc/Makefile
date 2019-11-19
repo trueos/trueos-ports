@@ -4,11 +4,11 @@
 PORTNAME=	vpnc
 PORTVERSION=	0.5.3
 PORTREVISION=	13
-CATEGORIES=	security
+CATEGORIES=	security net-vpn
 MASTER_SITES=	http://www.unix-ag.uni-kl.de/~massar/vpnc/ \
 		LOCAL/ehaupt
 
-MAINTAINER=	ehaupt@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Client for Cisco 3000 VPN Concentrator
 
 LICENSE=	GPLv2+ BSD2CLAUSE

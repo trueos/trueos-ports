@@ -2,7 +2,8 @@
 
 PORTNAME=	git-town
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.2.1
+DISTVERSION=	7.3.0
+PORTREVISION=	1
 CATEGORIES=	devel
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -24,12 +25,6 @@ PLIST_FILES=	bin/${PORTNAME}
 OPTIONS_DEFINE=	DOCS
 
 PORTDOCS=	*
-
-do-build:
-	@cd ${WRKSRC}/${GH_SUBDIR} && ${SETENV} ${MAKE_ENV} GOPATH=${WRKSRC} go build
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
 
 do-install-DOCS-on:
 	cd ${WRKSRC}/documentation && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}

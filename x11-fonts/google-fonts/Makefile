@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	google-fonts
-DISTVERSION=	0.0.0.20190509
+DISTVERSION=	0.0.0.20191031
 CATEGORIES=	x11-fonts
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Collection of freely redistributable TrueType fonts from Google
 
 LICENSE=	APACHE20 OFL11
@@ -29,14 +29,14 @@ NO_BUILD=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	google
 GH_PROJECT=	fonts
-GH_TAGNAME=	1c76cff
+GH_TAGNAME=	3fcf54a
 
 SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	DOCS
 
 # These font families are installed by the RUN_DEPENDS above.
-EXCLUSIONS=	ofl/anonymous-pro \
+EXCLUSIONS=	ofl/anonymouspro \
 		ofl/comfortaa \
 		apache/arimo \
 		apache/cousine \

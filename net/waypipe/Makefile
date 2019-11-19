@@ -2,12 +2,9 @@
 
 PORTNAME=	waypipe
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.3.0
-PORTREVISION=	3
+DISTVERSION=	0.6.1
+PORTREVISION=	0
 CATEGORIES=	net
-
-PATCH_SITES=	${GL_SITE}/${GL_ACCOUNT}/${GL_PROJECT}/commit/
-PATCHFILES+=	04b9a483e346.patch:-p1
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Network transparency with Wayland
@@ -18,15 +15,15 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	wayland-protocols>=1.12:graphics/wayland-protocols \
 		wayland>=1.15:graphics/wayland
 
-USES=		compiler:c11 meson pkgconfig
+USES=		compiler:c11 localbase:ldflags meson pkgconfig
 USE_GITLAB=	yes
 GL_SITE=	https://gitlab.freedesktop.org
 GL_ACCOUNT=	mstoeckl
-GL_COMMIT=	8cf7845e63470490af3af95e178ba5fa74d8056b
+GL_COMMIT=	f78ad85b04ef95daa9a1671aa0375d0e77d19b2f
 PLIST_FILES=	bin/${PORTNAME}
 
-OPTIONS_DEFINE=	FFMPEG LZ4 MANPAGES OPENGL ZSTD
-OPTIONS_DEFAULT=FFMPEG LZ4 MANPAGES OPENGL ZSTD
+OPTIONS_DEFINE=	FFMPEG LZ4 MANPAGES OPENGL VAAPI ZSTD
+OPTIONS_DEFAULT=FFMPEG LZ4 MANPAGES OPENGL VAAPI ZSTD
 
 FFMPEG_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
 FFMPEG_MESON_ENABLED=	with_video
@@ -42,6 +39,10 @@ OPENGL_USES=		gl
 OPENGL_USE=		GL=gbm
 OPENGL_LIB_DEPENDS=	libdrm.so:graphics/libdrm
 OPENGL_MESON_ENABLED=	with_dmabuf
+
+VAAPI_LIB_DEPENDS=	libva.so:multimedia/libva
+VAAPI_MESON_ENABLED=	with_vaapi
+VAAPI_IMPLIES=		FFMPEG
 
 ZSTD_LIB_DEPENDS=	libzstd.so:archivers/zstd
 ZSTD_MESON_ENABLED=	with_zstd

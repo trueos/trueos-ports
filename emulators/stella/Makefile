@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	stella
-PORTVERSION=	6.0
-PORTREVISION=	1
+PORTVERSION=	6.0.1
 CATEGORIES=	emulators
 
 MAINTAINER=	acm@FreeBSD.org
@@ -14,15 +13,13 @@ LICENSE_FILE=	${WRKSRC}/License.txt
 
 LIB_DEPENDS=	libpng.so:graphics/png
 
-USES=		compiler:c++11-lib gmake tar:xz
+USES=		compiler:c++11-lib gmake sdl tar:xz
 USE_SDL=	sdl2
 USE_GITHUB=	yes
 GH_ACCOUNT=	stella-emu
 
 HAS_CONFIGURE=	yes
 CONFLICTS_INSTALL=	rubygem-stella
-
-WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

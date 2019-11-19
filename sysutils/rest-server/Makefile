@@ -3,6 +3,7 @@
 PORTNAME=	rest-server
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.9.8
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	dch@FreeBSD.org
@@ -24,8 +25,5 @@ USERS=		restserver
 GROUPS=		restserver
 
 PLIST_FILES=	bin/${PORTNAME}
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>

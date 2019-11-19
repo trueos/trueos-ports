@@ -5,7 +5,7 @@ DISTVERSION=	0.6
 PORTREVISION=	2
 CATEGORIES=	deskutils
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Simple markdown viewer, written in Vala and GTK 3
 
 LICENSE=	GPLv3
@@ -16,7 +16,7 @@ LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3
 
 USES=		compiler:c++11-lang desktop-file-utils gmake gnome \
-		pkgconfig
+		pkgconfig xorg
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 pango
 USE_XORG=	x11
 USE_GITHUB=	yes

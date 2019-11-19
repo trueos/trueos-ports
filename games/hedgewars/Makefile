@@ -3,7 +3,7 @@
 
 PORTNAME=	hedgewars
 PORTVERSION=	0.9.25
-PORTREVISION=	1
+PORTREVISION=	4
 CATEGORIES=	games
 MASTER_SITES=	http://www.hedgewars.org/download/releases/ \
 		http://mirror.amdmi3.ru/distfiles/
@@ -20,14 +20,14 @@ i386_BUILD_DEPENDS=	ghc:lang/ghc
 LIB_DEPENDS=		libphysfs.so:devel/physfs \
 			libpng.so:graphics/png
 
-USES=		cmake:noninja desktop-file-utils fpc gl lua:51 qt:5 tar:bzip2 pkgconfig
+USES=		cmake:noninja desktop-file-utils fpc gl lua:51 pkgconfig qt:5 \
+		sdl tar:bzip2
 USE_SDL=	sdl2 mixer2 image2 ttf2 net2
 USE_FPC=	opengl libpng rtl-objpas
 USE_QT=		core gui widgets network \
 		qmake_build buildtools_build \
 		linguisttools_build
 USE_GL=		gl glu glew
-LLD_UNSAFE=	yes
 USE_LDCONFIG=	yes
 
 PLIST_FILES=	bin/${PORTNAME} bin/hwengine \

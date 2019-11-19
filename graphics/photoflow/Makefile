@@ -11,6 +11,7 @@ COMMENT=	Non-destructive photo retouching program
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN=		no matching function for call to 'vips_image_get_blob'
 BROKEN_i386=	see https://github.com/aferrero2707/PhotoFlow/issues/192
 
 LIB_DEPENDS=	libexiv2.so:graphics/exiv2 \
@@ -29,6 +30,10 @@ GH_TAGNAME=	da84a071
 USE_GNOME=	atkmm cairomm glib20 glibmm gtk20 gtkmm24 libsigc++20 pangomm
 
 CMAKE_OFF=	BUNDLED_LENSFUN
+#Disable optimization for the builder CPU when building official packages
+.if defined(PACKAGE_BUILDING)
+CMAKE_ON=	BINARY_PACKAGE_BUILD
+.endif
 
 LDFLAGS+=	-lexecinfo
 

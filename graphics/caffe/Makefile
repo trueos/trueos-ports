@@ -2,7 +2,7 @@
 
 PORTNAME=	caffe
 PORTVERSION=	1.0
-PORTREVISION=	25
+PORTREVISION=	27
 CATEGORIES=	graphics
 
 MAINTAINER=	eric@camachat.org
@@ -29,6 +29,7 @@ LIB_DEPENDS=	libsnappy.so:archivers/snappy \
 		libopenblas.so:math/openblas \
 		libhdf5.so:science/hdf5
 RUN_DEPENDS=	${PYNUMPY} \
+		${LOCALBASE}/include/cblas.h:math/cblas \
 		${PYTHON_PKGNAMEPREFIX}protobuf>=2.5.0:devel/py-protobuf@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}scikit-image>=0.12:graphics/py-scikit-image@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pillow>=1.7:graphics/py-pillow@${PY_FLAVOR} \
@@ -54,12 +55,20 @@ PLIST_SUB=	PYTHON_SITELIBDIR=${PYTHON_SITELIBDIR} DATADIR=${DATADIR}
 GH_ACCOUNT=	BVLC
 USE_GITHUB=	yes
 
+.include <bsd.port.pre.mk>
+
+.if ${CHOSEN_COMPILER_TYPE} == clang
+TRUE_CXX=	clang++
+.else
+TRUE_CXX=	g++${GCC_DEFAULT}
+.endif
+
 post-extract:
 	@${CP} -v ${.CURDIR}/files/Makefile.config ${WRKSRC}/
 
 post-patch:
 	@${REINPLACE_CMD} \
-	-e "s|%%CXX%%|clang++|g" \
+	-e "s|%%CXX%%|${TRUE_CXX}|g" \
 	-e "s|%%LOCALBASE%%|${LOCALBASE}|g" \
 	-e "s|%%DATADIR%%|${DATADIR}|g" \
 	-e "s|%%PYTHON_INCLUDEDIR%%|${PYTHON_INCLUDEDIR}|g" \
@@ -75,4 +84,4 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}/${PREFIX}/bin/* ${STAGEDIR}/${PREFIX}/lib/*.so.* \
 	${STAGEDIR}/${PYTHON_SITELIBDIR}/${PORTNAME}/*.so
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

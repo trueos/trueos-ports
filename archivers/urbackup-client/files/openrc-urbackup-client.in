@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+#
+
+name="urbackup_client"
+description="UrBackup Client"
+command=/usr/local/sbin/urbackupclientbackend
+pidfile="/var/run/urbackupclientbackend.pid"
+command_args="-c /usr/local/etc/urbackup/urbackupclient.conf"
+supervisor=supervise-daemon
+output_log="/var/log/urbackupclient.log"
+error_log=${output_log}
+
+depend(){
+    provide urbackup_client
+    need localmount
+    use net
+}

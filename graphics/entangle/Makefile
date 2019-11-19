@@ -12,6 +12,10 @@ COMMENT=	Digital camera tethered control and capture program
 
 LICENSE=	GPLv3
 
+.if ${/usr/bin/ld:L:tA} == /usr/bin/ld.lld
+BROKEN=		ld: error: ./.libs/libentangle_backend.so: undefined reference to gst_base_src_get_type
+.endif
+
 BUILD_DEPENDS=	${LOCALBASE}/share/icons/mate/scalable/devices/camera-photo-symbolic.svg:x11-themes/mate-icon-theme \
 		itstool:textproc/itstool
 LIB_DEPENDS=	libgphoto2.so:graphics/libgphoto2 \
@@ -24,7 +28,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS:Nitstool*} \
 		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR}
 
 USES=		compiler:c++11-lang gettext-tools gmake gnome libtool \
-		pkgconfig python:3.4+
+		pkgconfig python:3.4+ xorg
 GNU_CONFIGURE=	yes
 USE_GNOME=	cairo gtk30 intltool introspection
 USE_GSTREAMER1=	core

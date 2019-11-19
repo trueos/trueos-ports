@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 DISTVERSION=	1.4.1
 CATEGORIES=	sysutils
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Lightweight notification daemon
 
 LICENSE=	BSD3CLAUSE
@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
 
-USES=		gmake gnome perl5 pkgconfig
+USES=		gmake gnome perl5 pkgconfig xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	dunst-project

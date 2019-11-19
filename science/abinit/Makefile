@@ -3,12 +3,14 @@
 
 PORTNAME=	abinit
 DISTVERSION=	8.10.3
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	science
 MASTER_SITES=	https://www.abinit.org/sites/default/files/packages/
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Full-featured atomic-scale first-principles simulation software
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING

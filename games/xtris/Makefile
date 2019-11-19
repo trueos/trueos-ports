@@ -4,7 +4,7 @@
 PORTNAME=	xtris
 PORTVERSION=	1.15
 PORTREVISION=	2
-CATEGORIES=	games ipv6
+CATEGORIES=	games
 MASTER_SITES=	http://ftp.netbsd.org/pub/pkgsrc/distfiles/ \
 		http://ftp.uni-erlangen.de/mirrors/gentoo/distfiles/ \
 		http://www.iagora.com/~espel/xtris/ \
@@ -19,8 +19,10 @@ COMMENT=	Multi-player version of a popular game for the X Window system
 
 LICENSE=	GPLv2
 
+BROKEN=		unfetchable
 RESTRICTED=	Possible trademark infringement
 WRKSRC=		${WRKDIR}/xtris
+USES=		xorg
 USE_XORG=	x11 xext
 
 MAKE_ENV=	IPV6_CFLAGS="-DINET6"
