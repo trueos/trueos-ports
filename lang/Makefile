@@ -104,7 +104,6 @@
     SUBDIR += gcc6
     SUBDIR += gcc6-aux
     SUBDIR += gcc7
-    SUBDIR += gcc7-devel
     SUBDIR += gcc8
     SUBDIR += gcc8-devel
     SUBDIR += gcc9
@@ -286,7 +285,6 @@
     SUBDIR += pocl
     SUBDIR += polyml
     SUBDIR += ponyc
-    SUBDIR += ponyc-static
     SUBDIR += ptoc
     SUBDIR += purescript
     SUBDIR += py-hy

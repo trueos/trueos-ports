@@ -2,15 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	redis
-DISTVERSION=	5.0.6
+PORTVERSION=	6.0.0.20191129
 CATEGORIES=	databases
-MASTER_SITES=	http://download.redis.io/releases/
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	osa@FreeBSD.org
 COMMENT=	Persistent key-value database with built-in net interface
 
 LICENSE=	BSD3CLAUSE
+
+USES+=		compiler gmake
+USE_GITHUB=	yes
+GH_TUPLE= 	antirez:${PORTNAME}:f5d4853
 
 OPTIONS_DEFINE=	JEMALLOC TESTS TRIB
 OPTIONS_RADIO=	EXTLUA
@@ -22,7 +25,6 @@ LUAJIT_DESC=	Use lang/luajit instead of builtin lua
 TESTS_DESC=	Install lang/tcl for redis unit tests
 TRIB_DESC=	Install redis-trib.rb (lang/ruby req.)
 
-USES+=		compiler gmake
 MAKE_ENV=	"V=yo"
 
 .include <bsd.port.options.mk>
@@ -64,7 +66,7 @@ USES+=		tcl:build
 
 LDFLAGS+=	-lpthread -lm -lexecinfo
 
-CONFLICTS?=	redis-4.*
+CONFLICTS?=	redis4-4.* redis-5.*
 
 USE_RC_SUBR=	redis sentinel
 BIN_FILES=	redis-benchmark redis-check-aof redis-check-rdb \
