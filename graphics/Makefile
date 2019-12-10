@@ -601,7 +601,7 @@
     SUBDIR += optar
     SUBDIR += optipng
     SUBDIR += osg
-    SUBDIR += osg-devel
+    SUBDIR += osg34
     SUBDIR += osgearth
     SUBDIR += ossim
     SUBDIR += oyranos
@@ -1035,6 +1035,7 @@
     SUBDIR += uniconvertor
     SUBDIR += uniconvw
     SUBDIR += unpaper
+    SUBDIR += urho3d
     SUBDIR += urt
     SUBDIR += vapoursynth-fmtconv
     SUBDIR += vapoursynth-waifu2x-w2xc
