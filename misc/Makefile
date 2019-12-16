@@ -492,11 +492,6 @@
     SUBDIR += tkrunit
     SUBDIR += toilet
     SUBDIR += translate
-    SUBDIR += trueos-core
-    SUBDIR += trueos-handbook
-    SUBDIR += trueos-meta-hunspell
-    SUBDIR += trueos-server
-    SUBDIR += trueos-toolchain
     SUBDIR += ttyrec
     SUBDIR += tudu
     SUBDIR += tvbrowser
