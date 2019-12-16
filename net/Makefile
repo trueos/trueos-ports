@@ -116,6 +116,7 @@
     SUBDIR += dgd-lpmud
     SUBDIR += dhcp6
     SUBDIR += dhcpcd
+    SUBDIR += dhcpcd-devel
     SUBDIR += dhcpcd-ui
     SUBDIR += dhcpd
     SUBDIR += dhcpd-pools
@@ -211,6 +212,8 @@
     SUBDIR += grilo
     SUBDIR += grilo-plugins
     SUBDIR += grive2
+    SUBDIR += grpcox
+    SUBDIR += grpcui
     SUBDIR += grpcurl
     SUBDIR += grsync
     SUBDIR += gsk
@@ -236,6 +239,7 @@
     SUBDIR += haproxy17
     SUBDIR += haproxy18
     SUBDIR += haproxy19
+    SUBDIR += haproxy21
     SUBDIR += hexinject
     SUBDIR += hinfo
     SUBDIR += hlmaster
@@ -327,6 +331,7 @@
     SUBDIR += ktnef
     SUBDIR += kube-controller-manager
     SUBDIR += kube-scheduler
+    SUBDIR += kpeoplevcard
     SUBDIR += l2tpd
     SUBDIR += ladvd
     SUBDIR += lambdamoo
@@ -464,6 +469,7 @@
     SUBDIR += mping
     SUBDIR += mptsd
     SUBDIR += mrouted
+    SUBDIR += mrtparse
     SUBDIR += msend
     SUBDIR += mtr
     SUBDIR += mtr-nox11
@@ -1017,6 +1023,7 @@
     SUBDIR += py-cjdns
     SUBDIR += py-cloudflare-scrape
     SUBDIR += py-cloudflare-scrape-js2py
+    SUBDIR += py-cloudscraper
     SUBDIR += py-coherence
     SUBDIR += py-confluent-kafka
     SUBDIR += py-cymruwhois
@@ -1070,6 +1077,7 @@
     SUBDIR += py-pcapy
     SUBDIR += py-port-for
     SUBDIR += py-portend
+    SUBDIR += py-pyenet
     SUBDIR += py-pygeoip
     SUBDIR += py-pyicap
     SUBDIR += py-pynmsg
@@ -1436,6 +1444,7 @@
     SUBDIR += tcpmssd
     SUBDIR += tcpproxy
     SUBDIR += tcpreen
+    SUBDIR += tcprtt
     SUBDIR += tcpsg
     SUBDIR += tcpshow
     SUBDIR += tcpslice

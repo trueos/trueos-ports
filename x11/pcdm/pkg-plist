@@ -1,8 +1,12 @@
 bin/PCDM-session
 bin/pc-dmconf
 bin/start-pcdm-pico
+<<<<<<< HEAD
 etc/init.d/pcdm
 etc/pcdm.conf.dist
+=======
+@sample etc/pcdm.conf.dist etc/pcdm.conf
+>>>>>>> freebsd/master
 etc/rc.d/pcdm
 etc/sudoers.d/pico-sudoers
 sbin/PCDMd

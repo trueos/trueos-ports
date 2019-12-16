@@ -21,6 +21,7 @@
     SUBDIR += R-cran-diagram
     SUBDIR += R-cran-dichromat
     SUBDIR += R-cran-dygraphs
+    SUBDIR += R-cran-farver
     SUBDIR += R-cran-ggplot2
     SUBDIR += R-cran-gridBase
     SUBDIR += R-cran-gridExtra
@@ -396,6 +397,7 @@
     SUBDIR += kolourpaint
     SUBDIR += kooka
     SUBDIR += kphotoalbum
+    SUBDIR += kqtquickcharts
     SUBDIR += krita
     SUBDIR += kudu
     SUBDIR += kxstitch
@@ -599,7 +601,7 @@
     SUBDIR += optar
     SUBDIR += optipng
     SUBDIR += osg
-    SUBDIR += osg-devel
+    SUBDIR += osg34
     SUBDIR += osgearth
     SUBDIR += ossim
     SUBDIR += oyranos
@@ -1028,10 +1030,12 @@
     SUBDIR += togl
     SUBDIR += ttygif
     SUBDIR += tumble
+    SUBDIR += tweeny
     SUBDIR += ufraw
     SUBDIR += uniconvertor
     SUBDIR += uniconvw
     SUBDIR += unpaper
+    SUBDIR += urho3d
     SUBDIR += urt
     SUBDIR += vapoursynth-fmtconv
     SUBDIR += vapoursynth-waifu2x-w2xc
@@ -1089,6 +1093,7 @@
     SUBDIR += xv-m17n
     SUBDIR += xwpick
     SUBDIR += xzgv
+    SUBDIR += yacreader
     SUBDIR += yafaray
     SUBDIR += yed
     SUBDIR += yukon

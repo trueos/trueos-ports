@@ -15,6 +15,7 @@
     SUBDIR += R-cran-R6
     SUBDIR += R-cran-RUnit
     SUBDIR += R-cran-Rcpp
+    SUBDIR += R-cran-RcppProgress
     SUBDIR += R-cran-Rdpack
     SUBDIR += R-cran-abind
     SUBDIR += R-cran-bindr
@@ -393,6 +394,7 @@
     SUBDIR += cpprestsdk
     SUBDIR += cpptest
     SUBDIR += cppunit
+    SUBDIR += cppurses
     SUBDIR += cpputest
     SUBDIR += cproto
     SUBDIR += cpu_features
@@ -527,6 +529,7 @@
     SUBDIR += egypt
     SUBDIR += eiffelstudio
     SUBDIR += electron4
+    SUBDIR += electron6
     SUBDIR += elf
     SUBDIR += elfio
     SUBDIR += elfkickers
@@ -703,6 +706,7 @@
     SUBDIR += fpc-zlib
     SUBDIR += fpp
     SUBDIR += frama-c
+    SUBDIR += freebsd-gcc6
     SUBDIR += frink
     SUBDIR += fsmtrie
     SUBDIR += fstrcmp
@@ -808,7 +812,6 @@
     SUBDIR += git-remote-hg
     SUBDIR += git-review
     SUBDIR += git-subrepo
-    SUBDIR += git-subversion
     SUBDIR += git-town
     SUBDIR += gitaly
     SUBDIR += gitblit
@@ -861,6 +864,7 @@
     SUBDIR += go-tools
     SUBDIR += gob2
     SUBDIR += gobject-introspection
+    SUBDIR += gocheese
     SUBDIR += godep
     SUBDIR += godot
     SUBDIR += godot-tools
@@ -888,6 +892,7 @@
     SUBDIR += gputils
     SUBDIR += gradle
     SUBDIR += gradle4
+    SUBDIR += gradle5
     SUBDIR += grantlee5
     SUBDIR += graphql.el
     SUBDIR += grpc
@@ -1007,6 +1012,7 @@
     SUBDIR += iniparser
     SUBDIR += initutil
     SUBDIR += injeqt
+    SUBDIR += intel-graphics-compiler
     SUBDIR += interactive_rebase_tool
     SUBDIR += ioncube
     SUBDIR += ipython
@@ -1371,7 +1377,6 @@
     SUBDIR += libtifiles2
     SUBDIR += libtool
     SUBDIR += libtpl
-    SUBDIR += libtrue
     SUBDIR += libtsm
     SUBDIR += libtuntap
     SUBDIR += libublio
@@ -1661,6 +1666,7 @@
     SUBDIR += open-beagle
     SUBDIR += open-usp-tukubai
     SUBDIR += opencl
+    SUBDIR += opencl-clang
     SUBDIR += opencvs
     SUBDIR += opendht
     SUBDIR += opengrok
@@ -3884,6 +3890,7 @@
     SUBDIR += pecl-yac
     SUBDIR += pecl-yaconf
     SUBDIR += pecl-zookeeper
+    SUBDIR += pegtl
     SUBDIR += pep8
     SUBDIR += performance
     SUBDIR += perlconsole
@@ -5393,6 +5400,7 @@
     SUBDIR += robin-map
     SUBDIR += roboctl
     SUBDIR += robodoc
+    SUBDIR += ros-catkin
     SUBDIR += ros-catkin_pkg
     SUBDIR += ros-console_bridge
     SUBDIR += ros-rosdep
@@ -5597,6 +5605,7 @@
     SUBDIR += rubygem-aws-sdk-mediastoredata
     SUBDIR += rubygem-aws-sdk-mediatailor
     SUBDIR += rubygem-aws-sdk-migrationhub
+    SUBDIR += rubygem-aws-sdk-migrationhubconfig
     SUBDIR += rubygem-aws-sdk-mobile
     SUBDIR += rubygem-aws-sdk-mq
     SUBDIR += rubygem-aws-sdk-mturk
@@ -5774,7 +5783,6 @@
     SUBDIR += rubygem-deep_test
     SUBDIR += rubygem-deface
     SUBDIR += rubygem-default_value_for
-    SUBDIR += rubygem-default_value_for32
     SUBDIR += rubygem-delayed_job
     SUBDIR += rubygem-delayer
     SUBDIR += rubygem-delayer-deferred
@@ -5828,9 +5836,7 @@
     SUBDIR += rubygem-flexmock
     SUBDIR += rubygem-flipper
     SUBDIR += rubygem-flipper-active_support_cache_store
-    SUBDIR += rubygem-flipper-active_support_cache_store013
     SUBDIR += rubygem-flipper-ui
-    SUBDIR += rubygem-flipper013
     SUBDIR += rubygem-fluent-logger
     SUBDIR += rubygem-fog
     SUBDIR += rubygem-fog-core
@@ -5871,7 +5877,6 @@
     SUBDIR += rubygem-git
     SUBDIR += rubygem-git-version-bump
     SUBDIR += rubygem-github_api
-    SUBDIR += rubygem-gitlab-default_value_for
     SUBDIR += rubygem-gitlab-labkit
     SUBDIR += rubygem-gitlab-license
     SUBDIR += rubygem-gitlab-peek-rails52
@@ -5885,7 +5890,7 @@
     SUBDIR += rubygem-google-api-client
     SUBDIR += rubygem-google-gax
     SUBDIR += rubygem-google-protobuf
-    SUBDIR += rubygem-google-protobuf371
+    SUBDIR += rubygem-google-protobuf38
     SUBDIR += rubygem-googleapis-common-protos
     SUBDIR += rubygem-googleapis-common-protos-types
     SUBDIR += rubygem-graf
@@ -6150,6 +6155,7 @@
     SUBDIR += rubygem-resque
     SUBDIR += rubygem-retriable
     SUBDIR += rubygem-retryable
+    SUBDIR += rubygem-rgen
     SUBDIR += rubygem-rgl
     SUBDIR += rubygem-rice
     SUBDIR += rubygem-rodzilla
@@ -6427,6 +6433,7 @@
     SUBDIR += spdlog
     SUBDIR += spice-protocol
     SUBDIR += spin
+    SUBDIR += spirv-llvm-translator
     SUBDIR += spirv-tools
     SUBDIR += splint
     SUBDIR += spread-sheet-widget
@@ -6488,6 +6495,7 @@
     SUBDIR += tdl
     SUBDIR += template-glib
     SUBDIR += termbox
+    SUBDIR += termcolor
     SUBDIR += terminality
     SUBDIR += tevent
     SUBDIR += tevent1

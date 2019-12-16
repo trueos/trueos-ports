@@ -1,12 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	consul-alerts
-<<<<<<< HEAD
-PORTVERSION=	0.5.0
-PORTREVISION=	1
-=======
 PORTVERSION=	0.6.0
->>>>>>> freebsd/master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 

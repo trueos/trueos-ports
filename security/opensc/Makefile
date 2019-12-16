@@ -11,11 +11,7 @@ COMMENT=	Libraries and utilities to access smart cards
 
 LICENSE=	LGPL21
 
-<<<<<<< HEAD
-USES=		autoreconf gmake libtool pkgconfig
-=======
 USES=		autoreconf compiler:c11 gmake libtool pkgconfig ssl
->>>>>>> freebsd/master
 
 OPTIONS_SINGLE=	BACKEND
 OPTIONS_SINGLE_BACKEND=PCSC OPENCT CTAPI
@@ -29,14 +25,10 @@ CTAPI_DESC=	Use CT-API backend
 SM_DESC=	Enable secure messaging support
 NOTIFY_DESC=	Enable notification support
 
-<<<<<<< HEAD
-USES=		libtool pkgconfig gmake ssl
-=======
 USE_GITHUB=	yes
 GH_ACCOUNT=	OpenSC
 GH_PROJECT=	${GH_ACCOUNT}
 
->>>>>>> freebsd/master
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
@@ -78,13 +70,4 @@ CONFIGURE_ENV+=	XSLTPROC="${FALSE}"
 CONFIGURE_ARGS+=--without-xsl-stylesheetsdir
 .endif
 
-<<<<<<< HEAD
-post-patch:
-.if exists(/usr/lib/libstdc++.so)
-	${REINPLACE_CMD} -e '/-Wno-unused-but-set-variable/d' \
-		${WRKSRC}/src/tools/Makefile.am
-.endif
-
-=======
->>>>>>> freebsd/master
 .include <bsd.port.mk>
