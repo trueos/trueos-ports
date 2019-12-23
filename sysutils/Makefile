@@ -879,10 +879,6 @@
     SUBDIR += pc-sysinstall
     SUBDIR += pc-updatemanager
     SUBDIR += pcapfix
-    SUBDIR += pcbsd-appweb
-    SUBDIR += pcbsd-libsh
-    SUBDIR += pcbsd-syscache
-    SUBDIR += pcbsd-utils
     SUBDIR += pciutils
     SUBDIR += pcpustat
     SUBDIR += pdixtract
