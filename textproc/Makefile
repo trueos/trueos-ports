@@ -959,6 +959,7 @@
     SUBDIR += p5-Unicode-Escape
     SUBDIR += p5-Unicode-LineBreak
     SUBDIR += p5-Unicode-Normalize
+    SUBDIR += p5-Unicode-Tussle
     SUBDIR += p5-Unicode-Unihan
     SUBDIR += p5-Validator-Custom
     SUBDIR += p5-Version-Next
@@ -1167,16 +1168,6 @@
     SUBDIR += perl2html
     SUBDIR += permute
     SUBDIR += php-mecab
-    SUBDIR += php71-ctype
-    SUBDIR += php71-dom
-    SUBDIR += php71-enchant
-    SUBDIR += php71-pspell
-    SUBDIR += php71-simplexml
-    SUBDIR += php71-wddx
-    SUBDIR += php71-xml
-    SUBDIR += php71-xmlreader
-    SUBDIR += php71-xmlwriter
-    SUBDIR += php71-xsl
     SUBDIR += php72-ctype
     SUBDIR += php72-dom
     SUBDIR += php72-enchant
@@ -1244,6 +1235,7 @@
     SUBDIR += py-cmarkgfm
     SUBDIR += py-colorclass
     SUBDIR += py-creole
+    SUBDIR += py-cssselect2
     SUBDIR += py-csvkit
     SUBDIR += py-custom_inherit
     SUBDIR += py-dbfread
@@ -1400,6 +1392,7 @@
     SUBDIR += py-textfsm
     SUBDIR += py-texttable
     SUBDIR += py-tinycss
+    SUBDIR += py-tinycss2
     SUBDIR += py-toml
     SUBDIR += py-toronado
     SUBDIR += py-towncrier

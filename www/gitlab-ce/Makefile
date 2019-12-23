@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gitlab-ce
-PORTVERSION=	12.5.3
+PORTVERSION=	12.5.5
 PORTREVISION=	0
 CATEGORIES=	www devel
 
@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 # the rubygems of RUN_DEPENDS matches the order of the Gemfile
 # which makes maintaining this long list much easier!
-MY_DEPENDS=	git>=2.21.0:devel/git \
+MY_DEPENDS=	git>=2.22.2:devel/git \
 	gitlab-shell>=10.2.0:devel/gitlab-shell \
 	gitlab-workhorse>=8.14.1:www/gitlab-workhorse \
 	gitaly>=1.72.1:devel/gitaly \
@@ -56,7 +56,7 @@ MY_DEPENDS=	git>=2.21.0:devel/git \
 	rubygem-jwt21>=2.1.0<2.2.0:www/rubygem-jwt21 \
 	rubygem-gssapi>0:security/rubygem-gssapi \
 	rubygem-recaptcha>=4.11<5.0:devel/rubygem-recaptcha \
-	rubygem-akismet>=2.0<3.0:devel/rubygem-akismet \
+	rubygem-akismet>=3.0<4.0:devel/rubygem-akismet \
 	rubygem-invisible_captcha>=0.12.1<0.13.0:graphics/rubygem-invisible_captcha \
 	rubygem-devise-two-factor30-rails52>=3.0.0<3.1.0:security/rubygem-devise-two-factor30-rails52 \
 	rubygem-rqrcode-rails3>=0.1.7<0.2.0:www/rubygem-rqrcode-rails3 \
@@ -148,7 +148,7 @@ MY_DEPENDS=	git>=2.21.0:devel/git \
 	rubygem-flowdock>=0.7<1.0:www/rubygem-flowdock \
 	rubygem-slack-notifier1>=1.5.1<1.6.0:devel/rubygem-slack-notifier1 \
 	rubygem-hangouts-chat>=0.0.5<0.1.0:net/rubygem-hangouts-chat \
-	rubygem-asana>=0.8.1<0.9.0:www/rubygem-asana \
+	rubygem-asana>=0.9<1.0:www/rubygem-asana \
 	rubygem-ruby-fogbugz021>=0.2.1<0.3.0:devel/rubygem-ruby-fogbugz021 \
 	rubygem-kubeclient>=4.4.0<4.5.0:www/rubygem-kubeclient \
 	rubygem-sanitize>=4.6<5.0:textproc/rubygem-sanitize \
@@ -239,7 +239,7 @@ USE_GITLAB=	yes
 GL_ACCOUNT=	gitlab-org
 GL_PROJECT=	gitlab-foss
 # Find the here: https://gitlab.com/gitlab-org/gitlab-foss/-/tags
-GL_COMMIT=	225d2e5bb899067bde3caedb1319d39c46d94dc0
+GL_COMMIT=	64b66e0cb6d1bfd27abf24e06653f00bddb60597
 
 USERS=	git
 GROUPS=	git
