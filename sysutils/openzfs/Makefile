@@ -13,6 +13,7 @@ LICENSE=	CDDL
 BROKEN_aarch64=	invokes x86 assembler
 
 RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
+BUILD_DEPENDS=	bash:shells/bash
 
 USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix
 
