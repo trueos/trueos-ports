@@ -7,6 +7,7 @@
     SUBDIR += GiNaC
     SUBDIR += PDL
     SUBDIR += R
+    SUBDIR += R-cran-ADGofTest
     SUBDIR += R-cran-Amelia
     SUBDIR += R-cran-BsMD
     SUBDIR += R-cran-CVST
@@ -36,6 +37,7 @@
     SUBDIR += R-cran-VGAM
     SUBDIR += R-cran-Zelig
     SUBDIR += R-cran-acepack
+    SUBDIR += R-cran-alabama
     SUBDIR += R-cran-assertthat
     SUBDIR += R-cran-backports
     SUBDIR += R-cran-bdsmatrix
@@ -365,7 +367,6 @@
     SUBDIR += mbasecalc
     SUBDIR += mcsim
     SUBDIR += metis
-    SUBDIR += metis-edf
     SUBDIR += metis4
     SUBDIR += mfem
     SUBDIR += mingw32-libgmp
@@ -409,6 +410,7 @@
     SUBDIR += octave-forge-bsltl
     SUBDIR += octave-forge-cgi
     SUBDIR += octave-forge-civil-engineering
+    SUBDIR += octave-forge-communications
     SUBDIR += octave-forge-control
     SUBDIR += octave-forge-data-smoothing
     SUBDIR += octave-forge-database
@@ -441,6 +443,7 @@
     SUBDIR += octave-forge-ltfat
     SUBDIR += octave-forge-mapping
     SUBDIR += octave-forge-matgeom
+    SUBDIR += octave-forge-mechanics
     SUBDIR += octave-forge-miscellaneous
     SUBDIR += octave-forge-missing-functions
     SUBDIR += octave-forge-msh
@@ -720,6 +723,7 @@
     SUBDIR += py-grandalf
     SUBDIR += py-graphillion
     SUBDIR += py-gym
+    SUBDIR += py-hdbscan
     SUBDIR += py-igakit
     SUBDIR += py-igraph
     SUBDIR += py-intspan

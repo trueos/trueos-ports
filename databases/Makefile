@@ -39,7 +39,6 @@
     SUBDIR += cegobridge
     SUBDIR += clickhouse
     SUBDIR += cockroach
-    SUBDIR += couchdb
     SUBDIR += couchdb2
     SUBDIR += courier-authlib-mysql
     SUBDIR += courier-authlib-pgsql
@@ -100,6 +99,7 @@
     SUBDIR += gnats4
     SUBDIR += gnatsweb4
     SUBDIR += go-carbon
+    SUBDIR += go-pgweb
     SUBDIR += gom
     SUBDIR += gqlplus
     SUBDIR += grass7
@@ -159,11 +159,9 @@
     SUBDIR += libpqtypes
     SUBDIR += libsdb
     SUBDIR += libzdb
-    SUBDIR += linux-c6-sqlite3
     SUBDIR += linux-c7-sqlite3
     SUBDIR += linux-oracle-instantclient-basic
     SUBDIR += linux-oracle-instantclient-sdk
-    SUBDIR += linux-oracle-instantclient-sqlplus
     SUBDIR += liquibase
     SUBDIR += lmdb
     SUBDIR += lua-lsqlite3
@@ -615,7 +613,6 @@
     SUBDIR += pgtune
     SUBDIR += pguri
     SUBDIR += pgworksheet
-    SUBDIR += php-memcache
     SUBDIR += php-tarantool
     SUBDIR += php-xapian
     SUBDIR += php72-dba
@@ -659,7 +656,7 @@
     SUBDIR += phpliteadmin
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
-    SUBDIR += phpmyadmin-devel
+    SUBDIR += phpmyadmin5
     SUBDIR += phppgadmin
     SUBDIR += pldebugger
     SUBDIR += plpgsql_check
@@ -811,6 +808,7 @@
     SUBDIR += py-pgxnclient
     SUBDIR += py-pickledb
     SUBDIR += py-pickleshare
+    SUBDIR += py-pony
     SUBDIR += py-postgresql
     SUBDIR += py-psycogreen
     SUBDIR += py-psycopg2
@@ -884,7 +882,6 @@
     SUBDIR += redis_exporter
     SUBDIR += redisdesktopmanager
     SUBDIR += retcl
-    SUBDIR += riak
     SUBDIR += rocksdb
     SUBDIR += rocksdb-lite
     SUBDIR += rrdman
@@ -963,6 +960,7 @@
     SUBDIR += rubygem-influxdb
     SUBDIR += rubygem-jdbc-mysql
     SUBDIR += rubygem-leo_manager_client
+    SUBDIR += rubygem-marginalia
     SUBDIR += rubygem-mario-redis-lock
     SUBDIR += rubygem-memcache
     SUBDIR += rubygem-memcache-client

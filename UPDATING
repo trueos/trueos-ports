@@ -5,6 +5,36 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20200101:
+  AFFECTS: users of security/openssl and security/openssl111
+  AUTHOR: brnrd@FreeBSD.org
+
+  The openssl port was removed on 2019-12-31, subsequently the openssl111
+  port was renamed to openssl on 2020-01-01.
+
+  The shared library version of OpenSSL has been bumped.
+
+  Users of DEFAULT_VERSIONS= ssl=openssl111 must update this to
+  ssl=openssl. 
+
+  You must rebuild all ports that depend on OpenSSL if you use OpenSSL
+  from ports.
+
+20191226:
+  AFFECTS: users of sysutils/dsbmd
+  AUTHOR: mk@freeshell.de
+
+  With version 1.10 dsbmd now uses sysutils/fusefs-jmtpfs for mounting
+  MTP devices. Please adjust your dsbmd.conf or recreate it from the new
+  dsbmd.conf.sample.
+
+20191225:
+  AFFECTS: multimedia/libva-intel-media-driver
+  AUTHOR: jbeich@FreeBSD.org
+
+  As of libva 2.6.0 iHD driver is automatically enabled, so you no
+  longer need to adjust LIBVA_DRIVER_NAME in ~/.profile or ~/.login.
+
 20191221:
   AFFECTS: users of misc/openhab2
   AUTHOR: netchild@FreeBSD.org

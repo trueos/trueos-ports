@@ -20,6 +20,7 @@
     SUBDIR += afl
     SUBDIR += afl++
     SUBDIR += afterglow
+    SUBDIR += age
     SUBDIR += aide
     SUBDIR += akmos
     SUBDIR += amap
@@ -303,7 +304,7 @@
     SUBDIR += libpwstor
     SUBDIR += libressl
     SUBDIR += libressl-devel
-    SUBDIR += libscep 
+    SUBDIR += libscep
     SUBDIR += libscrypt
     SUBDIR += libsecret
     SUBDIR += libsectok
@@ -317,16 +318,6 @@
     SUBDIR += libwhisker
     SUBDIR += libyubikey
     SUBDIR += libzrtpcppcore
-    SUBDIR += linux-c6-audit-libs
-    SUBDIR += linux-c6-cyrus-sasl2
-    SUBDIR += linux-c6-gnutls
-    SUBDIR += linux-c6-libgcrypt
-    SUBDIR += linux-c6-libgpg-error
-    SUBDIR += linux-c6-libssh2
-    SUBDIR += linux-c6-libtasn1
-    SUBDIR += linux-c6-nss
-    SUBDIR += linux-c6-openssl
-    SUBDIR += linux-c6-pam
     SUBDIR += linux-c7-cyrus-sasl2
     SUBDIR += linux-c7-gnutls
     SUBDIR += linux-c7-libgcrypt
@@ -413,7 +404,6 @@
     SUBDIR += openssh-portable
     SUBDIR += openssl
     SUBDIR += openssl-unsafe
-    SUBDIR += openssl111
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas8
     SUBDIR += openvas8-cli
@@ -448,6 +438,7 @@
     SUBDIR += p11-kit
     SUBDIR += p5-Alt-Crypt-RSA-BigInt
     SUBDIR += p5-Apache-Htpasswd
+    SUBDIR += p5-App-Acmeman
     SUBDIR += p5-App-Genpass
     SUBDIR += p5-App-TLSMe
     SUBDIR += p5-Auth-YubikeyDecrypter

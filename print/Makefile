@@ -100,10 +100,6 @@
     SUBDIR += latex2rtf
     SUBDIR += latexdiff
     SUBDIR += lgrind
-    SUBDIR += libgnomecups
-    SUBDIR += libgnomeprint
-    SUBDIR += libgnomeprint-reference
-    SUBDIR += libgnomeprintmm
     SUBDIR += libharu
     SUBDIR += libijs
     SUBDIR += libmspub01
@@ -114,7 +110,6 @@
     SUBDIR += libspectre
     SUBDIR += lilypond
     SUBDIR += lilypond-devel
-    SUBDIR += linux-c6-cups-libs
     SUBDIR += linux-c7-cups-libs
     SUBDIR += linux-c7-freetype
     SUBDIR += linux-c7-harfbuzz
