@@ -1,6 +1,6 @@
---- turbostat.c.orig	2018-07-31 20:42:12 UTC
+--- turbostat.c.orig	2019-12-16 20:14:20 UTC
 +++ turbostat.c
-@@ -41,7 +41,31 @@
+@@ -30,7 +30,31 @@
  #include <sched.h>
  #include <time.h>
  #include <cpuid.h>
@@ -30,11 +30,11 @@
  #include <linux/capability.h>
 +#endif
  #include <errno.h>
+ #include <math.h>
  
- char *proc_stat = "/proc/stat";
-@@ -132,7 +156,9 @@ unsigned int has_misc_feature_control;
- #define RAPL_CORES (RAPL_CORES_ENERGY_STATUS | RAPL_CORES_POWER_LIMIT)
- #define	TJMAX_DEFAULT	100
+@@ -145,7 +169,9 @@ int ignore_stdin;
+ #define MSR_CORE_ENERGY_STAT	0xc001029a
+ #define MSR_PKG_ENERGY_STAT	0xc001029b
  
 +#ifndef __FreeBSD__
  #define MAX(a, b) ((a) > (b) ? (a) : (b))
@@ -42,7 +42,7 @@
  
  /*
   * buffer size used by sscanf() for added column names
-@@ -309,6 +335,7 @@ int cpu_migrate(int cpu)
+@@ -357,6 +383,7 @@ int cpu_migrate(int cpu)
  	else
  		return 0;
  }
@@ -50,7 +50,7 @@
  int get_msr_fd(int cpu)
  {
  	char pathname[32];
-@@ -319,18 +346,39 @@ int get_msr_fd(int cpu)
+@@ -367,18 +394,39 @@ int get_msr_fd(int cpu)
  	if (fd)
  		return fd;
  
@@ -91,20 +91,21 @@
  	ssize_t retval;
  
  	retval = pread(get_msr_fd(cpu), msr, sizeof(*msr), offset);
-@@ -340,6 +388,7 @@ int get_msr(int cpu, off_t offset, unsigned long long 
+@@ -388,6 +436,7 @@ int get_msr(int cpu, off_t offset, unsigned long long 
  
  	return 0;
  }
 +#endif
  
  /*
-  * Each string in this array is compared in --show and --hide cmdline.
-@@ -2239,6 +2288,173 @@ int parse_int_file(const char *fmt, ...)
- 	return value;
+  * This list matches the column headers, except
+@@ -2018,7 +2067,308 @@ done:
+ 	return 0;
  }
  
 +#ifdef __FreeBSD__
 +static int ncpus;
++static int maxcpu;
 +struct cpuset_list {
 +	cpuset_t	*sets;
 +	size_t		len;
@@ -150,13 +151,16 @@
 +
 +static void read_topology_spec(void)
 +{
-+	char spec[16384];
-+	size_t sz = sizeof(spec) - 1;
-+	char *i;
++	char *spec, *i;
++	size_t sz = 0;
 +
++	if (sysctlbyname("kern.sched.topology_spec", NULL, &sz, NULL, 0) != ENOMEM)
++		err(1, "sysctl: kern.sched.topology_spec: failed");
++	spec = malloc(sz + 1);
++	if (spec == NULL)
++		err(1, "malloc: failed");
 +	if (sysctlbyname("kern.sched.topology_spec", spec, &sz, NULL, 0))
 +		err(1, "sysctl: kern.sched.topology_spec: failed");
-+	spec[sizeof(spec) - 1] = '\0';
 +
 +	/* Skip the entire system entry. */
 +	i = strstr(spec, "<cpu");
@@ -165,6 +169,10 @@
 +
 +	cpuset_t last;
 +	CPU_ZERO(&last);
++
++    char spectok[sizeof(spec)];
++	strcpy(spectok,spec);
++
 +
 +	while ((i = strstr(i + 1, "<cpu")) != NULL) {
 +		cpuset_t set = parse_cpu_mask(i);
@@ -196,7 +204,7 @@
 +		ncpus += CPU_COUNT(packages.sets + i);
 +}
 +
-+static int get_physical_package_id(int cpu)
++int get_physical_package_id(int cpu)
 +{
 +	for (int i = 0; i < packages.len; i++) {
 +		if (!CPU_ISSET(cpu, packages.sets + i))
@@ -207,7 +215,7 @@
 +	return -1;
 +}
 +
-+static int get_core_id(int cpu)
++int get_core_id(int cpu)
 +{
 +	int package_id = get_physical_package_id(cpu);
 +	if (package_id < 0)
@@ -260,7 +268,7 @@
 +	return 1;
 +}
 +
-+static int cpu_is_first_core_in_package(int cpu)
++int cpu_is_first_core_in_package(int cpu)
 +{
 +	int package = get_physical_package_id(cpu);
 +	if (package < 0)
@@ -268,20 +276,242 @@
 +
 +	return CPU_FFS(packages.sets + package) - 1 == cpu;
 +}
++/* TODO: Report Actual Die info */
++int get_die_id(int cpu)
++{
++	return -1;
++}
++
++int get_physical_node_id(struct cpu_topology *thiscpu)
++{
++    return -1;
++}
++
++int get_thread_siblings(struct cpu_topology *thiscpu)
++{
++	return -1;
++}
++
++void set_max_cpu_num(void)
++{
++		printf("set_mac_cpu_num");
++}
++
 +
 +#else
  /*
-  * get_cpu_position_in_core(cpu)
-  * return the position of the CPU among its HT siblings in the core
-@@ -2326,6 +2542,7 @@ int get_num_ht_siblings(int cpu)
- 	fclose(filep);
- 	return matches+1;
- }
++ * cpu_is_first_core_in_package(cpu)
++ * return 1 if given CPU is 1st core in package
++ */
++int cpu_is_first_core_in_package(int cpu)
++{
++	return cpu == parse_int_file("/sys/devices/system/cpu/cpu%d/topology/core_siblings_list", cpu);
++}
++
++int get_physical_package_id(int cpu)
++{
++	return parse_int_file("/sys/devices/system/cpu/cpu%d/topology/physical_package_id", cpu);
++}
++
++int get_die_id(int cpu)
++{
++	return parse_int_file("/sys/devices/system/cpu/cpu%d/topology/die_id", cpu);
++}
++
++int get_core_id(int cpu)
++{
++	return parse_int_file("/sys/devices/system/cpu/cpu%d/topology/core_id", cpu);
++}
++
++int get_physical_node_id(struct cpu_topology *thiscpu)
++{
++	char path[80];
++	FILE *filep;
++	int i;
++	int cpu = thiscpu->logical_cpu_id;
++
++	for (i = 0; i <= topo.max_cpu_num; i++) {
++		sprintf(path, "/sys/devices/system/cpu/cpu%d/node%i/cpulist",
++			cpu, i);
++		filep = fopen(path, "r");
++		if (!filep)
++			continue;
++		fclose(filep);
++		return i;
++	}
++	return -1;
++}
++
++int get_thread_siblings(struct cpu_topology *thiscpu)
++{
++	char path[80], character;
++	FILE *filep;
++	unsigned long map;
++	int so, shift, sib_core;
++	int cpu = thiscpu->logical_cpu_id;
++	int offset = topo.max_cpu_num + 1;
++	size_t size;
++	int thread_id = 0;
++
++	thiscpu->put_ids = CPU_ALLOC((topo.max_cpu_num + 1));
++	if (thiscpu->thread_id < 0)
++		thiscpu->thread_id = thread_id++;
++	if (!thiscpu->put_ids)
++		return -1;
++
++	size = CPU_ALLOC_SIZE((topo.max_cpu_num + 1));
++	CPU_ZERO_S(size, thiscpu->put_ids);
++
++	sprintf(path,
++		"/sys/devices/system/cpu/cpu%d/topology/thread_siblings", cpu);
++	filep = fopen_or_die(path, "r");
++	do {
++		offset -= BITMASK_SIZE;
++		if (fscanf(filep, "%lx%c", &map, &character) != 2)
++			err(1, "%s: failed to parse file", path);
++		for (shift = 0; shift < BITMASK_SIZE; shift++) {
++			if ((map >> shift) & 0x1) {
++				so = shift + offset;
++				sib_core = get_core_id(so);
++				if (sib_core == thiscpu->physical_core_id) {
++					CPU_SET_S(so, size, thiscpu->put_ids);
++					if ((so != cpu) &&
++					    (cpus[so].thread_id < 0))
++						cpus[so].thread_id =
++								    thread_id++;
++				}
++			}
++		}
++	} while (!strncmp(&character, ",", 1));
++	fclose(filep);
++
++	return CPU_COUNT_S(size, thiscpu->put_ids);
++}
++
++void set_max_cpu_num(void)
++{
++	FILE *filep;
++	unsigned long dummy;
++
++	topo.max_cpu_num = 0;
++	filep = fopen_or_die(
++			"/sys/devices/system/cpu/cpu0/topology/thread_siblings",
++			"r");
++	while (fscanf(filep, "%lx,", &dummy) == 1)
++		topo.max_cpu_num += BITMASK_SIZE;
++	fclose(filep);
++	topo.max_cpu_num--; /* 0 based */
++}
++
 +#endif
++/*
+  * MSR_PKG_CST_CONFIG_CONTROL decoding for pkg_cstate_limit:
+  * If you change the values, note they are used both in comparisons
+  * (>= PCL__7) and to index pkg_cstate_limit_strings[].
+@@ -2540,30 +2890,7 @@ int parse_int_file(const char *fmt, ...)
+ 	return value;
+ }
  
+-/*
+- * cpu_is_first_core_in_package(cpu)
+- * return 1 if given CPU is 1st core in package
+- */
+-int cpu_is_first_core_in_package(int cpu)
+-{
+-	return cpu == parse_int_file("/sys/devices/system/cpu/cpu%d/topology/core_siblings_list", cpu);
+-}
+ 
+-int get_physical_package_id(int cpu)
+-{
+-	return parse_int_file("/sys/devices/system/cpu/cpu%d/topology/physical_package_id", cpu);
+-}
+-
+-int get_die_id(int cpu)
+-{
+-	return parse_int_file("/sys/devices/system/cpu/cpu%d/topology/die_id", cpu);
+-}
+-
+-int get_core_id(int cpu)
+-{
+-	return parse_int_file("/sys/devices/system/cpu/cpu%d/topology/core_id", cpu);
+-}
+-
+ void set_node_data(void)
+ {
+ 	int pkg, node, lnode, cpu, cpux;
+@@ -2605,71 +2932,8 @@ void set_node_data(void)
+ 	}
+ }
+ 
+-int get_physical_node_id(struct cpu_topology *thiscpu)
+-{
+-	char path[80];
+-	FILE *filep;
+-	int i;
+-	int cpu = thiscpu->logical_cpu_id;
+ 
+-	for (i = 0; i <= topo.max_cpu_num; i++) {
+-		sprintf(path, "/sys/devices/system/cpu/cpu%d/node%i/cpulist",
+-			cpu, i);
+-		filep = fopen(path, "r");
+-		if (!filep)
+-			continue;
+-		fclose(filep);
+-		return i;
+-	}
+-	return -1;
+-}
+ 
+-int get_thread_siblings(struct cpu_topology *thiscpu)
+-{
+-	char path[80], character;
+-	FILE *filep;
+-	unsigned long map;
+-	int so, shift, sib_core;
+-	int cpu = thiscpu->logical_cpu_id;
+-	int offset = topo.max_cpu_num + 1;
+-	size_t size;
+-	int thread_id = 0;
+-
+-	thiscpu->put_ids = CPU_ALLOC((topo.max_cpu_num + 1));
+-	if (thiscpu->thread_id < 0)
+-		thiscpu->thread_id = thread_id++;
+-	if (!thiscpu->put_ids)
+-		return -1;
+-
+-	size = CPU_ALLOC_SIZE((topo.max_cpu_num + 1));
+-	CPU_ZERO_S(size, thiscpu->put_ids);
+-
+-	sprintf(path,
+-		"/sys/devices/system/cpu/cpu%d/topology/thread_siblings", cpu);
+-	filep = fopen_or_die(path, "r");
+-	do {
+-		offset -= BITMASK_SIZE;
+-		if (fscanf(filep, "%lx%c", &map, &character) != 2)
+-			err(1, "%s: failed to parse file", path);
+-		for (shift = 0; shift < BITMASK_SIZE; shift++) {
+-			if ((map >> shift) & 0x1) {
+-				so = shift + offset;
+-				sib_core = get_core_id(so);
+-				if (sib_core == thiscpu->physical_core_id) {
+-					CPU_SET_S(so, size, thiscpu->put_ids);
+-					if ((so != cpu) &&
+-					    (cpus[so].thread_id < 0))
+-						cpus[so].thread_id =
+-								    thread_id++;
+-				}
+-			}
+-		}
+-	} while (!strncmp(&character, ",", 1));
+-	fclose(filep);
+-
+-	return CPU_COUNT_S(size, thiscpu->put_ids);
+-}
+-
  /*
   * run func(thread, core, package) in topology order
-@@ -2371,6 +2588,22 @@ int for_all_cpus_2(int (func)(struct thread_data *, st
+  * skip non-present cpus
+@@ -2724,6 +2988,22 @@ int for_all_cpus_2(int (func)(struct thread_data *, st
  	return 0;
  }
  
@@ -304,7 +534,7 @@
  /*
   * run func(cpu) on every cpu in /proc/stat
   * return max_cpu number
-@@ -2401,6 +2634,7 @@ int for_all_proc_cpus(int (func)(int))
+@@ -2754,6 +3034,7 @@ int for_all_proc_cpus(int (func)(int))
  	fclose(fp);
  	return 0;
  }
@@ -312,7 +542,29 @@
  
  void re_initialize(void)
  {
-@@ -2428,6 +2662,85 @@ int mark_cpu_present(int cpu)
+@@ -2762,21 +3043,7 @@ void re_initialize(void)
+ 	printf("turbostat: re-initialized with num_cpus %d\n", topo.num_cpus);
+ }
+ 
+-void set_max_cpu_num(void)
+-{
+-	FILE *filep;
+-	unsigned long dummy;
+ 
+-	topo.max_cpu_num = 0;
+-	filep = fopen_or_die(
+-			"/sys/devices/system/cpu/cpu0/topology/thread_siblings",
+-			"r");
+-	while (fscanf(filep, "%lx,", &dummy) == 1)
+-		topo.max_cpu_num += BITMASK_SIZE;
+-	fclose(filep);
+-	topo.max_cpu_num--; /* 0 based */
+-}
+-
+ /*
+  * count_cpus()
+  * remember the last one seen, it will be the max
+@@ -2798,6 +3065,89 @@ int init_thread_id(int cpu)
  	return 0;
  }
  
@@ -375,7 +627,7 @@
 +	}
 +}
 +
-+static int snapshot_proc_interrupts(void)
++int snapshot_proc_interrupts(void)
 +{
 +	if (!intr_map)
 +		init_intr_map();
@@ -394,20 +646,31 @@
 +
 +	return 0;
 +}
++int snapshot_proc_sysfs_files(void)
++{
++		return 0;
++}
 +#else
  /*
   * snapshot_proc_interrupts()
   *
-@@ -2491,6 +2804,8 @@ int snapshot_proc_interrupts(void)
+@@ -2861,6 +3211,7 @@ int snapshot_proc_interrupts(void)
  	}
  	return 0;
  }
-+#endif
 +
  /*
   * snapshot_gfx_rc6_ms()
   *
-@@ -2629,6 +2944,18 @@ restart:
+@@ -2989,6 +3340,7 @@ int snapshot_proc_sysfs_files(void)
+ 
+ 	return 0;
+ }
++#endif
+ 
+ int exit_requested;
+ 
+@@ -3140,6 +3492,18 @@ restart:
  	}
  }
  
@@ -426,7 +689,7 @@
  void check_dev_msr()
  {
  	struct stat sb;
-@@ -2677,6 +3004,7 @@ void check_permissions()
+@@ -3188,6 +3552,7 @@ void check_permissions()
  	if (do_exit)
  		exit(-6);
  }
@@ -434,7 +697,7 @@
  
  /*
   * NHM adds support for additional MSRs:
-@@ -4520,8 +4848,21 @@ void setup_all_buffers(void)
+@@ -5192,8 +5557,21 @@ void setup_all_buffers(void)
  	for_all_proc_cpus(initialize_counters);
  }
  
@@ -456,7 +719,7 @@
  	base_cpu = sched_getcpu();
  	if (base_cpu < 0)
  		err(-ENODEV, "No valid cpus found");
-@@ -4529,6 +4870,7 @@ void set_base_cpu(void)
+@@ -5201,6 +5579,7 @@ void set_base_cpu(void)
  	if (debug > 1)
  		fprintf(outf, "base_cpu = %d\n", base_cpu);
  }
@@ -464,3 +727,14 @@
  
  void turbostat_init()
  {
+@@ -5769,7 +6148,9 @@ int main(int argc, char **argv)
+ 	if (!quiet)
+ 		print_version();
+ 
+-	probe_sysfs();
++    #ifndef __FreeBSD__
++		probe_sysfs();
++    #endif
+ 
+ 	turbostat_init();
+ 
