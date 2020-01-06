@@ -114,8 +114,10 @@
     SUBDIR += qemu-powernv
     SUBDIR += qemu-sbruno
     SUBDIR += qemu-user-static
+    SUBDIR += qemu-user-static-devel
     SUBDIR += qemu-utils
     SUBDIR += qemu30
+    SUBDIR += qemu31
     SUBDIR += qemu40
     SUBDIR += qmc2
     SUBDIR += quasi88
@@ -138,6 +140,7 @@
     SUBDIR += tuxnes
     SUBDIR += uae
     SUBDIR += ucon64
+    SUBDIR += ukncbtl
     SUBDIR += unicorn
     SUBDIR += vba
     SUBDIR += vboxtool

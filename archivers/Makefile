@@ -147,10 +147,6 @@
     SUBDIR += php-lz4
     SUBDIR += php-snappy
     SUBDIR += php-zstd
-    SUBDIR += php71-bz2
-    SUBDIR += php71-phar
-    SUBDIR += php71-zip
-    SUBDIR += php71-zlib
     SUBDIR += php72-bz2
     SUBDIR += php72-phar
     SUBDIR += php72-zip
@@ -234,6 +230,7 @@
     SUBDIR += unalz
     SUBDIR += unarchiver
     SUBDIR += unarj
+    SUBDIR += unarr
     SUBDIR += undms
     SUBDIR += unfoo
     SUBDIR += unlzx

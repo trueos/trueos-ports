@@ -476,6 +476,7 @@
     SUBDIR += p5-RRD-Simple
     SUBDIR += p5-Redis
     SUBDIR += p5-Redis-Fast
+    SUBDIR += p5-Redis-JobQueue
     SUBDIR += p5-Redis-hiredis
     SUBDIR += p5-RedisDB
     SUBDIR += p5-RedisDB-Parser
@@ -492,6 +493,7 @@
     SUBDIR += p5-SQL-Abstract-Plugin-InsertMulti
     SUBDIR += p5-SQL-Interp
     SUBDIR += p5-SQL-Maker
+    SUBDIR += p5-SQL-NamedPlaceholder
     SUBDIR += p5-SQL-ReservedWords
     SUBDIR += p5-SQL-Statement
     SUBDIR += p5-SQL-Translator
@@ -616,19 +618,6 @@
     SUBDIR += php-memcache
     SUBDIR += php-tarantool
     SUBDIR += php-xapian
-    SUBDIR += php71-dba
-    SUBDIR += php71-interbase
-    SUBDIR += php71-mysqli
-    SUBDIR += php71-odbc
-    SUBDIR += php71-pdo
-    SUBDIR += php71-pdo_dblib
-    SUBDIR += php71-pdo_firebird
-    SUBDIR += php71-pdo_mysql
-    SUBDIR += php71-pdo_odbc
-    SUBDIR += php71-pdo_pgsql
-    SUBDIR += php71-pdo_sqlite
-    SUBDIR += php71-pgsql
-    SUBDIR += php71-sqlite3
     SUBDIR += php72-dba
     SUBDIR += php72-interbase
     SUBDIR += php72-mysqli
@@ -811,6 +800,7 @@
     SUBDIR += py-oops
     SUBDIR += py-oursql
     SUBDIR += py-peewee
+    SUBDIR += py-peewee_migrate
     SUBDIR += py-pg8000
     SUBDIR += py-pg8000-112
     SUBDIR += py-pgcli
@@ -890,6 +880,7 @@
     SUBDIR += recutils
     SUBDIR += redis
     SUBDIR += redis-devel
+    SUBDIR += redis4
     SUBDIR += redis_exporter
     SUBDIR += redisdesktopmanager
     SUBDIR += retcl
@@ -962,7 +953,6 @@
     SUBDIR += rubygem-em-redis-unified
     SUBDIR += rubygem-familia
     SUBDIR += rubygem-flipper-active_record
-    SUBDIR += rubygem-flipper-active_record013
     SUBDIR += rubygem-gdbm
     SUBDIR += rubygem-globalid
     SUBDIR += rubygem-globalid-rails5
@@ -1006,7 +996,6 @@
     SUBDIR += rubygem-sqlite3-ruby
     SUBDIR += rubygem-state_machines-activemodel
     SUBDIR += rubygem-state_machines-activerecord
-    SUBDIR += rubygem-state_machines-activerecord05
     SUBDIR += rubygem-tarantool
     SUBDIR += sequeler
     SUBDIR += sfcgal
@@ -1069,7 +1058,6 @@
     SUBDIR += xapian-core12
     SUBDIR += xrootd
     SUBDIR += xtrabackup
-    SUBDIR += zabbix22-libzbxpgsql
     SUBDIR += zabbix3-libzbxpgsql
     SUBDIR += zodb3
 

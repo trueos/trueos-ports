@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	4.2.1
-PORTREVISION=	16
+PORTREVISION=	21
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio net
 MASTER_SITES=	https://ffmpeg.org/releases/
@@ -35,15 +35,16 @@ NOPRECIOUSMAKEVARS=	yes # ARCH
 PORTSCOUT=	limit:^4\.
 
 # Option CHROMAPRINT disabled, it cannot work and people are baffled.
-OPTIONS_DEFINE=	ALSA AMR_NB AMR_WB AOM ARIBB24 ASS BEIGNET BS2B CACA CDIO CELT CODEC2 \
-		DAV1D DAVS2 DC1394 DEBUG DOCS DRM FDK_AAC FLITE FONTCONFIG \
-		FREETYPE FREI0R FRIBIDI GME GSM ICONV ILBC JACK KLVANC KVAZAAR LADSPA \
-		LAME LENSFUN LIBBLURAY LIBRSVG2 LIBXML2 LV2 MODPLUG MYSOFA OPENAL OPENCL OPENCV OPENGL \
-		OPENH264 OPENJPEG OPENMPT OPTIMIZED_CFLAGS OPUS POCKETSPHINX PULSEAUDIO \
-		RAV1E RUBBERBAND RTCPU SDL SMB SNAPPY SNDIO SOXR SPEEX SRT SSH TENSORFLOW \
-		TESSERACT THEORA TWOLAME V4L VAAPI VAPOURSYNTH VDPAU VIDSTAB VMAF VORBIS \
-		VO_AMRWBENC VPX WAVPACK WEBP X264 X265 XAVS2 XCB XVID \
-		XVIDEO ZIMG ZMQ ZVBI
+OPTIONS_DEFINE=	ALSA AMR_NB AMR_WB AOM ARIBB24 ASS BEIGNET BS2B CACA CDIO CELT \
+		CODEC2 DAV1D DAVS2 DC1394 DEBUG DOCS DRM FDK_AAC FLITE \
+		FONTCONFIG FREETYPE FREI0R FRIBIDI GME GSM ICONV ILBC JACK \
+		KLVANC KVAZAAR LADSPA LAME LENSFUN LIBBLURAY LIBRSVG2 LIBXML2 \
+		LV2 MFX MODPLUG MYSOFA OPENAL OPENCL OPENCV OPENGL OPENH264 \
+		OPENJPEG OPENMPT OPTIMIZED_CFLAGS OPUS POCKETSPHINX PULSEAUDIO \
+		RAV1E RTCPU RUBBERBAND SDL SMB SNAPPY SNDIO SOXR SPEEX SRT SSH \
+		SVTAV1 SVTHEVC SVTVP9 TENSORFLOW TESSERACT THEORA TWOLAME V4L \
+		VAAPI VAPOURSYNTH VDPAU VIDSTAB VMAF VO_AMRWBENC VORBIS VPX \
+		WAVPACK WEBP X264 X265 XAVS2 XCB XVID XVIDEO ZIMG ZMQ ZVBI
 
 OPTIONS_DEFAULT=	AOM DAV1D FONTCONFIG FREETYPE FREI0R GMP GNUTLS ICONV \
 			OPENCV OPTIMIZED_CFLAGS OPUS RTCPU THEORA V4L VAAPI VDPAU \
@@ -85,9 +86,9 @@ OPTIONS_RADIO_SSL=	GNUTLS MBEDTLS OPENSSL
 OPTIONS_GROUP=	LICENSE
 OPTIONS_GROUP_LICENSE=	GPL3 NONFREE
 
-OPTIONS_DEFINE_amd64=	BEIGNET MMX SSE SVTAV1 SVTHEVC SVTVP9
+OPTIONS_DEFINE_amd64=	MMX SSE
 OPTIONS_DEFINE_armv6=	VFP NEON
-OPTIONS_DEFINE_i386=	BEIGNET MMX SSE
+OPTIONS_DEFINE_i386=	MMX SSE
 OPTIONS_DEFAULT_amd64=	MMX SSE
 OPTIONS_DEFAULT_i386=	MMX SSE
 
@@ -111,6 +112,7 @@ KLVANC_DESC=	Kernel Labs VANC processing
 KVAZAAR_DESC=	H.265 video codec support via Kvazaar
 LICENSE_DESC=	Licensing options
 LV2_DESC=	LV2 audio filtering
+MFX_DESC=	Intel MediaSDK (aka Quick Sync Video)
 MYSOFA_DESC=	SOFAlizer binaural filter
 NEON_DESC=	Media Processing Engine instructions
 NONFREE_DESC=	Allow use of nonfree code
@@ -330,6 +332,10 @@ V4L_CONFIGURE_OFF=		--disable-indev=v4l2 \
 MBEDTLS_LIB_DEPENDS=	libmbedtls.so:security/mbedtls
 MBEDTLS_CONFIGURE_ENABLE=	mbedtls
 
+# mfx
+MFX_LIB_DEPENDS=	libmfx.so:multimedia/intel-media-sdk
+MFX_CONFIGURE_ENABLE=	libmfx
+
 # mmx support
 MMX_CONFIGURE_ENABLE=	mmx
 
@@ -448,8 +454,12 @@ SRT_CONFIGURE_ENABLE=	libsrt
 # svt-av1
 SVTAV1_LIB_DEPENDS=	libSvtAv1Enc.so:multimedia/svt-av1
 SVTAV1_CONFIGURE_ON=	--enable-libsvtav1
-SVTAV1_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-AV1/raw/v0.7.0/ffmpeg_plugin/:svtav1
+SVTAV1_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-AV1/raw/v0.8.0/ffmpeg_plugin/:svtav1
 SVTAV1_PATCHFILES=	0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch:-p1:svtav1
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+# https://github.com/OpenVisualCloud/SVT-AV1/issues/691
+SVTAV1_LDFLAGS=		-fuse-ld=lld
+.endif
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTAV1
 .else
@@ -460,9 +470,12 @@ SVTAV1_PREVENTS_MSG=	Only one SVT vendor patch can be applied at the same time
 # svt-hevc
 SVTHEVC_LIB_DEPENDS=	libSvtHevcEnc.so:multimedia/svt-hevc
 SVTHEVC_CONFIGURE_ON=	--enable-libsvthevc
-SVTHEVC_PATCH_SITES=	https://github.com/Intel/SVT-HEVC/raw/v1.4.1/ffmpeg_plugin/:svthevc
+SVTHEVC_PATCH_SITES=	https://github.com/Intel/SVT-HEVC/raw/v1.4.3/ffmpeg_plugin/:svthevc
 SVTHEVC_PATCHFILES=	0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch:-p1:svthevc \
 			0002-doc-Add-libsvt_hevc-encoder-docs.patch:-p1:svthevc
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+SVTHEVC_LDFLAGS=	-fuse-ld=lld
+.endif
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTHEVC
 .else
@@ -475,6 +488,9 @@ SVTVP9_LIB_DEPENDS=	libSvtVp9Enc.so:multimedia/svt-vp9
 SVTVP9_CONFIGURE_ON=	--enable-libsvtvp9
 SVTVP9_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-VP9/raw/v0.1.0/ffmpeg_plugin/:svtvp9
 SVTVP9_PATCHFILES=	0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch:-p1:svtvp9
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+SVTVP9_LDFLAGS=		-fuse-ld=lld
+.endif
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTVP9
 .else

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	openzfs
-PORTVERSION=	2019101600
+PORTVERSION=	2019122100
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 
@@ -13,6 +13,7 @@ LICENSE=	CDDL
 BROKEN_aarch64=	invokes x86 assembler
 
 RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
+BUILD_DEPENDS=	bash:shells/bash
 
 USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix
 
@@ -25,7 +26,7 @@ OPTIONS_SUB=    yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	zfsonfreebsd
 GH_PROJECT=	ZoF
-GH_TAGNAME=	d4169da
+GH_TAGNAME=	62491d8
 
 .include <bsd.port.pre.mk>
 

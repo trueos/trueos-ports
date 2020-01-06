@@ -151,11 +151,13 @@
     SUBDIR += cfengine-masterfiles312
     SUBDIR += cfengine-masterfiles313
     SUBDIR += cfengine-masterfiles314
+    SUBDIR += cfengine-masterfiles315
     SUBDIR += cfengine310
     SUBDIR += cfengine311
     SUBDIR += cfengine312
     SUBDIR += cfengine313
     SUBDIR += cfengine314
+    SUBDIR += cfengine315
     SUBDIR += chgrep
     SUBDIR += chyves
     SUBDIR += cinnamon-control-center
@@ -200,6 +202,7 @@
     SUBDIR += cpu-x
     SUBDIR += cpuburn
     SUBDIR += cpuid
+    SUBDIR += cpuid2cpuflags
     SUBDIR += cpulimit
     SUBDIR += cpupdate
     SUBDIR += cramfs
@@ -369,7 +372,6 @@
     SUBDIR += fusefs-encfs
     SUBDIR += fusefs-exfat
     SUBDIR += fusefs-ext2
-    SUBDIR += fusefs-ext4fuse
     SUBDIR += fusefs-funionfs
     SUBDIR += fusefs-fusepak
     SUBDIR += fusefs-fusexmp_fh
@@ -377,6 +379,7 @@
     SUBDIR += fusefs-gstfs
     SUBDIR += fusefs-gunzip
     SUBDIR += fusefs-hfsfuse
+    SUBDIR += fusefs-httpdirfs
     SUBDIR += fusefs-httpfs
     SUBDIR += fusefs-ifuse
     SUBDIR += fusefs-jmtpfs
@@ -548,6 +551,7 @@
     SUBDIR += jvmtop
     SUBDIR += jx
     SUBDIR += k3b
+    SUBDIR += k4dirstat
     SUBDIR += k8temp
     SUBDIR += kbackup
     SUBDIR += kcron
@@ -555,7 +559,6 @@
     SUBDIR += kdebugsettings
     SUBDIR += kdf
     SUBDIR += kdialog
-    SUBDIR += kdirstat
     SUBDIR += keyboard-daemon
     SUBDIR += kf5-baloo
     SUBDIR += kf5-kwallet
@@ -590,7 +593,6 @@
     SUBDIR += libsysstat
     SUBDIR += libudisks
     SUBDIR += liburcu
-    SUBDIR += life-preserver
     SUBDIR += lineak-defaultplugin
     SUBDIR += lineak-xosdplugin
     SUBDIR += lineakd
@@ -613,6 +615,7 @@
     SUBDIR += logstash-forwarder
     SUBDIR += logstash5
     SUBDIR += logstash6
+    SUBDIR += logstash7
     SUBDIR += logtool
     SUBDIR += logwatch
     SUBDIR += lookat
@@ -682,6 +685,7 @@
     SUBDIR += mgeupsd
     SUBDIR += minikube
     SUBDIR += minimunin
+    SUBDIR += minipot
     SUBDIR += minipro
     SUBDIR += minirsyslogd
     SUBDIR += mixer
@@ -867,7 +871,6 @@
     SUBDIR += passwordsafe
     SUBDIR += patchelf
     SUBDIR += pax-utils
-    SUBDIR += pbi-manager
     SUBDIR += pbimaker
     SUBDIR += pc-diskmanager
     SUBDIR += pc-firewall
@@ -876,13 +879,6 @@
     SUBDIR += pc-sysinstall
     SUBDIR += pc-updatemanager
     SUBDIR += pcapfix
-    SUBDIR += pcbsd-appweb
-    SUBDIR += pcbsd-libsh
-    SUBDIR += pcbsd-syscache
-<<<<<<< HEAD
-=======
-    SUBDIR += pcbsd-utils
->>>>>>> freebsd/master
     SUBDIR += pciutils
     SUBDIR += pcpustat
     SUBDIR += pdixtract
@@ -909,8 +905,6 @@
     SUBDIR += pftables
     SUBDIR += pftop
     SUBDIR += phantom
-    SUBDIR += php71-fileinfo
-    SUBDIR += php71-posix
     SUBDIR += php72-fileinfo
     SUBDIR += php72-posix
     SUBDIR += php73-fileinfo
@@ -1276,6 +1270,7 @@
     SUBDIR += symon
     SUBDIR += synergy
     SUBDIR += synergy-1
+    SUBDIR += sysctlbyname-improved-kmod
     SUBDIR += sysctlinfo-kmod
     SUBDIR += sysgather
     SUBDIR += sysinfo
@@ -1291,6 +1286,7 @@
     SUBDIR += syslog-ng322
     SUBDIR += syslog-ng323
     SUBDIR += syslog-ng324
+    SUBDIR += syslog-ng325
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -1328,6 +1324,7 @@
     SUBDIR += topless
     SUBDIR += torque
     SUBDIR += toshctl
+    SUBDIR += toybox
     SUBDIR += tracker
     SUBDIR += tracker-miners
     SUBDIR += tree
@@ -1438,10 +1435,12 @@
     SUBDIR += vbetool
     SUBDIR += vchanger
     SUBDIR += vcp
+    SUBDIR += vector
     SUBDIR += videogen
     SUBDIR += vii
     SUBDIR += vils
     SUBDIR += vimpager
+    SUBDIR += virt-what
     SUBDIR += virtualmin
     SUBDIR += vm-bhyve
     SUBDIR += vmdktool
@@ -1454,7 +1453,6 @@
     SUBDIR += vttest
     SUBDIR += vzvol
     SUBDIR += wait_on
-    SUBDIR += warden
     SUBDIR += watchdog
     SUBDIR += watchfolder
     SUBDIR += watchman

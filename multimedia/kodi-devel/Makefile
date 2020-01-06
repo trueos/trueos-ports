@@ -1,16 +1,21 @@
 # $FreeBSD$
 
 PORTNAME=	kodi
-DISTVERSION=	19.0.a20191112
+DISTVERSION=	19.0.a20191216
 CATEGORIES=	multimedia
 PKGNAMESUFFIX=	-devel
+
+PATCH_SITES=	https://github.com/xbmc/xbmc/commit/
+PATCHFILES=	6a3cbd22fbf72d592cc1a8ccb58782f494ada826.patch:-p1 \
+		91afd99709d8fb6a496f7dc451bae5bba75fa717.patch:-p1 \
+		ae804ecd9a9e9281b28918d0d21033ea1f285b81.patch:-p1
 
 MAINTAINER=	tobik@FreeBSD.org
 COMMENT=	Award winning media center application
 
 LICENSE=	GPLv2+
 
-ONLY_FOR_ARCHS=	amd64 armv6 armv7 i386
+ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386
 
 BUILD_DEPENDS=	flatbuffers>=0:devel/flatbuffers \
 		rapidjson>=0:devel/rapidjson \
@@ -56,7 +61,7 @@ USES=		autoreconf:build cmake:noninja compiler:c++11-lang gettext gl \
 USE_GITHUB=	yes
 GH_ACCOUNT=	xbmc
 GH_PROJECT=	xbmc
-GH_TAGNAME=	f6311e3c5559ced201fb8ff91846fe4b9b668a9a
+GH_TAGNAME=	c35b70cc2c5618f114ebea905aaacfe96eb15951
 USE_GL=		egl gl glu
 USE_GNOME=	libxml2 libxslt
 USE_JAVA=	yes
@@ -179,10 +184,14 @@ post-patch:
 # (see CMAKE_ARGS).
 	@${REINPLACE_CMD} 's@KODI_DEPENDSBUILD@true@' \
 		${WRKSRC}/cmake/modules/FindLibDvd.cmake
-# Make sure freebsd.xml is in sync with linux.xml since the
-# upstream devs do not sync them
-	@${CP} ${WRKSRC}/system/settings/linux.xml \
-		${WRKSRC}/system/settings/freebsd.xml
+# Abort build if freebsd.xml and linux.xml differ again.  The
+# upstream devs forget to sync them.  When that happens it might
+# be time to file a PR again.
+	@cd ${WRKSRC}/system/settings && \
+		if ! /usr/bin/cmp -s freebsd.xml linux.xml; then \
+			${ECHO_MSG} "=> freebsd.xml out of sync with linux.xml again"; \
+			${FALSE}; \
+		fi
 # Make sure Kodi can find keyboard layouts from xkeyboard-config
 	@${REINPLACE_CMD} 's,/usr/share/X11/xkb/rules/,${LOCALBASE}/share/X11/xkb/rules/,g' \
 		${WRKSRC}/xbmc/platform/linux/input/LibInputSettings.cpp

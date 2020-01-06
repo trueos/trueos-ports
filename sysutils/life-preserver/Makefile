@@ -13,17 +13,9 @@ BROKEN=		unfetchable
 
 LICENSE=	BSD3CLAUSE
 
-<<<<<<< HEAD
 RUN_DEPENDS=	${LOCALBASE}/share/trueos/scripts/functions.sh:sysutils/trueos-libsh \
 		sshpass:security/sshpass
-=======
-DEPRECATED=	Abandoned upstream
-EXPIRATION_DATE=	2019-12-15
-
-RUN_DEPENDS=	${LOCALBASE}/share/pcbsd/scripts/functions.sh:sysutils/pcbsd-libsh \
-		stunnel:security/stunnel
->>>>>>> freebsd/master
-
+		
 USES=		pkgconfig tar:xz
 NO_BUILD=	yes
 MAKE_ARGS=	PREFIX=${STAGEDIR}${PREFIX}

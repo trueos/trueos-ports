@@ -208,7 +208,6 @@
     SUBDIR += gpx2map
     SUBDIR += grafana
     SUBDIR += grafana2
-    SUBDIR += grafana3
     SUBDIR += grafana4
     SUBDIR += grafana5
     SUBDIR += grafana6
@@ -253,7 +252,6 @@
     SUBDIR += httpasyncclient
     SUBDIR += httpclient
     SUBDIR += httpcore
-    SUBDIR += httpdirfs
     SUBDIR += httptunnel
     SUBDIR += httrack
     SUBDIR += hypermail
@@ -332,6 +330,7 @@
     SUBDIR += mediawiki131
     SUBDIR += mediawiki132
     SUBDIR += mediawiki133
+    SUBDIR += mediawiki134
     SUBDIR += mergelog
     SUBDIR += mhonarc
     SUBDIR += micro_httpd
@@ -340,7 +339,6 @@
     SUBDIR += mimetex
     SUBDIR += mini_httpd
     SUBDIR += miniflux
-    SUBDIR += miniminiweb
     SUBDIR += minio
     SUBDIR += minio-client
     SUBDIR += miniserve
@@ -395,7 +393,6 @@
     SUBDIR += mod_mpm_itk
     SUBDIR += mod_pagespeed
     SUBDIR += mod_perl2
-    SUBDIR += mod_php71
     SUBDIR += mod_php72
     SUBDIR += mod_php73
     SUBDIR += mod_php74
@@ -428,6 +425,7 @@
     SUBDIR += moodle35
     SUBDIR += moodle36
     SUBDIR += moodle37
+    SUBDIR += moodle38
     SUBDIR += morty
     SUBDIR += mozplugger
     SUBDIR += multisort
@@ -455,6 +453,7 @@
     SUBDIR += nginx-lite
     SUBDIR += nginx-naxsi
     SUBDIR += nginx-prometheus-exporter
+    SUBDIR += nginx-vts-exporter
     SUBDIR += nibbleblog
     SUBDIR += nift
     SUBDIR += node
@@ -505,10 +504,12 @@
     SUBDIR += p5-Apache-AuthCookie
     SUBDIR += p5-Apache-AuthTicket
     SUBDIR += p5-Apache-Clean2
+    SUBDIR += p5-Apache-Config-Preproc
     SUBDIR += p5-Apache-ConfigFile
     SUBDIR += p5-Apache-ConfigParser
     SUBDIR += p5-Apache-DB
     SUBDIR += p5-Apache-DBI
+    SUBDIR += p5-Apache-Defaults
     SUBDIR += p5-Apache-Gallery
     SUBDIR += p5-Apache-Htgroup
     SUBDIR += p5-Apache-LogFormat-Compiler
@@ -1368,10 +1369,8 @@
     SUBDIR += perlbal
     SUBDIR += pglogd
     SUBDIR += phalcon
+    SUBDIR += phalcon4
     SUBDIR += photo_gallery
-    SUBDIR += php71-opcache
-    SUBDIR += php71-session
-    SUBDIR += php71-tidy
     SUBDIR += php72-opcache
     SUBDIR += php72-session
     SUBDIR += php72-tidy
@@ -1399,6 +1398,7 @@
     SUBDIR += pnews
     SUBDIR += podcastamatic
     SUBDIR += polipo
+    SUBDIR += pomerium
     SUBDIR += pound
     SUBDIR += privatebin
     SUBDIR += privoxy
@@ -1461,7 +1461,6 @@
     SUBDIR += py-dj21-django-cors-headers
     SUBDIR += py-dj21-django-crispy-forms
     SUBDIR += py-dj21-django-debug-toolbar
-    SUBDIR += py-dj21-django-extensions
     SUBDIR += py-dj21-django-filter
     SUBDIR += py-dj21-django-js-asset
     SUBDIR += py-dj21-django-mptt
@@ -1469,7 +1468,6 @@
     SUBDIR += py-dj21-django-taggit
     SUBDIR += py-dj21-django-taggit-serializer
     SUBDIR += py-dj21-django-timezone-field
-    SUBDIR += py-dj21-djangoql
     SUBDIR += py-dj21-djangorestframework
     SUBDIR += py-dj21-drf-yasg
     SUBDIR += py-dj22-django-auth-ldap
@@ -1477,11 +1475,13 @@
     SUBDIR += py-dj22-django-cors-headers
     SUBDIR += py-dj22-django-crispy-forms
     SUBDIR += py-dj22-django-debug-toolbar
+    SUBDIR += py-dj22-django-extensions
     SUBDIR += py-dj22-django-filter
     SUBDIR += py-dj22-django-formset-js-improved
     SUBDIR += py-dj22-django-jquery-js
     SUBDIR += py-dj22-django-js-asset
     SUBDIR += py-dj22-django-jsonfield2
+    SUBDIR += py-dj22-django-model-utils
     SUBDIR += py-dj22-django-mptt
     SUBDIR += py-dj22-django-prometheus
     SUBDIR += py-dj22-django-tables2
@@ -1490,6 +1490,7 @@
     SUBDIR += py-dj22-django-timezone-field
     SUBDIR += py-dj22-django-treebeard
     SUBDIR += py-dj22-django_csp
+    SUBDIR += py-dj22-djangoql
     SUBDIR += py-dj22-djangorestframework
     SUBDIR += py-dj22-drf-yasg
     SUBDIR += py-dj22-swapper
@@ -1601,6 +1602,7 @@
     SUBDIR += py-django111
     SUBDIR += py-django21
     SUBDIR += py-django22
+    SUBDIR += py-django30
     SUBDIR += py-django_compressor
     SUBDIR += py-django_openstack_auth
     SUBDIR += py-django_polymorphic
@@ -1628,6 +1630,7 @@
     SUBDIR += py-flask-assets
     SUBDIR += py-flask-bootstrap
     SUBDIR += py-flask-cache
+    SUBDIR += py-flask-collect
     SUBDIR += py-flask-compress
     SUBDIR += py-flask-cors
     SUBDIR += py-flask-flatpages
@@ -1708,6 +1711,7 @@
     SUBDIR += py-pastedeploy
     SUBDIR += py-pastescript
     SUBDIR += py-path-and-address
+    SUBDIR += py-pecan
     SUBDIR += py-pelican
     SUBDIR += py-planet
     SUBDIR += py-plone.alterego
@@ -1872,6 +1876,7 @@
     SUBDIR += py-w3lib
     SUBDIR += py-wagtail
     SUBDIR += py-waitress
+    SUBDIR += py-webargs
     SUBDIR += py-webassets
     SUBDIR += py-webhelpers
     SUBDIR += py-webob
@@ -1930,6 +1935,7 @@
     SUBDIR += retawq
     SUBDIR += riot-web
     SUBDIR += roundup
+    SUBDIR += rss-bridge
     SUBDIR += rsskit
     SUBDIR += rssowl
     SUBDIR += rssroll
@@ -2118,7 +2124,6 @@
     SUBDIR += rubygem-rack
     SUBDIR += rubygem-rack-accept
     SUBDIR += rubygem-rack-attack
-    SUBDIR += rubygem-rack-attack44
     SUBDIR += rubygem-rack-cache
     SUBDIR += rubygem-rack-contrib
     SUBDIR += rubygem-rack-cors
@@ -2165,7 +2170,6 @@
     SUBDIR += rubygem-responders
     SUBDIR += rubygem-responders-rails5
     SUBDIR += rubygem-responders-rails52
-    SUBDIR += rubygem-responders2-rails52
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2279,6 +2283,7 @@
     SUBDIR += tdom
     SUBDIR += template_
     SUBDIR += templatelite
+    SUBDIR += thirtybees
     SUBDIR += thttpd
     SUBDIR += thumbnail_index
     SUBDIR += thundercache
@@ -2474,6 +2479,7 @@
     SUBDIR += yanopaste
     SUBDIR += yarn
     SUBDIR += yarn-node10
+    SUBDIR += yarn-node12
     SUBDIR += yarn-node8
     SUBDIR += yaws
     SUBDIR += you-get

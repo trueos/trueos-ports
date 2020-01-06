@@ -463,7 +463,6 @@
     SUBDIR += perdition
     SUBDIR += pflogsumm
     SUBDIR += pfqueue
-    SUBDIR += php71-imap
     SUBDIR += php72-imap
     SUBDIR += php73-imap
     SUBDIR += php74-imap
@@ -603,8 +602,7 @@
     SUBDIR += rubygem-premailer
     SUBDIR += rubygem-premailer-rails
     SUBDIR += rubygem-premailer-rails-rails5
-    SUBDIR += rubygem-premailer-rails19-rails5
-    SUBDIR += rubygem-premailer-rails19-rails52
+    SUBDIR += rubygem-premailer-rails-rails52
     SUBDIR += rubygem-rmail
     SUBDIR += rubygem-roadie
     SUBDIR += rubygem-roadie-rails

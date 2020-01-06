@@ -181,6 +181,7 @@
     SUBDIR += pslib
     SUBDIR += pstotext
     SUBDIR += psutils
+    SUBDIR += py-fontaine
     SUBDIR += py-fonttools
     SUBDIR += py-fpdf
     SUBDIR += py-pdf
@@ -197,6 +198,7 @@
     SUBDIR += py-rtf
     SUBDIR += py-stapler
     SUBDIR += py-trml2pdf
+    SUBDIR += py-ttfautohint-py
     SUBDIR += py-weasyprint
     SUBDIR += qpdf
     SUBDIR += qpdfview
@@ -225,6 +227,7 @@
     SUBDIR += rubygem-ttfunk
     SUBDIR += scribus-devel
     SUBDIR += sgf2tex
+    SUBDIR += shrinkpdf
     SUBDIR += splix
     SUBDIR += system-config-printer
     SUBDIR += t1utils
@@ -251,6 +254,7 @@
     SUBDIR += transfig
     SUBDIR += trueprint
     SUBDIR += ttf2pt1
+    SUBDIR += ttfautohint
     SUBDIR += ttfquery
     SUBDIR += ttftot42
     SUBDIR += txtbdf2ps
