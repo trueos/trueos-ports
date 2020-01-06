@@ -252,6 +252,7 @@
     SUBDIR += mirmon
     SUBDIR += mmdnn
     SUBDIR += mmv
+    SUBDIR += mnn
     SUBDIR += molequeue
     SUBDIR += morse
     SUBDIR += mtail
@@ -260,6 +261,7 @@
     SUBDIR += najitool
     SUBDIR += netron
     SUBDIR += nms
+    SUBDIR += nn-insight
     SUBDIR += nnn
     SUBDIR += nsf
     SUBDIR += numchar

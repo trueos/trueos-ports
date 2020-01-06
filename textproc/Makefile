@@ -396,9 +396,6 @@
     SUBDIR += libxslt-reference
     SUBDIR += libyaml
     SUBDIR += link-grammar
-    SUBDIR += linux-c6-aspell
-    SUBDIR += linux-c6-expat
-    SUBDIR += linux-c6-libxml2
     SUBDIR += linux-c7-aspell
     SUBDIR += linux-c7-expat
     SUBDIR += linux-c7-libxml2
@@ -1394,6 +1391,7 @@
     SUBDIR += py-tinycss
     SUBDIR += py-tinycss2
     SUBDIR += py-toml
+    SUBDIR += py-tomlkit
     SUBDIR += py-toronado
     SUBDIR += py-towncrier
     SUBDIR += py-trans
@@ -1407,6 +1405,7 @@
     SUBDIR += py-wicked
     SUBDIR += py-wordnet
     SUBDIR += py-wstools
+    SUBDIR += py-wtf-peewee
     SUBDIR += py-wtforms
     SUBDIR += py-xhtml2pdf
     SUBDIR += py-xlrd
@@ -1824,7 +1823,6 @@
     SUBDIR += xml-format
     SUBDIR += xml-i18n-tools
     SUBDIR += xml-lite.el
-    SUBDIR += xml2
     SUBDIR += xml2rfc
     SUBDIR += xmlada
     SUBDIR += xmlcatmgr
