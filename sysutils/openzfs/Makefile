@@ -48,17 +48,16 @@ PLIST_SUB+=     PYTHON="@comment "
 .endif
 
 .if ${PORT_OPTIONS:TESTS}
-	RUN_DEPENDS+=	ksh93:shells/ksh93
-	RUN_DEPENDS+=	bash:shells/bash
-	RUN_DEPENDS+=	base64:converters/base64
-	RUN_DEPENDS+=	python3:lang/python2
-	RUN_DEPENDS+=	python2:lang/python3
-	RUN_DEPENDS+=	sudo:lang/python3
-	SHEBANG_LANG=	ksh
-	ksh_OLD_CMD=	/bin/ksh
-	ksh_CMD=	${LOCALBASE}/bin/ksh
-	SHEBANG_GLOB=	*.ksh
-
+RUN_DEPENDS+=	ksh93:shells/ksh93
+RUN_DEPENDS+=	bash:shells/bash
+RUN_DEPENDS+=	base64:converters/base64
+RUN_DEPENDS+=	python3:lang/python2
+RUN_DEPENDS+=	python2:lang/python3
+RUN_DEPENDS+=	sudo:lang/python3
+SHEBANG_LANG=	ksh
+ksh_OLD_CMD=	/bin/ksh
+ksh_CMD=	${LOCALBASE}/bin/ksh
+SHEBANG_GLOB=	*.ksh
 .endif
 
 pre-configure:
