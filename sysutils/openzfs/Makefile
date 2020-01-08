@@ -14,7 +14,7 @@ BROKEN_aarch64=	invokes x86 assembler
 
 RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
 
-USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix
+USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
 
 GNU_CONFIGURE=  yes
 CONFIGURE_ARGS=	--prefix=${PREFIX} --with-config="user"
@@ -28,6 +28,11 @@ GH_PROJECT=	ZoF
 GH_TAGNAME=	4db48dc00
 
 .include <bsd.port.pre.mk>
+
+SHEBANG_LANG=	ksh
+ksh_OLD_CMD=	/bin/ksh
+ksh_CMD=	${LOCALBASE}/bin/ksh
+SHEBANG_GLOB=	*.ksh
 
 .if (${OSVERSION} < 1200504) || (${OSVERSION} >= 1300000 && ${OSVERSION} < 1300013)
 IGNORE=      needs FreeBSD 12/13 with AES-CCM support
@@ -54,10 +59,6 @@ RUN_DEPENDS+=	base64:converters/base64
 RUN_DEPENDS+=	python3:lang/python2
 RUN_DEPENDS+=	python2:lang/python3
 RUN_DEPENDS+=	sudo:lang/python3
-SHEBANG_LANG=	ksh
-ksh_OLD_CMD=	/bin/ksh
-ksh_CMD=	${LOCALBASE}/bin/ksh
-SHEBANG_GLOB=	*.ksh
 .endif
 
 pre-configure:
