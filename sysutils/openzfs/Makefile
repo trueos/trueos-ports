@@ -47,7 +47,7 @@ CONFIGURE_ARGS+=	--without-python
 PLIST_SUB+=     PYTHON="@comment "
 .endif
 
-.if ${PORT_OPTIONS:TESTS}
+.if ${PORT_OPTIONS:MTESTS}
 RUN_DEPENDS+=	ksh93:shells/ksh93
 RUN_DEPENDS+=	bash:shells/bash
 RUN_DEPENDS+=	base64:converters/base64
