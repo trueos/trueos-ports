@@ -16,7 +16,7 @@ RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
 
 USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
 
-SHEBANG_GLOB=	*.ksh *.kshlib *.cfg *.ksh.in .sh
+SHEBANG_GLOB=	*.ksh *.kshlib *.cfg *.ksh.in *.sh
 ksh_CMD=	${LOCALBASE}/bin/ksh93
 
 GNU_CONFIGURE=  yes
