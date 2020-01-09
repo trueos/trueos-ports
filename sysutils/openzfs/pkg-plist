@@ -432,6 +432,7 @@ share/pkgconfig/libzfs_core.pc
 %%TESTS%%share/zfs/runfiles/linux.run
 %%TESTS%%share/zfs/runfiles/longevity.run
 %%TESTS%%share/zfs/runfiles/perf-regression.run
+%%TESTS%%share/zfs/runfiles/sun.run
 %%TESTS%%share/zfs/test-runner/bin/test-runner.py
 %%TESTS%%share/zfs/test-runner/bin/zts-report.py
 %%TESTS%%share/zfs/test-runner/include/logapi.shlib
