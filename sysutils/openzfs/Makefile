@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	openzfs
-PORTVERSION=	2020010701
+PORTVERSION=	2020010800
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 
@@ -16,26 +16,26 @@ RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
 
 USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
 
+SHEBANG_GLOB=	*.ksh
+ksh_OLD_CMD=	/bin/ksh
+ksh_CMD=	${LOCALBASE}/bin/ksh93
+
 GNU_CONFIGURE=  yes
 CONFIGURE_ARGS=	--prefix=${PREFIX} --with-config="user"
 
 OPTIONS_DEFINE= DEBUG PYTHON TESTS
 OPTIONS_SUB=    yes
+TESTS_IMPLIES= PYTHON
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	zfsonfreebsd
 GH_PROJECT=	ZoF
-GH_TAGNAME=	4db48dc00
+GH_TAGNAME=	796f059d3
 
 .include <bsd.port.pre.mk>
 
-SHEBANG_LANG=	ksh
-ksh_OLD_CMD=	/bin/ksh
-ksh_CMD=	${LOCALBASE}/bin/ksh
-SHEBANG_GLOB=	*.ksh
-
 .if (${OSVERSION} < 1200504) || (${OSVERSION} >= 1300000 && ${OSVERSION} < 1300013)
-IGNORE=      needs FreeBSD 12/13 with AES-CCM support
+IGNORE+=      needs FreeBSD 12/13 with AES-CCM support
 .endif
 
 .if ${PORT_OPTIONS:MDEBUG}
@@ -53,12 +53,16 @@ PLIST_SUB+=     PYTHON="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MTESTS}
-RUN_DEPENDS+=	ksh93:shells/ksh93
 RUN_DEPENDS+=	bash:shells/bash
 RUN_DEPENDS+=	base64:converters/base64
+RUN_DEPENDS+=	fio:benchmarks/fio
+RUN_DEPENDS+=	gdb:devel/gdb
+RUN_DEPENDS+=	hs-ShellCheck:devel/hs-ShellCheck
+RUN_DEPENDS+=	ksh93:shells/ksh93
 RUN_DEPENDS+=	python3:lang/python2
 RUN_DEPENDS+=	python2:lang/python3
 RUN_DEPENDS+=	sudo:lang/python3
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}flake8>0:devel/py-flake8@${PY_FLAVOR}
 .endif
 
 pre-configure:

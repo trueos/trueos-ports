@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	openzfs
-PORTVERSION=	2020010701
+PORTVERSION=	2020010800
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 PKGNAMESUFFIX?=	-kmod
@@ -15,7 +15,7 @@ USES=		kmod
 USE_GITHUB=	yes
 GH_ACCOUNT=	zfsonfreebsd
 GH_PROJECT=	ZoF
-GH_TAGNAME=	4db48dc00
+GH_TAGNAME=	796f059d3
 KMODTARGET?=	openzfs.ko
 
 PLIST_FILES=	${KMODDIR}/${KMODTARGET}
@@ -27,7 +27,7 @@ GCOV_DESC=	Build kernel module with GCOV support (Requires gcc)
 .include <bsd.port.pre.mk>
 
 .if (${OSVERSION} < 1200504) || (${OSVERSION} >= 1300000 && ${OSVERSION} < 1300013)
-IGNORE=      needs FreeBSD 12/13 with AES-CCM support
+IGNORE+=      needs FreeBSD 12/13 with AES-CCM support
 .endif
 
 .if ${PORT_OPTIONS:MDEBUG}

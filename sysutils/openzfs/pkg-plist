@@ -1,4 +1,4 @@
-bin/raidz_test
+%%TESTS%%bin/raidz_test
 bin/zgenhostid
 etc/sudoers.d/zfs
 etc/zfs/vdev_id.conf.alias.example
@@ -325,8 +325,8 @@ libexec/zfs/zpool.d/upath
 libexec/zfs/zpool.d/vendor
 libexec/zfs/zpool.d/w_proc
 libexec/zfs/zpool.d/w_ucor
-man/man1/raidz_test.1.gz
-%%TEST%%man/man1/test-runner.1.gz
+%%TESTS%%man/man1/raidz_test.1.gz
+%%TESTS%%man/man1/test-runner.1.gz
 man/man1/zhack.1.gz
 man/man1/ztest.1.gz
 man/man1/zvol_wait.1.gz
@@ -426,7 +426,7 @@ sbin/zstreamdump
 sbin/ztest
 share/pkgconfig/libzfs.pc
 share/pkgconfig/libzfs_core.pc
-share/zfs/common.sh
+%%TESTS%%share/zfs/common.sh
 %%TESTS%%share/zfs/runfiles/common.run
 %%TESTS%%share/zfs/runfiles/freebsd.run
 %%TESTS%%share/zfs/runfiles/linux.run
@@ -436,7 +436,7 @@ share/zfs/common.sh
 %%TESTS%%share/zfs/test-runner/bin/zts-report.py
 %%TESTS%%share/zfs/test-runner/include/logapi.shlib
 %%TESTS%%share/zfs/test-runner/include/stf.shlib
-share/zfs/zfs-helpers.sh
+%%TESTS%%share/zfs/zfs-helpers.sh
 %%TESTS%%share/zfs/zfs-tests.sh
 %%TESTS%%share/zfs/zfs-tests/bin/btree_test
 %%TESTS%%share/zfs/zfs-tests/bin/chg_usr_exec
@@ -2203,9 +2203,9 @@ share/zfs/zfs-helpers.sh
 %%TESTS%%share/zfs/zfs-tests/tests/perf/regression/sequential_writes.ksh
 %%TESTS%%share/zfs/zfs-tests/tests/perf/regression/setup.ksh
 %%TESTS%%share/zfs/zfs-tests/tests/perf/scripts/prefetch_io.sh
-share/zfs/zfs.sh
-share/zfs/zimport.sh
-share/zfs/zloop.sh
+%%TESTS%%share/zfs/zfs.sh
+%%TESTS%%share/zfs/zimport.sh
+%%TESTS%%share/zfs/zloop.sh
 %%PYTHON%%bin/arc_summary
 %%PYTHON%%bin/arcstat
 %%PYTHON%%bin/dbufstat
