@@ -1,5 +1,5 @@
 %%TESTS%%bin/raidz_test
-bin/zgenhostid
+%%TESTS%%bin/zgenhostid
 etc/sudoers.d/zfs
 etc/zfs/vdev_id.conf.alias.example
 etc/zfs/vdev_id.conf.multipath.example

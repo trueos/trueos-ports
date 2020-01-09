@@ -16,7 +16,7 @@ RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
 
 USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
 
-SHEBANG_GLOB=	*.ksh
+SHEBANG_GLOB=	*.ksh *.kshlib *.cfg
 ksh_OLD_CMD=	/bin/ksh
 ksh_CMD=	${LOCALBASE}/bin/ksh93
 
@@ -40,6 +40,8 @@ IGNORE+=      needs FreeBSD 12/13 with AES-CCM support
 
 .if ${PORT_OPTIONS:MDEBUG}
 CONFIGURE_ARGS+=	--enable-debug --enable-debuginfo
+.else
+INSTALL_TARGET= install-strip
 .endif
 
 .if ${PORT_OPTIONS:MPYTHON}
