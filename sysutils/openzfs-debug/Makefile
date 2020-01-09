@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=       openzfs
-PKGNAMESUFFIX=	-PYTHON
+PKGNAMESUFFIX=	-debug
 
-COMMENT=        Python Utilties for OpenZFS
+COMMENT=        Debug for OpenZFS
 
 MASTERDIR=      ${.CURDIR}/../../sysutils/openzfs
 
