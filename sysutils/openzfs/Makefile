@@ -19,6 +19,8 @@ USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build she
 SHEBANG_GLOB=	*.ksh *.kshlib *.cfg *.ksh.in .sh
 ksh_OLD_CMD=	/bin/ksh
 ksh_CMD=	${LOCALBASE}/bin/ksh93
+bash_OLD_CMD=	/bin/bash
+bash_CMD=	${LOCALEBASE}/bin/bash
 
 GNU_CONFIGURE=  yes
 CONFIGURE_ARGS=	--prefix=${PREFIX} --with-config="user"
