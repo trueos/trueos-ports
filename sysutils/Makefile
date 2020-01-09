@@ -770,6 +770,8 @@
     SUBDIR += opensbi
     SUBDIR += openupsd
     SUBDIR += openzfs
+    SUBDIR += openzfs-python
+    SUBDIR += openzfs-tests
     SUBDIR += openzfs-kmod
     SUBDIR += openzfs-kmod-debug
     SUBDIR += ori
