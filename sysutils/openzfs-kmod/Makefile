@@ -16,7 +16,14 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	zfsonfreebsd
 GH_PROJECT=	ZoF
 GH_TAGNAME=	5cb486d
+
+FLAVORS=	default	debug
+
+.if ${FLAVOR:U} != debug 
 KMODTARGET?=	openzfs.ko
+.else
+KMODTARGET=     openzfs-debug.ko
+.endif
 
 PLIST_FILES=	${KMODDIR}/${KMODTARGET}
 

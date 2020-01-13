@@ -17,21 +17,29 @@ RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
 
 USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
 
+
+
 SHEBANG_GLOB=	*.ksh *.kshlib *.cfg *.ksh.in *.sh
 ksh_CMD=	${LOCALBASE}/bin/ksh93
 
 GNU_CONFIGURE=  yes
 CONFIGURE_ARGS=	--prefix=${PREFIX} --with-config="user"
 
-OPTIONS_DEFINE= DEBUG PYTHON TESTS USERLAND
+OPTIONS_DEFINE= USERLAND DEBUG PYTHON TESTS
 OPTIONS_SUB=    yes
 TESTS_IMPLIES= PYTHON
 
-.if ${PKGNAMESUFFIX} == -tests
+FLAVORS= userland debug tests python
+debug_PKGNAMESUFFIX=	-debug
+python_PKGNAMESUFFIX=	-python
+tests_PKGNAMESUFFIX=	-tests
+
+
+.if ${FLAVOR:U} == tests
 OPTIONS_DEFAULT=	TESTS
-.elif ${PKGNAMESUFFIX} == -python
+.elif ${FLAVOR:U} == python
 OPTIONS_DEFAULT= PYTHON
-.elif ${PKGNAMESUFFIX} == -debug
+.elif ${FLAVOR:U} == debug
 OPTIONS_DEFAULT= USERLAND DEBUG
 RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod-debug
 CONFLICTS_INSTALL=	openzfs
