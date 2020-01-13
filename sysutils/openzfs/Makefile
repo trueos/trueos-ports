@@ -13,46 +13,41 @@ LICENSE=	CDDL
 
 BROKEN_aarch64=	invokes x86 assembler
 
-RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
-
-USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
-
-
-
-SHEBANG_GLOB=	*.ksh *.kshlib *.cfg *.ksh.in *.sh
-ksh_CMD=	${LOCALBASE}/bin/ksh93
-
-GNU_CONFIGURE=  yes
-CONFIGURE_ARGS=	--prefix=${PREFIX} --with-config="user"
-
-OPTIONS_DEFINE= USERLAND DEBUG PYTHON TESTS
-OPTIONS_SUB=    yes
-TESTS_IMPLIES= PYTHON
-
 FLAVORS= userland debug tests python
 debug_PKGNAMESUFFIX=	-debug
 python_PKGNAMESUFFIX=	-python
 tests_PKGNAMESUFFIX=	-tests
 
-
 .if ${FLAVOR:U} == tests
 OPTIONS_DEFAULT=	TESTS
+RUN_DEPENDS+= openzfs-python>=0:sysutils/openzfs-python
 .elif ${FLAVOR:U} == python
 OPTIONS_DEFAULT= PYTHON
 .elif ${FLAVOR:U} == debug
 OPTIONS_DEFAULT= USERLAND DEBUG
-RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod-debug
+RUN_DEPENDS+=	openzfs-kmod>=0:sysutils/openzfs-kmod
 CONFLICTS_INSTALL=	openzfs
 .else
 OPTIONS_DEFAULT= USERLAND
-RUN_DEPENDS=	openzfs-kmod>=0:sysutils/openzfs-kmod
+RUN_DEPENDS+=	openzfs-kmod>=0:sysutils/openzfs-kmod
 CONFLICTS_INSTALL=	openzfs-debug
 .endif
+
+GNU_CONFIGURE=  yes
+CONFIGURE_ARGS=	--prefix=${PREFIX} --with-config="user"
+
+USES+=		autoreconf:build libtool gmake gettext-runtime:run python:3.3+,build shebangfix ssl
+
+SHEBANG_GLOB=	*.ksh *.kshlib *.cfg *.ksh.in *.sh
+ksh_CMD=	${LOCALBASE}/bin/ksh93
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	zfsonfreebsd
 GH_PROJECT=	ZoF
 GH_TAGNAME=	5cb486d
+
+OPTIONS_DEFINE= USERLAND DEBUG PYTHON TESTS
+OPTIONS_SUB=    yes
 
 .include <bsd.port.pre.mk>
 

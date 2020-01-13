@@ -4,26 +4,28 @@ PORTNAME=	openzfs
 PORTVERSION=	2020010900
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
-PKGNAMESUFFIX?=	-kmod
 
 MAINTAINER=	kmoore@FreeBSD.org
 COMMENT=	OpenZFS kernel module for FreeBSD
 
 LICENSE=	CDDL
 
-USES=		kmod
-USE_GITHUB=	yes
-GH_ACCOUNT=	zfsonfreebsd
-GH_PROJECT=	ZoF
-GH_TAGNAME=	5cb486d
-
 FLAVORS=	default	debug
+USES=		kmod
 
-.if ${FLAVOR:U} != debug 
+default_PKGNAMESUFFIX=-kmod
+debug_PKGNAMESUFFIX=-debug
+
+.if ${FLAVOR:U} != debug
 KMODTARGET?=	openzfs.ko
 .else
 KMODTARGET=     openzfs-debug.ko
 .endif
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	zfsonfreebsd
+GH_PROJECT=	ZoF
+GH_TAGNAME=	5cb486d
 
 PLIST_FILES=	${KMODDIR}/${KMODTARGET}
 
