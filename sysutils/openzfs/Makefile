@@ -20,7 +20,6 @@ tests_PKGNAMESUFFIX=	-tests
 
 .if ${FLAVOR:U} == tests
 OPTIONS_DEFAULT=	TESTS
-RUN_DEPENDS+= openzfs@python>=0:sysutils/openzfs@python
 .elif ${FLAVOR:U} == python
 OPTIONS_DEFAULT= PYTHON
 .elif ${FLAVOR:U} == debug
