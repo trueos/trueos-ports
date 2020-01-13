@@ -14,7 +14,7 @@ FLAVORS=	default	debug
 USES=		kmod
 
 default_PKGNAMESUFFIX=-kmod
-debug_PKGNAMESUFFIX=-debug
+debug_PKGNAMESUFFIX=kmod-debug
 
 .if ${FLAVOR:U} != debug
 KMODTARGET?=	openzfs.ko
